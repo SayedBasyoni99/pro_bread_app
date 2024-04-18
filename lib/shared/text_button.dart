@@ -9,17 +9,19 @@ class CustomTextButton extends StatelessWidget {
     this.height = 65,
     this.width = 343,
     this.radius = 10,
-    this.textColor = Colors.white,
+    this.textColor = Colors.black,
     this.buttonColor = const Color(0xffD8A235),
     this.borderColor = const Color(0xffCB962C),
-    this.inkColor = const Color(0xffCB962C),
+    this.inkColor = Colors.transparent,
     this.withBorder = false,
+    this.isBold = true,
+    this.fontSize = 16.0,
   });
   void Function()? onTap;
   String title;
-  double height, width, radius;
+  double height, width, radius, fontSize;
   Color textColor, buttonColor, borderColor, inkColor;
-  bool withBorder;
+  bool withBorder, isBold;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +45,10 @@ class CustomTextButton extends StatelessWidget {
               alignment: Alignment.center,
               child: Text(
                 title,
-                style: TextStyle(color: textColor, fontSize: 16),
+                style: TextStyle(
+                    color: textColor,
+                    fontSize: fontSize,
+                    fontWeight: isBold ? FontWeight.bold : FontWeight.normal),
                 textAlign: TextAlign.center,
               )),
         ));

@@ -19,16 +19,25 @@ class $AssetsImagesGen {
 class $AssetsImagesPngGen {
   const $AssetsImagesPngGen();
 
+  /// File path: assets/images/png/logInBg.png
+  AssetGenImage get logInBg =>
+      const AssetGenImage('assets/images/png/logInBg.png');
+
   /// File path: assets/images/png/onBoardingLogo01.png
   AssetGenImage get onBoardingLogo01 =>
       const AssetGenImage('assets/images/png/onBoardingLogo01.png');
+
+  /// File path: assets/images/png/onBoardingLogo02.png
+  AssetGenImage get onBoardingLogo02 =>
+      const AssetGenImage('assets/images/png/onBoardingLogo02.png');
 
   /// File path: assets/images/png/splash_Logo_00.png
   AssetGenImage get splashLogo00 =>
       const AssetGenImage('assets/images/png/splash_Logo_00.png');
 
   /// List of all assets
-  List<AssetGenImage> get values => [onBoardingLogo01, splashLogo00];
+  List<AssetGenImage> get values =>
+      [logInBg, onBoardingLogo01, onBoardingLogo02, splashLogo00];
 }
 
 class $AssetsImagesSvgGen {
@@ -37,11 +46,14 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/PBLogo.svg
   String get pBLogo => 'assets/images/svg/PBLogo.svg';
 
+  /// File path: assets/images/svg/buttomSheet.svg
+  String get buttomSheet => 'assets/images/svg/buttomSheet.svg';
+
   /// File path: assets/images/svg/splash_Logo_0.svg
   String get splashLogo0 => 'assets/images/svg/splash_Logo_0.svg';
 
   /// List of all assets
-  List<String> get values => [pBLogo, splashLogo0];
+  List<String> get values => [pBLogo, buttomSheet, splashLogo0];
 }
 
 class Assets {
