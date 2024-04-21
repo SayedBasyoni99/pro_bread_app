@@ -10,6 +10,6 @@
 class FontFamily {
   FontFamily._();
 
-  /// Font family: SF Pro Text
-  static const String sFProText = 'SF Pro Text';
+  /// Font family: Teshrin
+  static const String teshrin = 'Teshrin';
 }

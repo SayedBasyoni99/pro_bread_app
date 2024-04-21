@@ -4,13 +4,12 @@ import 'package:gap/gap.dart';
 import 'package:pro_bread_app/core/const/constant_var.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/log_in_page.dart';
-import 'package:pro_bread_app/splash/splash_screen.dart';
 // import 'package:pro_bread_app/shared/text_button.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen({super.key});
   int index = 0;
-  @override
+  @override 
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
@@ -19,7 +18,7 @@ class OnBoardingScreen extends StatelessWidget {
           child: CupertinoOnboarding(
             bottomButtonChild: index == 0 ? const Text(' تخطي') : const Text('تسجبل الدخول'),
 
-            bottomButtonColor: buttonColor,
+            bottomButtonColor: AppConst.kButtonColor,
             // onPressed: () {},
             onPressedOnLastPage: () {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogInPage()));
@@ -37,7 +36,7 @@ class OnBoardingScreen extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
-                        color: scondaryTextColor,
+                        color: AppConst.kScondaryTextColor,
                       )),
                   const Gap(20),
                   const Text(
@@ -47,7 +46,7 @@ class OnBoardingScreen extends StatelessWidget {
                         // fontFamily: 'SF Pro Text',
                         fontWeight: FontWeight.bold,
                         fontSize: 14.0,
-                        color: thirdTextColor,
+                        color: AppConst.kThirdTextColor,
                       )),
                   const Gap(30),
                 ],
@@ -65,7 +64,7 @@ class OnBoardingScreen extends StatelessWidget {
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
-                        color: scondaryTextColor,
+                        color: AppConst.kScondaryTextColor,
                       )),
                   const Gap(20),
                   const Text(
@@ -75,7 +74,7 @@ class OnBoardingScreen extends StatelessWidget {
                         // fontFamily: 'SF Pro Text',
                         fontWeight: FontWeight.bold,
                         fontSize: 14.0,
-                        color: thirdTextColor,
+                        color: AppConst.kThirdTextColor,
                       )),
                   const Gap(30),
                   // CustomTextButton(

@@ -2,6 +2,7 @@ import 'package:animated_widgets/animated_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
+import 'package:pro_bread_app/splash/on_boarding_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -22,8 +23,9 @@ class SplashScreen extends StatelessWidget {
               height: 102.16,
               width: 194.86,
             ),
+            animationFinished: (p0) =>
+                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => OnBoardingScreen())),
           )
-         
         ],
       ),
       backgroundColor: Colors.white,
