@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:pro_bread_app/core/const/constant_var.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/log_in_page.dart';
-// import 'package:pro_bread_app/shared/text_button.dart';
+import 'package:pro_bread_app/features/auth/presentation/screens/welcome_page.dart';
 
+// ignore: must_be_immutable
 class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen({super.key});
   int index = 0;
@@ -21,7 +21,7 @@ class OnBoardingScreen extends StatelessWidget {
             bottomButtonColor: AppConst.kButtonColor,
             // onPressed: () {},
             onPressedOnLastPage: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogInPage()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const WelcomePage()));
             },
             pages: [
               Column(

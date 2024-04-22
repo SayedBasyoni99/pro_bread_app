@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:pinput/pinput.dart';
 import 'package:pro_bread_app/core/const/constant_var.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/log_in_page.dart';
+import 'package:pro_bread_app/features/auth/presentation/screens/change_password_page.dart';
 import 'package:pro_bread_app/shared/aleart.dart';
 import 'package:pro_bread_app/shared/custom_text_field.dart';
 import 'package:pro_bread_app/shared/custom_txt_bottom.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
 
-class CreateAccPage extends StatelessWidget {
-  const CreateAccPage({super.key});
+class ForgetPasswordPage extends StatelessWidget {
+  const ForgetPasswordPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +29,13 @@ class CreateAccPage extends StatelessWidget {
                 children: [
                   Gap(25.h),
                   const Text(
-                    'إنشاء حساب جديد',
+                    'هل نسيت كلمة المرور',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
+                  ),
+                  Gap(25.h),
+                  const Text(
+                    'يرجي إدخال رقم الجوال الخاص بك ليتم إرسال الكود',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                   ),
                   const Gap(32),
                   const Text(
@@ -50,7 +54,7 @@ class CreateAccPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Gap(40.h),
+                  Gap(90.h),
                   CustomTextButton(
                     onTap: () {
                       Alerts.dialog(
@@ -69,34 +73,24 @@ class CreateAccPage extends StatelessWidget {
                                   // animationDuration: Duration(milliseconds: 300),
                                 ),
                               ),
-                              CustomButton(btnTitle: 'تأكيد ', onTap: () {}),
+                              CustomButton(
+                                  btnTitle: 'تأكيد ',
+                                  onTap: () {
+                                    Navigator.push(
+                                        context, MaterialPageRoute(builder: (context) => const ChangePasswordPage()));
+                                  }),
                             ],
                           ),
                         ),
                       );
                     },
-                    title: '  انشاء حساب جديد',
+                    title: 'ارسل ',
                     fontSize: 18.sp,
                   ),
                 ],
               ),
             ),
             Gap(10.h),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogInPage()));
-                  },
-                  child: const Text('تسجيل الدخول',
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
-                ),
-                const Gap(12),
-                const Text('هل لديك حساب بالفعل ؟ ',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor)),
-              ],
-            )
           ],
         ),
       ),

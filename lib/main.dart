@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pro_bread_app/splash/on_boarding_screen.dart';
+import 'package:pro_bread_app/core/const/constant_var.dart';
 import 'package:pro_bread_app/splash/splash_screen.dart';
 // import 'package:pro_bread_app/splash/splash_screen.dart';
 
@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         title: 'Pro Bread',
         theme: ThemeData(
           fontFamily: 'Teshrin',
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+          colorScheme: ColorScheme.fromSeed(seedColor: AppConst.kPrimaryColor),
           useMaterial3: true,
         ),
         home: const SplashScreen(),

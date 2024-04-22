@@ -11,8 +11,10 @@ class CustomTxtField extends StatelessWidget {
     this.onSaved,
     this.onChanged,
     this.iconButton,
+    this.iconButton02,
     this.obscureText = false,
     this.borderColor = AppConst.kBorderButtonColor,
+    this.textDirection = TextDirection.ltr,
   });
   final String? hintTxt;
   final int? maxLines;
@@ -20,12 +22,15 @@ class CustomTxtField extends StatelessWidget {
   final TextEditingController? controller;
   final void Function(String?)? onSaved;
   final void Function(String)? onChanged;
-  final IconButton? iconButton;
+  final Widget? iconButton, iconButton02;
   final bool obscureText;
   final Color borderColor;
+  final TextDirection textDirection;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      textDirection: textDirection,
       obscureText: obscureText,
       onChanged: onChanged,
       onSaved: onSaved,
@@ -42,6 +47,7 @@ class CustomTxtField extends StatelessWidget {
       keyboardType: textInputType,
       decoration: InputDecoration(
           suffixIcon: iconButton,
+          prefixIcon: iconButton02,
           hintText: ' $hintTxt',
           hintStyle: const TextStyle(color: Color.fromARGB(134, 145, 145, 145)),
           border: OutlineInputBorder(

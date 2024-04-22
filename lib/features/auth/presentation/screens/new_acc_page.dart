@@ -4,13 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:pro_bread_app/core/const/constant_var.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/forget_password.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/new_acc_page.dart';
+import 'package:pro_bread_app/features/auth/presentation/screens/log_in_page.dart';
 import 'package:pro_bread_app/shared/custom_text_field.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
 
-class LogInPage extends StatelessWidget {
-  const LogInPage({super.key});
+class NewAccPage extends StatelessWidget {
+  const NewAccPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +26,26 @@ class LogInPage extends StatelessWidget {
                 children: [
                   Gap(25.h),
                   const Text(
-                    'تسجيل دخول',
+                    'إنشاء حساب جديد',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                   ),
-                  const Gap(24),
+                  const Gap(32),
+                  const Text(
+                    'الاسم ',
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                  ),
+                  const Gap(16),
+                  CustomTxtField(
+                    hintTxt: 'ادخل اسم الحساب',
+                    iconButton: SizedBox(
+                      height: 12.0,
+                      width: 16.0,
+                      child: SvgPicture.asset(
+                        'assets/images/svg/person.svg',
+                      ),
+                    ),
+                  ),
+                  const Gap(32),
                   const Text(
                     ' البريد الالكتروني',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
@@ -46,7 +61,7 @@ class LogInPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Gap(24),
+                  const Gap(32),
                   const Text(
                     'كلمة المرور ',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
@@ -63,24 +78,10 @@ class LogInPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Gap(12),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ForgetPasswordPage()));
-                        },
-                        child: const Text('هل نسيت كلمة المرور ؟',
-                            style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
-                      ),
-                    ],
-                  ),
-                  const Gap(12),
                   Gap(40.h),
                   CustomTextButton(
                     onTap: () {},
-                    title: 'تسجيل دخول',
+                    title: '  انشاء حساب جديد',
                     fontSize: 18.sp,
                   ),
                 ],
@@ -92,13 +93,13 @@ class LogInPage extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const NewAccPage()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogInPage()));
                   },
-                  child: const Text('انشاء حساب جديد',
+                  child: const Text('تسجيل الدخول',
                       style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                 ),
                 const Gap(12),
-                const Text('ليس لديك حساب ؟',
+                const Text('هل لديك حساب بالفعل ؟ ',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor)),
               ],
             ),
