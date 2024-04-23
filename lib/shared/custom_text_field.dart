@@ -14,7 +14,9 @@ class CustomTxtField extends StatelessWidget {
     this.iconButton02,
     this.obscureText = false,
     this.borderColor = AppConst.kBorderButtonColor,
+    this.fillColor = AppConst.kPrimaryColor,
     this.textDirection = TextDirection.ltr,
+    this.filled = false,
   });
   final String? hintTxt;
   final int? maxLines;
@@ -23,13 +25,14 @@ class CustomTxtField extends StatelessWidget {
   final void Function(String?)? onSaved;
   final void Function(String)? onChanged;
   final Widget? iconButton, iconButton02;
-  final bool obscureText;
-  final Color borderColor;
+  final bool obscureText, filled;
+  final Color borderColor, fillColor;
   final TextDirection textDirection;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      
       textDirection: textDirection,
       obscureText: obscureText,
       onChanged: onChanged,
@@ -46,6 +49,8 @@ class CustomTxtField extends StatelessWidget {
       controller: controller,
       keyboardType: textInputType,
       decoration: InputDecoration(
+        fillColor: fillColor,
+        filled:filled,
           suffixIcon: iconButton,
           prefixIcon: iconButton02,
           hintText: ' $hintTxt',

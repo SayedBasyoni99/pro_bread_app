@@ -4,7 +4,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:pro_bread_app/core/const/constant_var.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
+import 'package:pro_bread_app/core/uitls/utils.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/forget_password.dart';
+import 'package:pro_bread_app/features/auth/presentation/screens/home_page.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/new_acc_page.dart';
 import 'package:pro_bread_app/shared/custom_text_field.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
@@ -69,7 +71,8 @@ class LogInPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const ForgetPasswordPage()));
+                          Navigator.of(context)
+                              .push(MaterialPageRoute(builder: (context) => const ForgetPasswordPage()));
                         },
                         child: const Text('هل نسيت كلمة المرور ؟',
                             style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
@@ -79,7 +82,10 @@ class LogInPage extends StatelessWidget {
                   const Gap(12),
                   Gap(40.h),
                   CustomTextButton(
-                    onTap: () {},
+                    onTap: () {
+                      print('SAYEDDDDDDDDDDDDD');
+                      Utils.openScreen(context, const HomePage(), replacment: true);
+                    },
                     title: 'تسجيل دخول',
                     fontSize: 18.sp,
                   ),
@@ -92,7 +98,7 @@ class LogInPage extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const NewAccPage()));
+                    Utils.openScreen(context, const NewAccPage(), replacment: true);
                   },
                   child: const Text('انشاء حساب جديد',
                       style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),

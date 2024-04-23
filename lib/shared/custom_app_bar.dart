@@ -1,32 +1,47 @@
 import 'package:flutter/material.dart';
-import 'package:pro_bread_app/shared/custom_icon.dart';
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({
-    super.key,
-    required this.icon,
-    required this.appBarTitle,
-    this.onActionPressed,
-  });
-  final IconData icon;
-  final String appBarTitle;
-  final void Function()? onActionPressed;
+import '../core/const/constant_var.dart';
 
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(
-          appBarTitle,
-          style: const TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
-        ),
-        CustomIcon(icon: icon, onTap: onActionPressed),
-      ],
+class CustomAppBar {
+  static AppBar build(
+    BuildContext context, {
+    String? titleText,
+    Widget? title,
+    bottom,
+    iconAppBar,
+    leading,
+    List<Widget>? actions,
+    bool removeBack = false,
+    centerTitle = true,
+    reverseColor = false,
+    showNotification = false,
+    Color? backgroundColor = Colors.transparent,
+  }) {
+    return AppBar(
+      backgroundColor: AppConst.kPrimaryColor,
+      elevation: 0,
+      title: Text(
+        titleText ?? 'Pro Bread',
+        style: const TextStyle(color: AppConst.kScondaryTextColor, fontSize: 18, fontWeight: FontWeight.bold),
+      ),
+      centerTitle: true,
+      leading: Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: AppConst.kBorderBoxColor),
+          child: GestureDetector(
+            onTap: () {
+              print('Sayed');
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: iconAppBar,
+            ),
+          )),
+
+      // actions: const [
+      //   Icon(Icons.search),
+      //   Gap(10.0),
+      //   Icon(Icons.notifications),
+      // ],
     );
   }
 }

@@ -7,6 +7,7 @@ import 'package:pinput/pinput.dart';
 import 'package:pro_bread_app/core/const/constant_var.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/log_in_page.dart';
+import 'package:pro_bread_app/features/auth/presentation/screens/new_acc_page.dart';
 import 'package:pro_bread_app/shared/aleart.dart';
 import 'package:pro_bread_app/shared/custom_text_field.dart';
 import 'package:pro_bread_app/shared/custom_txt_bottom.dart';
@@ -69,7 +70,12 @@ class CreateAccPage extends StatelessWidget {
                                   // animationDuration: Duration(milliseconds: 300),
                                 ),
                               ),
-                              CustomButton(btnTitle: 'تأكيد ', onTap: () {}),
+                              CustomButton(
+                                  btnTitle: 'تأكيد ',
+                                  onTap: () {
+                                    Navigator.of(context)
+                                        .push(MaterialPageRoute(builder: (context) => const NewAccPage()));
+                                  }),
                             ],
                           ),
                         ),
