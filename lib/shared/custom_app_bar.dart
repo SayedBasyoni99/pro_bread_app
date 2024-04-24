@@ -25,17 +25,16 @@ class CustomAppBar {
         style: const TextStyle(color: AppConst.kScondaryTextColor, fontSize: 18, fontWeight: FontWeight.bold),
       ),
       centerTitle: true,
-      leading: Container(
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: AppConst.kBorderBoxColor),
-          child: GestureDetector(
-            onTap: () {
-              print('Sayed');
-            },
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: iconAppBar,
-            ),
-          )),
+      leading: Ink(
+        padding: const EdgeInsets.all(1),
+       
+        child: Container(
+            padding: const EdgeInsets.all(16.0),
+            margin: const EdgeInsetsDirectional.only(start: 16.0),
+            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: AppConst.kBorderBoxColor),
+            child: iconAppBar),
+      ),
+      leadingWidth: 72.0,
 
       // actions: const [
       //   Icon(Icons.search),

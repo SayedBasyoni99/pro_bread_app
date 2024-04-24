@@ -36,6 +36,10 @@ class $AssetsImagesPngGen {
   AssetGenImage get bekery =>
       const AssetGenImage('assets/images/png/bekery.png');
 
+  /// File path: assets/images/png/cake00.png
+  AssetGenImage get cake00 =>
+      const AssetGenImage('assets/images/png/cake00.png');
+
   /// File path: assets/images/png/cold_drinks.png
   AssetGenImage get coldDrinks =>
       const AssetGenImage('assets/images/png/cold_drinks.png');
@@ -87,6 +91,7 @@ class $AssetsImagesPngGen {
   /// List of all assets
   List<AssetGenImage> get values => [
         bekery,
+        cake00,
         coldDrinks,
         courwason,
         desert,
@@ -129,14 +134,38 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/cart_icon.svg
   String get cartIcon => 'assets/images/svg/cart_icon.svg';
 
+  /// File path: assets/images/svg/cold_drinks_icon.svg
+  String get coldDrinksIcon => 'assets/images/svg/cold_drinks_icon.svg';
+
+  /// File path: assets/images/svg/courwason_icon.svg
+  String get courwasonIcon => 'assets/images/svg/courwason_icon.svg';
+
+  /// File path: assets/images/svg/desert_icon.svg
+  String get desertIcon => 'assets/images/svg/desert_icon.svg';
+
   /// File path: assets/images/svg/email.svg
   String get email => 'assets/images/svg/email.svg';
+
+  /// File path: assets/images/svg/empty_heart_icon.svg
+  String get emptyHeartIcon => 'assets/images/svg/empty_heart_icon.svg';
+
+  /// File path: assets/images/svg/empty_heart_icon01.svg
+  String get emptyHeartIcon01 => 'assets/images/svg/empty_heart_icon01.svg';
 
   /// File path: assets/images/svg/favorite_icon.svg
   String get favoriteIcon => 'assets/images/svg/favorite_icon.svg';
 
+  /// File path: assets/images/svg/full_heart_icon.svg
+  String get fullHeartIcon => 'assets/images/svg/full_heart_icon.svg';
+
+  /// File path: assets/images/svg/full_heart_icon01.svg
+  String get fullHeartIcon01 => 'assets/images/svg/full_heart_icon01.svg';
+
   /// File path: assets/images/svg/home_icon.svg
   String get homeIcon => 'assets/images/svg/home_icon.svg';
+
+  /// File path: assets/images/svg/hot_drinks_icon.svg
+  String get hotDrinksIcon => 'assets/images/svg/hot_drinks_icon.svg';
 
   /// File path: assets/images/svg/password.svg
   String get password => 'assets/images/svg/password.svg';
@@ -146,6 +175,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/phone_icon.svg
   String get phoneIcon => 'assets/images/svg/phone_icon.svg';
+
+  /// File path: assets/images/svg/product_card_Bg.svg
+  String get productCardBg => 'assets/images/svg/product_card_Bg.svg';
 
   /// File path: assets/images/svg/product_icon.svg
   String get productIcon => 'assets/images/svg/product_icon.svg';
@@ -169,12 +201,21 @@ class $AssetsImagesSvgGen {
         bakery01,
         buttomSheet,
         cartIcon,
+        coldDrinksIcon,
+        courwasonIcon,
+        desertIcon,
         email,
+        emptyHeartIcon,
+        emptyHeartIcon01,
         favoriteIcon,
+        fullHeartIcon,
+        fullHeartIcon01,
         homeIcon,
+        hotDrinksIcon,
         password,
         person,
         phoneIcon,
+        productCardBg,
         productIcon,
         searchIcon,
         securityLock,
