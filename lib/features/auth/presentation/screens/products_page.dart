@@ -5,9 +5,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/home_page.dart';
+import 'package:pro_bread_app/features/auth/presentation/screens/product_details_page.dart';
 import 'package:pro_bread_app/shared/custom_app_bar.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/uitls/utils.dart';
+import '../../../../shared/custom_card.dart';
 import '../../../../shared/text_widget.dart';
 
 class ProductsPage extends StatelessWidget {
@@ -29,7 +31,7 @@ class ProductsPage extends StatelessWidget {
               height: 140.h,
               child: ListView.separated(
                   separatorBuilder: (context, index) => Gap(16.h),
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   physics: const BouncingScrollPhysics(),
                   itemCount: 4,
                   //  viewModel.homeModel?.data?.products?.length,
@@ -38,59 +40,87 @@ class ProductsPage extends StatelessWidget {
                     //  Products? product =
                     //      viewModel.homeModel?.data?.products?[index];
                     return GestureDetector(
-                      onTap: () {
-                        Utils.openScreen(context, const HomePage());
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8.0),
+                        onTap: () {
+                          Utils.openScreen(context, const HomePage());
+                        },
+                        child: const CustomCard(
                           color: AppConst.kBorderBoxColor,
-                        ),
-                        padding: const EdgeInsets.all(16.0),
-                        child: Column(
-                          children: [
-                            SizedBox(
-                              height: .06.sh,
-                              width: 24.w,
-                              child: SvgPicture.asset('assets/images/svg/cold_drinks_icon.svg'),
-                            ),
-                            TextWidget(
-                              title: 'اسم المنتج ',
-                              color: AppConst.kScondaryTextColor,
-                              fontSize: 16.sp,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
+                        ));
                   }),
+            ),
+            Gap(16.h),
+            Row(
+              // crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SizedBox(
+                  height: .06.sh,
+                  width: 16.w,
+                  child: SvgPicture.asset('assets/images/svg/desert_icon.svg'),
+                ),
+                const Gap(8),
+                TextWidget(
+                  title: 'الحلا',
+                  color: AppConst.kPrimaryTextColor,
+                  fontSize: 18.sp,
+                  fontWeight: FontWeight.bold,
+                ),
+              ],
             ),
             Gap(16.h),
             SizedBox(
               child: SingleChildScrollView(
                 child: ListView.builder(
                     itemBuilder: (context, index) {
-                      return Card(
-                        color: AppConst.kBorderButtonColor,
-                        elevation: 2.0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
-                        ),
-                        child: Column(
-                          children: [
-                            Container(color: AppConst.kBorderButtonColor),
-                            SizedBox(
-                              height: 80.h,
-                              width: 88.w,
-                              child: TextWidget(
-                                title: 'ماذا تبحث؟',
-                                color: AppConst.kScondaryTextColor,
-                                fontSize: 16.sp,
-                                fontWeight: FontWeight.bold,
+                      return GestureDetector(
+                        onTap: () {
+                          Utils.openScreen(context, const ProductDetailsPage());
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            color: AppConst.kPrimaryColor,
+                          ),
+                          padding: const EdgeInsets.all(16.0),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(right: 8.0),
+                                child: SvgPicture.asset('assets/images/svg/empty_heart_icon01.svg'),
                               ),
-                            ),
-                          ],
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  TextWidget(
+                                    title: 'كيكة ليمون بلوبيري ',
+                                    color: AppConst.kPrimaryTextColor,
+                                    fontSize: 12.sp,
+                                    // fontWeight: FontWeight.bold,
+                                  ),
+                                  TextWidget(
+                                    title: 'قطعة براونيز مغطاه بالنوتيلا ',
+                                    color: AppConst.kThirdTextColor,
+                                    fontSize: 12.sp,
+                                    // fontWeight: FontWeight.bold,
+                                  ),
+                                  TextWidget(
+                                    title: '225 ر.س',
+                                    color: AppConst.kScondaryTextColor,
+                                    fontSize: 14.sp,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ],
+                              ),
+                              const Spacer(),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8.0, top: 16.0, bottom: 16.0),
+                                child: SizedBox(
+                                  height: 80.h,
+                                  width: 85.w,
+                                  child: Assets.images.png.cake00.image(),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },
@@ -107,10 +137,51 @@ class ProductsPage extends StatelessWidget {
 }
 
 
-
-
-//  Container(
-//                             // decoration: BoxDecoration(borderRadius: BorderRadius.circular(2)),
-//                             color: AppConst.kButtonColor,
-//                             child: const Text('hello'),
-//                           ),
+//  Card(
+//                         color: AppConst.kPrimaryColor,
+//                         elevation: 2.0,
+//                         shape: RoundedRectangleBorder(
+//                           borderRadius: BorderRadius.circular(8.0),
+//                         ),
+//                         child: 
+//                       Row(
+//                           children: [
+//                             Padding(
+//                               padding: const EdgeInsets.only(left: 8.0, top: 16.0, bottom: 16.0),
+//                               child: SizedBox(
+//                                 height: 80.h,
+//                                 width: 85.w,
+//                                 child: Assets.images.png.cake00.image(),
+//                               ),
+//                             ),
+//                             Column(
+//                               crossAxisAlignment: CrossAxisAlignment.end,
+//                               children: [
+//                                 TextWidget(
+//                                   title: 'كيكة ليمون بلوبيري ',
+//                                   color: AppConst.kPrimaryTextColor,
+//                                   fontSize: 12.sp,
+//                                   // fontWeight: FontWeight.bold,
+//                                 ),
+//                                 TextWidget(
+//                                   title: 'قطعة براونيز مغطاه بالنوتيلا ',
+//                                   color: AppConst.kThirdTextColor,
+//                                   fontSize: 12.sp,
+//                                   // fontWeight: FontWeight.bold,
+//                                 ),
+//                                 TextWidget(
+//                                   title: '225 ر.س',
+//                                   color: AppConst.kScondaryTextColor,
+//                                   fontSize: 14.sp,
+//                                   fontWeight: FontWeight.bold,
+//                                 ),
+//                               ],
+//                             ),
+//                             const Spacer(),
+//                             Padding(
+//                               padding: const EdgeInsets.only(right: 8.0),
+//                               child: SvgPicture.asset('assets/images/svg/empty_heart_icon01.svg'),
+//                             )
+//                           ],
+//                         ),
+//                       );
