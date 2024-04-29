@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pro_bread_app/core/const/constant_var.dart';
+import 'package:pro_bread_app/features/home/presentation/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 import 'package:pro_bread_app/splash/splash_screen.dart';
 // import 'package:pro_bread_app/splash/splash_screen.dart';
 
@@ -63,7 +65,13 @@ class MyApp extends StatelessWidget {
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
-      child: MaterialApp(
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider<BottomNavBarCubit>(
+            create: (context) => BottomNavBarCubit(),
+          ),
+        ],
+        child: MaterialApp(
         locale: context.locale,
         title: 'Pro Bread',
         theme: ThemeData(
@@ -73,6 +81,7 @@ class MyApp extends StatelessWidget {
         ),
         home: const SplashScreen(),
         debugShowCheckedModeBanner: false,
+      ),
       ),
     );
   }

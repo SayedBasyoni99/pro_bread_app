@@ -91,7 +91,7 @@ class NewAccPage extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogInPage()));
+                    Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  LogInPage()));
                   },
                   child: const Text('تسجيل الدخول',
                       style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),

@@ -19,13 +19,17 @@ class WelcomePage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Assets.images.png.logInBg.image(width: double.infinity, height: 534, fit: BoxFit.fill),
+          Assets.images.png.logInBg
+              .image(width: double.infinity, height: 534, fit: BoxFit.fill),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               const Text(
                 'مرحبا بك في تطبيق ',
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+                style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: AppConst.kPrimaryTextColor),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -58,19 +62,23 @@ class WelcomePage extends StatelessWidget {
                         btnTitle: 'تسجيل دخول',
                         btntxtColor: AppConst.kPrimaryColor,
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogInPage()));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => LogInPage()));
                         },
                       ),
                       Gap(10.h),
                       CustomButton(
                           btnTitle: 'إنشاء حساب جديد',
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateAccPage()));
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => CreateAccPage()));
                           }),
                       Gap(10.h),
                       const Text(
                         'أو  ',
-                        style: TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                            color: AppConst.kPrimaryTextColor,
+                            fontWeight: FontWeight.bold),
                       ),
                       Gap(10.h),
                       CustomButton(

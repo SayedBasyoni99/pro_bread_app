@@ -20,7 +20,7 @@ class CustomAppBar {
     return AppBar(
       backgroundColor: AppConst.kPrimaryColor,
       elevation: 0,
-      title: Text(
+      title: title?? Text(
         titleText ?? 'Pro Bread',
         style: const TextStyle(color: AppConst.kScondaryTextColor, fontSize: 18, fontWeight: FontWeight.bold),
       ),

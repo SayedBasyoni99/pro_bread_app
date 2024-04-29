@@ -11,6 +11,8 @@ import 'package:pro_bread_app/shared/custom_text_field.dart';
 import 'package:pro_bread_app/shared/custom_txt_bottom.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
 
+import '../../../../shared/custom_input_field.dart';
+
 class ForgetPasswordPage extends StatelessWidget {
   const ForgetPasswordPage({super.key});
 
@@ -30,25 +32,33 @@ class ForgetPasswordPage extends StatelessWidget {
                   Gap(25.h),
                   const Text(
                     'هل نسيت كلمة المرور',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
+                    style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: AppConst.kScondaryTextColor),
                   ),
                   Gap(25.h),
                   const Text(
                     'يرجي إدخال رقم الجوال الخاص بك ليتم إرسال الكود',
-                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                    style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: AppConst.kThirdTextColor),
                   ),
                   const Gap(32),
                   const Text(
                     'رقم الجوال',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: AppConst.kThirdTextColor),
                   ),
                   const Gap(16),
-                  CustomTxtField(
-                    textInputType: TextInputType.number,
-                    hintTxt: 'ادخل رقم الجوال',
-                    iconButton: SizedBox(
-                      height: 12.0,
-                      width: 16.0,
+                  CustomInputField(
+                    keyboardType: TextInputType.number,
+                    hint: 'ادخل رقم الجوال',
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(12.0),
                       child: SvgPicture.asset(
                         'assets/images/svg/phone_icon.svg',
                       ),
@@ -61,7 +71,8 @@ class ForgetPasswordPage extends StatelessWidget {
                         context,
                         // insetPadding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 32.w),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 32.w),
+                          padding: EdgeInsets.symmetric(
+                              vertical: 40.h, horizontal: 32.w),
                           child: Column(
                             children: [
                               Container(
@@ -77,7 +88,10 @@ class ForgetPasswordPage extends StatelessWidget {
                                   btnTitle: 'تأكيد ',
                                   onTap: () {
                                     Navigator.push(
-                                        context, MaterialPageRoute(builder: (context) => const ChangePasswordPage()));
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ChangePasswordPage()));
                                   }),
                             ],
                           ),

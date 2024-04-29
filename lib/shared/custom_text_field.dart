@@ -17,6 +17,8 @@ class CustomTxtField extends StatelessWidget {
     this.fillColor = AppConst.kPrimaryColor,
     this.textDirection = TextDirection.ltr,
     this.filled = false,
+    this.readOnly = false,
+    this.onTap,
   });
   final String? hintTxt;
   final int? maxLines;
@@ -28,12 +30,15 @@ class CustomTxtField extends StatelessWidget {
   final bool obscureText, filled;
   final Color borderColor, fillColor;
   final TextDirection textDirection;
+  final bool readOnly;
+  final void Function()? onTap;
   
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      
+      readOnly: readOnly,
+      onTap: onTap,
       textDirection: textDirection,
       obscureText: obscureText,
       onChanged: onChanged,

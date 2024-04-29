@@ -34,7 +34,8 @@ class HomePage extends StatelessWidget {
                   children: [
                     Assets.images.png.bekery.image(fit: BoxFit.fill),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 16.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
@@ -42,7 +43,9 @@ class HomePage extends StatelessWidget {
                           const Text(
                             'فاجئ من تحب بهدية فاخرة',
                             style: TextStyle(
-                                color: AppConst.kScondaryTextColor, fontSize: 20, fontWeight: FontWeight.bold),
+                                color: AppConst.kScondaryTextColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
                           ),
                           const Gap(32),
                           CustomTxtField(
@@ -50,6 +53,10 @@ class HomePage extends StatelessWidget {
                               filled: true,
                               fillColor: AppConst.kPrimaryColor,
                               hintTxt: 'عن ماذا تبحث؟',
+                              readOnly: true,
+                              onTap: () {
+                                // TODO: Navigate to Search Screen
+                              },
                               iconButton02: Padding(
                                 padding: const EdgeInsets.all(16.0),
                                 child: SvgPicture.asset(
@@ -78,11 +85,13 @@ class HomePage extends StatelessWidget {
                         return Container(
                           width: MediaQuery.of(context).size.width,
                           margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                          decoration:
-                              BoxDecoration(color: AppConst.kPrimaryColor, borderRadius: BorderRadius.circular(8.0)),
+                          decoration: BoxDecoration(
+                              color: AppConst.kPrimaryColor,
+                              borderRadius: BorderRadius.circular(8.0)),
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(8.0),
-                            child: Assets.images.png.food00.image(fit: BoxFit.fill),
+                            child: Assets.images.png.food00
+                                .image(fit: BoxFit.fill),
                           ),
                         );
                       },
@@ -94,9 +103,10 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: {1, 2, 3}.map<Widget>((entry) {
                   return Container(
-                    width: 8.0,
-                    height: 8.0,
-                    margin: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 4.0),
+                    width: 8.w,
+                    height: 8.h,
+                    margin:
+                        EdgeInsets.symmetric(vertical: 16.h, horizontal: 4.w),
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                       color: AppConst.kBorderButtonColor,
@@ -118,13 +128,17 @@ class HomePage extends StatelessWidget {
                     },
                     child: const Text(
                       'عرض الكل ',
-                      style: TextStyle(color: AppConst.kBorderButtonColor, fontSize: 12),
+                      style: TextStyle(
+                          color: AppConst.kBorderButtonColor, fontSize: 12),
                     ),
                   ),
                   const Spacer(),
                   const Text(
                     'المنتجات',
-                    style: TextStyle(color: AppConst.kPrimaryTextColor, fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: AppConst.kPrimaryTextColor,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -136,12 +150,17 @@ class HomePage extends StatelessWidget {
                     physics: const BouncingScrollPhysics(),
                     itemCount: 4,
                     shrinkWrap: true,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, mainAxisSpacing: 16.0, crossAxisSpacing: 16.0),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 16.0,
+                            crossAxisSpacing: 16.0),
                     itemBuilder: (context, index) => Container(
-                          decoration:
-                              BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: AppConst.kBorderBoxColor),
-                          child: Assets.images.png.desert.image(fit: BoxFit.fill),
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10.0),
+                              color: AppConst.kBorderBoxColor),
+                          child:
+                              Assets.images.png.desert.image(fit: BoxFit.fill),
                         )),
               ),
             ],
