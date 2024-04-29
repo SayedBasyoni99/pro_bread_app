@@ -3,8 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:pro_bread_app/core/uitls/utils.dart';
+import 'package:pro_bread_app/features/auth/presentation/screens/acc_info_page.dart';
 import 'package:pro_bread_app/shared/custom_txt_bottom.dart';
 import '../../../../core/const/constant_var.dart';
+import '../../../../shared/aleart.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   const ProductDetailsPage({super.key});
@@ -195,40 +198,68 @@ class ProductDetailsPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
-                        const Text(
-                          'الاضافات',
-                          style:
-                              TextStyle(color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
+                        Row(
+                          children: [
+                            Container(
+                              height: 80.h,
+                              width: 150.w,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8.0),
+                                color: AppConst.kPrimaryColor,
+                              ),
+                              child: ListTile(
+                                leading: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
+                                title: const Text('عدد المنتجات '),
+                              ),
+                            ),
+                            const Spacer(),
+                            const Text(
+                              'الكمية',
+                              style: TextStyle(
+                                  color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          height: 240.h,
-                          width: double.infinity,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 80.h,
-                                width: 85.w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: AppConst.kPrimaryColor,
-                                ),
-                                child: ListTile(
-                                  leading: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
-                                  title: const Text('عدد المنتجات '),
-                                ),
-                              ),
-                              const Gap(16),
-                              Row(
-                                children: [
-                                  CustomButton(
-                                    btnTitle: 'تأكيد',
-                                    btnColor: AppConst.kBorderButtonColor,
+                        const Gap(16),
+                        Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: SvgPicture.asset('assets/images/svg/empty_heart_icon01.svg'),
+                            ),
+                            const Spacer(),
+                            CustomButton(
+                              onTap: () {
+                                Alerts.dialog(
+                                  context,
+                                  child: Column(
+                                    children: [
+                                      Container(
+                                        height: 100,
+                                        width: 300,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(8.0),
+                                          color: AppConst.kPrimaryColor,
+                                        ),
+                                        alignment: Alignment.center,
+                                        padding: const EdgeInsets.all(16.0),
+                                        child: const Text('تم اضافة المنتج بنجاح'),
+                                      ),
+                                      const Gap(16),
+                                      CustomButton(
+                                        onTap: () {
+                                          Utils.openScreen(context, const AccountInfoPage());
+                                        },
+                                        btnTitle: 'الذهاب للصفحة الشخصية',
+                                      )
+                                    ],
                                   ),
-                                  const Spacer(),
-                                ],
-                              ),
-                            ],
-                          ),
+                                );
+                              },
+                              btnTitle: 'تأكيد',
+                              btnColor: AppConst.kBorderButtonColor,
+                            ),
+                          ],
                         ),
                       ],
                     ),

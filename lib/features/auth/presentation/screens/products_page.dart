@@ -84,7 +84,8 @@ class ProductsPage extends StatelessWidget {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(right: 8.0),
-                                child: SvgPicture.asset('assets/images/svg/empty_heart_icon01.svg'),
+                                child: SvgPicture.asset(
+                                    'assets/images/svg/empty_heart_icon01.svg'),
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -111,11 +112,13 @@ class ProductsPage extends StatelessWidget {
                               ),
                               const Spacer(),
                               Padding(
-                                padding: const EdgeInsets.only(left: 8.0, top: 16.0, bottom: 16.0),
+                                padding: const EdgeInsets.only(
+                                    left: 8.0, top: 16.0, bottom: 16.0),
                                 child: SizedBox(
                                   height: 80.h,
                                   width: 85.w,
-                                  child: Assets.images.png.cake00.image(),
+                                  child: Image.asset(
+                                      'assets/images/png/cake00.png'),
                                 ),
                               ),
                             ],

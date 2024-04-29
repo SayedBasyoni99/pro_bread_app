@@ -8,6 +8,7 @@ import 'package:pro_bread_app/core/uitls/utils.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/forget_password.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/home_page.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/new_acc_page.dart';
+import 'package:pro_bread_app/shared/custom_input_field.dart';
 import 'package:pro_bread_app/shared/custom_text_field.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
 
@@ -38,11 +39,16 @@ class LogInPage extends StatelessWidget {
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                   ),
                   const Gap(16),
-                  CustomTxtField(
-                    hintTxt: 'ادخل بريدك الإلكتروني',
-                    iconButton: SizedBox(
-                      height: 12.0,
-                      width: 16.0,
+                  CustomInputField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'هذا الحقل مطلوب';
+                      }
+                      return null;
+                    },
+                    hint: 'ادخل بريدك الإلكتروني',
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(12.0),
                       child: SvgPicture.asset(
                         'assets/images/svg/email.svg',
                       ),
@@ -54,12 +60,17 @@ class LogInPage extends StatelessWidget {
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                   ),
                   const Gap(16),
-                  CustomTxtField(
-                    obscureText: true,
-                    hintTxt: 'ادخل كلمة المرور',
-                    iconButton: SizedBox(
-                      height: 12.0,
-                      width: 16.0,
+                  CustomInputField(
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'هذا الحقل مطلوب';
+                      }
+                      return null;
+                    },
+                    isPassword: true,
+                    hint: 'ادخل كلمة المرور',
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(12.0),
                       child: SvgPicture.asset(
                         'assets/images/svg/security lock.svg',
                       ),
@@ -71,19 +82,18 @@ class LogInPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.of(context)
-                              .push(MaterialPageRoute(builder: (context) => const ForgetPasswordPage()));
+                          Utils.openScreen(context, const ForgetPasswordPage());
                         },
                         child: const Text('هل نسيت كلمة المرور ؟',
                             style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                       ),
                     ],
                   ),
+                  Gap(40.h),
                   const Gap(12),
                   Gap(40.h),
                   CustomTextButton(
                     onTap: () {
-                      print('SAYEDDDDDDDDDDDDD');
                       Utils.openScreen(context, const HomePage(), replacment: true);
                     },
                     title: 'تسجيل دخول',
