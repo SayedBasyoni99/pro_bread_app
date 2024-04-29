@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CustomTextButton extends StatelessWidget {
-  CustomTextButton({
+    CustomTextButton({
     super.key,
     this.onTap,
     this.title = 'Next ',

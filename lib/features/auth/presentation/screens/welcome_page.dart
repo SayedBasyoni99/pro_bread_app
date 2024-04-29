@@ -4,9 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:pro_bread_app/core/const/constant_var.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
+import 'package:pro_bread_app/features/auth/presentation/screens/acc_info_page.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/create_acc_page.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/log_in_page.dart';
 import 'package:pro_bread_app/shared/custom_txt_bottom.dart';
+
+import '../../../../core/uitls/utils.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -62,7 +65,7 @@ class WelcomePage extends StatelessWidget {
                       CustomButton(
                           btnTitle: 'إنشاء حساب جديد',
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CreateAccPage()));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateAccPage()));
                           }),
                       Gap(10.h),
                       const Text(
@@ -72,7 +75,9 @@ class WelcomePage extends StatelessWidget {
                       Gap(10.h),
                       CustomButton(
                         btnTitle: 'ادخل كزائر',
-                        onTap: () {},
+                        onTap: () {
+                          Utils.openScreen(context, const AccountInfoPage());
+                        },
                         btnColor: AppConst.kPrimaryColor,
                         borderButtonColor: AppConst.kBorderButtonColor,
                       ),

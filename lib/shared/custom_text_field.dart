@@ -28,6 +28,7 @@ class CustomTxtField extends StatelessWidget {
   final bool obscureText, filled;
   final Color borderColor, fillColor;
   final TextDirection textDirection;
+  
 
   @override
   Widget build(BuildContext context) {

@@ -3,35 +3,36 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:pro_bread_app/core/const/constant_var.dart';
-import 'package:pro_bread_app/core/resources/assets.gen.dart';
-import 'package:pro_bread_app/core/uitls/utils.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/change_password02_page.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/log_in_page.dart';
 import 'package:pro_bread_app/shared/custom_input_field.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
 
-class ChangePasswordPage extends StatelessWidget {
-  const ChangePasswordPage({super.key});
+import '../../../../shared/custom_app_bar.dart';
+
+class ChangePassword02Page extends StatelessWidget {
+  const ChangePassword02Page({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar.build(
+        context,
+        titleText: 'تغيير كلمة المرور',
+        iconAppBar: SvgPicture.asset(
+          'assets/images/svg/cart_icon.svg',
+          height: 20,
+          width: 20,
+        ),
+      ),
       backgroundColor: AppConst.kPrimaryColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Assets.images.png.primaryBg.image(fit: BoxFit.fill),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Gap(25.h),
-                  const Text(
-                    'تغيير كلمة المرور',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
-                  ),
-                  const Gap(24),
+                  Gap(80.h),
                   const Text(
                     'كلمة المرور الجديدة ',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
@@ -63,13 +64,10 @@ class ChangePasswordPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Gap(12),
-                  Gap(40.h),
+                  Gap(200.h),
                   CustomTextButton(
-                    onTap: () {
-                      Utils.openScreen(context, const ChangePassword02Page(), replacment: true);
-                    },
-                    title: 'تغيير ',
+                    onTap: () {},
+                    title: 'ارسال',
                     fontSize: 18.sp,
                   ),
                 ],
