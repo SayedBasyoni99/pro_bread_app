@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:pro_bread_app/features/home/presentation/screens/home_page.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/product_details_page.dart';
-import 'package:pro_bread_app/shared/custom_app_bar.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/uitls/utils.dart';
 import '../../../../shared/custom_card.dart';
@@ -17,11 +16,14 @@ class ProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: CustomAppBar.build(
+      //   context,
+      // ),
       backgroundColor: AppConst.kPrimaryColor,
-      appBar: CustomAppBar.build(context,
-          titleText: 'المنتجات',
-          backgroundColor: AppConst.kPrimaryColor,
-          iconAppBar: SvgPicture.asset('assets/images/svg/cart_icon.svg')),
+      // appBar: CustomAppBar.build(context,
+      //     titleText: 'المنتجات',
+      //     backgroundColor: AppConst.kPrimaryColor,
+      //     iconAppBar: SvgPicture.asset('assets/images/svg/cart_icon.svg')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -40,7 +42,7 @@ class ProductsPage extends StatelessWidget {
                     //      viewModel.homeModel?.data?.products?[index];
                     return GestureDetector(
                         onTap: () {
-                          Utils.openScreen(context, const HomePage());
+                          Utils.openScreen(context, const HomePage(), replacment: true);
                         },
                         child: const CustomCard(
                           color: AppConst.kBorderBoxColor,
@@ -72,7 +74,7 @@ class ProductsPage extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          Utils.openScreen(context, const ProductDetailsPage());
+                          Utils.openScreen(context, const ProductDetailsPage(), replacment: true);
                         },
                         child: Container(
                           decoration: BoxDecoration(
@@ -84,8 +86,7 @@ class ProductsPage extends StatelessWidget {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.only(right: 8.0),
-                                child: SvgPicture.asset(
-                                    'assets/images/svg/empty_heart_icon01.svg'),
+                                child: SvgPicture.asset('assets/images/svg/empty_heart_icon01.svg'),
                               ),
                               Column(
                                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -112,13 +113,11 @@ class ProductsPage extends StatelessWidget {
                               ),
                               const Spacer(),
                               Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 8.0, top: 16.0, bottom: 16.0),
+                                padding: const EdgeInsets.only(left: 8.0, top: 16.0, bottom: 16.0),
                                 child: SizedBox(
                                   height: 80.h,
                                   width: 85.w,
-                                  child: Image.asset(
-                                      'assets/images/png/cake00.png'),
+                                  child: Image.asset('assets/images/png/cake00.png'),
                                 ),
                               ),
                             ],

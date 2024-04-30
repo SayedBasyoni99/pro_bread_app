@@ -12,10 +12,13 @@ import 'package:pro_bread_app/features/auth/presentation/screens/log_in_page.dar
 import 'package:pro_bread_app/features/auth/presentation/screens/new_acc_page.dart';
 import 'package:pro_bread_app/shared/aleart.dart';
 import 'package:pro_bread_app/shared/custom_input_field.dart';
-import 'package:pro_bread_app/shared/custom_text_field.dart';
 import 'package:pro_bread_app/shared/custom_txt_bottom.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
 
+import '../../../../shared/pin_code_widget.dart';
+import '../../../../shared/show_dialog.dart';
+
+// ignore: must_be_immutable
 class CreateAccPage extends StatelessWidget {
   CreateAccPage({super.key});
 
@@ -69,46 +72,97 @@ class CreateAccPage extends StatelessWidget {
                       keyboardType: TextInputType.phone,
                       validator: (value) {
                         if (value!.isEmpty) {
-                          return 'هذا الحقل مطلوب';
+                          return '';
                         }
                         return null;
                       },
                       onTap: () {
-                        if (formKey.currentState!.validate()) {
-                          Alerts.dialog(
-                            context,
-                            // insetPadding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 32.w),
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 32.w),
-                              child: Column(
-                                children: [
-                                  Container(
-                                    color: AppConst.kPrimaryColor,
-                                    child: const Pinput(
-                                      autofocus: true,
-                                      length: 4,
-                                      animationCurve: Curves.easeIn,
-                                      // animationDuration: Duration(milliseconds: 300),
-                                    ),
-                                  ),
-                                  CustomButton(
-                                      btnTitle: 'تأكيد ',
-                                      onTap: () {
-                                        Utils.openScreen(context, const NewAccPage());
-                                      }),
-                                ],
-                              ),
-                            ),
-                          );
-                        }
+                        if (formKey.currentState!.validate()) {}
                       },
                     ),
                     const Gap(40),
                     CustomTextButton(
                         onTap: () {
-                          Utils.openScreen(context, const NewAccPage());
+                          showAppDialog(
+                            context: context,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(16.r),
+                                color: AppConst.kPrimaryColor,
+                              ),
+                              child: Wrap(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 32.w),
+                                    child: Column(
+                                      children: [
+                                        const Text(
+                                          'الرجاء اخال الكود',
+                                          style: TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold,
+                                              color: AppConst.kScondaryTextColor),
+                                        ),
+                                        Gap(16.h),
+                                        const Text(
+                                          'يرجي إدخال الكود الذي تم إرساله لإنشاء الحساب',
+                                          style: TextStyle(
+                                              fontSize: 12,
+                                              fontWeight: FontWeight.bold,
+                                              color: AppConst.kThirdTextColor),
+                                        ),
+                                        Gap(32.h),
+                                        PinCodeWidget(
+                                          // controller: textController,
+                                          pinLength: 4,
+                                          textSubmit: (value) {
+                                            Utils.openScreen(context, const NewAccPage(), replacment: true);
+                                          },
+                                        ),
+                                        const Gap(12),
+                                        const Text('سيتم ارسال الكود خلال 60 ثانية',
+                                            style: TextStyle(
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                                color: AppConst.kThirdTextColor)),
+                                        Gap(16.h),
+                                        CustomButton(
+                                            btnTitle: 'تأكيد ',
+                                            onTap: () {
+                                              Utils.openScreen(context, const NewAccPage(), replacment: true);
+                                            }),
+                                        Gap(12.h),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                Utils.openScreen(context, const NewAccPage(), replacment: true);
+                                              },
+                                              child: const Text('ارسال مرة أخرى ',
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      fontWeight: FontWeight.bold,
+                                                      color: AppConst.kButtonColor)),
+                                            ),
+                                            const Gap(8),
+                                            const Text('لم يتم ارسال الكود؟ ',
+                                                style: TextStyle(
+                                                    fontSize: 14,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: AppConst.kThirdTextColor)),
+                                          ],
+                                        ),
+                                        Gap(16.h),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
                         },
-                        title: 'التالي',
+                        title: 'إنشاء حساب جديد',
                         fontSize: 18.sp),
                   ],
                 ),
@@ -119,7 +173,7 @@ class CreateAccPage extends StatelessWidget {
                 children: [
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) =>  LogInPage()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => LogInPage()));
                     },
                     child: const Text('تسجيل الدخول',
                         style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),

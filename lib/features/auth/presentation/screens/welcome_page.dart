@@ -19,72 +19,76 @@ class WelcomePage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Assets.images.png.logInBg
-              .image(width: double.infinity, height: 534, fit: BoxFit.fill),
+          Assets.images.png.logInBg.image(width: double.infinity, height: 475, fit: BoxFit.fill),
           Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               const Text(
                 'مرحبا بك في تطبيق ',
-                style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: AppConst.kPrimaryTextColor),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
-                child: Align(
-                  alignment: Alignment.center,
-                  child: SvgPicture.asset(
-                    'assets/images/svg/PBLogo.svg',
-                    height: 102.16,
-                    width: 194.86,
-                  ),
+              Align(
+                heightFactor: 2.95,
+                alignment: Alignment.center,
+                child: SvgPicture.asset(
+                  'assets/images/svg/PBLogo.svg',
+                  height: 102.16,
+                  width: 194.86,
                 ),
               ),
               Stack(
                 children: [
-                  SvgPicture.asset(
-                    'assets/images/svg/buttomSheet.svg',
-                    fit: BoxFit.fitWidth,
-                    width: 1.sw,
-                    height: 357,
-                  ),
+                  Container(
+                      height: 370.h,
+                      width: 1.sw,
+                      decoration: BoxDecoration(
+                        color: AppConst.kPrimaryColor,
+                        borderRadius:
+                            BorderRadius.only(topLeft: Radius.circular(80.r), topRight: Radius.circular(80.r)),
+                      )),
+                  // SvgPicture.asset(
+                  //   'assets/images/svg/buttomSheet.svg',
+                  //   fit: BoxFit.fitWidth,
+                  //   width: 1.sw,
+                  //   height: 357,
+                  // ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'نقدم لك خدمات إهداء متميزة وغير تقليدية تساعدك على إرسال هديتك لمن تُحب',
-                        style: TextStyle(color: AppConst.kPrimaryTextColor),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
+                        child: Text(
+                          'نقدم لك خدمات إهداء متميزة وغير تقليدية تساعدك   على إرسال هديتك لمن تُحب',
+                          style: TextStyle(color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold),
+                        ),
                       ),
                       CustomButton(
                         btnColor: AppConst.kScondaryTextColor,
                         btnTitle: 'تسجيل دخول',
                         btntxtColor: AppConst.kPrimaryColor,
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => LogInPage()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => LogInPage()));
                         },
                       ),
                       Gap(10.h),
                       CustomButton(
                           btnTitle: 'إنشاء حساب جديد',
                           onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) => CreateAccPage()));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateAccPage()));
                           }),
                       Gap(10.h),
                       const Text(
                         'أو  ',
-                        style: TextStyle(
-                            color: AppConst.kPrimaryTextColor,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold),
                       ),
                       Gap(10.h),
                       CustomButton(
                         btnTitle: 'ادخل كزائر',
                         onTap: () {
-                          Utils.openScreen(context, const AccountInfoPage());
+                          Utils.openScreen(
+                            context,
+                            const AccountInfoPage(),
+                          );
                         },
                         btnColor: AppConst.kPrimaryColor,
                         borderButtonColor: AppConst.kBorderButtonColor,

@@ -6,7 +6,6 @@ import 'package:pro_bread_app/core/const/constant_var.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
 import 'package:pro_bread_app/core/uitls/utils.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/change_password02_page.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/log_in_page.dart';
 import 'package:pro_bread_app/shared/custom_input_field.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
 

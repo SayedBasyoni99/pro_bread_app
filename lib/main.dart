@@ -39,7 +39,7 @@ void main() async {
     EasyLocalization(
         supportedLocales: const [Locale('ar', "EG"), Locale('en', "US")],
         path: 'assets/translations',
-        startLocale: const Locale('en', "US"),
+        startLocale: const Locale('ar', "EG"),
         saveLocale: true,
         child: const MyApp()),
   );
@@ -72,16 +72,16 @@ class MyApp extends StatelessWidget {
           ),
         ],
         child: MaterialApp(
-        locale: context.locale,
-        title: 'Pro Bread',
-        theme: ThemeData(
-          fontFamily: 'Teshrin',
-          colorScheme: ColorScheme.fromSeed(seedColor: AppConst.kPrimaryColor),
-          useMaterial3: true,
+          locale: context.locale,
+          title: 'Pro Bread',
+          theme: ThemeData(
+            fontFamily: 'Teshrin',
+            colorScheme: ColorScheme.fromSeed(seedColor: AppConst.kPrimaryColor),
+            useMaterial3: true,
+          ),
+          home: const SplashScreen(),
+          debugShowCheckedModeBanner: false,
         ),
-        home: const SplashScreen(),
-        debugShowCheckedModeBanner: false,
-      ),
       ),
     );
   }

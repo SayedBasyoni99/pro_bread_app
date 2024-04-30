@@ -1,13 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:pro_bread_app/core/resources/assets.gen.dart';
 import 'package:pro_bread_app/core/uitls/utils.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/acc_info_page.dart';
+import 'package:pro_bread_app/features/auth/presentation/delivered_page.dart';
+import 'package:pro_bread_app/features/auth/presentation/screens/new_acc_page.dart';
+import 'package:pro_bread_app/features/auth/presentation/screens/products_page.dart';
 import 'package:pro_bread_app/shared/custom_txt_bottom.dart';
 import '../../../../core/const/constant_var.dart';
-import '../../../../shared/aleart.dart';
+import '../../../../shared/show_dialog.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   const ProductDetailsPage({super.key});
@@ -230,31 +235,83 @@ class ProductDetailsPage extends StatelessWidget {
                             const Spacer(),
                             CustomButton(
                               onTap: () {
-                                Alerts.dialog(
-                                  context,
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                        height: 100,
-                                        width: 300,
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(8.0),
-                                          color: AppConst.kPrimaryColor,
-                                        ),
-                                        alignment: Alignment.center,
-                                        padding: const EdgeInsets.all(16.0),
-                                        child: const Text('تم اضافة المنتج بنجاح'),
-                                      ),
-                                      const Gap(16),
-                                      CustomButton(
-                                        onTap: () {
-                                          Utils.openScreen(context, const AccountInfoPage());
-                                        },
-                                        btnTitle: 'الذهاب للصفحة الشخصية',
-                                      )
-                                    ],
+                                showAppDialog(
+                                  context: context,
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(16.r),
+                                      color: AppConst.kPrimaryColor,
+                                    ),
+                                    child: Wrap(
+                                      children: [
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 32.w),
+                                          child: Column(
+                                            children: [
+                                              Assets.images.png.food01.image(),
+
+                                              Gap(16.h),
+                                              // SvgPicture.asset('assets/images/svg/heart_icon.svg'),
+                                              const Text(
+                                                'تم إضافة المنتج الى السلة بنجاح',
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.bold,
+                                                    color: AppConst.kScondaryTextColor),
+                                              ),
+                                              Gap(24.h),
+
+                                              CustomButton(
+                                                  btnTitle: 'اذهب للسلة ',
+                                                  onTap: () {
+                                                    Utils.openScreen(context, const DeliveredPage(), replacment: true);
+                                                  }),
+                                              Gap(24.h),
+                                              GestureDetector(
+                                                child: const Text(
+                                                  'تابع التسوق',
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      fontWeight: FontWeight.bold,
+                                                      color: AppConst.kBorderButtonColor),
+                                                ),
+                                                onTap: () {
+                                                  Utils.openScreen(context, const ProductsPage(), replacment: true);
+                                                },
+                                              ),
+                                            ],
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 );
+
+                                // Alerts.dialog(
+                                //   context,
+                                //   child: Column(
+                                //     children: [
+                                //       Container(
+                                //         height: 100,
+                                //         width: 300,
+                                //         decoration: BoxDecoration(
+                                //           borderRadius: BorderRadius.circular(8.0),
+                                //           color: AppConst.kPrimaryColor,
+                                //         ),
+                                //         alignment: Alignment.center,
+                                //         padding: const EdgeInsets.all(16.0),
+                                //         child: const Text('تم اضافة المنتج بنجاح'),
+                                //       ),
+                                //       const Gap(16),
+                                //       CustomButton(
+                                //         onTap: () {
+                                //           Utils.openScreen(context, const AccountInfoPage(),replacment: true);
+                                //         },
+                                //         btnTitle: 'الذهاب للصفحة الشخصية',
+                                //       )
+                                //     ],
+                                //   ),
+                                // );
                               },
                               btnTitle: 'تأكيد',
                               btnColor: AppConst.kBorderButtonColor,

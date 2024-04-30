@@ -4,26 +4,27 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/uitls/utils.dart';
+import '../../../../shared/custom_app_bar.dart';
 import '../../../../shared/custom_input_field.dart';
 import '../../../../shared/text_button.dart';
 import '../../../home/presentation/screens/home_page.dart';
 
-class AccountInfoPage extends StatelessWidget {
-  const AccountInfoPage({super.key});
+class RecipientInfoPage extends StatelessWidget {
+  const RecipientInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: CustomAppBar.build(
-      //   context,
-      //   titleText: 'معلومات  الحساب',
-      //   iconAppBar: SvgPicture.asset(
-      //     'assets/images/svg/cart_icon.svg',
-      //     height: 20,
-      //     width: 20,
-      //   ),
-      // ),
-      // backgroundColor: AppConst.kPrimaryColor,
+      appBar: CustomAppBar.build(
+        context,
+        titleText: 'معلومات  الحساب',
+        iconAppBar: SvgPicture.asset(
+          'assets/images/svg/cart_icon.svg',
+          height: 20,
+          width: 20,
+        ),
+      ),
+      backgroundColor: AppConst.kPrimaryColor,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -34,7 +35,7 @@ class AccountInfoPage extends StatelessWidget {
                 children: [
                   Gap(60.h),
                   const Text(
-                    'الاسم ',
+                    'اسم المرسل اليه',
                     style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                   ),
                   const Gap(16),
@@ -44,21 +45,6 @@ class AccountInfoPage extends StatelessWidget {
                       padding: const EdgeInsets.all(12.0),
                       child: SvgPicture.asset(
                         'assets/images/svg/person.svg',
-                      ),
-                    ),
-                  ),
-                  const Gap(32),
-                  const Text(
-                    ' البريد الالكتروني',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
-                  ),
-                  const Gap(16),
-                  CustomInputField(
-                    hint: 'elsayed.gaber@example.com',
-                    prefixIcon: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: SvgPicture.asset(
-                        'assets/images/svg/email.svg',
                       ),
                     ),
                   ),
@@ -78,12 +64,27 @@ class AccountInfoPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const Gap(32),
+                  const Text(
+                    ' ارسل ملاحظة',
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                  ),
+                  const Gap(16),
+                  CustomInputField(
+                    hint: ' اكتب الملاحظة',
+                    prefixIcon: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: SvgPicture.asset(
+                        'assets/images/svg/note_icon.svg',
+                      ),
+                    ),
+                  ),
                   Gap(80.h),
                   CustomTextButton(
                     onTap: () {
                       Utils.openScreen(context, const HomePage(), replacment: true);
                     },
-                    title: '  حفظ التعديلات',
+                    title: 'التالي',
                     fontSize: 18.sp,
                   ),
                 ],

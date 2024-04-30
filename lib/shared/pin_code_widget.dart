@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pin_code_text_field/pin_code_text_field.dart';
 
+import '../core/const/constant_var.dart';
+
 class PinCodeWidget extends StatelessWidget {
   final Function(String) textSubmit;
   final TextEditingController? controller;
@@ -10,13 +12,13 @@ class PinCodeWidget extends StatelessWidget {
   final double? pinBoxWidth;
 
   const PinCodeWidget({
-    Key? key,
+    super.key,
     this.controller,
     this.pinLength,
     this.focus,
     this.pinBoxWidth,
     required this.textSubmit,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +38,15 @@ class PinCodeWidget extends StatelessWidget {
         keyboardType: TextInputType.number,
         pinTextStyle: TextStyle(
           fontSize: 20.sp,
-          color: Colors.black,
+          color: AppConst.kBorderButtonColor,
         ),
         onTextChanged: (text) {},
-        highlightPinBoxColor: Colors.transparent,
-        pinBoxColor: Colors.transparent,
-        defaultBorderColor: Colors.green,
-        hasTextBorderColor: Colors.red,
-        highlightColor: Colors.red,
+        highlightPinBoxColor: AppConst.kBorderBoxColor,
+        pinBoxColor: AppConst.kBorderBoxColor,
+        defaultBorderColor: Colors.transparent,
+        hasTextBorderColor: Colors.transparent,
+        highlightColor: AppConst.kBorderButtonColor,
+        
         pinBoxDecoration: ProvidedPinBoxDecoration.defaultPinBoxDecoration,
         onDone: (text) => textSubmit(text),
       ),

@@ -9,7 +9,7 @@ class CustomAppBar {
     Widget? title,
     bottom,
     iconAppBar,
-    leading,
+    Widget? leading,
     List<Widget>? actions,
     bool removeBack = false,
     centerTitle = true,
@@ -19,34 +19,38 @@ class CustomAppBar {
   }) {
     return AppBar(
       backgroundColor: AppConst.kPrimaryColor,
+      automaticallyImplyLeading: false,
       elevation: 0,
-      title: title?? Text(
-        titleText ?? 'Pro Bread',
-        style: const TextStyle(color: AppConst.kScondaryTextColor, fontSize: 18, fontWeight: FontWeight.bold),
-      ),
+      title: title ??
+          Text(
+            titleText ?? 'Pro Bread',
+            style: const TextStyle(color: AppConst.kScondaryTextColor, fontSize: 18, fontWeight: FontWeight.bold),
+          ),
       centerTitle: true,
-      actions: [
-        Ink(
-          child: Container(
-              padding: const EdgeInsets.all(16.0),
-              margin: const EdgeInsetsDirectional.only(end: 16.0),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: AppConst.kBorderBoxColor),
-              child: iconAppBar),
-        ),
-      ],
-      leading: Ink(
-        padding: const EdgeInsets.all(1),
-        child: Container(
-            padding: const EdgeInsets.all(16.0),
-            margin: const EdgeInsetsDirectional.only(start: 16.0),
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: AppConst.kBorderBoxColor),
-            child: const Icon(
-              Icons.arrow_back_ios,
-              color: AppConst.kBorderButtonColor,
+      actions: actions ??
+          [
+            Ink(
+              child: Container(
+                  padding: const EdgeInsets.all(16.0),
+                  margin: const EdgeInsetsDirectional.only(end: 16.0),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: AppConst.kBorderBoxColor),
+                  child: iconAppBar),
             ),
-            
+          ],
+      leading: removeBack
+          ? null
+          : Ink(
+              padding: const EdgeInsets.all(1),
+              child: Container(
+                padding: const EdgeInsets.all(16.0),
+                margin: const EdgeInsetsDirectional.only(start: 16.0),
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: AppConst.kBorderBoxColor),
+                child: const Icon(
+                  Icons.arrow_back_ios,
+                  color: AppConst.kBorderButtonColor,
+                ),
+              ),
             ),
-      ),
 
       leadingWidth: 72.0,
 

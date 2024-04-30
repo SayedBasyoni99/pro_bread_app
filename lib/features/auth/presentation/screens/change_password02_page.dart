@@ -3,10 +3,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:pro_bread_app/core/const/constant_var.dart';
+import 'package:pro_bread_app/core/resources/assets.gen.dart';
+import 'package:pro_bread_app/features/auth/presentation/screens/log_in_page.dart';
 import 'package:pro_bread_app/shared/custom_input_field.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
 
+import '../../../../core/uitls/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
+import '../../../../shared/custom_txt_bottom.dart';
+import '../../../../shared/show_dialog.dart';
 
 class ChangePassword02Page extends StatelessWidget {
   const ChangePassword02Page({super.key});
@@ -66,7 +71,43 @@ class ChangePassword02Page extends StatelessWidget {
                   ),
                   Gap(200.h),
                   CustomTextButton(
-                    onTap: () {},
+                    onTap: () {
+                      showAppDialog(
+                        context: context,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16.r),
+                            color: AppConst.kPrimaryColor,
+                          ),
+                          child: Wrap(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 32.w),
+                                child: Column(
+                                  children: [
+                                    SvgPicture.asset('assets/images/svg/lock_icon.svg'),
+                                    Gap(16.h),
+                                    const Text(
+                                      'تم تغيير كلمة المرور بنجاح',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                          color: AppConst.kScondaryTextColor),
+                                    ),
+                                    Gap(32.h),
+                                    CustomButton(
+                                        btnTitle: 'تسجيل الدخول',
+                                        onTap: () {
+                                          Utils.openScreen(context, LogInPage(), replacment: true);
+                                        }),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      );
+                    },
                     title: 'ارسال',
                     fontSize: 18.sp,
                   ),

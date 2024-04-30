@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pro_bread_app/core/resources/assets.gen.dart';
 
 class CustomInputField extends StatelessWidget {
   const CustomInputField({
