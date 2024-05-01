@@ -3,15 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/recipient_info_page.dart';
+import 'package:pro_bread_app/features/home/presentation/screens/home_page.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/uitls/utils.dart';
+import '../../../../shared/custom_app_bar.dart';
 import '../../../../shared/custom_input_field.dart';
+import '../../../../shared/custom_stepper_widget.dart';
 import '../../../../shared/text_button.dart';
-import '../../../shared/custom_app_bar.dart';
-import '../../../shared/custom_stepper_widget.dart';
 
-class DeliveredPage extends StatelessWidget {
-  const DeliveredPage({super.key});
+class ConRecipientInfoPage extends StatelessWidget {
+  const ConRecipientInfoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class DeliveredPage extends StatelessWidget {
               Gap(32.h),
               Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                 const Text(
-                  'تفاصيل الشحن',
+                  'عنوان المرسل اليه',
                   style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
                 ),
                 Gap(8.w),
@@ -79,29 +80,15 @@ class DeliveredPage extends StatelessWidget {
               const CustomInputField(
                 hint: 'امام مستشفي الجامعة ',
               ),
-              Gap(32.h),
-              const Text(
-                'رقم الجوال',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
-              ),
-              Gap(4.h),
-              const CustomInputField(
-                keyboardType: TextInputType.phone,
-                hint: '+201234567890',
-              ),
-              Gap(80.h),
+              Gap(60.h),
               CustomTextButton(
-                
+                icon: Icons.arrow_forward,
                 onTap: () {
-                  Utils.openScreen(
-                    context, const RecipientInfoPage(),
-                    // replacment: true
-                  );
+                  Utils.openScreen(context, const HomePage(), replacment: true);
                 },
-                title: '  حفظ ',
+                title: 'التالي',
                 fontSize: 18.sp,
               ),
-              Gap(20.h),
             ],
           ),
         ),

@@ -1,8 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 // ignore: must_be_immutable
 class CustomTextButton extends StatelessWidget {
-    CustomTextButton({
+  CustomTextButton({
     super.key,
     this.onTap,
     this.title = 'Next ',
@@ -16,12 +18,14 @@ class CustomTextButton extends StatelessWidget {
     this.withBorder = false,
     this.isBold = true,
     this.fontSize = 16.0,
+    this.icon,
   });
   void Function()? onTap;
   String title;
   double height, width, radius, fontSize;
   Color textColor, buttonColor, borderColor, inkColor;
   bool withBorder, isBold;
+  IconData? icon;
 
   @override
   Widget build(BuildContext context) {
@@ -42,14 +46,21 @@ class CustomTextButton extends StatelessWidget {
           child: Container(
               constraints: BoxConstraints(minWidth: width, minHeight: height),
               // min sizes for Material buttons
-              alignment: Alignment.center,
-              child: Text(
-                title,
-                style: TextStyle(
-                    color: textColor,
-                    fontSize: fontSize,
-                    fontWeight: isBold ? FontWeight.bold : FontWeight.normal),
-                textAlign: TextAlign.center,
+              // alignment: Alignment.center,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      title,
+                      style: TextStyle(
+                          color: textColor,
+                          fontSize: fontSize,
+                          fontWeight: isBold ? FontWeight.bold : FontWeight.normal),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  if (icon != null) Icon(icon, color: textColor),
+                ],
               )),
         ));
   }

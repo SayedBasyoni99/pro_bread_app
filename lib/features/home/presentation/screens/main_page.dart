@@ -39,7 +39,10 @@ class MainPage extends StatelessWidget {
                 if (state.index == 3) {
                   title = 'حسابي';
                 }
-                return Text(title);
+                return Text(
+                  title,
+                  style: const TextStyle(color: AppConst.kScondaryTextColor, fontSize: 20, fontWeight: FontWeight.bold),
+                );
               },
             ),
           ),
