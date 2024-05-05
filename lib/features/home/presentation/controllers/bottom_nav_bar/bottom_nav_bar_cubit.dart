@@ -19,6 +19,7 @@ class BottomNavBarCubit extends Cubit<BottomNavBarState> {
     ProductsPage(),
     FavoritesPage(),
     AccountInfoPage(),
+    
   ];
 
   Future<void> changeCurrentScreen({required int index}) async {

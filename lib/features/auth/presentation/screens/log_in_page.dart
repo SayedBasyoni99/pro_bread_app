@@ -8,10 +8,7 @@ import 'package:pro_bread_app/core/uitls/utils.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/forget_password.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/new_acc_page.dart';
 import 'package:pro_bread_app/shared/custom_input_field.dart';
-import 'package:pro_bread_app/shared/pin_code_widget.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
-import '../../../../shared/custom_txt_bottom.dart';
-import '../../../../shared/show_dialog.dart';
 import '../../../home/presentation/screens/main_page.dart';
 
 class LogInPage extends StatelessWidget {

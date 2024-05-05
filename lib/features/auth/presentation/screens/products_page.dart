@@ -4,7 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:pro_bread_app/features/home/presentation/screens/home_page.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/product_details_page.dart';
+import 'package:pro_bread_app/shared/product_card.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/uitls/utils.dart';
 import '../../../../shared/custom_card.dart';
@@ -42,7 +42,8 @@ class ProductsPage extends StatelessWidget {
                     //      viewModel.homeModel?.data?.products?[index];
                     return GestureDetector(
                         onTap: () {
-                          Utils.openScreen(context, const HomePage(), replacment: true);
+                          Utils.openScreen(context, const HomePage(),
+                              replacment: true);
                         },
                         child: const CustomCard(
                           color: AppConst.kBorderBoxColor,
@@ -51,7 +52,7 @@ class ProductsPage extends StatelessWidget {
             ),
             Gap(16.h),
             Row(
-              // crossAxisAlignment: CrossAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 SizedBox(
                   height: .06.sh,
@@ -72,58 +73,7 @@ class ProductsPage extends StatelessWidget {
               child: SingleChildScrollView(
                 child: ListView.builder(
                     itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          Utils.openScreen(context, const ProductDetailsPage(), replacment: true);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8.0),
-                            color: AppConst.kPrimaryColor,
-                          ),
-                          padding: const EdgeInsets.all(16.0),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(right: 8.0),
-                                child: SvgPicture.asset('assets/images/svg/empty_heart_icon01.svg'),
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                children: [
-                                  TextWidget(
-                                    title: 'كيكة ليمون بلوبيري ',
-                                    color: AppConst.kPrimaryTextColor,
-                                    fontSize: 12.sp,
-                                    // fontWeight: FontWeight.bold,
-                                  ),
-                                  TextWidget(
-                                    title: 'قطعة براونيز مغطاه بالنوتيلا ',
-                                    color: AppConst.kThirdTextColor,
-                                    fontSize: 12.sp,
-                                    // fontWeight: FontWeight.bold,
-                                  ),
-                                  TextWidget(
-                                    title: '225 ر.س',
-                                    color: AppConst.kScondaryTextColor,
-                                    fontSize: 14.sp,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ],
-                              ),
-                              const Spacer(),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 8.0, top: 16.0, bottom: 16.0),
-                                child: SizedBox(
-                                  height: 80.h,
-                                  width: 85.w,
-                                  child: Image.asset('assets/images/png/cake00.png'),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
+                      return ProductCard();
                     },
                     itemCount: 10,
                     shrinkWrap: true,
@@ -136,53 +86,3 @@ class ProductsPage extends StatelessWidget {
     );
   }
 }
-
-
-//  Card(
-//                         color: AppConst.kPrimaryColor,
-//                         elevation: 2.0,
-//                         shape: RoundedRectangleBorder(
-//                           borderRadius: BorderRadius.circular(8.0),
-//                         ),
-//                         child: 
-//                       Row(
-//                           children: [
-//                             Padding(
-//                               padding: const EdgeInsets.only(left: 8.0, top: 16.0, bottom: 16.0),
-//                               child: SizedBox(
-//                                 height: 80.h,
-//                                 width: 85.w,
-//                                 child: Assets.images.png.cake00.image(),
-//                               ),
-//                             ),
-//                             Column(
-//                               crossAxisAlignment: CrossAxisAlignment.end,
-//                               children: [
-//                                 TextWidget(
-//                                   title: 'كيكة ليمون بلوبيري ',
-//                                   color: AppConst.kPrimaryTextColor,
-//                                   fontSize: 12.sp,
-//                                   // fontWeight: FontWeight.bold,
-//                                 ),
-//                                 TextWidget(
-//                                   title: 'قطعة براونيز مغطاه بالنوتيلا ',
-//                                   color: AppConst.kThirdTextColor,
-//                                   fontSize: 12.sp,
-//                                   // fontWeight: FontWeight.bold,
-//                                 ),
-//                                 TextWidget(
-//                                   title: '225 ر.س',
-//                                   color: AppConst.kScondaryTextColor,
-//                                   fontSize: 14.sp,
-//                                   fontWeight: FontWeight.bold,
-//                                 ),
-//                               ],
-//                             ),
-//                             const Spacer(),
-//                             Padding(
-//                               padding: const EdgeInsets.only(right: 8.0),
-//                               child: SvgPicture.asset('assets/images/svg/empty_heart_icon01.svg'),
-//                             )
-//                           ],
-//                         ),
-//                       );

@@ -9,7 +9,6 @@ import '../../../../core/uitls/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../../shared/custom_input_field.dart';
 import '../../../../shared/text_button.dart';
-import '../../../home/presentation/screens/home_page.dart';
 
 class RecipientInfoPage extends StatelessWidget {
   const RecipientInfoPage({super.key});

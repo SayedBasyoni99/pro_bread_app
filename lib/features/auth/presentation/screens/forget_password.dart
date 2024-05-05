@@ -2,15 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:pinput/pinput.dart';
 import 'package:pro_bread_app/core/const/constant_var.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/change_password_page.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/new_acc_page.dart';
-import 'package:pro_bread_app/shared/aleart.dart';
 import 'package:pro_bread_app/shared/custom_txt_bottom.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
-
 import '../../../../core/uitls/utils.dart';
 import '../../../../shared/custom_input_field.dart';
 import '../../../../shared/pin_code_widget.dart';
