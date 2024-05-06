@@ -11,29 +11,31 @@ part 'get_address_states.dart';
 class GetAddressCubit extends Cubit<GetAddressState> {
   final GetAddressUseCase getAddressUseCase;
 
-  GetAddressCubit(this.getAddressUseCase) : super(const GetAddressInitialState());
+  GetAddressCubit(this.getAddressUseCase)
+      : super(const GetAddressInitialState());
 
   Address? data;
 
   Future<void> fGetAddress({
-   required String address,
-   required String street,
-   required String city,
-   required String note,
+    required String address,
+    required String street,
+    required String city,
+    required String note,
   }) async {
     emit(const GetAddressLoadingState());
-    final Either<Failure, GetAddressResponse> eitherResult = await getAddressUseCase(GetAddressParams(
+    final Either<Failure, GetAddressResponse> eitherResult =
+        await getAddressUseCase(GetAddressParams(
       address: address,
       street: street,
       city: city,
       note: note,
     ));
     eitherResult.fold((Failure failure) {
-      emit(GetAddressErrorState(message: failure.message?? 'pleaseTryAgainLater'));
+      emit(GetAddressErrorState(
+          message: failure.message ?? 'pleaseTryAgainLater'));
     }, (GetAddressResponse response) {
       data = response.data;
-      emit(GetAddressSuccessState(value: response.data));
+      emit(GetAddressSuccessState(value: response.data, message: 'success'));
     });
   }
 }
-

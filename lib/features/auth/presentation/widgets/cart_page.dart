@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:pro_bread_app/core/resources/assets.gen.dart';
-import 'package:pro_bread_app/shared/custom_app_bar.dart';
+
+import '../../../../shared/custom_app_bar.dart';
 import '../../../../core/const/constant_var.dart';
-import '../../../../core/uitls/utils.dart';
+import '../../../../core/utils/utils.dart';
 import '../../../../shared/text_widget.dart';
 import '../screens/product_details_page.dart';
 
@@ -19,7 +18,7 @@ class CartPage extends StatelessWidget {
       backgroundColor: AppConst.kPrimaryColor,
       appBar: CustomAppBar.build(
         context,
-        titleText: 'السلة ',
+        titleText: 'السلة',
       ),
       body: SingleChildScrollView(
         child: Padding(

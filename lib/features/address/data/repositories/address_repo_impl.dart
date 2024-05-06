@@ -24,6 +24,7 @@ class AddressRepositoryImpl implements AddressRepository {
   @override
   Future<Either<Failure, EditAddressResponse>> editAddress({required EditAddressParams params}) async {
     try {
+      
       final EditAddressResponse response = await remote.editAddress(params: params);
         return Right<Failure, EditAddressResponse>(response);
       } on AppException catch (error) {
@@ -37,10 +38,10 @@ class AddressRepositoryImpl implements AddressRepository {
   Future<Either<Failure, GetAddressResponse>> getAddress({required GetAddressParams params}) async {
     try {
       final GetAddressResponse response = await remote.getAddress(params: params);
-        return Right<Failure, GetAddressResponse>(response);
+        return Right(response);
       } on AppException catch (error) {
         Log.e('[getAddress] [${error.runtimeType.toString()}] ---- ${error.message}');
-        return Left<Failure, GetAddressResponse>(error.toFailure());
+        return Left(error.toFailure());
       }
   }
 

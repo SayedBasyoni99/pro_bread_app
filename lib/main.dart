@@ -5,6 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pro_bread_app/core/const/constant_var.dart';
 import 'package:pro_bread_app/features/home/presentation/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 import 'package:pro_bread_app/splash/splash_screen.dart';
+
+import 'features/address/address_injection.dart';
+import 'features/auth/auth_injection.dart';
+import 'injection_container.dart';
 // import 'package:pro_bread_app/splash/splash_screen.dart';
 
 // void main() {
@@ -28,6 +32,7 @@ void main() async {
   // await CacheHelper.getData(key:  "lang") == null ? "en":"ar";
   // await FastCachedImageConfig.init(clearCacheAfter: const Duration(days: 15));
   await EasyLocalization.ensureInitialized();
+  await ServiceLocator.init();
   // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
   //     statusBarColor: Colors.transparent,
   //     statusBarBrightness: Brightness.light,
@@ -67,6 +72,8 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: MultiBlocProvider(
         providers: [
+          ...addressBlocs,
+          ...authBlocs,
           BlocProvider<BottomNavBarCubit>(
             create: (context) => BottomNavBarCubit(),
           ),
@@ -76,7 +83,8 @@ class MyApp extends StatelessWidget {
           title: 'Pro Bread',
           theme: ThemeData(
             fontFamily: 'Teshrin',
-            colorScheme: ColorScheme.fromSeed(seedColor: AppConst.kPrimaryColor),
+            colorScheme:
+                ColorScheme.fromSeed(seedColor: AppConst.kPrimaryColor),
             useMaterial3: true,
           ),
           home: const SplashScreen(),

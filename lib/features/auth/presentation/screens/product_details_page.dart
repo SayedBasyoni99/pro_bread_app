@@ -7,11 +7,10 @@ import 'package:gap/gap.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
 import 'package:pro_bread_app/core/utils/utils.dart';
 import 'package:pro_bread_app/features/auth/presentation/widgets/cart_page.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/delivered_page.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/products_page.dart';
-import 'package:pro_bread_app/shared/custom_txt_bottom.dart';
 import '../../../../core/const/constant_var.dart';
+import '../../../../shared/custom_txt_bottom.dart';
 import '../../../../shared/show_dialog.dart';
+import 'products_page.dart';
 
 class ProductDetailsPage extends StatelessWidget {
   const ProductDetailsPage({super.key});

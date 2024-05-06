@@ -5,12 +5,13 @@ import 'package:pro_bread_app/features/home/presentation/screens/home_page.dart'
 import 'package:pro_bread_app/shared/not_found_message.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
 
-import '../core/uitls/utils.dart';
+import '../core/utils/utils.dart';
 
 class NotFoundItem extends StatelessWidget {
   const NotFoundItem({
     super.key,
-    required this.PicInfo, required this.Message,
+    required this.PicInfo,
+    required this.Message,
   });
 
   final String PicInfo;
