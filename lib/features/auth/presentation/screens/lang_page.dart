@@ -6,7 +6,7 @@ import 'package:pro_bread_app/features/auth/presentation/screens/acc_info_page.d
 import 'package:pro_bread_app/shared/custom_app_bar.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
 import '../../../../core/const/constant_var.dart';
-import '../../../../core/uitls/utils.dart';
+import '../../../../core/utils/utils.dart';
 
 class LanguagePage extends StatelessWidget {
   const LanguagePage({super.key});

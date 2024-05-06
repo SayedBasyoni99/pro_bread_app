@@ -6,7 +6,7 @@ import 'package:pro_bread_app/features/auth/presentation/screens/product_details
 import 'package:pro_bread_app/shared/text_widget.dart';
 
 import '../core/const/constant_var.dart';
-import '../core/uitls/utils.dart';
+import '../core/utils/utils.dart';
 
 class ProductCard extends StatelessWidget {
   ProductCard(

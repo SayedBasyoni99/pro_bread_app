@@ -9,7 +9,7 @@ import 'package:pro_bread_app/features/auth/presentation/screens/lang_page.dart'
 import 'package:pro_bread_app/features/auth/presentation/screens/log_in_page.dart';
 import 'package:pro_bread_app/shared/custom_txt_bottom.dart';
 
-import '../../../../core/uitls/utils.dart';
+import '../../../../core/utils/utils.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});

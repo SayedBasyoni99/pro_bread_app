@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
-import '../../../../core/uitls/utils.dart';
+import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_input_field.dart';
 import '../../../../shared/text_button.dart';
 import '../../../home/presentation/screens/home_page.dart';

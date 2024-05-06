@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
-import 'package:pro_bread_app/core/uitls/utils.dart';
+import 'package:pro_bread_app/core/utils/utils.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/delivered_page.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/products_page.dart';
 import 'package:pro_bread_app/shared/custom_txt_bottom.dart';

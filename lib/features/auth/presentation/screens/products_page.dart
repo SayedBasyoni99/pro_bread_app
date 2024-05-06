@@ -6,7 +6,7 @@ import 'package:gap/gap.dart';
 import 'package:pro_bread_app/features/home/presentation/screens/home_page.dart';
 import 'package:pro_bread_app/shared/product_card.dart';
 import '../../../../core/const/constant_var.dart';
-import '../../../../core/uitls/utils.dart';
+import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_card.dart';
 import '../../../../shared/text_widget.dart';
 

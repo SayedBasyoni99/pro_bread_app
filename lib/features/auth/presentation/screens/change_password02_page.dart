@@ -7,7 +7,7 @@ import 'package:pro_bread_app/features/auth/presentation/screens/log_in_page.dar
 import 'package:pro_bread_app/shared/custom_input_field.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
 
-import '../../../../core/uitls/utils.dart';
+import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../../shared/custom_txt_bottom.dart';
 import '../../../../shared/show_dialog.dart';

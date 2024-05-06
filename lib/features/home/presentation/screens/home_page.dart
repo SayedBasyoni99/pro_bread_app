@@ -8,7 +8,7 @@ import 'package:pro_bread_app/core/resources/assets.gen.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/products_page.dart';
 import 'package:pro_bread_app/shared/custom_text_field.dart';
 
-import '../../../../core/uitls/utils.dart';
+import '../../../../core/utils/utils.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
