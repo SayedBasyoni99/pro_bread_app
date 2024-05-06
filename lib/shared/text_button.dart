@@ -34,9 +34,12 @@ class CustomTextButton extends StatelessWidget {
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(buttonColor),
             shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(radius),
-              side: withBorder ? BorderSide(color: borderColor) : const BorderSide(color: Colors.transparent),
+              side: withBorder
+                  ? BorderSide(color: borderColor)
+                  : const BorderSide(color: Colors.transparent),
             ))),
         child: Ink(
           decoration: BoxDecoration(
@@ -55,7 +58,8 @@ class CustomTextButton extends StatelessWidget {
                       style: TextStyle(
                           color: textColor,
                           fontSize: fontSize,
-                          fontWeight: isBold ? FontWeight.bold : FontWeight.normal),
+                          fontWeight:
+                              isBold ? FontWeight.bold : FontWeight.normal),
                       textAlign: TextAlign.center,
                     ),
                   ),

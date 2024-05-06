@@ -14,6 +14,7 @@ class AccountInfoPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppConst.kPrimaryColor,
       // appBar: CustomAppBar.build(
       //   context,
       //   titleText: 'معلومات  الحساب',
@@ -35,7 +36,10 @@ class AccountInfoPage extends StatelessWidget {
                   Gap(60.h),
                   const Text(
                     'الاسم ',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: AppConst.kThirdTextColor),
                   ),
                   const Gap(16),
                   CustomInputField(
@@ -50,7 +54,10 @@ class AccountInfoPage extends StatelessWidget {
                   const Gap(32),
                   const Text(
                     ' البريد الالكتروني',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: AppConst.kThirdTextColor),
                   ),
                   const Gap(16),
                   CustomInputField(
@@ -65,7 +72,10 @@ class AccountInfoPage extends StatelessWidget {
                   const Gap(32),
                   const Text(
                     'رقم الجوال',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: AppConst.kThirdTextColor),
                   ),
                   const Gap(16),
                   CustomInputField(
@@ -81,7 +91,8 @@ class AccountInfoPage extends StatelessWidget {
                   Gap(80.h),
                   CustomTextButton(
                     onTap: () {
-                      Utils.openScreen(context, const HomePage(), replacment: true);
+                      Utils.openScreen(context, const HomePage(),
+                          replacment: true);
                     },
                     title: '  حفظ التعديلات',
                     fontSize: 18.sp,
