@@ -1,11 +1,12 @@
-
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:pro_bread_app/core/resources/assets.gen.dart';
 import 'package:pro_bread_app/core/utils/utils.dart';
+import 'package:pro_bread_app/features/auth/presentation/widgets/cart_page.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/delivered_page.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/products_page.dart';
 import 'package:pro_bread_app/shared/custom_txt_bottom.dart';
@@ -39,7 +40,8 @@ class ProductDetailsPage extends StatelessWidget {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
                 child: Container(
                   height: 150,
                   width: double.infinity,
@@ -52,12 +54,18 @@ class ProductDetailsPage extends StatelessWidget {
                       Gap(16),
                       Text(
                         'براوني كيك ',
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: AppConst.kScondaryTextColor),
                       ),
                       Gap(8),
                       Text(
                         'قطعة براونيز نوتيلا مغطاه بالنوتيلا ',
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: AppConst.kThirdTextColor),
                       ),
                       Gap(8),
                     ],
@@ -72,7 +80,8 @@ class ProductDetailsPage extends StatelessWidget {
           width: 120.w,
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
               child: Column(
                 children: [
                   Container(
@@ -86,21 +95,26 @@ class ProductDetailsPage extends StatelessWidget {
                       children: [
                         Text(
                           '225',
-                          style:
-                              TextStyle(color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 18),
+                          style: TextStyle(
+                              color: AppConst.kScondaryTextColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18),
                         ),
                         Spacer(),
                         Text(
                           'السعر',
-                          style:
-                              TextStyle(color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 12),
+                          style: TextStyle(
+                              color: AppConst.kScondaryTextColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
                         ),
                       ],
                     ),
                   ),
                   const Gap(16),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
@@ -110,8 +124,10 @@ class ProductDetailsPage extends StatelessWidget {
                       children: [
                         const Text(
                           'المنتجات المتوفرة',
-                          style:
-                              TextStyle(color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: AppConst.kScondaryTextColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 300.h,
@@ -128,7 +144,8 @@ class ProductDetailsPage extends StatelessWidget {
                                   color: AppConst.kPrimaryColor,
                                 ),
                                 child: ListTile(
-                                  leading: SvgPicture.asset('assets/images/svg/select_icon.svg'),
+                                  leading: SvgPicture.asset(
+                                      'assets/images/svg/select_icon.svg'),
                                   title: const Text(' كيكة ليمون بلوبيري '),
 
                                   onTap: () {},
@@ -138,7 +155,9 @@ class ProductDetailsPage extends StatelessWidget {
                               );
                             },
                             separatorBuilder: (context, index) {
-                              return const Divider(thickness: .09, color: AppConst.kScondaryTextColor);
+                              return const Divider(
+                                  thickness: .09,
+                                  color: AppConst.kScondaryTextColor);
                             },
                             itemCount: 3,
                           ),
@@ -148,7 +167,8 @@ class ProductDetailsPage extends StatelessWidget {
                   ),
                   const Gap(16),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
@@ -158,8 +178,10 @@ class ProductDetailsPage extends StatelessWidget {
                       children: [
                         const Text(
                           'الاضافات',
-                          style:
-                              TextStyle(color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: AppConst.kScondaryTextColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 300.h,
@@ -176,14 +198,17 @@ class ProductDetailsPage extends StatelessWidget {
                                   color: AppConst.kPrimaryColor,
                                 ),
                                 child: ListTile(
-                                  leading: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
+                                  leading: SvgPicture.asset(
+                                      'assets/images/svg/plus_icon.svg'),
                                   title: const Text('عدد المنتجات '),
                                   // subtitle: Text('السعر'),
                                 ),
                               );
                             },
                             separatorBuilder: (context, index) {
-                              return const Divider(thickness: .09, color: AppConst.kScondaryTextColor);
+                              return const Divider(
+                                  thickness: .09,
+                                  color: AppConst.kScondaryTextColor);
                             },
                             itemCount: 3,
                           ),
@@ -193,7 +218,8 @@ class ProductDetailsPage extends StatelessWidget {
                   ),
                   const Gap(16),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
@@ -211,7 +237,8 @@ class ProductDetailsPage extends StatelessWidget {
                                 color: AppConst.kPrimaryColor,
                               ),
                               child: ListTile(
-                                leading: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
+                                leading: SvgPicture.asset(
+                                    'assets/images/svg/plus_icon.svg'),
                                 title: const Text('عدد المنتجات '),
                               ),
                             ),
@@ -219,7 +246,9 @@ class ProductDetailsPage extends StatelessWidget {
                             const Text(
                               'الكمية',
                               style: TextStyle(
-                                  color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
+                                  color: AppConst.kScondaryTextColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -228,91 +257,94 @@ class ProductDetailsPage extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(right: 8.0),
-                              child: SvgPicture.asset('assets/images/svg/empty_heart_icon01.svg'),
+                              child: SvgPicture.asset(
+                                  'assets/images/svg/empty_heart_icon01.svg'),
                             ),
-                            const Spacer(),
-                            CustomButton(
-                              onTap: () {
-                                showAppDialog(
-                                  context: context,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(16.r),
-                                      color: AppConst.kPrimaryColor,
-                                    ),
-                                    child: Wrap(
-                                      children: [
-                                        Padding(
-                                          padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 32.w),
-                                          child: Column(
-                                            children: [
-                                              Assets.images.png.food01.image(),
+                            Gap(8),
+                            Expanded(
+                              child: CustomButton(
+                                onTap: () {
+                                  // showAppDialog(
+                                  //   context: context,
+                                  //   child: Wrap(
+                                  //     children: [
+                                  //       Expanded(
+                                  //         child: Image.asset(
+                                  //             'assets/images/png/successfullOrderBg.png'),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // );
 
-                                              Gap(16.h),
-                                              // SvgPicture.asset('assets/images/svg/heart_icon.svg'),
-                                              const Text(
-                                                'تم إضافة المنتج الى السلة بنجاح',
-                                                style: TextStyle(
-                                                    fontSize: 18,
-                                                    fontWeight: FontWeight.bold,
-                                                    color: AppConst.kScondaryTextColor),
-                                              ),
-                                              Gap(24.h),
+                                  showAppDialog(
+                                    context: context,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(16.r),
+                                        color: AppConst.kPrimaryColor,
+                                      ),
+                                      child: Wrap(
+                                        children: [
+                                          Padding(
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 40.h,
+                                                horizontal: 32.w),
+                                            child: Column(
+                                              children: [
+                                                Assets.images.png.food01
+                                                    .image(),
 
-                                              CustomButton(
-                                                  btnTitle: 'اذهب للسلة ',
-                                                  onTap: () {
-                                                    Utils.openScreen(context, const DeliveredPage(), replacment: true);
-                                                  }),
-                                              Gap(24.h),
-                                              GestureDetector(
-                                                child: const Text(
-                                                  'تابع التسوق',
+                                                Gap(16.h),
+                                                // SvgPicture.asset('assets/images/svg/heart_icon.svg'),
+                                                const Text(
+                                                  'تم إضافة المنتج الى السلة بنجاح',
                                                   style: TextStyle(
-                                                      fontSize: 14,
-                                                      fontWeight: FontWeight.bold,
-                                                      color: AppConst.kBorderButtonColor),
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: AppConst
+                                                          .kScondaryTextColor),
                                                 ),
-                                                onTap: () {
-                                                  Utils.openScreen(context, const ProductsPage(), replacment: true);
-                                                },
-                                              ),
-                                            ],
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                );
+                                                Gap(24.h),
 
-                                // Alerts.dialog(
-                                //   context,
-                                //   child: Column(
-                                //     children: [
-                                //       Container(
-                                //         height: 100,
-                                //         width: 300,
-                                //         decoration: BoxDecoration(
-                                //           borderRadius: BorderRadius.circular(8.0),
-                                //           color: AppConst.kPrimaryColor,
-                                //         ),
-                                //         alignment: Alignment.center,
-                                //         padding: const EdgeInsets.all(16.0),
-                                //         child: const Text('تم اضافة المنتج بنجاح'),
-                                //       ),
-                                //       const Gap(16),
-                                //       CustomButton(
-                                //         onTap: () {
-                                //           Utils.openScreen(context, const AccountInfoPage(),replacment: true);
-                                //         },
-                                //         btnTitle: 'الذهاب للصفحة الشخصية',
-                                //       )
-                                //     ],
-                                //   ),
-                                // );
-                              },
-                              btnTitle: 'تأكيد',
-                              btnColor: AppConst.kBorderButtonColor,
+                                                CustomButton(
+                                                    btnTitle: 'اذهب للسلة ',
+                                                    onTap: () {
+                                                      Utils.openScreen(
+                                                        context,
+                                                        const CartPage(),
+                                                        // replacment: true
+                                                      );
+                                                    }),
+                                                Gap(24.h),
+                                                GestureDetector(
+                                                  child: const Text(
+                                                    'تابع التسوق',
+                                                    style: TextStyle(
+                                                        fontSize: 14,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: AppConst
+                                                            .kBorderButtonColor),
+                                                  ),
+                                                  onTap: () {
+                                                    Utils.openScreen(context,
+                                                        const ProductsPage(),
+                                                        replacment: true);
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                                btnTitle: 'تأكيد',
+                                btnColor: AppConst.kBorderButtonColor,
+                              ),
                             ),
                           ],
                         ),
