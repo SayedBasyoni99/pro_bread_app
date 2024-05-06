@@ -1,6 +1,5 @@
 import '../../../../core/error/exceptions.dart';
 import '../../../../injection_container.dart';
-import '../../../../core/api/dio_consumer.dart';
 import '../models/get_delivery_hours_model.dart';
 import '../models/update_order_delivery_time_model.dart';
 import '../../domain/usecases/update_order_delivery_time_usecase.dart';

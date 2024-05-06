@@ -1,6 +1,5 @@
 import '../../../../core/error/exceptions.dart';
 import '../../../../injection_container.dart';
-import '../../../../core/api/dio_consumer.dart';
 import '../models/send_gift_model.dart';
 import '../../domain/usecases/send_gift_usecase.dart';
 

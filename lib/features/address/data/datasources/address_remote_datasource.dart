@@ -1,6 +1,5 @@
 import '../../../../core/error/exceptions.dart';
 import '../../../../injection_container.dart';
-import '../../../../core/api/dio_consumer.dart';
 import '../models/edit_address_model.dart';
 import '../../domain/usecases/edit_address_usecase.dart';
 import '../models/get_address_model.dart';

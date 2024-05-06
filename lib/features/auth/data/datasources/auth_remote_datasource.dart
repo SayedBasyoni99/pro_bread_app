@@ -1,6 +1,5 @@
 import '../../../../core/error/exceptions.dart';
 import '../../../../injection_container.dart';
-import '../../../../core/api/dio_consumer.dart';
 import '../models/login_model.dart';
 import '../../domain/usecases/login_usecase.dart';
 import '../models/check_otp_model.dart';
