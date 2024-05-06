@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart' as e;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -90,6 +91,11 @@ class CustomInputField extends StatelessWidget {
             validator: validator,
             // style: context.textTheme.titleLarge?.copyWith(fontSize: FontSize.s16),
             style: textStyle,
+            textDirection:
+                e.EasyLocalization.of(context)!.currentLocale!.languageCode ==
+                        'ar'
+                    ? TextDirection.rtl
+                    : TextDirection.ltr,
             onFieldSubmitted: onSubmitted,
             textInputAction: textInputAction,
             cursorColor: Colors.white,
@@ -99,7 +105,8 @@ class CustomInputField extends StatelessWidget {
                 ? !hasPoint
                     ? [FilteringTextInputFormatter.digitsOnly]
                     : [
-                        FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
+                        FilteringTextInputFormatter.allow(
+                            RegExp(r'^\d+\.?\d{0,2}')),
                       ]
                 : null,
             keyboardType: keyboardType,
@@ -134,7 +141,8 @@ class CustomInputField extends StatelessWidget {
               contentPadding: contentPadding,
               hintText: hint,
               prefixIcon: prefixIcon,
-              prefixIconConstraints: smallSuffixIcon ? const BoxConstraints(maxWidth: .15) : null,
+              prefixIconConstraints:
+                  smallSuffixIcon ? const BoxConstraints(maxWidth: .15) : null,
               // suffixIcon:
               // isPassword
               //     ? obscuredValue
