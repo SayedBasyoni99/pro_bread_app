@@ -25,11 +25,9 @@ abstract class AuthRemoteDataSource {
   Future<CompleteRegisterModel> completeRegister({
     required CompleteRegisterParams params,
   });
-
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
-
   @override
   Future<LoginModel> login({
     required LoginParams params,
@@ -41,15 +39,14 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         body: params.toJson(),
       );
 
-      if(response['success'] == true){
+      if (response['status'] == 200) {
         return LoginModel.fromJson(response);
       }
-      throw ServerException(message: response['message']?? '');
+      throw ServerException(message: response['message'] ?? '');
     } catch (error) {
       rethrow;
     }
   }
-
 
   @override
   Future<CheckOtpModel> checkOtp({
@@ -62,15 +59,14 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         body: params.toJson(),
       );
 
-      if(response['success'] == true){
+      if (response['status'] == 200) {
         return CheckOtpModel.fromJson(response);
       }
-      throw ServerException(message: response['message']?? '');
+      throw ServerException(message: response['message'] ?? '');
     } catch (error) {
       rethrow;
     }
   }
-
 
   @override
   Future<RegisterModel> register({
@@ -83,15 +79,14 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         body: params.toJson(),
       );
 
-      if(response['success'] == true){
+      if (response['status'] == 200) {
         return RegisterModel.fromJson(response);
       }
-      throw ServerException(message: response['message']?? '');
+      throw ServerException(message: response['message'] ?? '');
     } catch (error) {
       rethrow;
     }
   }
-
 
   @override
   Future<CompleteRegisterModel> completeRegister({
@@ -104,13 +99,12 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         body: params.toJson(),
       );
 
-      if(response['success'] == true){
+      if (response['status'] == 200) {
         return CompleteRegisterModel.fromJson(response);
       }
-      throw ServerException(message: response['message']?? '');
+      throw ServerException(message: response['message'] ?? '');
     } catch (error) {
       rethrow;
     }
   }
-
 }

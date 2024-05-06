@@ -7,11 +7,9 @@ abstract class CommonRemoteDataSource {
   Future<SendGiftModel> sendGift({
     required SendGiftParams params,
   });
-
 }
 
 class CommonRemoteDataSourceImpl implements CommonRemoteDataSource {
-
   @override
   Future<SendGiftModel> sendGift({
     required SendGiftParams params,
@@ -23,13 +21,12 @@ class CommonRemoteDataSourceImpl implements CommonRemoteDataSource {
         body: params.toJson(),
       );
 
-      if(response['success'] == true){
+      if (response['status'] == 200) {
         return SendGiftModel.fromJson(response);
       }
-      throw ServerException(message: response['message']?? '');
+      throw ServerException(message: response['message'] ?? '');
     } catch (error) {
       rethrow;
     }
   }
-
 }

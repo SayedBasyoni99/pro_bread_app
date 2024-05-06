@@ -19,11 +19,12 @@ class GetAddressLoadingState extends GetAddressState {
 
 class GetAddressSuccessState extends GetAddressState {
   final Address? value;
+    final String message;
 
-  const GetAddressSuccessState({required this.value});
+  const GetAddressSuccessState({required this.value, required this.message});
 
   @override
-  List<Object?> get props => <Object?>[value];
+  List<Object?> get props => <Object?>[value, message];
 }
 
 class GetAddressErrorState extends GetAddressState {

@@ -16,11 +16,9 @@ abstract class OrdersRemoteDataSource {
   Future<FollowOrderModel> followOrder({
     required FollowOrderParams params,
   });
-
 }
 
 class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource {
-
   @override
   Future<GetDeliveryHoursModel> getDeliveryHours() async {
     try {
@@ -29,36 +27,35 @@ class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource {
         getDeliveryHoursEndpoint,
       );
 
-      if(response['success'] == true){
+      if (response['status'] == 200) {
         return GetDeliveryHoursModel.fromJson(response);
       }
-      throw ServerException(message: response['message']?? '');
+      throw ServerException(message: response['message'] ?? '');
     } catch (error) {
       rethrow;
     }
   }
-
 
   @override
   Future<UpdateOrderDeliveryTimeModel> updateOrderDeliveryTime({
     required UpdateOrderDeliveryTimeParams params,
   }) async {
     try {
-      const String updateOrderDeliveryTimeEndpoint = '/api/v1/order-delivery-time';
+      const String updateOrderDeliveryTimeEndpoint =
+          '/api/v1/order-delivery-time';
       final dynamic response = await dioConsumer.post(
         updateOrderDeliveryTimeEndpoint,
         body: params.toJson(),
       );
 
-      if(response['success'] == true){
+      if (response['status'] == 200) {
         return UpdateOrderDeliveryTimeModel.fromJson(response);
       }
-      throw ServerException(message: response['message']?? '');
+      throw ServerException(message: response['message'] ?? '');
     } catch (error) {
       rethrow;
     }
   }
-
 
   @override
   Future<FollowOrderModel> followOrder({
@@ -70,13 +67,12 @@ class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource {
         followOrderEndpoint,
       );
 
-      if(response['success'] == true){
+      if (response['status'] == 200) {
         return FollowOrderModel.fromJson(response);
       }
-      throw ServerException(message: response['message']?? '');
+      throw ServerException(message: response['message'] ?? '');
     } catch (error) {
       rethrow;
     }
   }
-
 }

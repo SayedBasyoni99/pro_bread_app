@@ -19,11 +19,9 @@ abstract class AddressRemoteDataSource {
   Future<AddAddressModel> addAddress({
     required AddAddressParams params,
   });
-
 }
 
 class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
-
   @override
   Future<EditAddressModel> editAddress({
     required EditAddressParams params,
@@ -35,15 +33,14 @@ class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
         body: params.toJson(),
       );
 
-      if(response['success'] == true){
+      if (response['status'] == 200) {
         return EditAddressModel.fromJson(response);
       }
-      throw ServerException(message: response['message']?? '');
+      throw ServerException(message: response['message'] ?? '');
     } catch (error) {
       rethrow;
     }
   }
-
 
   @override
   Future<GetAddressModel> getAddress({
@@ -53,17 +50,17 @@ class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
       const String getAddressEndpoint = '/api/v1/get-address';
       final dynamic response = await dioConsumer.get(
         getAddressEndpoint,
+        body: params.toJson(),
       );
 
-      if(response['success'] == true){
+      if (response['status'] == 200) {
         return GetAddressModel.fromJson(response);
       }
-      throw ServerException(message: response['message']?? '');
+      throw ServerException(message: response['message'] ?? '');
     } catch (error) {
       rethrow;
     }
   }
-
 
   @override
   Future<AddAddressModel> addAddress({
@@ -76,13 +73,12 @@ class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
         body: params.toJson(),
       );
 
-      if(response['success'] == true){
+      if (response['status'] == 200) {
         return AddAddressModel.fromJson(response);
       }
-      throw ServerException(message: response['message']?? '');
+      throw ServerException(message: response['message'] ?? '');
     } catch (error) {
       rethrow;
     }
   }
-
 }
