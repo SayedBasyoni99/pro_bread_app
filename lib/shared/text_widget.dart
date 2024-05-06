@@ -1,4 +1,4 @@
-import 'package:pro_bread_app/core/uitls/utils.dart';
+import 'package:pro_bread_app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

@@ -4,7 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import 'package:pro_bread_app/features/auth/presentation/screens/recipient_info_page.dart';
 import '../../../../../core/const/constant_var.dart';
-import '../../../../../core/uitls/utils.dart';
+import '../../../../../core/utils/utils.dart';
 import '../../../../../shared/custom_input_field.dart';
 import '../../../../../shared/text_button.dart';
 import '../../../../shared/custom_app_bar.dart';

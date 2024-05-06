@@ -8,7 +8,7 @@ import 'package:pro_bread_app/features/auth/presentation/screens/change_password
 import 'package:pro_bread_app/features/auth/presentation/screens/new_acc_page.dart';
 import 'package:pro_bread_app/shared/custom_txt_bottom.dart';
 import 'package:pro_bread_app/shared/text_button.dart';
-import '../../../../core/uitls/utils.dart';
+import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_input_field.dart';
 import '../../../../shared/pin_code_widget.dart';
 import '../../../../shared/show_dialog.dart';
