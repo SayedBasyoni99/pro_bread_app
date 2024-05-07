@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:pro_bread_app/core/const/constant_var.dart';
-import 'package:pro_bread_app/core/resources/assets.gen.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/create_acc_page.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/lang_page.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/log_in_page.dart';
-import 'package:pro_bread_app/shared/custom_txt_bottom.dart';
+import '../../../../core/const/constant_var.dart';
+import '../../../../core/resources/assets.gen.dart';
+import 'create_acc_page.dart';
+import 'lang_page.dart';
+import 'log_in_page.dart';
+import '../../../../shared/custom_txt_bottom.dart';
 
 import '../../../../core/utils/utils.dart';
 

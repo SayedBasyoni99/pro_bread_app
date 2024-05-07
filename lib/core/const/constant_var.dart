@@ -14,3 +14,4 @@ class AppConst {
   static const String kPrimaryfontFamily = 'SF Pro Text';
   static const String kSocdaryfontFamily = 'Teshrin AR+LT';
 }
+

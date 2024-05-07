@@ -15,8 +15,7 @@ class _AddressScreenState extends State<AddressScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<GetAddressCubit>().fGetAddress(
-        address: 'address', street: 'street', city: 'city', note: 'note');
+    context.read<GetAddressCubit>().fGetAddress(address: 'address', street: 'street', city: 'city', note: 'note');
   }
 
   @override
@@ -40,7 +39,7 @@ class _AddressScreenState extends State<AddressScreen> {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Address'),
+          title: const Text('Address'),
         ),
         body: BlocBuilder<GetAddressCubit, GetAddressState>(
           builder: (context, state) {
@@ -57,7 +56,7 @@ class _AddressScreenState extends State<AddressScreen> {
             return Text(
               context.read<GetAddressCubit>().data?.note ?? '',
             );
-            return const SizedBox();
+            // return const SizedBox();
           },
         ),
       ),
