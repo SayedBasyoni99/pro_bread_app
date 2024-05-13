@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:pro_bread_app/core/const/constant_var.dart';
-import 'package:pro_bread_app/shared/custom_app_bar.dart';
+import '../../../../core/const/constant_var.dart';
+import '../../../../shared/custom_app_bar.dart';
 
 import '../controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 

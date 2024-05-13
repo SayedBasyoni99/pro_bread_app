@@ -6,12 +6,8 @@ class CheckOtpModel extends CheckOtpResponse {
     required super.message,
   });
 
-  factory CheckOtpModel.fromJson(Map<String, dynamic> json) =>
-      CheckOtpModel(
+  factory CheckOtpModel.fromJson(Map<String, dynamic> json) => CheckOtpModel(
         status: json['status'],
         message: json['message'],
       );
 }
-
-
-

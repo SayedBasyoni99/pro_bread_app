@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppConst {
-  static const String kAppName = "Pro Bread";
+  static const String kAppName = 'Pro Bread';
   static const Color kPrimaryColor = Color(0xffFFFFFF);
   static const Color kPrimaryTextColor = Color(0xff000000);
   static const Color kScondaryTextColor = Color(0xff593B15);

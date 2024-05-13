@@ -11,26 +11,28 @@ import '../utils/log_utils.dart';
 import 'status_code.dart';
 
 abstract class DioConsumer {
-  Future<dynamic> get(String path, {
+  Future<dynamic> get(
+    String path, {
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? body,
   });
 
   Future<dynamic> post(
     String path, {
-        FormData? formData,
-        Map<String, dynamic>? body,
-        Map<String, dynamic>? queryParameters,
-      });
+    FormData? formData,
+    Map<String, dynamic>? body,
+    Map<String, dynamic>? queryParameters,
+  });
 
   Future<dynamic> put(
-      String path, {
-        FormData? formData,
-        Map<String, dynamic>? body,
-        Map<String, dynamic>? queryParameters,
-      });
+    String path, {
+    FormData? formData,
+    Map<String, dynamic>? body,
+    Map<String, dynamic>? queryParameters,
+  });
 
-  Future<dynamic> delete(String path, {
+  Future<dynamic> delete(
+    String path, {
     Map<String, dynamic>? queryParameters,
   });
 
@@ -85,16 +87,20 @@ class DioConsumerImpl implements DioConsumer {
   }
 
   @override
-  Future get(String path, {Map<String, dynamic>? queryParameters, Map<String, dynamic>? body, String? userKeyHeader}) async {
+  Future get(String path,
+      {Map<String, dynamic>? queryParameters,
+      Map<String, dynamic>? body,
+      String? userKeyHeader}) async {
     try {
-      Log.i('[GET][$path], params: ${queryParameters.toString()}, body: ${body.toString()}');
+      Log.i(
+          '[GET][$path], params: ${queryParameters.toString()}, body: ${body.toString()}');
       await _handleAccessTokenHeader();
-      final response = await client.get(path, queryParameters: queryParameters, data: body);
+      final response =
+          await client.get(path, queryParameters: queryParameters, data: body);
       Log.i('[GET][$path], response: ${response.data.toString()}');
       return response.data;
     } on SocketException {
-      throw InternetConnectionException(
-          message: 'noInternetConnection');
+      throw const InternetConnectionException(message: 'noInternetConnection');
     } on DioException catch (error) {
       _handleDioError(error);
     } catch (error) {
@@ -111,7 +117,8 @@ class DioConsumerImpl implements DioConsumer {
     String? userKeyHeader,
   }) async {
     try {
-      Log.i('[POST][$path], formData: ${formData?.toPrint}, body: ${body.toString()}, params: ${queryParameters.toString()}');
+      Log.i(
+          '[POST][$path], formData: ${formData?.toPrint}, body: ${body.toString()}, params: ${queryParameters.toString()}');
       await _handleAccessTokenHeader();
       final response = await client.post(
         path,
@@ -121,8 +128,7 @@ class DioConsumerImpl implements DioConsumer {
       Log.i('[POST][$path], response: ${response.data.toString()}');
       return response.data;
     } on SocketException {
-      throw InternetConnectionException(
-          message: 'noInternetConnection');
+      throw const InternetConnectionException(message: 'noInternetConnection');
     } on DioException catch (error) {
       _handleDioError(error);
     } catch (error) {
@@ -132,14 +138,15 @@ class DioConsumerImpl implements DioConsumer {
 
   @override
   Future put(
-      String path, {
-        FormData? formData,
-        Map<String, dynamic>? body,
-        Map<String, dynamic>? queryParameters,
-        String? userKeyHeader,
-      }) async {
+    String path, {
+    FormData? formData,
+    Map<String, dynamic>? body,
+    Map<String, dynamic>? queryParameters,
+    String? userKeyHeader,
+  }) async {
     try {
-      Log.i('[PUT][$path], formData: ${formData?.toPrint}, body: ${body.toString()}, params: ${queryParameters.toString()}');
+      Log.i(
+          '[PUT][$path], formData: ${formData?.toPrint}, body: ${body.toString()}, params: ${queryParameters.toString()}');
       await _handleAccessTokenHeader();
       final response = await client.put(
         path,
@@ -149,8 +156,7 @@ class DioConsumerImpl implements DioConsumer {
       Log.i('[PUT][$path], response: ${response.data.toString()}');
       return response.data;
     } on SocketException {
-      throw InternetConnectionException(
-          message: 'noInternetConnection');
+      throw const InternetConnectionException(message: 'noInternetConnection');
     } on DioException catch (error) {
       _handleDioError(error);
     } catch (error) {
@@ -160,10 +166,10 @@ class DioConsumerImpl implements DioConsumer {
 
   @override
   Future delete(
-      String path, {
-        Map<String, dynamic>? queryParameters,
-        String? userKeyHeader,
-      }) async {
+    String path, {
+    Map<String, dynamic>? queryParameters,
+    String? userKeyHeader,
+  }) async {
     try {
       await _handleAccessTokenHeader();
       final response = await client.delete(
@@ -173,8 +179,7 @@ class DioConsumerImpl implements DioConsumer {
       Log.i('[DELETE][$path], response: ${response.data.toString()}');
       return response.data;
     } on SocketException {
-      throw InternetConnectionException(
-          message: 'noInternetConnection');
+      throw const InternetConnectionException(message: 'noInternetConnection');
     } on DioException catch (error) {
       _handleDioError(error);
     } catch (error) {
@@ -182,17 +187,17 @@ class DioConsumerImpl implements DioConsumer {
     }
   }
 
-
   void _handleDioError(DioException error) {
     if (error.response?.statusCode == StatusCode.unauthorized) {
-      throw UnauthorizedException(message: error.response?.data['message']?? error.response?.data.toString());
+      throw UnauthorizedException(
+          message:
+              error.response?.data['error'] ?? error.response?.data.toString());
     }
     if (error.type == DioExceptionType.unknown) {
-      throw InternetConnectionException(
-          message: 'noInternetConnection');
+      throw const InternetConnectionException(message: 'noInternetConnection');
     }
     throw ServerException(
-      message: error.response?.data['message']?? error.response?.data.toString(),
+      message: error.response?.data['error'] ?? error.response?.data.toString(),
     );
   }
 }

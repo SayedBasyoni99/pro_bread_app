@@ -1,4 +1,4 @@
-import 'package:pro_bread_app/core/utils/utils.dart';
+import '../core/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -23,11 +23,11 @@ class TextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      title??"",
+      title??'',
       maxLines: maxLines,
       overflow:maxLines == null ? null : TextOverflow.ellipsis,
       textDirection:
-          Utils.isArabic(title ?? "") ? TextDirection.rtl : TextDirection.ltr,
+          Utils.isArabic(title ?? '') ? TextDirection.rtl : TextDirection.ltr,
       style: TextStyle(
         fontSize: fontSize?? 14.sp,
         fontWeight: fontWeight,

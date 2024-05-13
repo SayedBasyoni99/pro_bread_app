@@ -42,7 +42,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       if (response['status'] == 200) {
         return LoginModel.fromJson(response);
       }
-      throw ServerException(message: response['message'] ?? '');
+      throw ServerException(message: response['error'] ?? '');
     } catch (error) {
       rethrow;
     }
@@ -62,7 +62,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       if (response['status'] == 200) {
         return CheckOtpModel.fromJson(response);
       }
-      throw ServerException(message: response['message'] ?? '');
+      throw ServerException(message: response['error'] ?? '');
     } catch (error) {
       rethrow;
     }
@@ -82,7 +82,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       if (response['status'] == 200) {
         return RegisterModel.fromJson(response);
       }
-      throw ServerException(message: response['message'] ?? '');
+      throw ServerException(message: response['error'] ?? '');
     } catch (error) {
       rethrow;
     }
@@ -102,7 +102,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       if (response['status'] == 200) {
         return CompleteRegisterModel.fromJson(response);
       }
-      throw ServerException(message: response['message'] ?? '');
+      throw ServerException(message: response['error'] ?? '');
     } catch (error) {
       rethrow;
     }

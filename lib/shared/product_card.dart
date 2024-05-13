@@ -1,9 +1,11 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/product_details_page.dart';
-import 'package:pro_bread_app/shared/text_widget.dart';
+import '../features/auth/presentation/screens/product_details_page.dart';
+import 'text_widget.dart';
 
 import '../core/const/constant_var.dart';
 import '../core/utils/utils.dart';
@@ -32,8 +34,8 @@ class ProductCard extends StatelessWidget {
             boxShadow: const [
               BoxShadow(
                 color: AppConst.kBottomBarColor,
-                spreadRadius: .5,
-                blurRadius: 5,
+                spreadRadius: .2,
+                blurRadius: 12,
                 offset: Offset(0, .1),
                 // changes position of shadow
               ),

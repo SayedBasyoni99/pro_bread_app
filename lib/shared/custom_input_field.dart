@@ -30,7 +30,7 @@ class CustomInputField extends StatelessWidget {
     this.hint,
     this.onSubmitted,
     this.controller,
-    this.autovalidateMode = AutovalidateMode.onUserInteraction,
+    this.autovalidateMode = AutovalidateMode.disabled,
     this.contentPadding,
     this.textAlign = TextAlign.start,
     this.hasDropDown = false,

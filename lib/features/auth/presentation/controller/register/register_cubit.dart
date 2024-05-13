@@ -14,16 +14,19 @@ class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this.registerUseCase) : super(const RegisterInitialState());
 
   int? data;
+  String? phone;
 
   Future<void> fRegister({
-   required String phone,
-   required String street,
-   required String city,
-   required String note,
-   required int defaultKey,
+    required String phone,
+    String? street,
+    String? city,
+    String? note,
+    int? defaultKey,
   }) async {
+    this.phone = phone;
     emit(const RegisterLoadingState());
-    final Either<Failure, RegisterResponse> eitherResult = await registerUseCase(RegisterParams(
+    final Either<Failure, RegisterResponse> eitherResult =
+        await registerUseCase(RegisterParams(
       phone: phone,
       street: street,
       city: city,
@@ -31,11 +34,11 @@ class RegisterCubit extends Cubit<RegisterState> {
       defaultKey: defaultKey,
     ));
     eitherResult.fold((Failure failure) {
-      emit(RegisterErrorState(message: failure.message?? 'pleaseTryAgainLater'));
+      emit(RegisterErrorState(
+          message: failure.message ?? 'pleaseTryAgainLater'));
     }, (RegisterResponse response) {
       data = response.data;
       emit(RegisterSuccessState(value: response.data));
     });
   }
 }
-

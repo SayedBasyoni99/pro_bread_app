@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:pro_bread_app/core/const/constant_var.dart';
-import 'package:pro_bread_app/core/resources/assets.gen.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/products_page.dart';
-import 'package:pro_bread_app/shared/custom_text_field.dart';
+import '../../../../core/const/constant_var.dart';
+import '../../../../core/resources/assets.gen.dart';
+import '../../../auth/presentation/screens/products_page.dart';
+import '../../../../shared/custom_text_field.dart';
 
 import '../../../../core/utils/utils.dart';
 
@@ -52,7 +52,6 @@ class HomePage extends StatelessWidget {
                               hintTxt: 'عن ماذا تبحث؟',
                               readOnly: true,
                               onTap: () {
-                                // TODO: Navigate to Search Screen
                               },
                               iconButton02: Padding(
                                 padding: const EdgeInsets.all(16.0),

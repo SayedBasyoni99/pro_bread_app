@@ -12,6 +12,3 @@ class AddAddressModel extends AddAddressResponse {
         status: json['status'],
       );
 }
-
-
-

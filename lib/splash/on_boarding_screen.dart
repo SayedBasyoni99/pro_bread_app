@@ -1,9 +1,9 @@
 import 'package:cupertino_onboarding/cupertino_onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:pro_bread_app/core/const/constant_var.dart';
-import 'package:pro_bread_app/core/resources/assets.gen.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/welcome_page.dart';
+import '../core/const/constant_var.dart';
+import '../core/resources/assets.gen.dart';
+import '../features/auth/presentation/screens/welcome_page.dart';
 
 // ignore: must_be_immutable
 class OnBoardingScreen extends StatelessWidget {

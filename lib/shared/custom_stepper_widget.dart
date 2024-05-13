@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pro_bread_app/core/const/constant_var.dart';
+import '../core/const/constant_var.dart';
 
 class CustomStepper extends StatelessWidget {
   const CustomStepper({super.key});
