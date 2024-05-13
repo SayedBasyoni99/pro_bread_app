@@ -12,6 +12,3 @@ class CompleteRegisterModel extends CompleteRegisterResponse {
         message: json['message'],
       );
 }
-
-
-

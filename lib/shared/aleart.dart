@@ -86,12 +86,12 @@ class Alerts {
                     onPressed: () {
                       Navigator.pop(context, false);
                     },
-                    child: const Text("لا")),
+                    child: const Text('لا')),
                 TextButton(
                     onPressed: () {
                       Navigator.pop(context, true);
                     },
-                    child: const Text("نعم"))
+                    child: const Text('نعم'))
               ],
             )));
   }

@@ -12,6 +12,3 @@ class EditAddressModel extends EditAddressResponse {
         status: json['status'],
       );
 }
-
-
-

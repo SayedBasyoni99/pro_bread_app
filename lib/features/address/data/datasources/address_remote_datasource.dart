@@ -36,7 +36,7 @@ class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
       if (response['status'] == 200) {
         return EditAddressModel.fromJson(response);
       }
-      throw ServerException(message: response['message'] ?? '');
+      throw ServerException(message: response['error'] ?? '');
     } catch (error) {
       rethrow;
     }
@@ -56,7 +56,7 @@ class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
       if (response['status'] == 200) {
         return GetAddressModel.fromJson(response);
       }
-      throw ServerException(message: response['message'] ?? '');
+      throw ServerException(message: response['error'] ?? '');
     } catch (error) {
       rethrow;
     }
@@ -76,7 +76,7 @@ class AddressRemoteDataSourceImpl implements AddressRemoteDataSource {
       if (response['status'] == 200) {
         return AddAddressModel.fromJson(response);
       }
-      throw ServerException(message: response['message'] ?? '');
+      throw ServerException(message: response['error'] ?? '');
     } catch (error) {
       rethrow;
     }

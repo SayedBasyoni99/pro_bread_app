@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:pro_bread_app/core/const/constant_var.dart';
+import '../core/const/constant_var.dart';
 
 //ignore: must_be_immutable
 class CustomButton extends StatelessWidget {

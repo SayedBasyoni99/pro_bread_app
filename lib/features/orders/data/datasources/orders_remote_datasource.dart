@@ -30,7 +30,7 @@ class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource {
       if (response['status'] == 200) {
         return GetDeliveryHoursModel.fromJson(response);
       }
-      throw ServerException(message: response['message'] ?? '');
+      throw ServerException(message: response['error'] ?? '');
     } catch (error) {
       rethrow;
     }
@@ -51,7 +51,7 @@ class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource {
       if (response['status'] == 200) {
         return UpdateOrderDeliveryTimeModel.fromJson(response);
       }
-      throw ServerException(message: response['message'] ?? '');
+      throw ServerException(message: response['error'] ?? '');
     } catch (error) {
       rethrow;
     }
@@ -70,7 +70,7 @@ class OrdersRemoteDataSourceImpl implements OrdersRemoteDataSource {
       if (response['status'] == 200) {
         return FollowOrderModel.fromJson(response);
       }
-      throw ServerException(message: response['message'] ?? '');
+      throw ServerException(message: response['error'] ?? '');
     } catch (error) {
       rethrow;
     }

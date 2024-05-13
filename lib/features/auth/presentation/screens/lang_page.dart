@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/acc_info_page.dart';
-import 'package:pro_bread_app/shared/custom_app_bar.dart';
-import 'package:pro_bread_app/shared/text_button.dart';
+import 'acc_info_page.dart';
+import '../../../../shared/custom_app_bar.dart';
+import '../../../../shared/text_button.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/utils.dart';
 
@@ -56,7 +56,7 @@ class LanguagePage extends StatelessWidget {
                 )
               ],
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: EdgeInsets.only(bottom: 32.0.h),
               child: CustomTextButton(

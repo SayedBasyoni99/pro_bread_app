@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-import 'package:pro_bread_app/shared/text_widget.dart';
+import 'text_widget.dart';
 
 import '../core/const/constant_var.dart';
 

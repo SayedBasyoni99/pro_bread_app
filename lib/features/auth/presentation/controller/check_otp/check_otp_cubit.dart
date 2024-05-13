@@ -17,11 +17,11 @@ class CheckOtpCubit extends Cubit<CheckOtpState> {
   Future<void> fCheckOtp({
    required String phone,
    required String otp,
-   required String address,
-   required String street,
-   required String city,
-   required String note,
-   required int defaultKey,
+   String? address,
+   String? street,
+   String? city,
+   String? note,
+   int? defaultKey,
   }) async {
     emit(const CheckOtpLoadingState());
     final Either<Failure, CheckOtpResponse> eitherResult = await checkOtpUseCase(CheckOtpParams(

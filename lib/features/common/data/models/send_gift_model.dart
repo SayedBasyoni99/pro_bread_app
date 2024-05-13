@@ -6,12 +6,8 @@ class SendGiftModel extends SendGiftResponse {
     required super.status,
   });
 
-  factory SendGiftModel.fromJson(Map<String, dynamic> json) =>
-      SendGiftModel(
+  factory SendGiftModel.fromJson(Map<String, dynamic> json) => SendGiftModel(
         message: json['message'],
         status: json['status'],
       );
 }
-
-
-

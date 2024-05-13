@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 class RegisterResponse extends Equatable{
   final int status;
   final String message;
-  final int data;
+  final int? data;
 
   const RegisterResponse({
     required this.status,

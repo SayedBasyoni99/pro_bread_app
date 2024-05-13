@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import 'package:pro_bread_app/core/const/constant_var.dart';
-import 'package:pro_bread_app/core/resources/assets.gen.dart';
-import 'package:pro_bread_app/core/utils/utils.dart';
-import 'package:pro_bread_app/features/auth/presentation/screens/change_password02_page.dart';
-import 'package:pro_bread_app/shared/custom_input_field.dart';
-import 'package:pro_bread_app/shared/text_button.dart';
+import '../../../../core/const/constant_var.dart';
+import '../../../../core/resources/assets.gen.dart';
+import '../../../../core/utils/utils.dart';
+import 'change_password02_page.dart';
+import '../../../../shared/custom_input_field.dart';
+import '../../../../shared/text_button.dart';
 
 class ChangePasswordPage extends StatelessWidget {
   const ChangePasswordPage({super.key});

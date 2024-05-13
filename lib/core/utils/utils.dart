@@ -41,7 +41,7 @@ class Utils {
         alignment: Alignment.center,
         transform: Matrix4.rotationY(pi),
         child: Image.asset(
-          "assets/images/ic_noti_black.png",
+          'assets/images/ic_noti_black.png',
           width: 30.w,
           height: 30.w,
         ),
@@ -162,10 +162,10 @@ class Utils {
 }
 
 extension MySLiverBox on Widget {
-  SliverToBoxAdapter get SliverBox => SliverToBoxAdapter(
+  SliverToBoxAdapter get sliverBox => SliverToBoxAdapter(
         child: this,
       );
-  SliverToBoxAdapter get SliverPadding => SliverToBoxAdapter(
+  SliverToBoxAdapter get sliverPadding => SliverToBoxAdapter(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: this,

@@ -15,7 +15,6 @@ class GetDeliveryHoursModel extends GetDeliveryHoursResponse {
       );
 }
 
-
 class DeliveryHourDataModel extends DeliveryHourData {
   const DeliveryHourDataModel({
     required super.key,
@@ -24,14 +23,13 @@ class DeliveryHourDataModel extends DeliveryHourData {
     required super.end,
   });
 
-  factory DeliveryHourDataModel.fromJson(Map<String, dynamic> json) => DeliveryHourDataModel(
-    key: json['key'] != null? num.tryParse(json['key'].toString())?.toInt()?? 0: 0,
-    day: json['day'] ?? '',
-    start: json['start'] ?? '',
-    end: json['end'] ?? '',
-  );
-
+  factory DeliveryHourDataModel.fromJson(Map<String, dynamic> json) =>
+      DeliveryHourDataModel(
+        key: json['key'] != null
+            ? num.tryParse(json['key'].toString())?.toInt() ?? 0
+            : 0,
+        day: json['day'] ?? '',
+        start: json['start'] ?? '',
+        end: json['end'] ?? '',
+      );
 }
-
-
-

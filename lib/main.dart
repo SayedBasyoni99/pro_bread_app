@@ -2,9 +2,8 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pro_bread_app/core/const/constant_var.dart';
-import 'package:pro_bread_app/features/home/presentation/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
-import 'package:pro_bread_app/splash/splash_screen.dart';
+import 'features/home/presentation/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
+import 'splash/splash_screen.dart';
 
 import 'features/address/address_injection.dart';
 import 'features/auth/auth_injection.dart';
@@ -42,9 +41,9 @@ void main() async {
 
   runApp(
     EasyLocalization(
-        supportedLocales: const [Locale('ar', "EG"), Locale('en', "US")],
+        supportedLocales: const [Locale('ar', 'EG'), Locale('en', 'US')],
         path: 'assets/translations',
-        startLocale: const Locale('ar', "EG"),
+        startLocale: const Locale('ar', 'EG'),
         saveLocale: true,
         child: const MyApp()),
   );
@@ -65,32 +64,53 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    context.locale == const Locale('en', "US") ? "en" : "ar";
+    context.locale == const Locale('en', 'US') ? 'en' : 'ar';
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       child: MultiBlocProvider(
-        providers: [
-          ...addressBlocs,
-          ...authBlocs,
-          BlocProvider<BottomNavBarCubit>(
-            create: (context) => BottomNavBarCubit(),
+          providers: [
+            ...addressBlocs,
+            ...authBlocs,
+            BlocProvider<BottomNavBarCubit>(
+              create: (context) => BottomNavBarCubit(),
+            ),
+          ],
+          child: MaterialApp(
+            title: 'Pro Bread',
+            theme: ThemeData(
+              fontFamily: 'Teshrin',
+              useMaterial3: true,
+              brightness: Brightness.light,
+              /* light theme settings */
+            ),
+            darkTheme: ThemeData(
+              brightness: Brightness.dark,
+              /* dark theme settings */
+            ),
+            themeMode: ThemeMode.light,
+            /* ThemeMode.system to follow system theme, 
+         ThemeMode.light for light theme, 
+         ThemeMode.dark for dark theme
+      */
+            debugShowCheckedModeBanner: false,
+            home: const SplashScreen(),
+          )
+
+          // MaterialApp(
+          //   locale: context.locale,
+          //   title: 'Pro Bread',
+          //   theme: ThemeData(
+          //     fontFamily: 'Teshrin',
+          //     colorScheme:
+          //         ColorScheme.fromSeed(seedColor: AppConst.kPrimaryColor),
+          //     useMaterial3: true,
+          //   ),
+          //   home: const SplashScreen(),
+          //   debugShowCheckedModeBanner: false,
+          // ),
           ),
-        ],
-        child: MaterialApp(
-          locale: context.locale,
-          title: 'Pro Bread',
-          theme: ThemeData(
-            fontFamily: 'Teshrin',
-            colorScheme:
-                ColorScheme.fromSeed(seedColor: AppConst.kPrimaryColor),
-            useMaterial3: true,
-          ),
-          home: const SplashScreen(),
-          debugShowCheckedModeBanner: false,
-        ),
-      ),
     );
   }
 }

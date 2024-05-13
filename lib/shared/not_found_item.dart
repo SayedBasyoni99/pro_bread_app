@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
-import 'package:pro_bread_app/features/home/presentation/screens/home_page.dart';
-import 'package:pro_bread_app/shared/not_found_message.dart';
-import 'package:pro_bread_app/shared/text_button.dart';
+import '../features/home/presentation/screens/home_page.dart';
+import 'not_found_message.dart';
+import 'text_button.dart';
 
 import '../core/utils/utils.dart';
 
 class NotFoundItem extends StatelessWidget {
   const NotFoundItem({
     super.key,
-    required this.PicInfo,
-    required this.Message,
+    required this.picInfo,
+    required this.message,
   });
 
-  final String PicInfo;
-  final String Message;
+  final String picInfo;
+  final String message;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Gap(60.h),
-        NotFoundMesaage(PicInfo: PicInfo, Message: Message),
+        NotFoundMesaage(picInfo: picInfo, message: message),
         Gap(40.h),
         SizedBox(
           width: 274.w,

@@ -9,8 +9,7 @@ class LoginModel extends LoginResponse {
     required super.data,
   });
 
-  factory LoginModel.fromJson(Map<String, dynamic> json) =>
-      LoginModel(
+  factory LoginModel.fromJson(Map<String, dynamic> json) => LoginModel(
         status: json['status'],
         message: json['message'],
         accessToken: json['access_token'],
@@ -18,7 +17,6 @@ class LoginModel extends LoginResponse {
         data: UserModel.fromJson(json['data']),
       );
 }
-
 
 class UserModel extends User {
   const UserModel({
@@ -39,23 +37,27 @@ class UserModel extends User {
   });
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-    id: json['id'] != null? num.tryParse(json['id'].toString())?.toInt()?? 0: 0,
-    name: json['name'] ?? '',
-    email: json['email'] ?? '',
-    phone: json['phone'] ?? '',
-    wallet: json['wallet'] != null? num.tryParse(json['wallet'].toString())?.toInt()?? 0: 0,
-    blocked: json['blocked'] != null? num.tryParse(json['blocked'].toString())?.toInt()?? 0: 0,
-    verificationCode: json['verification_code'] ?? '',
-    phoneVerifiedAt: json['phone_verified_at'] ?? '',
-    createdAt: json['created_at'] ?? '',
-    updatedAt: json['updated_at'] ?? '',
-    image: json['image'] ?? '',
-    otp: json['otp'] ?? '',
-    verified: json['verified'] != null? num.tryParse(json['verified'].toString())?.toInt()?? 0: 0,
-    fcmToken: json['fcm_token'] ?? '',
-  );
-
+        id: json['id'] != null
+            ? num.tryParse(json['id'].toString())?.toInt() ?? 0
+            : 0,
+        name: json['name'] ?? '',
+        email: json['email'] ?? '',
+        phone: json['phone'] ?? '',
+        wallet: json['wallet'] != null
+            ? num.tryParse(json['wallet'].toString())?.toInt() ?? 0
+            : 0,
+        blocked: json['blocked'] != null
+            ? num.tryParse(json['blocked'].toString())?.toInt() ?? 0
+            : 0,
+        verificationCode: json['verification_code'] ?? '',
+        phoneVerifiedAt: json['phone_verified_at'] ?? '',
+        createdAt: json['created_at'] ?? '',
+        updatedAt: json['updated_at'] ?? '',
+        image: json['image'] ?? '',
+        otp: json['otp'] ?? '',
+        verified: json['verified'] != null
+            ? num.tryParse(json['verified'].toString())?.toInt() ?? 0
+            : 0,
+        fcmToken: json['fcm_token'] ?? '',
+      );
 }
-
-
-

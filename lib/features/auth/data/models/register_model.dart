@@ -7,13 +7,9 @@ class RegisterModel extends RegisterResponse {
     required super.data,
   });
 
-  factory RegisterModel.fromJson(Map<String, dynamic> json) =>
-      RegisterModel(
+  factory RegisterModel.fromJson(Map<String, dynamic> json) => RegisterModel(
         status: json['status'],
         message: json['message'],
-        data: json['data'] as int,
+        data: json['data'] != null ? json['data'] as int : null,
       );
 }
-
-
-

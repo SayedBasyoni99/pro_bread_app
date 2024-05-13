@@ -8,13 +8,13 @@ import '../core/const/constant_var.dart';
 class NotFoundMesaage extends StatelessWidget {
   const NotFoundMesaage({
     super.key,
-    required this.PicInfo,
-    required this.Message,
+    required this.picInfo,
+    required this.message,
   });
 
-  final String PicInfo;
+  final String picInfo;
 
-  final String Message;
+  final String message;
 
   @override
   Widget build(BuildContext context) {
@@ -22,14 +22,14 @@ class NotFoundMesaage extends StatelessWidget {
       child: Column(
         children: [
           SvgPicture.asset(
-            'assets/images/svg/$PicInfo.svg',
+            'assets/images/svg/$picInfo.svg',
             height: 112.h,
             width: 103.w,
           ),
           Gap(32.h),
           Text(
-            Message,
-            style: TextStyle(
+            message,
+            style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: AppConst.kPrimaryTextColor),

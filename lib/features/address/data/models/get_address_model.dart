@@ -25,16 +25,16 @@ class AddressModel extends Address {
 
   factory AddressModel.fromJson(Map<String, dynamic> json) {
     return AddressModel(
-        id: json['id'] != null
-            ? num.tryParse(json['id'].toString())?.toInt() ?? 0
-            : 0,
-        address: json['address'] ?? '',
-        street: json['street'] ?? '',
-        city: json['city'] ?? '',
-        note: json['note'] ?? '',
-        defaultKey: json['default'] != null
-            ? num.tryParse(json['default'].toString())?.toInt() ?? 0
-            : 0,
-      );
+      id: json['id'] != null
+          ? num.tryParse(json['id'].toString())?.toInt() ?? 0
+          : 0,
+      address: json['address'] ?? '',
+      street: json['street'] ?? '',
+      city: json['city'] ?? '',
+      note: json['note'] ?? '',
+      defaultKey: json['default'] != null
+          ? num.tryParse(json['default'].toString())?.toInt() ?? 0
+          : 0,
+    );
   }
 }

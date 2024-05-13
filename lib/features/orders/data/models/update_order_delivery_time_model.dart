@@ -12,6 +12,3 @@ class UpdateOrderDeliveryTimeModel extends UpdateOrderDeliveryTimeResponse {
         status: json['status'],
       );
 }
-
-
-
