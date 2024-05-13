@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import '../../../home/presentation/screens/home_page.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../../shared/custom_input_field.dart';
 import '../../../../shared/custom_stepper_widget.dart';
 import '../../../../shared/text_button.dart';
+import 'delivery_time_page.dart';
 
 class ConRecipientInfoPage extends StatelessWidget {
   const ConRecipientInfoPage({super.key});
@@ -32,7 +32,7 @@ class ConRecipientInfoPage extends StatelessWidget {
                 CustomStepper(),
                 CustomStepper(),
                 CustomStepper(),
-                CustomStepper(),
+                CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
               ]),
               Gap(32.h),
               Row(mainAxisAlignment: MainAxisAlignment.end, children: [
@@ -83,7 +83,10 @@ class ConRecipientInfoPage extends StatelessWidget {
               CustomTextButton(
                 icon: Icons.arrow_forward,
                 onTap: () {
-                  Utils.openScreen(context, const HomePage(), replacment: true);
+                  Utils.openScreen(
+                    context,
+                    const DeliveryTimePage(),
+                  );
                 },
                 title: 'التالي',
                 fontSize: 18.sp,

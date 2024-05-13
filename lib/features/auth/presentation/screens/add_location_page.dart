@@ -8,7 +8,6 @@ import '../../../../../core/utils/utils.dart';
 import '../../../../../shared/custom_input_field.dart';
 import '../../../../../shared/text_button.dart';
 import '../../../../shared/custom_app_bar.dart';
-import '../../../../shared/custom_stepper_widget.dart';
 
 class AddLocationPage extends StatelessWidget {
   const AddLocationPage({super.key});
@@ -28,13 +27,6 @@ class AddLocationPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              const Row(children: [
-                CustomStepper(),
-                CustomStepper(),
-                CustomStepper(),
-                CustomStepper(),
-              ]),
-              Gap(32.h),
               Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                 const Text(
                   'تفاصيل الشحن',
@@ -91,7 +83,6 @@ class AddLocationPage extends StatelessWidget {
               ),
               Gap(80.h),
               CustomTextButton(
-                
                 onTap: () {
                   Utils.openScreen(
                     context, const RecipientInfoPage(),

@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../core/const/constant_var.dart';
 
 class CustomStepper extends StatelessWidget {
-  const CustomStepper({super.key});
+  const CustomStepper({super.key, this.stepperColor = AppConst.kStepperColor});
 
+  final Color? stepperColor;
   @override
   build(BuildContext context) {
     return Expanded(
@@ -12,7 +13,7 @@ class CustomStepper extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 2.0),
         child: Container(
           height: 5.h,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: AppConst.kStepperColor),
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: stepperColor),
         ),
       ),
     );

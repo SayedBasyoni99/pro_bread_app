@@ -37,8 +37,9 @@ class CartPage extends StatelessWidget {
                           child: GestureDetector(
                             onTap: () {
                               Utils.openScreen(
-                                  context, const ProductDetailsPage(),
-                                  replacment: true);
+                                context,
+                                const ProductDetailsPage(),
+                              );
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -52,9 +53,7 @@ class CartPage extends StatelessWidget {
                                     offset: Offset(0, .1),
                                     // changes position of shadow
                                   ),
-                                  BoxShadow(
-                                      color: AppConst.kPrimaryColor,
-                                      spreadRadius: 4.0)
+                                  BoxShadow(color: AppConst.kPrimaryColor, spreadRadius: 4.0)
                                 ],
                               ),
                               padding: EdgeInsets.all(16.h),
@@ -64,24 +63,21 @@ class CartPage extends StatelessWidget {
                                   Column(
                                     children: [
                                       Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
+                                        crossAxisAlignment: CrossAxisAlignment.end,
                                         children: [
                                           Row(
                                             // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               TextWidget(
                                                 title: '225 ر.س',
-                                                color:
-                                                    AppConst.kScondaryTextColor,
+                                                color: AppConst.kScondaryTextColor,
                                                 fontSize: 14.sp,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                               Gap(12.w),
                                               TextWidget(
                                                 title: 'كيكة ليمون بلوبيري ',
-                                                color:
-                                                    AppConst.kPrimaryTextColor,
+                                                color: AppConst.kPrimaryTextColor,
                                                 fontSize: 12.sp,
                                                 // fontWeight: FontWeight.bold,
                                               ),
@@ -92,15 +88,13 @@ class CartPage extends StatelessWidget {
                                             children: [
                                               TextWidget(
                                                 title: '225 ر.س',
-                                                color:
-                                                    AppConst.kScondaryTextColor,
+                                                color: AppConst.kScondaryTextColor,
                                                 fontSize: 14.sp,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                               Gap(12.w),
                                               TextWidget(
-                                                title:
-                                                    'قطعة براونيز مغطاه بالنوتيلا ',
+                                                title: 'قطعة براونيز مغطاه بالنوتيلا ',
                                                 color: AppConst.kThirdTextColor,
                                                 fontSize: 12.sp,
                                                 // fontWeight: FontWeight.bold,
@@ -112,15 +106,13 @@ class CartPage extends StatelessWidget {
                                             children: [
                                               TextWidget(
                                                 title: '225 ر.س',
-                                                color:
-                                                    AppConst.kScondaryTextColor,
+                                                color: AppConst.kScondaryTextColor,
                                                 fontSize: 14.sp,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                               Gap(12.w),
                                               TextWidget(
-                                                title:
-                                                    'قطعة براونيز مغطاه بالنوتيلا ',
+                                                title: 'قطعة براونيز مغطاه بالنوتيلا ',
                                                 color: AppConst.kThirdTextColor,
                                                 fontSize: 12.sp,
                                                 // fontWeight: FontWeight.bold,
@@ -133,13 +125,11 @@ class CartPage extends StatelessWidget {
                                       Row(
                                         // mainAxisAlignment: MainAxisAlignment.end,
                                         children: [
-                                          SvgPicture.asset(
-                                              'assets/images/svg/plus_icon.svg'),
+                                          SvgPicture.asset('assets/images/svg/plus_icon.svg'),
                                           Gap(12.w),
                                           const Text('1'),
                                           Gap(12.w),
-                                          SvgPicture.asset(
-                                              'assets/images/svg/minus_icon.svg'),
+                                          SvgPicture.asset('assets/images/svg/minus_icon.svg'),
                                           Gap(12.w),
                                           TextWidget(
                                             title: 'الكمية :',
@@ -152,13 +142,11 @@ class CartPage extends StatelessWidget {
                                     ],
                                   ),
                                   Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 2.w, top: 16.h, bottom: 16.h),
+                                    padding: EdgeInsets.only(left: 2.w, top: 16.h, bottom: 16.h),
                                     child: SizedBox(
                                       height: 80.h,
                                       width: 85.w,
-                                      child: Image.asset(
-                                          'assets/images/png/cake00.png'),
+                                      child: Image.asset('assets/images/png/cake00.png'),
                                     ),
                                   ),
                                 ],
@@ -169,8 +157,7 @@ class CartPage extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 16.0),
                           child: Ink(
-                            child: SvgPicture.asset(
-                                'assets/images/svg/delete_icon.svg'),
+                            child: SvgPicture.asset('assets/images/svg/delete_icon.svg'),
                           ),
                         ),
                       ],
@@ -182,10 +169,7 @@ class CartPage extends StatelessWidget {
                 children: [
                   Text(
                     'كود الخصم',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: AppConst.kThirdTextColor),
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                   ),
                 ],
               ),
@@ -198,17 +182,13 @@ class CartPage extends StatelessWidget {
                   ),
                   suffixIcon: Padding(
                     padding: const EdgeInsets.all(14.0),
-                    child:
-                        SvgPicture.asset('assets/images/svg/discount_icon.svg'),
+                    child: SvgPicture.asset('assets/images/svg/discount_icon.svg'),
                   ),
                   prefixText: ' تطبيق ',
-                  prefixStyle: const TextStyle(
-                      color: AppConst.kBorderButtonColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
+                  prefixStyle:
+                      const TextStyle(color: AppConst.kBorderButtonColor, fontSize: 16, fontWeight: FontWeight.bold),
                   hintText: 'ادخل كود الخصم',
-                  hintStyle: const TextStyle(
-                      color: AppConst.kThirdTextColor, fontSize: 14),
+                  hintStyle: const TextStyle(color: AppConst.kThirdTextColor, fontSize: 14),
                   contentPadding: const EdgeInsets.all(16.0),
                   fillColor: AppConst.kBorderBoxColor,
                   filled: true,

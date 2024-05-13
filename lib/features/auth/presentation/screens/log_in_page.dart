@@ -31,7 +31,7 @@ class LogInPage extends StatelessWidget {
         child: Form(
           key: formKey,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: 15.0),
+            padding: const EdgeInsets.only(bottom: 16.0),
             child: Column(
               children: [
                 Assets.images.png.primaryBg.image(fit: BoxFit.fill),
@@ -43,18 +43,12 @@ class LogInPage extends StatelessWidget {
                       Gap(25.h),
                       const Text(
                         'تسجيل دخول',
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kScondaryTextColor),
+                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                       ),
                       const Gap(24),
                       const Text(
                         ' رقم الجوال',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kThirdTextColor),
+                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
                       const Gap(16),
                       CustomInputField(
@@ -77,10 +71,7 @@ class LogInPage extends StatelessWidget {
                       const Gap(24),
                       const Text(
                         'كلمة المرور ',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kThirdTextColor),
+                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
                       const Gap(16),
                       CustomInputField(
@@ -106,15 +97,11 @@ class LogInPage extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Utils.openScreen(
-                                  context, const ForgetPasswordPage(),
-                                  replacment: true);
+                              Utils.openScreen(context, const ForgetPasswordPage(), replacment: true);
                             },
                             child: const Text('هل نسيت كلمة المرور ؟',
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppConst.kButtonColor)),
+                                style:
+                                    TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                           ),
                         ],
                       ),
@@ -122,14 +109,10 @@ class LogInPage extends StatelessWidget {
                       BlocConsumer<LoginCubit, LoginState>(
                         listener: (context, state) {
                           if (state is LoginSuccessState) {
-                            Utils.openScreen(context, const HomePage(),
-                                replacment: true);
+                            Utils.openScreen(context, const HomePage(), replacment: true);
                           }
                           if (state is LoginErrorState) {
-                            showAppSnackBar(
-                                context: context,
-                                message: state.message,
-                                type: ToastType.error);
+                            showAppSnackBar(context: context, message: state.message, type: ToastType.error);
                           }
                         },
                         builder: (context, state) {
@@ -141,9 +124,9 @@ class LogInPage extends StatelessWidget {
                           return CustomTextButton(
                             onTap: () {
                               if (formKey.currentState?.validate() == true) {
-                                context.read<LoginCubit>().fLogin(
-                                    phone: phoneController.text.trim(),
-                                    password: passwordController.text);
+                                context
+                                    .read<LoginCubit>()
+                                    .fLogin(phone: phoneController.text.trim(), password: passwordController.text);
                               }
                             },
                             title: 'تسجيل دخول',
@@ -160,21 +143,14 @@ class LogInPage extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Utils.openScreen(context, const NewAccPage(),
-                            replacment: true);
+                        Utils.openScreen(context, const NewAccPage(), replacment: true);
                       },
                       child: const Text('انشاء حساب جديد',
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: AppConst.kButtonColor)),
+                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                     ),
                     const Gap(12),
                     const Text('ليس لديك حساب ؟',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kThirdTextColor)),
+                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor)),
                   ],
                 ),
                 Gap(20.h),
