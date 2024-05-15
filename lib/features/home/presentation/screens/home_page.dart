@@ -5,10 +5,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/resources/assets.gen.dart';
+import '../../../../shared/custom_app_bar.dart';
 import '../../../auth/presentation/screens/products_page.dart';
 import '../../../../shared/custom_text_field.dart';
-
 import '../../../../core/utils/utils.dart';
+import '../../../auth/presentation/screens/search_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -16,12 +17,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       
       backgroundColor: AppConst.kPrimaryColor,
-      // appBar: CustomAppBar.build(context,
-      //     titleText: ' الرئيسية',
-      //     backgroundColor: AppConst.kPrimaryColor,
-      //     iconAppBar: SvgPicture.asset('assets/images/svg/cart_icon.svg')),
+      appBar: CustomAppBar.build(context,
+          titleText: ' الرئيسية',
+          backgroundColor: AppConst.kPrimaryColor,
+          iconAppBar: SvgPicture.asset('assets/images/svg/cart_icon.svg')),
       body: ListView(physics: const BouncingScrollPhysics(), children: [
         Padding(
           padding: const EdgeInsets.all(16.0),
@@ -46,19 +46,21 @@ class HomePage extends StatelessWidget {
                           ),
                           const Gap(32),
                           CustomTxtField(
-                              borderColor: AppConst.kPrimaryColor,
-                              filled: true,
-                              fillColor: AppConst.kPrimaryColor,
-                              hintTxt: 'عن ماذا تبحث؟',
-                              readOnly: true,
-                              onTap: () {
-                              },
-                              iconButton02: Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: SvgPicture.asset(
-                                  'assets/images/svg/search_icon.svg',
-                                ),
-                              )),
+                            borderColor: AppConst.kPrimaryColor,
+                            filled: true,
+                            fillColor: AppConst.kPrimaryColor,
+                            hintTxt: 'عن ماذا تبحث؟',
+                            readOnly: true,
+                            onTap: () {
+                              Utils.openScreen(context, const SearchPage());
+                            },
+                            iconButton02: Padding(
+                              padding: const EdgeInsets.all(16.0),
+                              child: SvgPicture.asset(
+                                'assets/images/svg/search_icon.svg',
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -114,7 +116,11 @@ class HomePage extends StatelessWidget {
                 children: [
                   InkWell(
                     onTap: () {
-                      Utils.openScreen(context, const ProductsPage(), replacment: true);
+                      Utils.openScreen(
+                        context,
+                        const ProductsPage(),
+                        
+                      );
                     },
                     child: const Text(
                       'عرض الكل ',

@@ -7,6 +7,7 @@ import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../../shared/custom_details_container.dart';
 import '../../../../shared/text_button.dart';
+import 'payment_page.dart';
 import 'product_details_page.dart';
 import 'recipient_info_page.dart';
 
@@ -28,7 +29,8 @@ class ChooseLocationPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(right: 16.0, top: 32.0, left: 16.0, bottom: 16.0),
+          padding: const EdgeInsets.only(
+              right: 16.0, top: 32.0, left: 16.0, bottom: 16.0),
           child: Column(
             children: [
               ListView.separated(
@@ -46,7 +48,8 @@ class ChooseLocationPage extends StatelessWidget {
                         child: const CustomDetailsContainer(
                           picInfo: 'select_icon',
                           message02: 'Ar Rawdah',
-                          message03: 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد تم توليد هذا النص من مولد',
+                          message03:
+                              'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد تم توليد هذا النص من مولد',
                           message04: '+966 565 9999 00',
                         ),
                       ),
@@ -65,7 +68,9 @@ class ChooseLocationPage extends StatelessWidget {
                             child: Text(
                               'العنوان الافتراضي  ',
                               style: TextStyle(
-                                  color: const Color(0xff43CA8A), fontSize: 8.sp, fontWeight: FontWeight.bold),
+                                  color: const Color(0xff43CA8A),
+                                  fontSize: 8.sp,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
@@ -107,20 +112,22 @@ class ChooseLocationPage extends StatelessWidget {
                   children: [
                     Text(
                       'أضف عنوان آخر',
-                      style:
-                          TextStyle(color: AppConst.kBorderButtonColor, fontSize: 14.sp, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                          color: AppConst.kBorderButtonColor,
+                          fontSize: 14.sp,
+                          fontWeight: FontWeight.bold),
                     ),
                     Gap(4.w),
                     SvgPicture.asset('assets/images/svg/plus_icon.svg'),
                   ],
                 ),
               ),
-              Gap(200.h),
+              Gap(150.h),
               CustomTextButton(
                 onTap: () {
                   Utils.openScreen(
                     context,
-                    const ProductDetailsPage(),
+                     PaymentPage(),
                   );
                 },
                 title: 'التالي',

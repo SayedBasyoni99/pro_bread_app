@@ -11,10 +11,7 @@ import '../core/const/constant_var.dart';
 import '../core/utils/utils.dart';
 
 class ProductCard extends StatelessWidget {
-  ProductCard(
-      {super.key,
-      this.addToCart = false,
-      this.cartIcon = Icons.add_shopping_cart});
+  ProductCard({super.key, this.addToCart = false, this.cartIcon = Icons.add_shopping_cart});
 
   bool addToCart = false;
   IconData? cartIcon;
@@ -24,8 +21,10 @@ class ProductCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 16.0),
       child: GestureDetector(
         onTap: () {
-          Utils.openScreen(context, const ProductDetailsPage(),
-              replacment: true);
+          Utils.openScreen(
+            context,
+            const ProductDetailsPage(),
+          );
         },
         child: Container(
           decoration: BoxDecoration(
@@ -51,8 +50,7 @@ class ProductCard extends StatelessWidget {
                     children: [
                       Padding(
                         padding: const EdgeInsets.only(right: 8.0),
-                        child: SvgPicture.asset(
-                            'assets/images/svg/empty_heart_icon01.svg'),
+                        child: SvgPicture.asset('assets/images/svg/empty_heart_icon01.svg'),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
@@ -84,8 +82,7 @@ class ProductCard extends StatelessWidget {
                           color: AppConst.kBorderButtonColor,
                         ),
                       Gap(4.w),
-                      if (cartIcon != null)
-                        SvgPicture.asset('assets/images/svg/cart_icon.svg'),
+                      if (cartIcon != null) SvgPicture.asset('assets/images/svg/cart_icon.svg'),
                       Gap(16.w),
                       TextWidget(
                         title: '225 ر.س',
@@ -99,8 +96,7 @@ class ProductCard extends StatelessWidget {
               ),
               const Spacer(),
               Padding(
-                padding:
-                    const EdgeInsets.only(left: 8.0, top: 16.0, bottom: 16.0),
+                padding: const EdgeInsets.only(left: 8.0, top: 16.0, bottom: 16.0),
                 child: SizedBox(
                   height: 80.h,
                   width: 85.w,

@@ -2,6 +2,8 @@ import 'package:easy_localization/easy_localization.dart' as e;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import '../core/const/constant_var.dart';
+
 class CustomInputField extends StatelessWidget {
   const CustomInputField({
     super.key,
@@ -40,7 +42,7 @@ class CustomInputField extends StatelessWidget {
     this.hasPoint = false,
     this.onTap,
     this.textStyle,
-    this.maxLength,
+    this.maxLength, this.filled,
   });
 
   final bool? hasDropDown;
@@ -78,6 +80,7 @@ class CustomInputField extends StatelessWidget {
   final bool hasPoint;
   final void Function()? onTap;
   final int? maxLength;
+  final bool? filled;
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +101,7 @@ class CustomInputField extends StatelessWidget {
                     : TextDirection.ltr,
             onFieldSubmitted: onSubmitted,
             textInputAction: textInputAction,
-            cursorColor: Colors.white,
+            cursorColor: AppConst.kBorderButtonColor,
             enabled: enabled,
             readOnly: readOnly,
             inputFormatters: keyboardType == TextInputType.number
@@ -137,6 +140,14 @@ class CustomInputField extends StatelessWidget {
             maxLength: maxLength,
             minLines: minLines,
             decoration: InputDecoration(
+              filled: filled ,
+              fillColor: fillColor,
+              focusedBorder: UnderlineInputBorder(
+                borderSide: BorderSide(
+                  color: borderColor ?? AppConst.kBorderButtonColor,
+                ),
+              ),
+
               errorMaxLines: 2,
               contentPadding: contentPadding,
               hintText: hint,
