@@ -44,7 +44,10 @@ class RecipientInfoPage extends StatelessWidget {
                 children: [
                   const Text(
                     'معلومات المرسل اليه',
-                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+                    style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: AppConst.kPrimaryTextColor),
                   ),
                   const Gap(16),
                   SvgPicture.asset('assets/images/svg/gift_icon.svg'),
@@ -53,7 +56,10 @@ class RecipientInfoPage extends StatelessWidget {
               Gap(32.h),
               const Text(
                 'اسم المرسل اليه',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: AppConst.kPrimaryTextColor),
               ),
               const Gap(16),
               CustomInputField(
@@ -68,7 +74,10 @@ class RecipientInfoPage extends StatelessWidget {
               const Gap(32),
               const Text(
                 'رقم الجوال',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: AppConst.kPrimaryTextColor),
               ),
               const Gap(16),
               CustomInputField(
@@ -84,7 +93,10 @@ class RecipientInfoPage extends StatelessWidget {
               const Gap(32),
               const Text(
                 ' ارسل ملاحظة',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+                style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.bold,
+                    color: AppConst.kPrimaryTextColor),
               ),
               const Gap(16),
               CustomInputField(
@@ -96,7 +108,7 @@ class RecipientInfoPage extends StatelessWidget {
                   ),
                 ),
               ),
-              Gap(80.h),
+              Gap(60.h),
               CustomTextButton(
                 icon: Icons.arrow_forward,
                 onTap: () {

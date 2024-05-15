@@ -79,7 +79,7 @@ class ProductsPage extends StatelessWidget {
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics()),
               ),
-            )
+            ),
           ],
         ),
       ),

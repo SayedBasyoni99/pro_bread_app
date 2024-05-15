@@ -8,7 +8,6 @@ import '../../../../core/resources/assets.gen.dart';
 import 'log_in_page.dart';
 import '../../../../shared/custom_input_field.dart';
 import '../../../../shared/text_button.dart';
-
 import '../../../../core/utils/app_snack_bar.dart';
 import '../../../../core/utils/utils.dart';
 import '../controller/complete_register/complete_register_cubit.dart';

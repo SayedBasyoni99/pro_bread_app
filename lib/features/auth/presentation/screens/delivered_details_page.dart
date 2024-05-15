@@ -44,7 +44,8 @@ class DeliveredDetailsPage extends StatelessWidget {
                     picInfo: 'arrowBack_icon',
                     message01: 'تفاصيل الشحن',
                     message02: 'Ar Rawdah',
-                    message03: 'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد تم توليد هذا النص من مولد',
+                    message03:
+                        'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد تم توليد هذا النص من مولد',
                     message04: '+966 565 9999 00',
                   ),
                 ),
@@ -65,20 +66,25 @@ class DeliveredDetailsPage extends StatelessWidget {
                     BoxShadow(color: AppConst.kPrimaryColor, spreadRadius: 4.0)
                   ],
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text('استلام الطلب',
                         style: TextStyle(
-                            color: AppConst.kBorderButtonColor, fontSize: 14.sp, fontWeight: FontWeight.bold)),
+                            color: AppConst.kBorderButtonColor,
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.bold)),
                     Gap(16.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         const Text(
                           'توصيل للمنزل ',
-                          style: TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: AppConst.kPrimaryTextColor,
+                              fontWeight: FontWeight.bold),
                         ),
                         Gap(4.w),
                         SvgPicture.asset(
@@ -92,7 +98,9 @@ class DeliveredDetailsPage extends StatelessWidget {
                       children: [
                         const Text(
                           'استلام من المحل ',
-                          style: TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: AppConst.kPrimaryTextColor,
+                              fontWeight: FontWeight.bold),
                         ),
                         Gap(4.w),
                         SvgPicture.asset(
@@ -120,8 +128,10 @@ class DeliveredDetailsPage extends StatelessWidget {
                           padding: const EdgeInsets.only(right: 16.0),
                           child: Text(
                             'أو ارسل الطلب كهدية',
-                            style:
-                                TextStyle(color: AppConst.kPrimaryColor, fontSize: 14.sp, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                color: AppConst.kPrimaryColor,
+                                fontSize: 14.sp,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                         Gap(8.w),
@@ -131,11 +141,12 @@ class DeliveredDetailsPage extends StatelessWidget {
                   Positioned(
                     bottom: 0,
                     left: 20.w,
-                    child: SvgPicture.asset('assets/images/svg/sendGif_icon.svg'),
+                    child:
+                        SvgPicture.asset('assets/images/svg/sendGif_icon.svg'),
                   )
                 ],
               ),
-              Gap(60.h),
+              Gap(50.h),
               CustomTextButton(
                 icon: Icons.arrow_forward,
                 onTap: () {

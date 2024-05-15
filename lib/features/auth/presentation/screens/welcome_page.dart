@@ -4,12 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/resources/assets.gen.dart';
-import '../../../home/presentation/screens/home_page.dart';
 import 'create_acc_page.dart';
 import 'log_in_page.dart';
 import '../../../../shared/custom_txt_bottom.dart';
 
 import '../../../../core/utils/utils.dart';
+import 'my_acc_page.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
@@ -99,7 +99,7 @@ class WelcomePage extends StatelessWidget {
                         onTap: () {
                           Utils.openScreen(
                             context,
-                            const HomePage(),
+                            const MyAccountPage(),
                           );
                         },
                         btnColor: AppConst.kPrimaryColor,
