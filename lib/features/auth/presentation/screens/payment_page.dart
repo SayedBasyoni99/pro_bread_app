@@ -40,20 +40,16 @@ class PaymentPage extends StatelessWidget {
         child: Form(
           key: formKey,
           child: Padding(
-            padding: EdgeInsets.only(
-                right: 16.w, left: 16.w, top: 32.h, bottom: 32.h),
+            padding: EdgeInsets.only(right: 16.w, left: 16.w, top: 32.h, bottom: 32.h),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 const Row(
                   children: [
                     CustomStepper(),
-                    CustomStepper(
-                        stepperColor: AppConst.kSecondaryStepperColor),
-                    CustomStepper(
-                        stepperColor: AppConst.kSecondaryStepperColor),
-                    CustomStepper(
-                        stepperColor: AppConst.kSecondaryStepperColor),
+                    CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
+                    CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
+                    CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
                   ],
                 ),
                 Gap(32.h),
@@ -62,10 +58,7 @@ class PaymentPage extends StatelessWidget {
                   children: [
                     const Text(
                       'معلومات الدفع',
-                      style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: AppConst.kPrimaryTextColor),
+                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
                     ),
                     Gap(8.w),
                     SvgPicture.asset(
@@ -101,8 +94,7 @@ class PaymentPage extends StatelessWidget {
                             ),
                           ),
                           Gap(12.w),
-                          Assets.images.png.madaIcon
-                              .image(height: 14.h, width: 40.w),
+                          Assets.images.png.madaIcon.image(height: 14.h, width: 40.w),
                         ],
                       ),
                       Row(
@@ -143,8 +135,7 @@ class PaymentPage extends StatelessWidget {
                             ),
                           ),
                           Gap(16.w),
-                          SvgPicture.asset('assets/images/svg/visa_icon.svg',
-                              height: 14.h, width: 40.w)
+                          SvgPicture.asset('assets/images/svg/visa_icon.svg', height: 14.h, width: 40.w)
                         ],
                       ),
                       Row(
@@ -164,10 +155,7 @@ class PaymentPage extends StatelessWidget {
                             ),
                           ),
                           Gap(25.w),
-                          SvgPicture.asset(
-                              'assets/images/svg/masterCard_icon.svg',
-                              height: 18.h,
-                              width: 28.w)
+                          SvgPicture.asset('assets/images/svg/masterCard_icon.svg', height: 18.h, width: 28.w)
                         ],
                       ),
                       Row(
@@ -187,8 +175,7 @@ class PaymentPage extends StatelessWidget {
                             ),
                           ),
                           Gap(14.w),
-                          SvgPicture.asset('assets/images/svg/visa_icon.svg',
-                              height: 14.h, width: 40.w)
+                          SvgPicture.asset('assets/images/svg/visa_icon.svg', height: 14.h, width: 40.w)
                         ],
                       ),
                     ],
@@ -199,18 +186,13 @@ class PaymentPage extends StatelessWidget {
                   children: [
                     Text(
                       ': مجموع الطلب',
-                      style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppConst.kThirdTextColor),
+                      style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
                     Gap(8.h),
                     Text(
                       ' ر.س 2500',
-                      style: TextStyle(
-                          fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
-                          color: AppConst.kScondaryTextColor),
+                      style:
+                          TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                     ),
                   ],
                 ),
@@ -222,21 +204,20 @@ class PaymentPage extends StatelessWidget {
                           backgroundColor: Colors.transparent,
                           context: context,
                           child: Container(
+                            width: 343.w,
+                            height: 404.h,
                             decoration: BoxDecoration(
                               image: const DecorationImage(
-                                  image: AssetImage(
-                                      'assets/images/png/successfullOrderBg.png'),
-                                  fit: BoxFit.fill),
+                                  image: AssetImage('assets/images/png/successfullOrderBg.png'), fit: BoxFit.fill),
                               borderRadius: BorderRadius.circular(16.r),
                               color: Colors.transparent,
                             ),
                             child: Wrap(
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 40.h, horizontal: 16.w),
+                                  padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 16.w),
                                   child: Stack(
-                                    // clipBehavior: Clip.none,
+                                    clipBehavior: Clip.none,
                                     children: [
                                       // Assets.images.png.successfullOrderBg
                                       //     .image(
@@ -244,7 +225,7 @@ class PaymentPage extends StatelessWidget {
                                       //   fit: BoxFit.cover,
                                       // ),
                                       Positioned(
-                                        top: -45.h,
+                                        top: -85.h,
                                         left: -30.w,
                                         right: -25.w,
                                         bottom: 130.h,
@@ -265,8 +246,7 @@ class PaymentPage extends StatelessWidget {
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
-                                                color:
-                                                    AppConst.kPrimaryTextColor),
+                                                color: AppConst.kPrimaryTextColor),
                                           ),
                                           Gap(4.h),
                                           const Text(
@@ -274,8 +254,7 @@ class PaymentPage extends StatelessWidget {
                                             style: TextStyle(
                                                 fontSize: 12,
                                                 // fontWeight: FontWeight.bold,
-                                                color:
-                                                    AppConst.kThirdTextColor),
+                                                color: AppConst.kThirdTextColor),
                                           ),
 
                                           Gap(24.h),
@@ -283,11 +262,7 @@ class PaymentPage extends StatelessWidget {
                                           CustomButton(
                                               btnTitle: ' اتبع طلبك ',
                                               onTap: () {
-                                                Utils.openScreen(
-                                                  context,
-                                                  const TrackOrderPage(),
-                                                  // replacment: true
-                                                );
+                                                Utils.openScreen(context, const TrackOrderPage(), replacment: true);
                                               }),
                                         ],
                                       ),

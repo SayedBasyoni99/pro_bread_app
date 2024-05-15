@@ -12,6 +12,7 @@ class AppConst {
   static const Color kBorderButtonColor = Color(0xffCB962C);
   static const Color kStepperColor = Color(0xffEEEEEE);
   static const Color kSecondaryStepperColor = Color(0xff55D835);
+  static const Color kErrorColor = Color(0xffF11616);
   static const String kPrimaryfontFamily = 'SF Pro Text';
   static const String kSocdaryfontFamily = 'Teshrin AR+LT';
 }

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import '../../../../shared/custom_app_bar.dart';
 import '../../../home/presentation/screens/home_page.dart';
 import '../../../../shared/product_card.dart';
 import '../../../../core/const/constant_var.dart';
@@ -16,14 +17,11 @@ class ProductsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: CustomAppBar.build(
-      //   context,
-      // ),
       backgroundColor: AppConst.kPrimaryColor,
-      // appBar: CustomAppBar.build(context,
-      //     titleText: 'المنتجات',
-      //     backgroundColor: AppConst.kPrimaryColor,
-      //     iconAppBar: SvgPicture.asset('assets/images/svg/cart_icon.svg')),
+      appBar: CustomAppBar.build(context,
+          titleText: 'المنتجات',
+          backgroundColor: AppConst.kPrimaryColor,
+          iconAppBar: SvgPicture.asset('assets/images/svg/cart_icon.svg')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -42,8 +40,7 @@ class ProductsPage extends StatelessWidget {
                     //      viewModel.homeModel?.data?.products?[index];
                     return GestureDetector(
                         onTap: () {
-                          Utils.openScreen(context, const HomePage(),
-                              replacment: true);
+                          Utils.openScreen(context, const HomePage(), replacment: true);
                         },
                         child: const CustomCard(
                           color: AppConst.kBorderBoxColor,

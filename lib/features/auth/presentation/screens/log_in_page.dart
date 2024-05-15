@@ -40,7 +40,21 @@ class LogInPage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Gap(25.h),
+                      Gap(16.h),
+                      if (formKey.currentState?.validate() == true)
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              ' خطأ في البريد الإلكتروني او كلمة المرور',
+                              style:
+                                  TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold, color: AppConst.kErrorColor),
+                            ),
+                            Gap(4.w),
+                            SvgPicture.asset('assets/images/svg/wrong_icon.svg'),
+                          ],
+                        ),
+                      Gap(20.h),
                       const Text(
                         'تسجيل دخول',
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
@@ -97,7 +111,10 @@ class LogInPage extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Utils.openScreen(context, const ForgetPasswordPage(), replacment: true);
+                              Utils.openScreen(
+                                context,
+                                 ForgetPasswordPage(),
+                              );
                             },
                             child: const Text('هل نسيت كلمة المرور ؟',
                                 style:
