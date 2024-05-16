@@ -133,9 +133,6 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/BgCelebration_icon.svg
   String get bgCelebrationIcon => 'assets/images/svg/BgCelebration_icon.svg';
 
-  /// File path: assets/images/svg/Group 2211.svg
-  String get group2211 => 'assets/images/svg/Group 2211.svg';
-
   /// File path: assets/images/svg/Group 3243.svg
   String get group3243 => 'assets/images/svg/Group 3243.svg';
 
@@ -159,6 +156,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/arrowBack_icon.svg
   String get arrowBackIcon => 'assets/images/svg/arrowBack_icon.svg';
+
+  /// File path: assets/images/svg/backArrow_icon.svg
+  String get backArrowIcon => 'assets/images/svg/backArrow_icon.svg';
 
   /// File path: assets/images/svg/bakery00.svg
   String get bakery00 => 'assets/images/svg/bakery00.svg';
@@ -192,6 +192,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/delete_icon.svg
   String get deleteIcon => 'assets/images/svg/delete_icon.svg';
+
+  /// File path: assets/images/svg/deliveryDone_icon.svg
+  String get deliveryDoneIcon => 'assets/images/svg/deliveryDone_icon.svg';
 
   /// File path: assets/images/svg/deliveryTime_icon.svg
   String get deliveryTimeIcon => 'assets/images/svg/deliveryTime_icon.svg';
@@ -232,6 +235,12 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/hot_drinks_icon.svg
   String get hotDrinksIcon => 'assets/images/svg/hot_drinks_icon.svg';
 
+  /// File path: assets/images/svg/language_icon.svg
+  String get languageIcon => 'assets/images/svg/language_icon.svg';
+
+  /// File path: assets/images/svg/loadingOrder_icon.svg
+  String get loadingOrderIcon => 'assets/images/svg/loadingOrder_icon.svg';
+
   /// File path: assets/images/svg/lock_icon.svg
   String get lockIcon => 'assets/images/svg/lock_icon.svg';
 
@@ -247,6 +256,9 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/minus_icon.svg
   String get minusIcon => 'assets/images/svg/minus_icon.svg';
 
+  /// File path: assets/images/svg/myOrders_icon.svg
+  String get myOrdersIcon => 'assets/images/svg/myOrders_icon.svg';
+
   /// File path: assets/images/svg/noOreders_icon.svg
   String get noOredersIcon => 'assets/images/svg/noOreders_icon.svg';
 
@@ -259,6 +271,9 @@ class $AssetsImagesSvgGen {
 
   /// File path: assets/images/svg/note_icon.svg
   String get noteIcon => 'assets/images/svg/note_icon.svg';
+
+  /// File path: assets/images/svg/onRoad_icon.svg
+  String get onRoadIcon => 'assets/images/svg/onRoad_icon.svg';
 
   /// File path: assets/images/svg/password.svg
   String get password => 'assets/images/svg/password.svg';
@@ -309,10 +324,12 @@ class $AssetsImagesSvgGen {
   /// File path: assets/images/svg/visa_icon.svg
   String get visaIcon => 'assets/images/svg/visa_icon.svg';
 
+  /// File path: assets/images/svg/wrong_icon.svg
+  String get wrongIcon => 'assets/images/svg/wrong_icon.svg';
+
   /// List of all assets
   List<String> get values => [
         bgCelebrationIcon,
-        group2211,
         group3243,
         group3244,
         group364,
@@ -321,6 +338,7 @@ class $AssetsImagesSvgGen {
         accInfoIcon,
         accountIcon,
         arrowBackIcon,
+        backArrowIcon,
         bakery00,
         bakery01,
         buttomSheet,
@@ -332,6 +350,7 @@ class $AssetsImagesSvgGen {
         coldDrinksIcon,
         courwasonIcon,
         deleteIcon,
+        deliveryDoneIcon,
         deliveryTimeIcon,
         desertIcon,
         discountIcon,
@@ -345,15 +364,19 @@ class $AssetsImagesSvgGen {
         giftIcon,
         homeIcon,
         hotDrinksIcon,
+        languageIcon,
+        loadingOrderIcon,
         lockIcon,
         logOutIcon,
         mapIcon,
         masterCardIcon,
         minusIcon,
+        myOrdersIcon,
         noOredersIcon,
         noProductsIcon,
         notFoundProductsIcon,
         noteIcon,
+        onRoadIcon,
         password,
         paymentIcon,
         person,
@@ -369,7 +392,8 @@ class $AssetsImagesSvgGen {
         successfullOrderIcon,
         unSelectIcon,
         visaCardIcon,
-        visaIcon
+        visaIcon,
+        wrongIcon
       ];
 }
 

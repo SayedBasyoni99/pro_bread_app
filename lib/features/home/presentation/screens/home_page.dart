@@ -1,15 +1,18 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/resources/assets.gen.dart';
+import '../../../../core/utils/app_snack_bar.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../auth/presentation/screens/products_page.dart';
 import '../../../../shared/custom_text_field.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../auth/presentation/screens/search_page.dart';
+import '../../../categories/presentation/controller/get_categories/get_categories_cubit.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -135,20 +138,43 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               Gap(16.h),
-              SizedBox(
-                height: 250.h,
-                width: double.infinity.w,
-                child: GridView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: 4,
-                    shrinkWrap: true,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, mainAxisSpacing: 16.0, crossAxisSpacing: 16.0),
-                    itemBuilder: (context, index) => Container(
-                          decoration:
-                              BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: AppConst.kBorderBoxColor),
-                          child: Assets.images.png.desert.image(fit: BoxFit.fill),
-                        )),
+              BlocConsumer<GetCategoriesCubit, GetCategoriesState>(
+                listener: (BuildContext context, GetCategoriesState state){
+                  if (state is GetCategoriesErrorState) {
+                    showAppSnackBar(context: context, message: state.message, type: ToastType.error);
+                  }
+                },
+                builder: (BuildContext context, GetCategoriesState state){
+                  if (state is GetCategoriesLoadingState) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  if(state is GetCategoriesSuccessState){
+                    return SizedBox(
+                      height: 250.h,
+                      width: double.infinity.w,
+                      child: GridView.builder(
+                          physics: const BouncingScrollPhysics(),
+                          itemCount: state.value.length,
+                          shrinkWrap: true,
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2, mainAxisSpacing: 16.0, crossAxisSpacing: 16.0),
+                          itemBuilder: (context, index) {
+                            final category = state.value[index];
+                            return Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10.0),
+                                color: AppConst.kBorderBoxColor,
+                              ),
+                              child: Image.network(
+                                category.avatar,
+                              ),
+                            );
+                          },
+                      ),
+                    );
+                  }
+                  return const SizedBox();
+                },
               ),
             ],
           ),
