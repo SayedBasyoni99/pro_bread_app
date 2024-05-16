@@ -2,7 +2,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'features/categories/categories_injection.dart';
+import 'features/favorites/favorites_injection.dart';
 import 'features/home/presentation/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
+import 'features/orders/orders_injection.dart';
 import 'splash/splash_screen.dart';
 
 import 'features/address/address_injection.dart';
@@ -73,6 +76,9 @@ class MyApp extends StatelessWidget {
           providers: [
             ...addressBlocs,
             ...authBlocs,
+            ...categoriesBlocs,
+            ...favoritesBlocs,
+            ...ordersBlocs,
             BlocProvider<BottomNavBarCubit>(
               create: (context) => BottomNavBarCubit(),
             ),

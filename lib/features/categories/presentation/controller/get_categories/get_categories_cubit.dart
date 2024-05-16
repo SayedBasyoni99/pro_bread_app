@@ -25,6 +25,7 @@ class GetCategoriesCubit extends Cubit<GetCategoriesState> {
     }, (GetCategoriesResponse response) {
       data.clear();
       data.addAll(response.data);
+      state.value[index]
       emit(GetCategoriesSuccessState(value: response.data));
     });
   }

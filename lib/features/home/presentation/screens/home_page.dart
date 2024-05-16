@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -135,21 +136,19 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               Gap(16.h),
-              SizedBox(
-                height: 250.h,
-                width: double.infinity.w,
-                child: GridView.builder(
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: 4,
-                    shrinkWrap: true,
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2, mainAxisSpacing: 16.0, crossAxisSpacing: 16.0),
-                    itemBuilder: (context, index) => Container(
-                          decoration:
-                              BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: AppConst.kBorderBoxColor),
-                          child: Assets.images.png.desert.image(fit: BoxFit.fill),
-                        )),
-              ),
+              BlocConsumer(builder: 
+              if(state is GetProductsLoadingState)
+              const Center(child: CircularProgressIndicator()),
+
+              
+              
+              , listener: 
+              (context, state) {
+                if(state is GetProductsErrorState){
+                  show
+                  
+                }
+              })
             ],
           ),
         ),

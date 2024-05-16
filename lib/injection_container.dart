@@ -9,6 +9,9 @@ import 'core/services/local_storage/app_secure_storage.dart';
 import 'core/services/local_storage/app_shared_preferences.dart';
 import 'features/address/address_injection.dart';
 import 'features/auth/auth_injection.dart';
+import 'features/categories/categories_injection.dart';
+import 'features/favorites/favorites_injection.dart';
+import 'features/orders/orders_injection.dart';
 
 abstract class ServiceLocator {
   static final GetIt instance = GetIt.instance;
@@ -19,6 +22,9 @@ abstract class ServiceLocator {
     /// Features
     await initAddressFeatureInjection();
     await initAuthFeatureInjection();
+    await initCategoriesFeatureInjection();
+    await initFavoritesFeatureInjection();
+    await initOrdersFeatureInjection();
 
     /// Core
     _injectDioConsumer();
