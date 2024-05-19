@@ -6,14 +6,28 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/resources/assets.gen.dart';
+import '../../../../core/utils/app_snack_bar.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../auth/presentation/screens/products_page.dart';
 import '../../../../shared/custom_text_field.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../auth/presentation/screens/search_page.dart';
+import '../../../categories/presentation/controller/get_categories/get_categories_cubit.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<GetCategoriesCubit>().fGetCategories();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

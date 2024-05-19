@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
+import '../../../../core/utils/app_snack_bar.dart';
 import '../../../../shared/product_card.dart';
+import '../../../categories/presentation/controller/get_dishes/get_dishes_cubit.dart';
 
 class FavoritesPage extends StatelessWidget {
   const FavoritesPage({super.key});
@@ -31,13 +34,40 @@ class FavoritesPage extends StatelessWidget {
                 SizedBox(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: ListView.builder(
-                        itemBuilder: (context, index) {
-                          return ProductCard();
-                        },
-                        itemCount: 10,
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics()),
+                    child: BlocConsumer<GetDishesCubit, GetDishesState>(
+                      listener: (BuildContext context, GetDishesState state) {
+                        if (state is GetDishesErrorState) {
+                          showAppSnackBar(
+                              context: context,
+                              message: state.message,
+                              type: ToastType.error);
+                        }
+                      },
+                      builder: (context, state) {
+                        if (state is GetDishesLoadingState) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        if (state is GetDishesSuccessState) {
+                          return ListView.builder(
+                              itemBuilder: (context, index) {
+                                final product = state.value[index];
+                                return ProductCard(
+                                  productDescription: product.description,
+                                  productName: product.name,
+                                  productPrice: product.price,
+                                  productImage: product.avatar,
+                                );
+                              },
+                              itemCount: 10,
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics());
+                        }
+
+                        return const SizedBox();
+                      },
+                    ),
                   ),
                 ),
               ],

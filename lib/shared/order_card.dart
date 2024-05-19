@@ -80,7 +80,7 @@ class OrderCard extends StatelessWidget {
                   Gap(4.w),
                   TextWidget(
                     title: 'تم الاستلام',
-                    color: Color(0xff43CA8A),
+                    color: const Color(0xff43CA8A),
                     fontSize: 14.sp,
                     fontWeight: FontWeight.bold,
                   ),
@@ -100,6 +100,6 @@ class OrderCard extends StatelessWidget {
         ],
       ),
     );
-    ;
+    
   }
 }

@@ -9,9 +9,7 @@ import '../../../home/presentation/screens/home_page.dart';
 import 'create_acc_page.dart';
 import 'log_in_page.dart';
 import '../../../../shared/custom_txt_bottom.dart';
-
 import '../../../../core/utils/utils.dart';
-import 'my_acc_page.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});

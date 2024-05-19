@@ -96,7 +96,7 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
         getCategoriesEndpoint,
       );
 
-      if(response['status'] == true){
+      if(response['data'] != null && response['data'] is List){
         return GetCategoriesModel.fromJson(response);
       }
       throw ServerException(message: response['message']?? '');
