@@ -14,8 +14,20 @@ import '../../../../core/utils/utils.dart';
 import '../../../auth/presentation/screens/search_page.dart';
 import '../../../categories/presentation/controller/get_categories/get_categories_cubit.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<GetCategoriesCubit>().fGetCategories();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,7 +134,7 @@ class HomePage extends StatelessWidget {
                       Utils.openScreen(
                         context,
                         const ProductsPage(),
-                        
+
                       );
                     },
                     child: const Text(
