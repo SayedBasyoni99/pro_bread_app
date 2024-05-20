@@ -6,8 +6,7 @@ import 'package:gap/gap.dart';
 import '../core/const/constant_var.dart';
 
 class CustomAdressBox extends StatelessWidget {
-  const CustomAdressBox(
-      {super.key, required this.picInfo, required this.boxTitle});
+  const CustomAdressBox({super.key, required this.picInfo, required this.boxTitle});
   final String picInfo, boxTitle;
   @override
   Widget build(BuildContext context) {
@@ -28,10 +27,7 @@ class CustomAdressBox extends StatelessWidget {
 
               // changes position of shadow
             ),
-            BoxShadow(
-                color: AppConst.kPrimaryColor,
-                spreadRadius: 4.5,
-                blurRadius: 10)
+            BoxShadow(color: AppConst.kPrimaryColor, spreadRadius: 4.5, blurRadius: 10)
           ],
         ),
         child: Column(
@@ -41,7 +37,7 @@ class CustomAdressBox extends StatelessWidget {
             Gap(16.h),
             Text(
               boxTitle,
-              style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
+              style:  TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold),
             ),
           ],
         ),

@@ -29,10 +29,7 @@ class NotFoundMesaage extends StatelessWidget {
           Gap(32.h),
           Text(
             message,
-            style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: AppConst.kPrimaryTextColor),
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
           ),
         ],
       ),

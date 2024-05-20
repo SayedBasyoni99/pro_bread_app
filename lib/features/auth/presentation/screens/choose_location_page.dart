@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -20,7 +21,7 @@ class ChooseLocationPage extends StatelessWidget {
       backgroundColor: AppConst.kPrimaryColor,
       appBar: CustomAppBar.build(
         context,
-        titleText: 'تفاصيل الشحن',
+        titleText: 'shipping_details'.tr(),
         iconAppBar: SvgPicture.asset(
           'assets/images/svg/cart_icon.svg',
           height: 20,
@@ -29,8 +30,7 @@ class ChooseLocationPage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.only(
-              right: 16.0, top: 32.0, left: 16.0, bottom: 16.0),
+          padding: const EdgeInsets.only(right: 16.0, top: 32.0, left: 16.0, bottom: 16.0),
           child: Column(
             children: [
               ListView.separated(
@@ -45,17 +45,16 @@ class ChooseLocationPage extends StatelessWidget {
                             const ProductDetailsPage(),
                           );
                         },
-                        child: const CustomDetailsContainer(
+                        child: CustomDetailsContainer(
                           picInfo: 'select_icon',
-                          message02: 'Ar Rawdah',
-                          message03:
-                              'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد تم توليد هذا النص من مولد',
+                          message02: 'mansoura'.tr(),
+                          message03: 'gift_services_description'.tr(),
                           message04: '+966 565 9999 00',
                         ),
                       ),
                       if (index == 0)
                         Positioned(
-                          right: 4.0,
+                          left: 4.0,
                           top: -15.h,
                           child: Container(
                             height: 24.h,
@@ -66,11 +65,9 @@ class ChooseLocationPage extends StatelessWidget {
                               color: const Color(0xffF0FBF6),
                             ),
                             child: Text(
-                              'العنوان الافتراضي  ',
+                              'default_address'.tr(),
                               style: TextStyle(
-                                  color: const Color(0xff43CA8A),
-                                  fontSize: 8.sp,
-                                  fontWeight: FontWeight.bold),
+                                  color: const Color(0xff43CA8A), fontSize: 8.sp, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ),
@@ -108,17 +105,15 @@ class ChooseLocationPage extends StatelessWidget {
                   Utils.openScreen(context, const RecipientInfoPage());
                 },
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
-                      'أضف عنوان آخر',
-                      style: TextStyle(
-                          color: AppConst.kBorderButtonColor,
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.bold),
-                    ),
-                    Gap(4.w),
                     SvgPicture.asset('assets/images/svg/plus_icon.svg'),
+                    Gap(4.w),
+                    Text(
+                      'add_another_address'.tr(),
+                      style:
+                          TextStyle(color: AppConst.kBorderButtonColor, fontSize: 14.sp, fontWeight: FontWeight.bold),
+                    ),
                   ],
                 ),
               ),
@@ -127,10 +122,10 @@ class ChooseLocationPage extends StatelessWidget {
                 onTap: () {
                   Utils.openScreen(
                     context,
-                     PaymentPage(),
+                    PaymentPage(),
                   );
                 },
-                title: 'التالي',
+                title: 'next'.tr(),
                 fontSize: 18.sp,
               ),
             ],

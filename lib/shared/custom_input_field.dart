@@ -7,8 +7,8 @@ import '../core/const/constant_var.dart';
 class CustomInputField extends StatelessWidget {
   const CustomInputField({
     super.key,
-    this.hintTextStyle,
-    this.labelStyle,
+       
+   
     this.borderColor,
     this.onChanged,
     this.prefixIcon,
@@ -73,8 +73,6 @@ class CustomInputField extends StatelessWidget {
   final AutovalidateMode? autovalidateMode;
   final EdgeInsetsGeometry? contentPadding;
   final TextAlign textAlign;
-  final TextStyle? hintTextStyle;
-  final TextStyle? labelStyle;
   final TextStyle? textStyle;
   final double? hintSize;
   final bool hasPoint;
@@ -93,7 +91,7 @@ class CustomInputField extends StatelessWidget {
             controller: controller,
             validator: validator,
             // style: context.textTheme.titleLarge?.copyWith(fontSize: FontSize.s16),
-            style: textStyle,
+            style: const TextStyle(),
             textDirection:
                 e.EasyLocalization.of(context)!.currentLocale!.languageCode ==
                         'ar'

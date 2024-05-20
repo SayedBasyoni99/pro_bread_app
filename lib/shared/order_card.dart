@@ -38,8 +38,7 @@ class OrderCard extends StatelessWidget {
                   children: [
                     Padding(
                       padding: EdgeInsets.only(right: 8.w),
-                      child: SvgPicture.asset(
-                          'assets/images/svg/backArrow_icon.svg'),
+                      child: SvgPicture.asset('assets/images/svg/backArrow_icon.svg'),
                     ),
                     TextWidget(
                       title: 'تفاصيل الطلب',
@@ -66,7 +65,7 @@ class OrderCard extends StatelessWidget {
             // fontWeight: FontWeight.bold,
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -87,8 +86,7 @@ class OrderCard extends StatelessWidget {
                 ],
               ),
               Padding(
-                padding:
-                    const EdgeInsets.only(left: 8.0, top: 16.0, bottom: 16.0),
+                padding: const EdgeInsets.only(left: 8.0, top: 16.0, bottom: 16.0),
                 child: SizedBox(
                   height: 50.h,
                   width: 50.w,
@@ -100,6 +98,5 @@ class OrderCard extends StatelessWidget {
         ],
       ),
     );
-    
   }
 }

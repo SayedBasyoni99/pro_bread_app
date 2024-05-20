@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,7 +19,7 @@ class RecipientInfoPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar.build(
         context,
-        titleText: ' تابع إتمام الطلب',
+        titleText: 'proceed_to_checkout'.tr(),
         iconAppBar: SvgPicture.asset(
           'assets/images/svg/cart_icon.svg',
           height: 20,
@@ -30,7 +31,7 @@ class RecipientInfoPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Row(children: [
                 CustomStepper(),
@@ -40,30 +41,25 @@ class RecipientInfoPage extends StatelessWidget {
               ]),
               Gap(32.h),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    'معلومات المرسل اليه',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: AppConst.kPrimaryTextColor),
+                  Text(
+                    'recipient_information'.tr(),
+                    style:
+                        const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
                   ),
                   const Gap(16),
                   SvgPicture.asset('assets/images/svg/gift_icon.svg'),
                 ],
               ),
               Gap(32.h),
-              const Text(
-                'اسم المرسل اليه',
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: AppConst.kPrimaryTextColor),
+              Text(
+                'recipient_name'.tr(),
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
               ),
               const Gap(16),
               CustomInputField(
-                hint: 'السيد جابر',
+                hint: 'elsayed_gaber'.tr(),
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: SvgPicture.asset(
@@ -72,17 +68,14 @@ class RecipientInfoPage extends StatelessWidget {
                 ),
               ),
               const Gap(32),
-              const Text(
-                'رقم الجوال',
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: AppConst.kPrimaryTextColor),
+              Text(
+                'mobile_number'.tr(),
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
               ),
               const Gap(16),
               CustomInputField(
                 keyboardType: TextInputType.phone,
-                hint: 'ادخل رقم الجوال',
+                hint: 'enter_mobile_number'.tr(),
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: SvgPicture.asset(
@@ -91,16 +84,13 @@ class RecipientInfoPage extends StatelessWidget {
                 ),
               ),
               const Gap(32),
-              const Text(
-                ' ارسل ملاحظة',
-                style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: AppConst.kPrimaryTextColor),
+              Text(
+                'send_note'.tr(),
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
               ),
               const Gap(16),
               CustomInputField(
-                hint: ' اكتب الملاحظة',
+                hint: 'write_note'.tr(),
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(12.0),
                   child: SvgPicture.asset(
@@ -117,7 +107,7 @@ class RecipientInfoPage extends StatelessWidget {
                     // replacment: true
                   );
                 },
-                title: 'التالي',
+                title: 'next'.tr(),
                 fontSize: 18.sp,
               ),
               Gap(20.h),

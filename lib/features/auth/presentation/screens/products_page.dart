@@ -1,22 +1,14 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/utils/app_snack_bar.dart';
-import '../../../../shared/custom_app_bar.dart';
 import '../../../categories/presentation/controller/get_categories/get_categories_cubit.dart';
-import '../../../categories/presentation/controller/get_category/get_category_cubit.dart';
 import '../../../categories/presentation/controller/get_dishes/get_dishes_cubit.dart';
 import '../../../../shared/product_card.dart';
 import '../../../../core/const/constant_var.dart';
-import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_card.dart';
-import '../../../../shared/text_widget.dart';
-import 'product_details_page.dart';
 
 class ProductsPage extends StatefulWidget {
   const ProductsPage({super.key});
@@ -46,10 +38,7 @@ class _ProductsPageState extends State<ProductsPage> {
           BlocConsumer<GetCategoriesCubit, GetCategoriesState>(
             listener: (context, state) {
               if (state is GetCategoriesErrorState) {
-                showAppSnackBar(
-                    context: context,
-                    message: state.message,
-                    type: ToastType.error);
+                showAppSnackBar(context: context, message: state.message, type: ToastType.error);
               }
             },
             builder: (context, state) {
@@ -73,20 +62,13 @@ class _ProductsPageState extends State<ProductsPage> {
 
                       return GestureDetector(
                           onTap: () {
-                            context
-                                .read<GetCategoriesCubit>()
-                                .changeIndex(index: index);
-                            context
-                                .read<GetDishesCubit>()
-                                .fGetDishes(category: state.value[index].id);
+                            context.read<GetCategoriesCubit>().changeIndex(index: index);
+                            context.read<GetDishesCubit>().fGetDishes(category: state.value[index].id);
                           },
                           child: CustomCard(
                             item: state.value[index],
                             color: AppConst.kBorderBoxColor,
-                            isSelected: context
-                                    .read<GetCategoriesCubit>()
-                                    .currentIndex ==
-                                index,
+                            isSelected: context.read<GetCategoriesCubit>().currentIndex == index,
                           ));
                     },
                   ),
@@ -98,7 +80,7 @@ class _ProductsPageState extends State<ProductsPage> {
           ),
           Gap(16.h),
           // Row(
-          //   mainAxisAlignment: MainAxisAlignment.end,
+          //   mainAxisAlignment: MainAxisAlignment.start,
           //   children: [
           //     SizedBox(
           //       height: .06.sh,
@@ -121,10 +103,7 @@ class _ProductsPageState extends State<ProductsPage> {
               child: BlocConsumer<GetDishesCubit, GetDishesState>(
                 listener: (BuildContext context, GetDishesState state) {
                   if (state is GetDishesErrorState) {
-                    showAppSnackBar(
-                        context: context,
-                        message: state.message,
-                        type: ToastType.error);
+                    showAppSnackBar(context: context, message: state.message, type: ToastType.error);
                   }
                 },
                 builder: (BuildContext context, GetDishesState state) {

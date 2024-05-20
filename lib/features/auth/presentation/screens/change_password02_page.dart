@@ -39,10 +39,7 @@ class ChangePassword02Page extends StatelessWidget {
                   Gap(80.h),
                   const Text(
                     'كلمة المرور الجديدة ',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: AppConst.kThirdTextColor),
+                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                   ),
                   const Gap(16),
                   CustomInputField(
@@ -58,10 +55,7 @@ class ChangePassword02Page extends StatelessWidget {
                   const Gap(24),
                   const Text(
                     'تأكيد كلمة المرور الجديدة',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: AppConst.kThirdTextColor),
+                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                   ),
                   const Gap(16),
                   CustomInputField(
@@ -87,16 +81,14 @@ class ChangePassword02Page extends StatelessWidget {
                           child: Wrap(
                             children: [
                               Padding(
-                                padding: EdgeInsets.symmetric(
-                                    vertical: 40.h, horizontal: 32.w),
+                                padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 32.w),
                                 child: Column(
                                   children: [
-                                    SvgPicture.asset(
-                                        'assets/images/svg/lock_icon.svg'),
+                                    SvgPicture.asset('assets/images/svg/lock_icon.svg'),
                                     Gap(16.h),
                                     const Text(
                                       'تم تغيير كلمة المرور بنجاح',
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
                                           color: AppConst.kScondaryTextColor),
@@ -105,8 +97,7 @@ class ChangePassword02Page extends StatelessWidget {
                                     CustomButton(
                                         btnTitle: 'تسجيل الدخول',
                                         onTap: () {
-                                          Utils.openScreen(context, LogInPage(),
-                                              replacment: true);
+                                          Utils.openScreen(context, LogInPage(), replacment: true);
                                         }),
                                   ],
                                 ),

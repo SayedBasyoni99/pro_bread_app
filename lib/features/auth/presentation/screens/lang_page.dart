@@ -30,7 +30,7 @@ class LanguagePage extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const Text(
                   'اللغة العربية',
@@ -44,7 +44,7 @@ class LanguagePage extends StatelessWidget {
             ),
             Gap(24.h),
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 const Text(
                   'ُEnglish ',

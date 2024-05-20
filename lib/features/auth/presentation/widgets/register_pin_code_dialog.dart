@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -35,20 +36,14 @@ class _RegisterPinCodeDialogState extends State<RegisterPinCodeDialog> {
             padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 32.w),
             child: Column(
               children: [
-                const Text(
-                  'الرجاء اخال الكود',
-                  style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: AppConst.kScondaryTextColor),
+                Text(
+                  'please_enter_code'.tr(),
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                 ),
                 Gap(16.h),
-                const Text(
-                  'يرجي إدخال الكود الذي تم إرساله لإنشاء الحساب',
-                  style: TextStyle(
-                      fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: AppConst.kThirdTextColor),
+                Text(
+                  'enter_code_sent'.tr(),
+                  style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                 ),
                 Gap(32.h),
                 PinCodeWidget(
@@ -61,23 +56,16 @@ class _RegisterPinCodeDialogState extends State<RegisterPinCodeDialog> {
                   },
                 ),
                 const Gap(12),
-                const Text('سيتم ارسال الكود خلال 60 ثانية',
-                    style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: AppConst.kThirdTextColor)),
+                Text('code_will_be_sent'.tr(),
+                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor)),
                 Gap(16.h),
                 BlocConsumer<CheckOtpCubit, CheckOtpState>(
                   listener: (context, state) {
                     if (state is CheckOtpSuccessState) {
-                      Utils.openScreen(context, const NewAccPage(),
-                          replacment: true);
+                      Utils.openScreen(context, const NewAccPage(), replacment: true);
                     }
                     if (state is CheckOtpErrorState) {
-                      showAppSnackBar(
-                          context: context,
-                          message: state.message,
-                          type: ToastType.error);
+                      showAppSnackBar(context: context, message: state.message, type: ToastType.error);
                     }
                   },
                   builder: (context, state) {
@@ -85,7 +73,7 @@ class _RegisterPinCodeDialogState extends State<RegisterPinCodeDialog> {
                       return const Center(child: CircularProgressIndicator());
                     }
                     return CustomButton(
-                        btnTitle: 'تأكيد ',
+                        btnTitle: 'confirm'.tr(),
                         onTap: () {
                           onConfirmOtp();
                         });
@@ -95,23 +83,18 @@ class _RegisterPinCodeDialogState extends State<RegisterPinCodeDialog> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Text('code_not_sent'.tr(),
+                        style: const TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor)),
+                    Gap(8.h),
                     GestureDetector(
                       onTap: () {
-                        Utils.openScreen(context, const NewAccPage(),
-                            replacment: true);
+                        Utils.openScreen(context, const NewAccPage(), replacment: true);
                       },
-                      child: const Text('ارسال مرة أخرى ',
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: AppConst.kButtonColor)),
+                      child: Text('send_again'.tr(),
+                          style:
+                              const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                     ),
-                    const Gap(8),
-                    const Text('لم يتم ارسال الكود؟ ',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kThirdTextColor)),
                   ],
                 ),
                 Gap(16.h),

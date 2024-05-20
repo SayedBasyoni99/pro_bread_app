@@ -1,5 +1,4 @@
 // ignore_for_file: must_be_immutable
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +9,6 @@ import '../../../../core/const/constant_var.dart';
 import '../../../../core/resources/assets.gen.dart';
 import '../../../../core/utils/app_snack_bar.dart';
 import '../../../../core/utils/utils.dart';
-import '../../../home/presentation/screens/home_page.dart';
 import '../../../home/presentation/screens/main_page.dart';
 import '../controller/login/login_cubit.dart';
 import 'forget_password.dart';
@@ -40,7 +38,7 @@ class LogInPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Gap(16.h),
                       if (formKey.currentState?.validate() == true)
@@ -57,14 +55,16 @@ class LogInPage extends StatelessWidget {
                           ],
                         ),
                       Gap(20.h),
-                       Text(
-                        ' login' .tr(),
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
+                      Text(
+                        ' login'.tr(),
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                       ),
                       const Gap(24),
-                       Text(
-                        'mobile_number' .tr(),
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                      Text(
+                        'mobile_number'.tr(),
+                        style:
+                            const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
                       const Gap(16),
                       CustomInputField(
@@ -76,7 +76,7 @@ class LogInPage extends StatelessWidget {
                           }
                           return null;
                         },
-                        hint: 'enter_mobile_number' .tr(),
+                        hint: 'enter_mobile_number'.tr(),
                         prefixIcon: Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: SvgPicture.asset(
@@ -85,21 +85,22 @@ class LogInPage extends StatelessWidget {
                         ),
                       ),
                       const Gap(24),
-                       Text(
-                        'password' .tr(),
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                      Text(
+                        'password'.tr(),
+                        style:
+                            const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
                       const Gap(16),
                       CustomInputField(
                         controller: passwordController,
                         validator: (value) {
                           if (value?.isEmpty == true) {
-                            return 'reqired'  .tr();
+                            return 'reqired'.tr();
                           }
                           return null;
                         },
                         isPassword: true,
-                        hint: 'enter_password' .tr() ,
+                        hint: 'enter_password'.tr(),
                         prefixIcon: Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: SvgPicture.asset(
@@ -115,12 +116,12 @@ class LogInPage extends StatelessWidget {
                             onTap: () {
                               Utils.openScreen(
                                 context,
-                                 ForgetPasswordPage(),
+                                ForgetPasswordPage(),
                               );
                             },
-                            child:  Text('forget_password' .tr(),
-                                style:
-                                    TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
+                            child: Text('forgot_password'.tr(),
+                                style: const TextStyle(
+                                    fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                           ),
                         ],
                       ),
@@ -148,7 +149,7 @@ class LogInPage extends StatelessWidget {
                                     .fLogin(phone: phoneController.text.trim(), password: passwordController.text);
                               }
                             },
-                            title: 'login' .tr(),
+                            title: 'login'.tr(),
                             fontSize: 18.sp,
                           );
                         },
@@ -160,16 +161,18 @@ class LogInPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Text('dont_have_an_account'.tr(),
+                        style: const TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor)),
+                    Gap(8.w),
                     GestureDetector(
                       onTap: () {
                         Utils.openScreen(context, const NewAccPage(), replacment: true);
                       },
-                      child:  Text(' ${'create_new_account'.tr()} ',
-                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
+                      child: Text(' ${'create_new_account'.tr()} ',
+                          style:
+                              const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                     ),
-                    const Gap(12),
-                     Text('don\'t_have_an_account '  .tr(),
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor)),
                   ],
                 ),
                 Gap(20.h),

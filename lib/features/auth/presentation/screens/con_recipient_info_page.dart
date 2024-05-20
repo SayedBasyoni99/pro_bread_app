@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,66 +19,67 @@ class ConRecipientInfoPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar.build(
         context,
-        titleText: 'تابع إتمام الطلب',
+        titleText: 'proceed_to_checkout'.tr(),
         // removeBack: false,
+        actions: [],
       ),
       backgroundColor: AppConst.kPrimaryColor,
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Row(children: [
-                CustomStepper(),
-                CustomStepper(),
-                CustomStepper(),
                 CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
+                CustomStepper(),
+                CustomStepper(),
+                CustomStepper(),
               ]),
               Gap(32.h),
-              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                const Text(
-                  'عنوان المرسل اليه',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
-                ),
-                Gap(8.w),
+              Row(mainAxisAlignment: MainAxisAlignment.start, children: [
                 SvgPicture.asset('assets/images/svg/map_icon.svg'),
+                Gap(8.w),
+                Text(
+                  'recipient_address'.tr(),
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+                ),
               ]),
               Gap(32.h),
-              const Text(
-                'المنطقة ',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+              Text(
+                'area'.tr(),
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
               ),
               Gap(4.h),
-              const CustomInputField(
-                hint: 'المنصورة',
+              CustomInputField(
+                hint: 'mansoura'.tr(),
               ),
               Gap(32.h),
-              const Text(
-                'الشارع',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+              Text(
+                'street'.tr(),
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
               ),
               Gap(4.h),
-              const CustomInputField(
-                hint: 'الجمهورية',
+              CustomInputField(
+                hint: 'jahan_street'.tr(),
               ),
               Gap(32.h),
-              const Text(
-                'اسم أو رقم البناية',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+              Text(
+                'building_name_or_number'.tr(),
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
               ),
               Gap(4.h),
               const CustomInputField(
-                hint: '20',
+                hint: '50',
               ),
               Gap(32.h),
-              const Text(
-                'علامة مميزة',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+              Text(
+                'landmark'.tr(),
+                style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
               ),
               Gap(4.h),
-              const CustomInputField(
-                hint: 'امام مستشفي الجامعة ',
+              CustomInputField(
+                hint: 'mansoura'.tr(),
               ),
               Gap(60.h),
               CustomTextButton(
@@ -88,7 +90,7 @@ class ConRecipientInfoPage extends StatelessWidget {
                     const DeliveryTimePage(),
                   );
                 },
-                title: 'التالي',
+                title: 'next'.tr(),
                 fontSize: 18.sp,
               ),
             ],

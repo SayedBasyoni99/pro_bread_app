@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,7 +7,6 @@ import 'package:gap/gap.dart';
 import '../../../../core/resources/assets.gen.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../categories/domain/entities/get_dish_response.dart';
-import '../../../categories/presentation/controller/get_dish/get_dish_cubit.dart';
 import 'cart_page.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../shared/custom_txt_bottom.dart';
@@ -30,7 +29,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   @override
   Widget build(BuildContext context) {
     final Dish? dish = (ModalRoute.of(context)?.settings.arguments) as Dish?;
-    print('dfsgfgfdggdf ${dish?.id}');
+    print('Sayyyyyed ${dish?.id}');
     return Scaffold(
       backgroundColor: AppConst.kBorderBoxColor,
       body: NestedScrollView(
@@ -38,7 +37,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
             SliverAppBar(
-              title: Text('تفاصيل المنتج'),
+              title: Text('product_details'.tr()),
               backgroundColor: AppConst.kPrimaryColor,
               pinned: true,
               floating: false,
@@ -46,16 +45,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               expandedHeight: 240,
               flexibleSpace: FlexibleSpaceBar(
                 background: Image(
-                  image: Image.network(
-                          'https://wallpepper.neop.co/images/restaurant.png')
-                      .image,
+                  image: Image.network('https://wallpepper.neop.co/images/restaurant.png').image,
                 ),
               ),
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
                 child: Container(
                   height: 150,
                   width: double.infinity,
@@ -68,18 +64,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       Gap(16),
                       Text(
                         'براوني كيك ',
-                        style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kScondaryTextColor),
+                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                       ),
                       Gap(8),
                       Text(
                         'قطعة براونيز نوتيلا مغطاه بالنوتيلا ',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kThirdTextColor),
+                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
                       Gap(8),
                     ],
@@ -94,8 +84,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           width: 120.w,
           child: SingleChildScrollView(
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
               child: Column(
                 children: [
                   Container(
@@ -105,43 +94,36 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
                     ),
-                    child: const Row(
+                    child: Row(
                       children: [
                         Text(
-                          '225',
-                          style: TextStyle(
-                              color: AppConst.kScondaryTextColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
+                          'price'.tr(),
+                          style: const TextStyle(
+                              color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 12),
                         ),
-                        Spacer(),
-                        Text(
-                          'السعر',
-                          style: TextStyle(
-                              color: AppConst.kScondaryTextColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12),
+                        const Spacer(),
+                        const Text(
+                          '225',
+                          style:
+                              TextStyle(color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                       ],
                     ),
                   ),
                   const Gap(16),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'المنتجات المتوفرة',
-                          style: TextStyle(
-                              color: AppConst.kScondaryTextColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
+                        Text(
+                          'available_products'.tr(),
+                          style: const TextStyle(
+                              color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 300.h,
@@ -158,8 +140,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   color: AppConst.kPrimaryColor,
                                 ),
                                 child: ListTile(
-                                  leading: SvgPicture.asset(
-                                      'assets/images/svg/select_icon.svg'),
+                                  leading: SvgPicture.asset('assets/images/svg/select_icon.svg'),
                                   title: const Text(' كيكة ليمون بلوبيري '),
 
                                   onTap: () {},
@@ -169,9 +150,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                               );
                             },
                             separatorBuilder: (context, index) {
-                              return const Divider(
-                                  thickness: .09,
-                                  color: AppConst.kScondaryTextColor);
+                              return const Divider(thickness: .09, color: AppConst.kScondaryTextColor);
                             },
                             itemCount: 3,
                           ),
@@ -181,21 +160,18 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   ),
                   const Gap(16),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'الاضافات',
-                          style: TextStyle(
-                              color: AppConst.kScondaryTextColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
+                        Text(
+                          'addons'.tr(),
+                          style: const TextStyle(
+                              color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 300.h,
@@ -212,17 +188,14 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                   color: AppConst.kPrimaryColor,
                                 ),
                                 child: ListTile(
-                                  leading: SvgPicture.asset(
-                                      'assets/images/svg/plus_icon.svg'),
-                                  title: const Text('عدد المنتجات '),
+                                  leading: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
+                                  title: Text('product_count'.tr()),
                                   // subtitle: Text('السعر'),
                                 ),
                               );
                             },
                             separatorBuilder: (context, index) {
-                              return const Divider(
-                                  thickness: .09,
-                                  color: AppConst.kScondaryTextColor);
+                              return const Divider(thickness: .09, color: AppConst.kScondaryTextColor);
                             },
                             itemCount: 3,
                           ),
@@ -232,8 +205,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   ),
                   const Gap(16),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
@@ -243,6 +215,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       children: [
                         Row(
                           children: [
+                            Text(
+                              'quantity'.tr(),
+                              style: const TextStyle(
+                                  color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                            const Spacer(),
                             Container(
                               height: 80.h,
                               width: 150.w,
@@ -251,18 +229,9 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 color: AppConst.kPrimaryColor,
                               ),
                               child: ListTile(
-                                leading: SvgPicture.asset(
-                                    'assets/images/svg/plus_icon.svg'),
-                                title: const Text('عدد المنتجات '),
+                                leading: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
+                                title: Text('product_count'.tr()),
                               ),
-                            ),
-                            const Spacer(),
-                            const Text(
-                              'الكمية',
-                              style: TextStyle(
-                                  color: AppConst.kScondaryTextColor,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -271,8 +240,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(right: 8.0),
-                              child: SvgPicture.asset(
-                                  'assets/images/svg/empty_heart_icon01.svg'),
+                              child: SvgPicture.asset('assets/images/svg/empty_heart_icon01.svg'),
                             ),
                             const Gap(8),
                             Expanded(
@@ -294,36 +262,31 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     context: context,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(16.r),
+                                        borderRadius: BorderRadius.circular(16.r),
                                         color: AppConst.kPrimaryColor,
                                       ),
                                       child: Wrap(
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: 40.h,
-                                                horizontal: 32.w),
+                                            padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 32.w),
                                             child: Column(
                                               children: [
-                                                Assets.images.png.food01
-                                                    .image(),
+                                                Assets.images.png.food01.image(),
 
                                                 Gap(16.h),
                                                 // SvgPicture.asset('assets/images/svg/heart_icon.svg'),
-                                                const Text(
-                                                  'تم إضافة المنتج الى السلة بنجاح',
-                                                  style: TextStyle(
+                                                Text(
+                                                  textAlign: TextAlign.center,
+                                                  'product_added_to_cart_successfully'.tr(),
+                                                  style: const TextStyle(
                                                       fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: AppConst
-                                                          .kScondaryTextColor),
+                                                      fontWeight: FontWeight.bold,
+                                                      color: AppConst.kScondaryTextColor),
                                                 ),
                                                 Gap(24.h),
 
                                                 CustomButton(
-                                                    btnTitle: 'اذهب للسلة ',
+                                                    btnTitle: 'go_to_cart'.tr(),
                                                     onTap: () {
                                                       Utils.openScreen(
                                                         context,
@@ -333,19 +296,15 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                     }),
                                                 Gap(24.h),
                                                 GestureDetector(
-                                                  child: const Text(
-                                                    'تابع التسوق',
-                                                    style: TextStyle(
+                                                  child: Text(
+                                                    'continue_shopping'.tr(),
+                                                    style: const TextStyle(
                                                         fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: AppConst
-                                                            .kBorderButtonColor),
+                                                        fontWeight: FontWeight.bold,
+                                                        color: AppConst.kBorderButtonColor),
                                                   ),
                                                   onTap: () {
-                                                    Utils.openScreen(context,
-                                                        const ProductsPage(),
-                                                        replacment: true);
+                                                    Utils.openScreen(context, const ProductsPage(), replacment: true);
                                                   },
                                                 ),
                                               ],
@@ -356,7 +315,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     ),
                                   );
                                 },
-                                btnTitle: 'تأكيد',
+                                btnTitle: 'confirm'.tr(),
                                 btnColor: AppConst.kBorderButtonColor,
                               ),
                             ),
@@ -387,17 +346,18 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
 
 
+
 // Row(
 //                         children = [
 //                           const Text(
 //                             '500',
-//                             style: TextStyle(
+//                             style: const TextStyle(
 //                                 color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 18),
 //                           ),
 //                           const Spacer(),
 //                           const Text(
 //                             ' 01 السعر',
-//                             style: TextStyle(
+//                             style: const TextStyle(
 //                                 color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 12),
 //                           ),
 //                         ],
@@ -407,13 +367,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 //                         children = [
 //                           const Text(
 //                             '501',
-//                             style: TextStyle(
+//                             style: const TextStyle(
 //                                 color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 18),
 //                           ),
 //                           const Spacer(),
 //                           const Text(
 //                             '02السعر',
-//                             style: TextStyle(
+//                             style: const TextStyle(
 //                                 color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 12),
 //                           ),
 //                         ],
@@ -423,13 +383,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 //                         children = [
 //                           const Text(
 //                             '502',
-//                             style: TextStyle(
+//                             style: const TextStyle(
 //                                 color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 18),
 //                           ),
 //                           const Spacer(),
 //                           const Text(
 //                             '03السعر',
-//                             style: TextStyle(
+//                             style: const TextStyle(
 //                                 color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 12),
 //                           ),
 //                         ],

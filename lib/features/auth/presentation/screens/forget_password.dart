@@ -33,17 +33,20 @@ class ForgetPasswordPage extends StatelessWidget {
                     Gap(25.h),
                     const Text(
                       'هل نسيت كلمة المرور',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                     ),
                     Gap(25.h),
                     const Text(
                       'يرجي إدخال رقم الجوال الخاص بك ليتم إرسال الكود',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                      style:
+                          const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
                     const Gap(32),
                     const Text(
                       'رقم الجوال',
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                      style:
+                          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
                     const Gap(16),
                     CustomInputField(

@@ -1,12 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_adress_box.dart';
-import '../../../../shared/custom_app_bar.dart';
 import 'acc_info_page.dart';
 import 'change_password02_page.dart';
 import 'lang_page.dart';
@@ -44,14 +43,13 @@ class MyAccountPage extends StatelessWidget {
                         right: 60.w,
                         child: GestureDetector(
                           onTap: () {},
-                          child: SvgPicture.asset(
-                              'assets/images/svg/camera_icon.svg'),
+                          child: SvgPicture.asset('assets/images/svg/camera_icon.svg'),
                         )),
                   ],
                 ),
                 Gap(12.h),
                 Text(
-                  'Elsayed Gaber',
+                  'elsayed_gaber'.tr(),
                   style: TextStyle(
                     fontSize: 15.sp,
                     fontWeight: FontWeight.bold,
@@ -73,8 +71,8 @@ class MyAccountPage extends StatelessWidget {
                       onTap: () {
                         Utils.openScreen(context, const ChangePassword02Page());
                       },
-                      child: const CustomAdressBox(
-                        boxTitle: 'تغيير كلمة المرور ',
+                      child: CustomAdressBox(
+                        boxTitle: 'change_password'.tr(),
                         picInfo: 'changePassword_icon',
                       ),
                     ),
@@ -82,8 +80,8 @@ class MyAccountPage extends StatelessWidget {
                       onTap: () {
                         Utils.openScreen(context, const AccountInfoPage());
                       },
-                      child: const CustomAdressBox(
-                        boxTitle: 'معلومات الحساب',
+                      child: CustomAdressBox(
+                        boxTitle: 'account_information'.tr(),
                         picInfo: 'accInfo_icon',
                       ),
                     ),
@@ -97,8 +95,8 @@ class MyAccountPage extends StatelessWidget {
                       onTap: () {
                         Utils.openScreen(context, const LanguagePage());
                       },
-                      child: const CustomAdressBox(
-                        boxTitle: 'اللغة ',
+                      child: CustomAdressBox(
+                        boxTitle: 'language'.tr(),
                         picInfo: 'language_icon',
                       ),
                     ),
@@ -106,8 +104,8 @@ class MyAccountPage extends StatelessWidget {
                       onTap: () {
                         Utils.openScreen(context, const MyOrdersPage());
                       },
-                      child: const CustomAdressBox(
-                        boxTitle: 'طلباتي',
+                      child: CustomAdressBox(
+                        boxTitle: 'my_orders'.tr(),
                         picInfo: 'myOrders_icon',
                       ),
                     ),
@@ -116,18 +114,14 @@ class MyAccountPage extends StatelessWidget {
                 Gap(60.h),
                 GestureDetector(
                   onTap: () {
-                    Utils.openScreen(context, const WelcomePage(),
-                        replacment: true);
+                    Utils.openScreen(context, const WelcomePage(), replacment: true);
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'تسجيل الخروج',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Color(0xffC20000)),
+                      Text(
+                        'logout'.tr(),
+                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xffC20000)),
                       ),
                       Gap(4.h),
                       SvgPicture.asset('assets/images/svg/logOut_icon.svg'),

@@ -40,7 +40,7 @@ class SearchPage extends StatelessWidget {
                 Gap(16.h),
                 Text(
                   'لم يتم العثور على نتائج للبحث',
-                  style: TextStyle(
+                  style:  TextStyle(
                     fontSize: 20.sp,
                     fontWeight: FontWeight.bold,
                     color: AppConst.kPrimaryTextColor,

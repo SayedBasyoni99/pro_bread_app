@@ -5,8 +5,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/resources/assets.gen.dart';
-import '../../../favorites/domain/entities/get_favorites_response.dart';
-import '../../../home/presentation/screens/home_page.dart';
 import '../../../home/presentation/screens/main_page.dart';
 import 'create_acc_page.dart';
 import 'log_in_page.dart';
@@ -21,19 +19,15 @@ class WelcomePage extends StatelessWidget {
     return Scaffold(
       body: Stack(
         children: [
-          Assets.images.png.logInBg
-              .image(width: double.infinity, height: 510.h, fit: BoxFit.fill),
+          Assets.images.png.logInBg.image(width: double.infinity, height: 510.h, fit: BoxFit.fill),
           Column(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Padding(
                 padding: EdgeInsets.only(bottom: 32.h),
                 child: Text(
                   'welcome_message'.tr(),
-                  style: const TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: AppConst.kPrimaryTextColor),
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
                 ),
               ),
               Align(
@@ -52,9 +46,8 @@ class WelcomePage extends StatelessWidget {
                       width: 1.sw,
                       decoration: BoxDecoration(
                         color: AppConst.kPrimaryColor,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(80.r),
-                            topRight: Radius.circular(80.r)),
+                        borderRadius:
+                            BorderRadius.only(topLeft: Radius.circular(80.r), topRight: Radius.circular(80.r)),
                       )),
                   // SvgPicture.asset(
                   //   'assets/images/svg/buttomSheet.svg',
@@ -66,13 +59,11 @@ class WelcomePage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 24.0, vertical: 24.0),
+                        padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
                         child: Text(
                           'gift_services_description'.tr(),
-                          style: const TextStyle(
-                              color: AppConst.kScondaryTextColor,
-                              fontWeight: FontWeight.bold),
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold),
                         ),
                       ),
                       CustomButton(
@@ -92,9 +83,7 @@ class WelcomePage extends StatelessWidget {
                       Gap(10.h),
                       Text(
                         'or'.tr(),
-                        style: TextStyle(
-                            color: AppConst.kPrimaryTextColor,
-                            fontWeight: FontWeight.bold),
+                        style: const TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold),
                       ),
                       Gap(10.h),
                       CustomButton(
@@ -108,6 +97,7 @@ class WelcomePage extends StatelessWidget {
                         btnColor: AppConst.kPrimaryColor,
                         borderButtonColor: AppConst.kBorderButtonColor,
                       ),
+                      Gap(16.h),
                     ],
                   ),
                 ],

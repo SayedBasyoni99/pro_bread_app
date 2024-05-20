@@ -1,10 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/app_snack_bar.dart';
 import '../../../../shared/product_card.dart';
-import '../../../categories/presentation/controller/get_dishes/get_dishes_cubit.dart';
 import '../controller/get_favorites/get_favorites_cubit.dart';
 
 class FavoritesPage extends StatefulWidget {
@@ -15,10 +15,8 @@ class FavoritesPage extends StatefulWidget {
 }
 
 class _FavoritesPageState extends State<FavoritesPage> {
-
-@override
+  @override
   void initState() {
-  
     super.initState();
     context.read<GetFavoritesCubit>().fGetFavorites();
   }
@@ -33,16 +31,16 @@ class _FavoritesPageState extends State<FavoritesPage> {
             child: Column(
               children: [
                 const Gap(32),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      'عدد المنتجات',
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: AppConst.kThirdTextColor,
-                          ),
+                      'product_count'.tr(),
+                      style: const TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.bold,
+                        color: AppConst.kThirdTextColor,
+                      ),
                     ),
                   ],
                 ),
@@ -52,10 +50,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     child: BlocConsumer<GetFavoritesCubit, GetFavoritesState>(
                       listener: (BuildContext context, GetFavoritesState state) {
                         if (state is GetFavoritesErrorState) {
-                          showAppSnackBar(
-                              context: context,
-                              message: state.message,
-                              type: ToastType.error);
+                          showAppSnackBar(context: context, message: state.message, type: ToastType.error);
                         }
                       },
                       builder: (context, state) {

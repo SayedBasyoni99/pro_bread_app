@@ -28,7 +28,7 @@ class ChangePasswordDialog extends StatelessWidget {
                 Gap(16.h),
                 const Text(
                   'تم تغيير كلمة المرور بنجاح',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                 ),
                 Gap(32.h),
                 CustomButton(

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,7 +19,7 @@ class DeliveryTimePage extends StatelessWidget {
       backgroundColor: AppConst.kPrimaryColor,
       appBar: CustomAppBar.build(
         context,
-        titleText: 'تابع إتمام الطلب',
+        titleText: 'proceed_to_checkout'.tr(),
         iconAppBar: SvgPicture.asset(
           'assets/images/svg/cart_icon.svg',
           height: 20,
@@ -27,75 +28,67 @@ class DeliveryTimePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding:
-              EdgeInsets.only(right: 16.w, left: 16.w, top: 32.h, bottom: 32.h),
+          padding: EdgeInsets.only(right: 16.w, left: 16.w, top: 32.h, bottom: 32.h),
           child: Column(
             children: [
               const Row(
                 children: [
-                  CustomStepper(),
-                  CustomStepper(),
                   CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
                   CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
+                  CustomStepper(),
+                  CustomStepper(),
                 ],
               ),
               Gap(32.h),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    'وقت التوصيل',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: AppConst.kPrimaryTextColor),
-                  ),
-                  Gap(8.w),
                   SvgPicture.asset('assets/images/svg/deliveryTime_icon.svg'),
+                  Gap(8.w),
+                  Text(
+                    'delivery_time'.tr(),
+                    style:
+                        const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+                  ),
                 ],
               ),
               Gap(24.h),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    'بعد 45 دق',
-                    style: TextStyle(
-                        color: AppConst.kPrimaryTextColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14),
-                  ),
-                  Gap(4.w),
                   SvgPicture.asset(
                     'assets/images/svg/un select_icon.svg',
-                  )
+                  ),
+                  Gap(4.w),
+                  Text(
+                    'in_45_minutes'.tr(),
+                    style:
+                        const TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold, fontSize: 14),
+                  ),
                 ],
               ),
               Gap(24.h),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    'اختر وقت آخر',
-                    style: TextStyle(
-                        color: AppConst.kPrimaryTextColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14),
-                  ),
-                  Gap(4.w),
                   SvgPicture.asset(
                     'assets/images/svg/select_icon.svg',
-                  )
+                  ),
+                  Gap(4.w),
+                  Text(
+                    'choose_another_time'.tr(),
+                    style:
+                        const TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold, fontSize: 14),
+                  ),
                 ],
               ),
               Gap(32.h),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'حدد اليوم',
-                    style: TextStyle(
-                        color: AppConst.kThirdTextColor, fontSize: 12),
+                    'select_day'.tr(),
+                    style: const TextStyle(color: AppConst.kThirdTextColor, fontSize: 12),
                   ),
                 ],
               ),
@@ -119,19 +112,15 @@ class DeliveryTimePage extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
                           children: [
-                            const Text(
-                              'اليوم',
-                              style: TextStyle(
-                                  color: AppConst.kThirdTextColor,
-                                  fontSize: 12),
+                            Text(
+                              'today'.tr(),
+                              style: const TextStyle(color: AppConst.kThirdTextColor, fontSize: 12),
                             ),
                             Gap(16.h),
                             const Text(
-                              '25 يناير',
+                              '25 jan',
                               style: TextStyle(
-                                  color: AppConst.kPrimaryTextColor,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold),
+                                  color: AppConst.kPrimaryTextColor, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -142,13 +131,12 @@ class DeliveryTimePage extends StatelessWidget {
                 ),
               ),
               Gap(32.h),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'حدد الوقت ',
-                    style: TextStyle(
-                        color: AppConst.kThirdTextColor, fontSize: 12),
+                    'select_time'.tr(),
+                    style: const TextStyle(color: AppConst.kThirdTextColor, fontSize: 12),
                   ),
                 ],
               ),
@@ -173,10 +161,8 @@ class DeliveryTimePage extends StatelessWidget {
                       child: const Center(
                         child: Text(
                           ' 05:00 ',
-                          style: TextStyle(
-                              color: AppConst.kPrimaryTextColor,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
+                          style:
+                              TextStyle(color: AppConst.kPrimaryTextColor, fontSize: 12, fontWeight: FontWeight.bold),
                         ),
                       ),
                     );
@@ -192,7 +178,7 @@ class DeliveryTimePage extends StatelessWidget {
                     PaymentPage(),
                   );
                 },
-                title: 'التالي',
+                title: 'next'.tr(),
                 fontSize: 18.sp,
               ),
             ],

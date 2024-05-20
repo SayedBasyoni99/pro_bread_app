@@ -33,7 +33,7 @@ class ProductCard extends StatefulWidget {
 
 class _ProductCardState extends State<ProductCard> {
   Widget build(BuildContext context) {
-    bool addToCart;
+    // bool addToCart;
     return GestureDetector(
       onTap: () {
         final settings = RouteSettings(

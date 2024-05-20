@@ -44,7 +44,7 @@ class CustomButton extends StatelessWidget {
               : Text(
                   btnTitle,
                   style: GoogleFonts.balooBhaijaan2(
-                    textStyle: TextStyle(
+                    textStyle:  TextStyle(
                       color: btntxtColor,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,

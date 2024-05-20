@@ -24,10 +24,7 @@ class CustomAppBar {
       title: title ??
           Text(
             titleText ?? 'Pro Bread',
-            style: const TextStyle(
-                color: AppConst.kScondaryTextColor,
-                fontSize: 18,
-                fontWeight: FontWeight.bold),
+            style: const TextStyle(color: AppConst.kScondaryTextColor, fontSize: 18, fontWeight: FontWeight.bold),
           ),
       centerTitle: true,
       actions: actions ??
@@ -36,9 +33,7 @@ class CustomAppBar {
               child: Container(
                   padding: const EdgeInsets.all(16.0),
                   margin: const EdgeInsetsDirectional.only(end: 16.0),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: AppConst.kBorderBoxColor),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: AppConst.kBorderBoxColor),
                   child: iconAppBar),
             ),
           ],
@@ -53,9 +48,7 @@ class CustomAppBar {
                 child: Container(
                   padding: const EdgeInsets.all(16.0),
                   margin: const EdgeInsetsDirectional.only(start: 16.0),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: AppConst.kBorderBoxColor),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: AppConst.kBorderBoxColor),
                   child: const Icon(
                     Icons.arrow_back_ios,
                     color: AppConst.kBorderButtonColor,

@@ -8,9 +8,9 @@ import 'text_widget.dart';
 
 class CustomDetailsContainer extends StatelessWidget {
   const CustomDetailsContainer(
-      {super.key, required this.picInfo, this.message01, this.message02, this.message03, this.message04});
+      {super.key, this.picInfo, this.message01, this.message02, this.message03, this.message04});
 
-  final String picInfo;
+  final String? picInfo;
   final String? message01, message02, message03, message04;
 
   @override
@@ -32,17 +32,13 @@ class CustomDetailsContainer extends StatelessWidget {
       ),
       padding: const EdgeInsets.all(16.0),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.end,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 8.0),
-                child: SvgPicture.asset('assets/images/svg/$picInfo.svg'),
-              ),
               Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   if (message01 != null)
                     TextWidget(
@@ -61,6 +57,10 @@ class CustomDetailsContainer extends StatelessWidget {
                   Gap(12.h),
                 ],
               ),
+              Padding(
+                  padding: const EdgeInsets.only(right: 8.0), child: SvgPicture.asset('assets/images/svg/$picInfo.svg')
+                  // ?? const Icon(Icons.arrow_forward_ios_sharp),
+                  ),
             ],
           ),
           Gap(12.h),

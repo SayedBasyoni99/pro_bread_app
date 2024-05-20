@@ -34,23 +34,19 @@ class CreateAccPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Gap(25.h),
                     Text(
                       'create_new_account'.tr(),
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: AppConst.kScondaryTextColor),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                     ),
                     const Gap(32),
                     Text(
                       'mobile_number'.tr(),
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: AppConst.kThirdTextColor),
+                      style:
+                          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
                     const Gap(16),
                     // CustomTxtField(
@@ -67,7 +63,7 @@ class CreateAccPage extends StatelessWidget {
                     Gap(40.h),
                     CustomInputField(
                       controller: phoneController,
-                      hint: '  enter_mobile_number'.tr(),
+                      hint: 'enter_mobile_number'.tr(),
                       prefixIcon: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: SvgPicture.asset(
@@ -92,10 +88,7 @@ class CreateAccPage extends StatelessWidget {
                           );
                         }
                         if (state is RegisterErrorState) {
-                          showAppSnackBar(
-                              context: context,
-                              message: state.message,
-                              type: ToastType.error);
+                          showAppSnackBar(context: context, message: state.message, type: ToastType.error);
                         }
                       },
                       builder: (context, state) {
@@ -116,7 +109,7 @@ class CreateAccPage extends StatelessWidget {
                               //   child: const RegisterPinCodeDialog(),
                               // );
                             },
-                            title: 'create_account'.tr(),
+                            title: 'create_new_account'.tr(),
                             fontSize: 18.sp);
                       },
                     ),
@@ -127,23 +120,18 @@ class CreateAccPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Text('already_have_an_account'.tr(),
+                      style:
+                          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor)),
+                  const Gap(12),
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => LogInPage()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => LogInPage()));
                     },
-                    child: Text(' login'.tr(),
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kButtonColor)),
+                    child: Text('login'.tr(),
+                        style:
+                            const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                   ),
-                  const Gap(12),
-                  Text('already_have_an_account'.tr(),
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: AppConst.kThirdTextColor)),
                 ],
               )
             ],

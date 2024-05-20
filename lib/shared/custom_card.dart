@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-
 import '../features/categories/domain/entities/get_category_response.dart';
 import 'text_widget.dart';
-
 import '../core/const/constant_var.dart';
 
 class CustomCard extends StatelessWidget {

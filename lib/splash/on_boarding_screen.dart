@@ -10,15 +10,14 @@ import '../features/auth/presentation/screens/welcome_page.dart';
 class OnBoardingScreen extends StatelessWidget {
   OnBoardingScreen({super.key});
   int index = 0;
-  @override 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: CupertinoOnboarding(
-
-            bottomButtonChild: index == 0 ?  Text('skip'.tr()) : Text('login'.tr() ),
+            bottomButtonChild: index == 0 ? Text('skip'.tr()) : Text('login'.tr()),
 
             bottomButtonColor: AppConst.kButtonColor,
             // onPressed: () {},
@@ -34,17 +33,16 @@ class OnBoardingScreen extends StatelessWidget {
                     height: 304.96,
                   ),
                   const Gap(20),
-                  const Text('هذا النص هو مثال لنص يمكن أن يستبدل',
-                      style: TextStyle(
+                  Text('welcome_message'.tr(),
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
                         color: AppConst.kScondaryTextColor,
                       )),
                   const Gap(20),
-                  const Text(
-                      'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص',
+                  Text('gift_services_description'.tr(),
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         // fontFamily: 'SF Pro Text',
                         fontWeight: FontWeight.bold,
                         fontSize: 14.0,
@@ -62,17 +60,16 @@ class OnBoardingScreen extends StatelessWidget {
                     height: 298,
                   ),
                   const Gap(20),
-                  const Text('هذا النص هو مثال لنص يمكن أن يستبدل',
-                      style: TextStyle(
+                  Text('welcome_message'.tr(),
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
                         color: AppConst.kScondaryTextColor,
                       )),
                   const Gap(20),
-                  const Text(
-                      'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص',
+                  Text('gift_services_description'.tr(),
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         // fontFamily: 'SF Pro Text',
                         fontWeight: FontWeight.bold,
                         fontSize: 14.0,
@@ -99,7 +96,7 @@ class OnBoardingScreen extends StatelessWidget {
           //           ),
           //           const Gap(20),
           //           const Text('هذا النص هو مثال لنص يمكن أن يستبدل',
-          //               style: TextStyle(
+          //               style: const TextStyle(
           //                 fontWeight: FontWeight.bold,
           //                 fontSize: 18.0,
           //                 color: scondaryTextColor,
@@ -108,7 +105,7 @@ class OnBoardingScreen extends StatelessWidget {
           //           const Text(
           //               'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص',
           //               textAlign: TextAlign.center,
-          //               style: TextStyle(
+          //               style: const TextStyle(
           //                 // fontFamily: 'SF Pro Text',
           //                 fontWeight: FontWeight.bold,
           //                 fontSize: 14.0,

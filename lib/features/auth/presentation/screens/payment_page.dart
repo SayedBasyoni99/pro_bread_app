@@ -1,6 +1,7 @@
 // ignore_for_file: must_be_immutable
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -13,7 +14,6 @@ import '../../../../shared/custom_stepper_widget.dart';
 import '../../../../shared/custom_txt_bottom.dart';
 import '../../../../shared/show_dialog.dart';
 import '../../../../shared/text_button.dart';
-import '../../../home/presentation/screens/home_page.dart';
 import 'track_order_page.dart';
 
 class PaymentPage extends StatelessWidget {
@@ -22,14 +22,14 @@ class PaymentPage extends StatelessWidget {
   final cardNumberController = TextEditingController();
   final cvvNumberController = TextEditingController();
   final expDateController = TextEditingController();
-  final onwerCardNameController = TextEditingController();
+  final ownerCardNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar.build(
         context,
-        titleText: 'تابع إتمام الطلب',
+        titleText: 'proceed_to_checkout'.tr(),
         iconAppBar: SvgPicture.asset(
           'assets/images/svg/cart_icon.svg',
           height: 20,
@@ -42,23 +42,24 @@ class PaymentPage extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(right: 16.w, left: 16.w, top: 32.h, bottom: 32.h),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Row(
                   children: [
+                    CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
+                    CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
+                    CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
                     CustomStepper(),
-                    CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
-                    CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
-                    CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
                   ],
                 ),
                 Gap(32.h),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const Text(
-                      'معلومات الدفع',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+                    Text(
+                      'payment_information'.tr(),
+                      style:
+                          const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
                     ),
                     Gap(8.w),
                     SvgPicture.asset(
@@ -67,7 +68,7 @@ class PaymentPage extends StatelessWidget {
                   ],
                 ),
                 Gap(24.h),
-                SvgPicture.asset('assets/images/svg/visaCard_icon.svg'),
+                Align(alignment: Alignment.center, child: SvgPicture.asset('assets/images/svg/visaCard_icon.svg')),
                 Gap(24.h),
                 Container(
                   decoration: BoxDecoration(
@@ -79,50 +80,37 @@ class PaymentPage extends StatelessWidget {
                     children: [
                       Row(
                         children: [
+                          Assets.images.png.madaIcon.image(height: 14.h, width: 40.w),
+                          Gap(8.w),
                           Expanded(
                             child: CustomInputField(
-                              textAlign: TextAlign.right,
+                              textAlign: TextAlign.left,
                               keyboardType: TextInputType.phone,
                               controller: cardNumberController,
                               validator: (value) {
                                 if (value?.trim().isEmpty == true) {
-                                  return 'required';
+                                  return 'required'.tr();
                                 }
                                 return null;
                               },
-                              hint: ' رقم البطاقة',
+                              hint: 'card_number'.tr(),
                             ),
                           ),
-                          Gap(12.w),
-                          Assets.images.png.madaIcon.image(height: 14.h, width: 40.w),
                         ],
                       ),
                       Row(
                         children: [
-                          Expanded(
-                            child: CustomInputField(
-                              textAlign: TextAlign.right,
-                              keyboardType: TextInputType.phone,
-                              controller: cvvNumberController,
-                              validator: (value) {
-                                if (value?.trim().isEmpty == true) {
-                                  return 'required';
-                                }
-                                return null;
-                              },
-                              hint: ' CVV',
-                            ),
-                          ),
                           // Divider(
                           //   color: AppConst.kScondaryTextColor,
                           //   thickness: 1.h,
                           //   height: 1.h,
                           //   // width: 1.w
                           // ),
-                          Gap(16.w),
+                          SvgPicture.asset('assets/images/svg/visa_icon.svg', height: 14.h, width: 40.w),
+                          Gap(14.w),
                           Expanded(
                             child: CustomInputField(
-                              textAlign: TextAlign.right,
+                              textAlign: TextAlign.left,
                               keyboardType: TextInputType.phone,
                               controller: expDateController,
                               validator: (value) {
@@ -131,51 +119,64 @@ class PaymentPage extends StatelessWidget {
                                 }
                                 return null;
                               },
-                              hint: ' شهر/سنة ',
+                              hint: 'expiration_date'.tr(),
                             ),
                           ),
                           Gap(16.w),
-                          SvgPicture.asset('assets/images/svg/visa_icon.svg', height: 14.h, width: 40.w)
-                        ],
-                      ),
-                      Row(
-                        children: [
                           Expanded(
                             child: CustomInputField(
-                              textAlign: TextAlign.right,
+                              textAlign: TextAlign.left,
                               keyboardType: TextInputType.phone,
-                              controller: onwerCardNameController,
+                              controller: cvvNumberController,
                               validator: (value) {
                                 if (value?.trim().isEmpty == true) {
-                                  return 'required';
+                                  return 'required'.tr();
                                 }
                                 return null;
                               },
-                              hint: ' اسم حامل البطاقة  ',
+                              hint: ' CVV',
                             ),
                           ),
-                          Gap(25.w),
-                          SvgPicture.asset('assets/images/svg/masterCard_icon.svg', height: 18.h, width: 28.w)
                         ],
                       ),
                       Row(
                         children: [
+                          SvgPicture.asset('assets/images/svg/masterCard_icon.svg', height: 18.h, width: 24.w),
+                          Gap(25.w),
                           Expanded(
                             child: CustomInputField(
-                              textAlign: TextAlign.right,
+                              textAlign: TextAlign.left,
+                              keyboardType: TextInputType.phone,
+                              controller: ownerCardNameController,
+                              validator: (value) {
+                                if (value?.trim().isEmpty == true) {
+                                  return 'required'.tr();
+                                }
+                                return null;
+                              },
+                              hint: 'card_holder_name'.tr(),
+                            ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          SvgPicture.asset('assets/images/svg/visa_icon.svg', height: 14.h, width: 40.w),
+                          Gap(14.w),
+                          Expanded(
+                            child: CustomInputField(
+                              textAlign: TextAlign.left,
                               keyboardType: TextInputType.phone,
                               controller: cardNumberController,
                               validator: (value) {
                                 if (value?.trim().isEmpty == true) {
-                                  return 'required';
+                                  return 'required'.tr();
                                 }
                                 return null;
                               },
                               hint: '  ',
                             ),
                           ),
-                          Gap(14.w),
-                          SvgPicture.asset('assets/images/svg/visa_icon.svg', height: 14.h, width: 40.w)
                         ],
                       ),
                     ],
@@ -185,12 +186,12 @@ class PaymentPage extends StatelessWidget {
                 Column(
                   children: [
                     Text(
-                      ': مجموع الطلب',
+                      ' ${'order_total'.tr()} :',
                       style: TextStyle(fontSize: 14.sp, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
                     Gap(8.h),
                     Text(
-                      ' ر.س 2500',
+                      '140 ${'SAR'.tr()}',
                       style:
                           TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                     ),
@@ -226,8 +227,8 @@ class PaymentPage extends StatelessWidget {
                                       // ),
                                       Positioned(
                                         top: -85.h,
-                                        left: -30.w,
-                                        right: -25.w,
+                                        right: -30.w,
+                                        left: -25.w,
                                         bottom: 130.h,
                                         child: SvgPicture.asset(
                                           'assets/images/svg/BgCelebration_icon.svg',
@@ -241,17 +242,18 @@ class PaymentPage extends StatelessWidget {
 
                                           Gap(16.h),
                                           // SvgPicture.asset('assets/images/svg/heart_icon.svg'),
-                                          const Text(
-                                            'تم إكتمال طلبك رقم123 بنجاح  ',
-                                            style: TextStyle(
+                                          Text(
+                                            'order_completed_successfully'.tr(),
+                                            textAlign: TextAlign.center,
+                                            style: const TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.bold,
                                                 color: AppConst.kPrimaryTextColor),
                                           ),
                                           Gap(4.h),
-                                          const Text(
-                                            'جاري تحضير الطلب',
-                                            style: TextStyle(
+                                          Text(
+                                            'order_preparing'.tr(),
+                                            style: const TextStyle(
                                                 fontSize: 12,
                                                 // fontWeight: FontWeight.bold,
                                                 color: AppConst.kThirdTextColor),
@@ -260,7 +262,7 @@ class PaymentPage extends StatelessWidget {
                                           Gap(24.h),
 
                                           CustomButton(
-                                              btnTitle: ' اتبع طلبك ',
+                                              btnTitle: 'track_your_order'.tr(),
                                               onTap: () {
                                                 Utils.openScreen(context, const TrackOrderPage(), replacment: true);
                                               }),
@@ -297,7 +299,7 @@ class PaymentPage extends StatelessWidget {
                           );
                     }
                   },
-                  title: ' إتمام الطلب ',
+                  title: 'complete_order'.tr(),
                   fontSize: 18.sp,
                 ),
               ],
