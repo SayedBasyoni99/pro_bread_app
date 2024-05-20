@@ -6,11 +6,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class Utils {
   // static String lang =CacheHelper.getData(key: "lang") ;
 
-  static void openScreen(BuildContext context, Widget screen, {bool replacment = false, bool remove = false}) {
+  static void openScreen(BuildContext context, Widget screen, {RouteSettings? settings, bool replacment = false, bool remove = false}) {
     if (remove) {
       Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (context) => screen),
+        MaterialPageRoute(builder: (context) => screen, settings: settings),
         (route) => false,
       );
     } else if (replacment) {

@@ -1,4 +1,5 @@
 import 'package:cupertino_onboarding/cupertino_onboarding.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import '../core/const/constant_var.dart';
@@ -16,7 +17,8 @@ class OnBoardingScreen extends StatelessWidget {
       body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: CupertinoOnboarding(
-            bottomButtonChild: index == 0 ? const Text(' تخطي') : const Text('تسجبل الدخول'),
+
+            bottomButtonChild: index == 0 ?  Text('skip'.tr()) : Text('login'.tr() ),
 
             bottomButtonColor: AppConst.kButtonColor,
             // onPressed: () {},

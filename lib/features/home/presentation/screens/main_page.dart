@@ -3,8 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/const/constant_var.dart';
+import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
 
+import '../../../auth/presentation/screens/cart_page.dart';
 import '../controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 
 class MainPage extends StatelessWidget {
@@ -19,10 +21,15 @@ class MainPage extends StatelessWidget {
         return Scaffold(
           appBar: CustomAppBar.build(
             removeBack: true,
-            iconAppBar: SvgPicture.asset(
-              'assets/images/svg/cart_icon.svg',
-              height: 20,
-              width: 20,
+            iconAppBar: GestureDetector(
+              onTap: () {
+                Utils.openScreen(context, const CartPage());
+              },
+              child: SvgPicture.asset(
+                'assets/images/svg/cart_icon.svg',
+                height: 20,
+                width: 20,
+              ),
             ),
 
             context,

@@ -5,9 +5,23 @@ import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/app_snack_bar.dart';
 import '../../../../shared/product_card.dart';
 import '../../../categories/presentation/controller/get_dishes/get_dishes_cubit.dart';
+import '../controller/get_favorites/get_favorites_cubit.dart';
 
-class FavoritesPage extends StatelessWidget {
+class FavoritesPage extends StatefulWidget {
   const FavoritesPage({super.key});
+
+  @override
+  State<FavoritesPage> createState() => _FavoritesPageState();
+}
+
+class _FavoritesPageState extends State<FavoritesPage> {
+
+@override
+  void initState() {
+  
+    super.initState();
+    context.read<GetFavoritesCubit>().fGetFavorites();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,16 +41,17 @@ class FavoritesPage extends StatelessWidget {
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
-                          color: AppConst.kThirdTextColor),
+                          color: AppConst.kThirdTextColor,
+                          ),
                     ),
                   ],
                 ),
                 SizedBox(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: BlocConsumer<GetDishesCubit, GetDishesState>(
-                      listener: (BuildContext context, GetDishesState state) {
-                        if (state is GetDishesErrorState) {
+                    child: BlocConsumer<GetFavoritesCubit, GetFavoritesState>(
+                      listener: (BuildContext context, GetFavoritesState state) {
+                        if (state is GetFavoritesErrorState) {
                           showAppSnackBar(
                               context: context,
                               message: state.message,
@@ -44,23 +59,20 @@ class FavoritesPage extends StatelessWidget {
                         }
                       },
                       builder: (context, state) {
-                        if (state is GetDishesLoadingState) {
+                        if (state is GetFavoritesLoadingState) {
                           return const Center(
                             child: CircularProgressIndicator(),
                           );
                         }
-                        if (state is GetDishesSuccessState) {
+                        if (state is GetFavoritesSuccessState) {
                           return ListView.builder(
                               itemBuilder: (context, index) {
-                                final product = state.value[index];
+                                final dish = state.value[index];
                                 return ProductCard(
-                                  productDescription: product.description,
-                                  productName: product.name,
-                                  productPrice: product.price,
-                                  productImage: product.avatar,
+                                  item: dish,
                                 );
                               },
-                              itemCount: 10,
+                              itemCount: state.value.length,
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics());
                         }

@@ -16,6 +16,8 @@ class GetCategoriesCubit extends Cubit<GetCategoriesState> {
 
   List<Category> data = <Category>[];
 
+  int? currentIndex = 0;
+
   Future<void> fGetCategories() async {
     emit(const GetCategoriesLoadingState());
     final Either<Failure, GetCategoriesResponse> eitherResult =
@@ -31,5 +33,11 @@ class GetCategoriesCubit extends Cubit<GetCategoriesState> {
 
       emit(GetCategoriesSuccessState(value: response.data));
     });
+  }
+
+  void changeIndex({required int index}) {
+    currentIndex = index;
+    emit(const GetCategoriesLoadingState());
+    emit(GetCategoriesSuccessState(value: data));
   }
 }

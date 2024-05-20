@@ -9,12 +9,17 @@
     "enter_code_sent": "Please enter the code sent to create the account",
     "confirm": "Confirm",
     "create_new_account": "Create New Account",
+    "enter_as_a_guest": "Enter as a Guest",
+    "or": "or",
+    "required": "Required",
     "name": "Name",
     "enter_account_name": "Enter account name",
     "email": "Email",
     "enter_email": "Enter your email",
     "password": "Password",
+    "enter_password": "Enter your password",
     "already_have_an_account": "Already have an account?",
+    "don't_have_an_account": "Don't have an account?",
     "forgot_password": "Forgot password?",
     "incorrect_email_or_password": "Incorrect email or password",
     "forgot_your_password": "Forgot your password?",
@@ -65,6 +70,7 @@
     "building_name_or_number": "Building Name or Number",
     "landmark": "Landmark",
     "mobile_number": "Mobile Number",
+    "enter_mobile_number": " Enter Mobile Number",
     "save": "Save",
     "payment_information": "Payment Information",
     "card_number": "Card Number",
@@ -106,5 +112,6 @@
     "no_search_results": "No search results found",
     "no_products_found": "No products found",
     "empty_shopping_cart": "Empty shopping cart",
-    "no_orders": "No orders"
+    "no_orders": "No orders",
+    "SAR": "SAR"
   }

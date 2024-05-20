@@ -20,6 +20,7 @@ class CartPage extends StatelessWidget {
       appBar: CustomAppBar.build(
         context,
         titleText: 'السلة',
+        actions: [],
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),

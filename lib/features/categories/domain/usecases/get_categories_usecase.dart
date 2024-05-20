@@ -1,5 +1,4 @@
 import 'package:dartz/dartz.dart';
-
 import '../../../../core/error/failures.dart';
 import '../../../../core/usecases/usecase.dart';
 import '../entities/get_categories_response.dart';
@@ -16,6 +15,3 @@ class GetCategoriesUseCase extends UseCase<GetCategoriesResponse, NoParams> {
     return await repository.getCategories(params: params);
   }
 }
-
-
-

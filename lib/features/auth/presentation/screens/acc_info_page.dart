@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -34,9 +35,9 @@ class AccountInfoPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   Gap(60.h),
-                  const Text(
-                    'الاسم ',
-                    style: TextStyle(
+                  Text(
+                    'name '.tr(),
+                    style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: AppConst.kThirdTextColor),
@@ -52,9 +53,9 @@ class AccountInfoPage extends StatelessWidget {
                     ),
                   ),
                   const Gap(32),
-                  const Text(
-                    ' البريد الالكتروني',
-                    style: TextStyle(
+                  Text(
+                    'email'.tr(),
+                    style: const TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                         color: AppConst.kThirdTextColor),

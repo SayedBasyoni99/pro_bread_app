@@ -1,5 +1,6 @@
 // ignore_for_file: must_be_immutable
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -10,6 +11,7 @@ import '../../../../core/resources/assets.gen.dart';
 import '../../../../core/utils/app_snack_bar.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../home/presentation/screens/home_page.dart';
+import '../../../home/presentation/screens/main_page.dart';
 import '../controller/login/login_cubit.dart';
 import 'forget_password.dart';
 import 'new_acc_page.dart';
@@ -46,7 +48,7 @@ class LogInPage extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              ' خطأ في البريد الإلكتروني او كلمة المرور',
+                              'incorrect_email_or_password'.tr(),
                               style:
                                   TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold, color: AppConst.kErrorColor),
                             ),
@@ -55,13 +57,13 @@ class LogInPage extends StatelessWidget {
                           ],
                         ),
                       Gap(20.h),
-                      const Text(
-                        'تسجيل دخول',
+                       Text(
+                        ' login' .tr(),
                         style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                       ),
                       const Gap(24),
-                      const Text(
-                        ' رقم الجوال',
+                       Text(
+                        'mobile_number' .tr(),
                         style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
                       const Gap(16),
@@ -70,11 +72,11 @@ class LogInPage extends StatelessWidget {
                         controller: phoneController,
                         validator: (value) {
                           if (value?.trim().isEmpty == true) {
-                            return 'required';
+                            return 'required'.tr();
                           }
                           return null;
                         },
-                        hint: 'ادخل رقم الجوال  ',
+                        hint: 'enter_mobile_number' .tr(),
                         prefixIcon: Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: SvgPicture.asset(
@@ -83,8 +85,8 @@ class LogInPage extends StatelessWidget {
                         ),
                       ),
                       const Gap(24),
-                      const Text(
-                        'كلمة المرور ',
+                       Text(
+                        'password' .tr(),
                         style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
                       const Gap(16),
@@ -92,12 +94,12 @@ class LogInPage extends StatelessWidget {
                         controller: passwordController,
                         validator: (value) {
                           if (value?.isEmpty == true) {
-                            return 'reqired';
+                            return 'reqired'  .tr();
                           }
                           return null;
                         },
                         isPassword: true,
-                        hint: 'ادخل كلمة المرور',
+                        hint: 'enter_password' .tr() ,
                         prefixIcon: Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: SvgPicture.asset(
@@ -116,7 +118,7 @@ class LogInPage extends StatelessWidget {
                                  ForgetPasswordPage(),
                               );
                             },
-                            child: const Text('هل نسيت كلمة المرور ؟',
+                            child:  Text('forget_password' .tr(),
                                 style:
                                     TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                           ),
@@ -126,7 +128,7 @@ class LogInPage extends StatelessWidget {
                       BlocConsumer<LoginCubit, LoginState>(
                         listener: (context, state) {
                           if (state is LoginSuccessState) {
-                            Utils.openScreen(context, const HomePage(), replacment: true);
+                            Utils.openScreen(context, const MainPage(), replacment: true);
                           }
                           if (state is LoginErrorState) {
                             showAppSnackBar(context: context, message: state.message, type: ToastType.error);
@@ -146,7 +148,7 @@ class LogInPage extends StatelessWidget {
                                     .fLogin(phone: phoneController.text.trim(), password: passwordController.text);
                               }
                             },
-                            title: 'تسجيل دخول',
+                            title: 'login' .tr(),
                             fontSize: 18.sp,
                           );
                         },
@@ -162,11 +164,11 @@ class LogInPage extends StatelessWidget {
                       onTap: () {
                         Utils.openScreen(context, const NewAccPage(), replacment: true);
                       },
-                      child: const Text('انشاء حساب جديد',
+                      child:  Text(' ${'create_new_account'.tr()} ',
                           style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                     ),
                     const Gap(12),
-                    const Text('ليس لديك حساب ؟',
+                     Text('don\'t_have_an_account '  .tr(),
                         style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor)),
                   ],
                 ),

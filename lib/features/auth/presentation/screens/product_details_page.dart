@@ -1,28 +1,43 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/resources/assets.gen.dart';
 import '../../../../core/utils/utils.dart';
+import '../../../categories/domain/entities/get_dish_response.dart';
+import '../../../categories/presentation/controller/get_dish/get_dish_cubit.dart';
 import 'cart_page.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../shared/custom_txt_bottom.dart';
 import '../../../../shared/show_dialog.dart';
 import 'products_page.dart';
 
-class ProductDetailsPage extends StatelessWidget {
+class ProductDetailsPage extends StatefulWidget {
   const ProductDetailsPage({super.key});
 
   @override
+  State<ProductDetailsPage> createState() => _ProductDetailsPageState();
+}
+
+class _ProductDetailsPageState extends State<ProductDetailsPage> {
+//  void initState() {
+//     super.initState();
+//     context.read<GetDishCubit>().fGetDish(id: 1);
+//   }
+
+  @override
   Widget build(BuildContext context) {
+    final Dish? dish = (ModalRoute.of(context)?.settings.arguments) as Dish?;
+    print('dfsgfgfdggdf ${dish?.id}');
     return Scaffold(
       backgroundColor: AppConst.kBorderBoxColor,
       body: NestedScrollView(
         floatHeaderSlivers: true,
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            const SliverAppBar(
+            SliverAppBar(
               title: Text('تفاصيل المنتج'),
               backgroundColor: AppConst.kPrimaryColor,
               pinned: true,
@@ -31,14 +46,16 @@ class ProductDetailsPage extends StatelessWidget {
               expandedHeight: 240,
               flexibleSpace: FlexibleSpaceBar(
                 background: Image(
-                  image: AssetImage('assets/images/png/cake 01.png'),
-                  fit: BoxFit.fill,
+                  image: Image.network(
+                          'https://wallpepper.neop.co/images/restaurant.png')
+                      .image,
                 ),
               ),
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
                 child: Container(
                   height: 150,
                   width: double.infinity,
@@ -51,12 +68,18 @@ class ProductDetailsPage extends StatelessWidget {
                       Gap(16),
                       Text(
                         'براوني كيك ',
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                            color: AppConst.kScondaryTextColor),
                       ),
                       Gap(8),
                       Text(
                         'قطعة براونيز نوتيلا مغطاه بالنوتيلا ',
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: AppConst.kThirdTextColor),
                       ),
                       Gap(8),
                     ],
@@ -71,7 +94,8 @@ class ProductDetailsPage extends StatelessWidget {
           width: 120.w,
           child: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
               child: Column(
                 children: [
                   Container(
@@ -85,21 +109,26 @@ class ProductDetailsPage extends StatelessWidget {
                       children: [
                         Text(
                           '225',
-                          style:
-                              TextStyle(color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 18),
+                          style: TextStyle(
+                              color: AppConst.kScondaryTextColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18),
                         ),
                         Spacer(),
                         Text(
                           'السعر',
-                          style:
-                              TextStyle(color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 12),
+                          style: TextStyle(
+                              color: AppConst.kScondaryTextColor,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12),
                         ),
                       ],
                     ),
                   ),
                   const Gap(16),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
@@ -109,8 +138,10 @@ class ProductDetailsPage extends StatelessWidget {
                       children: [
                         const Text(
                           'المنتجات المتوفرة',
-                          style:
-                              TextStyle(color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: AppConst.kScondaryTextColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 300.h,
@@ -127,7 +158,8 @@ class ProductDetailsPage extends StatelessWidget {
                                   color: AppConst.kPrimaryColor,
                                 ),
                                 child: ListTile(
-                                  leading: SvgPicture.asset('assets/images/svg/select_icon.svg'),
+                                  leading: SvgPicture.asset(
+                                      'assets/images/svg/select_icon.svg'),
                                   title: const Text(' كيكة ليمون بلوبيري '),
 
                                   onTap: () {},
@@ -137,7 +169,9 @@ class ProductDetailsPage extends StatelessWidget {
                               );
                             },
                             separatorBuilder: (context, index) {
-                              return const Divider(thickness: .09, color: AppConst.kScondaryTextColor);
+                              return const Divider(
+                                  thickness: .09,
+                                  color: AppConst.kScondaryTextColor);
                             },
                             itemCount: 3,
                           ),
@@ -147,7 +181,8 @@ class ProductDetailsPage extends StatelessWidget {
                   ),
                   const Gap(16),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
@@ -157,8 +192,10 @@ class ProductDetailsPage extends StatelessWidget {
                       children: [
                         const Text(
                           'الاضافات',
-                          style:
-                              TextStyle(color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              color: AppConst.kScondaryTextColor,
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 300.h,
@@ -175,14 +212,17 @@ class ProductDetailsPage extends StatelessWidget {
                                   color: AppConst.kPrimaryColor,
                                 ),
                                 child: ListTile(
-                                  leading: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
+                                  leading: SvgPicture.asset(
+                                      'assets/images/svg/plus_icon.svg'),
                                   title: const Text('عدد المنتجات '),
                                   // subtitle: Text('السعر'),
                                 ),
                               );
                             },
                             separatorBuilder: (context, index) {
-                              return const Divider(thickness: .09, color: AppConst.kScondaryTextColor);
+                              return const Divider(
+                                  thickness: .09,
+                                  color: AppConst.kScondaryTextColor);
                             },
                             itemCount: 3,
                           ),
@@ -192,7 +232,8 @@ class ProductDetailsPage extends StatelessWidget {
                   ),
                   const Gap(16),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
@@ -210,7 +251,8 @@ class ProductDetailsPage extends StatelessWidget {
                                 color: AppConst.kPrimaryColor,
                               ),
                               child: ListTile(
-                                leading: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
+                                leading: SvgPicture.asset(
+                                    'assets/images/svg/plus_icon.svg'),
                                 title: const Text('عدد المنتجات '),
                               ),
                             ),
@@ -218,7 +260,9 @@ class ProductDetailsPage extends StatelessWidget {
                             const Text(
                               'الكمية',
                               style: TextStyle(
-                                  color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
+                                  color: AppConst.kScondaryTextColor,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -227,7 +271,8 @@ class ProductDetailsPage extends StatelessWidget {
                           children: [
                             Padding(
                               padding: const EdgeInsets.only(right: 8.0),
-                              child: SvgPicture.asset('assets/images/svg/empty_heart_icon01.svg'),
+                              child: SvgPicture.asset(
+                                  'assets/images/svg/empty_heart_icon01.svg'),
                             ),
                             const Gap(8),
                             Expanded(
@@ -249,16 +294,20 @@ class ProductDetailsPage extends StatelessWidget {
                                     context: context,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(16.r),
+                                        borderRadius:
+                                            BorderRadius.circular(16.r),
                                         color: AppConst.kPrimaryColor,
                                       ),
                                       child: Wrap(
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 32.w),
+                                            padding: EdgeInsets.symmetric(
+                                                vertical: 40.h,
+                                                horizontal: 32.w),
                                             child: Column(
                                               children: [
-                                                Assets.images.png.food01.image(),
+                                                Assets.images.png.food01
+                                                    .image(),
 
                                                 Gap(16.h),
                                                 // SvgPicture.asset('assets/images/svg/heart_icon.svg'),
@@ -266,8 +315,10 @@ class ProductDetailsPage extends StatelessWidget {
                                                   'تم إضافة المنتج الى السلة بنجاح',
                                                   style: TextStyle(
                                                       fontSize: 18,
-                                                      fontWeight: FontWeight.bold,
-                                                      color: AppConst.kScondaryTextColor),
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      color: AppConst
+                                                          .kScondaryTextColor),
                                                 ),
                                                 Gap(24.h),
 
@@ -286,11 +337,15 @@ class ProductDetailsPage extends StatelessWidget {
                                                     'تابع التسوق',
                                                     style: TextStyle(
                                                         fontSize: 14,
-                                                        fontWeight: FontWeight.bold,
-                                                        color: AppConst.kBorderButtonColor),
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: AppConst
+                                                            .kBorderButtonColor),
                                                   ),
                                                   onTap: () {
-                                                    Utils.openScreen(context, const ProductsPage(), replacment: true);
+                                                    Utils.openScreen(context,
+                                                        const ProductsPage(),
+                                                        replacment: true);
                                                   },
                                                 ),
                                               ],

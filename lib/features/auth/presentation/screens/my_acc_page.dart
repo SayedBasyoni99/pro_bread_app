@@ -20,12 +20,12 @@ class MyAccountPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: AppConst.kPrimaryColor,
-        appBar: CustomAppBar.build(
-          context,
-          titleText: 'حسابي',
-          iconAppBar: SvgPicture.asset('assets/images/svg/cart_icon.svg'),
-          removeBack: true,
-        ),
+        // appBar: CustomAppBar.build(
+        //   context,
+        //   titleText: 'حسابي',
+        //   iconAppBar: SvgPicture.asset('assets/images/svg/cart_icon.svg'),
+        // removeBack: true,
+        // ),
         body: Center(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 24.h),

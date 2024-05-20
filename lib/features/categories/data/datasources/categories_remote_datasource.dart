@@ -58,7 +58,7 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
         queryParameters: params.toJson(),
       );
 
-      if(response['status'] == true){
+      if(response['data'] != null && response['data'] is List){
         return GetDishesModel.fromJson(response);
       }
       throw ServerException(message: response['message']?? '');

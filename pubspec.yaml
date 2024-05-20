@@ -52,6 +52,7 @@ flutter:
     - assets/images/svg/
     - assets/images/png/ 
     - assets/fonts/ 
+    - assets/lang/ 
 
     
   

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -36,16 +37,16 @@ class CreateAccPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Gap(25.h),
-                    const Text(
-                      'إنشاء حساب جديد',
+                    Text(
+                      'create_new_account'.tr(),
                       style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: AppConst.kScondaryTextColor),
                     ),
                     const Gap(32),
-                    const Text(
-                      'رقم الجوال',
+                    Text(
+                      'mobile_number'.tr(),
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,
@@ -66,7 +67,7 @@ class CreateAccPage extends StatelessWidget {
                     Gap(40.h),
                     CustomInputField(
                       controller: phoneController,
-                      hint: 'ادخل رقم الجوال',
+                      hint: '  enter_mobile_number'.tr(),
                       prefixIcon: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: SvgPicture.asset(
@@ -76,7 +77,7 @@ class CreateAccPage extends StatelessWidget {
                       keyboardType: TextInputType.phone,
                       validator: (value) {
                         if (value?.trim().isEmpty == true) {
-                          return 'Required';
+                          return 'Required'.tr();
                         }
                         return null;
                       },
@@ -104,19 +105,19 @@ class CreateAccPage extends StatelessWidget {
                           );
                         }
                         return CustomTextButton(
-                              onTap: () {
-                                if (formKey.currentState?.validate() == true) {
-                                  context.read<RegisterCubit>().fRegister(
-                                        phone: phoneController.text.trim(),
-                                      );
-                                }
-                                // showAppDialog(
-                                //   context: context,
-                                //   child: const RegisterPinCodeDialog(),
-                                // );
-                              },
-                              title: 'إنشاء حساب جديد',
-                              fontSize: 18.sp);
+                            onTap: () {
+                              if (formKey.currentState?.validate() == true) {
+                                context.read<RegisterCubit>().fRegister(
+                                      phone: phoneController.text.trim(),
+                                    );
+                              }
+                              // showAppDialog(
+                              //   context: context,
+                              //   child: const RegisterPinCodeDialog(),
+                              // );
+                            },
+                            title: 'create_account'.tr(),
+                            fontSize: 18.sp);
                       },
                     ),
                   ],
@@ -131,14 +132,14 @@ class CreateAccPage extends StatelessWidget {
                       Navigator.of(context).push(
                           MaterialPageRoute(builder: (context) => LogInPage()));
                     },
-                    child: const Text('تسجيل الدخول',
+                    child: Text(' login'.tr(),
                         style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
                             color: AppConst.kButtonColor)),
                   ),
                   const Gap(12),
-                  const Text('هل لديك حساب بالفعل ؟ ',
+                  Text('already_have_an_account'.tr(),
                       style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.bold,

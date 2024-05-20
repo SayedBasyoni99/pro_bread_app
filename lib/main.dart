@@ -44,9 +44,10 @@ void main() async {
 
   runApp(
     EasyLocalization(
-        supportedLocales: const [Locale('ar', 'EG'), Locale('en', 'US')],
-        path: 'assets/translations',
-        startLocale: const Locale('ar', 'EG'),
+        supportedLocales: const [Locale('ar'), Locale('en')],
+        path: 'assets/lang',
+        startLocale: const Locale('en'),
+        assetLoader: const RootBundleAssetLoader(),
         saveLocale: true,
         child: const MyApp()),
   );
@@ -67,7 +68,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    context.locale == const Locale('en', 'US') ? 'en' : 'ar';
+    //context.locale == const Locale('en', 'US') ? 'en' : 'ar';
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
@@ -80,7 +81,7 @@ class MyApp extends StatelessWidget {
             ...favoritesBlocs,
             ...ordersBlocs,
             BlocProvider<BottomNavBarCubit>(
-              create: (context) => BottomNavBarCubit(),
+              create: (context) => ServiceLocator.instance<BottomNavBarCubit>(),
             ),
           ],
           child: MaterialApp(
@@ -96,6 +97,9 @@ class MyApp extends StatelessWidget {
               /* dark theme settings */
             ),
             themeMode: ThemeMode.light,
+            localizationsDelegates: context.localizationDelegates,
+            supportedLocales: context.supportedLocales,
+            locale: context.locale,
             /* ThemeMode.system to follow system theme, 
          ThemeMode.light for light theme, 
          ThemeMode.dark for dark theme

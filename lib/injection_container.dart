@@ -11,6 +11,7 @@ import 'features/address/address_injection.dart';
 import 'features/auth/auth_injection.dart';
 import 'features/categories/categories_injection.dart';
 import 'features/favorites/favorites_injection.dart';
+import 'features/home/home_injection.dart';
 import 'features/orders/orders_injection.dart';
 
 abstract class ServiceLocator {
@@ -20,6 +21,7 @@ abstract class ServiceLocator {
     instance.allowReassignment = true;
 
     /// Features
+    await initHomeFeatureInjection();
     await initAddressFeatureInjection();
     await initAuthFeatureInjection();
     await initCategoriesFeatureInjection();
