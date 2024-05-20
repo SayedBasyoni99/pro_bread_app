@@ -4,13 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+
+import '../../../../config/routes/app_routes.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/resources/assets.gen.dart';
-import 'log_in_page.dart';
 import '../../../../shared/custom_input_field.dart';
 import '../../../../shared/text_button.dart';
 import '../../../../core/utils/app_snack_bar.dart';
-import '../../../../core/utils/utils.dart';
 import '../controller/complete_register/complete_register_cubit.dart';
 import '../controller/register/register_cubit.dart';
 
@@ -140,7 +140,8 @@ class _NewAccPageState extends State<NewAccPage> {
                       BlocConsumer<CompleteRegisterCubit, CompleteRegisterState>(
                         listener: (context, state) {
                           if (state is CompleteRegisterSuccessState) {
-                            Utils.openScreen(context, LogInPage(), replacment: true);
+                            // Utils.openScreen(context, LogInPage(), replacment: true);
+                            Navigator.pushReplacementNamed(context, Routes.loginRoute);
                           }
                           if (state is CompleteRegisterErrorState) {
                             showAppSnackBar(context: context, message: state.message, type: ToastType.error);
@@ -180,7 +181,8 @@ class _NewAccPageState extends State<NewAccPage> {
                     const Gap(12),
                     GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (context) => LogInPage()));
+                        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => LogInPage()));
+                        Navigator.pushReplacementNamed(context, Routes.loginRoute);
                       },
                       child: Text('login'.tr(),
                           style:

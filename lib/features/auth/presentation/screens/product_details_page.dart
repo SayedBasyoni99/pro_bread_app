@@ -14,7 +14,12 @@ import '../../../../shared/show_dialog.dart';
 import 'products_page.dart';
 
 class ProductDetailsPage extends StatefulWidget {
-  const ProductDetailsPage({super.key});
+  final Dish? dish;
+
+  const ProductDetailsPage({
+    required this.dish,
+    super.key,
+  });
 
   @override
   State<ProductDetailsPage> createState() => _ProductDetailsPageState();
@@ -28,8 +33,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
   @override
   Widget build(BuildContext context) {
-    final Dish? dish = (ModalRoute.of(context)?.settings.arguments) as Dish?;
-    print('Sayyyyyed ${dish?.id}');
     return Scaffold(
       backgroundColor: AppConst.kBorderBoxColor,
       body: NestedScrollView(

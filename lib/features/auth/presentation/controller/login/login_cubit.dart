@@ -13,7 +13,7 @@ class LoginCubit extends Cubit<LoginState> {
 
   LoginCubit(this.loginUseCase) : super(const LoginInitialState());
 
-  User? data;
+  LoginResponse? data;
 
   Future<void> fLogin({
    required String phone,
@@ -27,7 +27,7 @@ class LoginCubit extends Cubit<LoginState> {
     eitherResult.fold((Failure failure) {
       emit(LoginErrorState(message: failure.message?? 'pleaseTryAgainLater'));
     }, (LoginResponse response) {
-      data = response.data;
+      data = response;
       emit(LoginSuccessState(value: response.data));
     });
   }

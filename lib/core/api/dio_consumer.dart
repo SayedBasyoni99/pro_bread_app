@@ -73,8 +73,8 @@ class DioConsumerImpl implements DioConsumer {
   }
 
   Future<void> _handleAccessTokenHeader() async {
-    final String? accessToken = await secureStorage.getAccessToken();
-    if (accessToken != null) {
+    final String? accessToken = await secureStorageService.getAccessToken();
+    if (accessToken != null && accessToken.isNotEmpty) {
       client.options.headers[HttpHeaders.authorizationHeader] =
           'Bearer $accessToken';
     }
@@ -83,7 +83,7 @@ class DioConsumerImpl implements DioConsumer {
   @override
   void updateLanguageCodeHeader() {
     client.options.headers[HttpHeaders.acceptLanguageHeader] =
-        sharedPreferences.getLanguageCode();
+        sharedPreferencesService.getLanguageCode();
   }
 
   @override

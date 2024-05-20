@@ -10,11 +10,18 @@ import '../../../../shared/text_button.dart';
 import '../../../../shared/custom_input_field.dart';
 import '../../../../shared/show_dialog.dart';
 
-class ForgetPasswordPage extends StatelessWidget {
-  ForgetPasswordPage({super.key});
+class ForgetPasswordPage extends StatefulWidget {
+  const ForgetPasswordPage({super.key});
 
+  @override
+  State<ForgetPasswordPage> createState() => _ForgetPasswordPageState();
+}
+
+class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   final TextEditingController phoneController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

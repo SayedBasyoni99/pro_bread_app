@@ -6,9 +6,14 @@ import 'data/datasources/auth_remote_datasource.dart';
 import 'data/repositories/auth_repo_impl.dart';
 import 'domain/repositories/auth_repo.dart';
 import 'domain/usecases/forget_password_usecase.dart';
+import 'domain/usecases/get_user_type_usecase.dart';
 import 'domain/usecases/login_usecase.dart';
+import 'domain/usecases/remove_access_token_usecase.dart';
+import 'domain/usecases/save_access_token_usecase.dart';
+import 'domain/usecases/save_user_type_usecase.dart';
 import 'domain/usecases/send_otp_usecase.dart';
 import 'domain/usecases/update_password_usecase.dart';
+import 'presentation/controller/auto_login/auto_login_cubit.dart';
 import 'presentation/controller/forget_password/forget_password_cubit.dart';
 import 'presentation/controller/login/login_cubit.dart';
 import 'domain/usecases/check_otp_usecase.dart';
@@ -31,6 +36,12 @@ Future<void> initAuthFeatureInjection() async {
   _sl.registerLazySingleton<CheckOtpCubit>(() => CheckOtpCubit(_sl()));
   _sl.registerLazySingleton<RegisterCubit>(() => RegisterCubit(_sl()));
   _sl.registerLazySingleton<CompleteRegisterCubit>(() => CompleteRegisterCubit(_sl()));
+  _sl.registerLazySingleton<AutoLoginCubit>(() => AutoLoginCubit(
+    getUserTypeUseCase: _sl(),
+    saveUserTypeUseCase: _sl(),
+    saveAccessTokenUseCase: _sl(),
+    removeAccessTokenUseCase: _sl(),
+  ));
 
   ///-> UseCases
   _sl.registerLazySingleton<LoginUseCase>(() => LoginUseCase(repository: _sl()));
@@ -40,6 +51,10 @@ Future<void> initAuthFeatureInjection() async {
   _sl.registerLazySingleton<CheckOtpUseCase>(() => CheckOtpUseCase(repository: _sl()));
   _sl.registerLazySingleton<RegisterUseCase>(() => RegisterUseCase(repository: _sl()));
   _sl.registerLazySingleton<CompleteRegisterUseCase>(() => CompleteRegisterUseCase(repository: _sl()));
+  _sl.registerLazySingleton<GetUserTypeUseCase>(() => GetUserTypeUseCase(repository: _sl()));
+  _sl.registerLazySingleton<SaveUserTypeUseCase>(() => SaveUserTypeUseCase(repository: _sl()));
+  _sl.registerLazySingleton<SaveAccessTokenUseCase>(() => SaveAccessTokenUseCase(repository: _sl()));
+  _sl.registerLazySingleton<RemoveAccessTokenUseCase>(() => RemoveAccessTokenUseCase(repository: _sl()));
 
   ///-> Repository
   _sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(remote: _sl()));
@@ -76,5 +91,9 @@ List<BlocProvider> get authBlocs => <BlocProvider>[
 
   BlocProvider<CompleteRegisterCubit>(
     create: (BuildContext context) => _sl<CompleteRegisterCubit>(),
+  ),
+
+  BlocProvider<AutoLoginCubit>(
+    create: (BuildContext context) => _sl<AutoLoginCubit>(),
   ),
 ];

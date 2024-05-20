@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import '../../../../config/routes/app_routes.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../../shared/custom_details_container.dart';
 import '../../../../shared/text_button.dart';
 import 'payment_page.dart';
-import 'product_details_page.dart';
-import 'recipient_info_page.dart';
 
 class ChooseLocationPage extends StatelessWidget {
   const ChooseLocationPage({super.key});
@@ -40,10 +39,7 @@ class ChooseLocationPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Utils.openScreen(
-                            context,
-                            const ProductDetailsPage(),
-                          );
+                          Navigator.pushNamed(context, Routes.productDetailsRoute);
                         },
                         child: CustomDetailsContainer(
                           picInfo: 'select_icon',
@@ -102,7 +98,8 @@ class ChooseLocationPage extends StatelessWidget {
               // Gap(8.h),
               GestureDetector(
                 onTap: () {
-                  Utils.openScreen(context, const RecipientInfoPage());
+                  // Utils.openScreen(context, const RecipientInfoPage());
+                  Navigator.pushNamed(context, Routes.recipientInfoPageRoute);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,

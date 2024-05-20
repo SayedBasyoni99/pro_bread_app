@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import '../../../../config/routes/app_routes.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../../shared/custom_details_container.dart';
 import '../../../../shared/text_button.dart';
 import 'choose_location_page.dart';
-import 'product_details_page.dart';
 
 class DeliveredDetailsPage extends StatelessWidget {
   const DeliveredDetailsPage({super.key});
@@ -36,10 +36,7 @@ class DeliveredDetailsPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: GestureDetector(
                   onTap: () {
-                    Utils.openScreen(
-                      context,
-                      const ProductDetailsPage(),
-                    );
+                    Navigator.pushNamed(context, Routes.productDetailsRoute);
                   },
                   child: CustomDetailsContainer(
                     picInfo: 'arrowBack_icon',

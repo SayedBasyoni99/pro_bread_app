@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+import '../../../../config/routes/app_routes.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../shared/text_button.dart';
 import '../../../../shared/text_widget.dart';
 import 'delivered_details_page.dart';
-import 'product_details_page.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -39,10 +39,7 @@ class CartPage extends StatelessWidget {
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
-                              Utils.openScreen(
-                                context,
-                                const ProductDetailsPage(),
-                              );
+                              Navigator.pushNamed(context, Routes.productDetailsRoute);
                             },
                             child: Container(
                               decoration: BoxDecoration(

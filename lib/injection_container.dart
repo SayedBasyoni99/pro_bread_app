@@ -5,8 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'core/api/app_interceptors.dart';
 import 'core/api/dio_consumer.dart';
-import 'core/services/local_storage/app_secure_storage.dart';
-import 'core/services/local_storage/app_shared_preferences.dart';
+import 'core/services/local_storage/secure_storage_service.dart';
+import 'core/services/local_storage/shared_preferences_service.dart';
 import 'features/address/address_injection.dart';
 import 'features/auth/auth_injection.dart';
 import 'features/categories/categories_injection.dart';
@@ -29,6 +29,10 @@ abstract class ServiceLocator {
     await initOrdersFeatureInjection();
 
     /// Core
+    await _injectSharedPreferences();
+    _injectSharedPreferencesService();
+    _injectSecureStorageService();
+    _injectSecureStorage();
     _injectDioConsumer();
     _injectAppInterceptors();
     _injectLogInterceptor();
@@ -38,7 +42,7 @@ abstract class ServiceLocator {
 
   static void _injectDioConsumer() {
     instance.registerLazySingleton<DioConsumer>(
-        () => DioConsumerImpl(client: Dio()));
+            () => DioConsumerImpl(client: Dio()));
   }
 
   static void _injectAppInterceptors() {
@@ -46,7 +50,8 @@ abstract class ServiceLocator {
   }
 
   static void _injectLogInterceptor() {
-    instance.registerLazySingleton(() => LogInterceptor(
+    instance.registerLazySingleton(() =>
+        LogInterceptor(
           request: true,
           requestBody: true,
           requestHeader: true,
@@ -56,20 +61,33 @@ abstract class ServiceLocator {
         ));
   }
 
+
   static Future<void> _injectSharedPreferences() async {
     final sharedPreferences = await SharedPreferences.getInstance();
-    instance.registerLazySingleton<AppSharedPreferences>(
-        () => AppSharedPreferencesImpl(instance: sharedPreferences));
+    instance.registerLazySingleton<SharedPreferences>(() => sharedPreferences);
+  }
+
+  static Future<void> _injectSharedPreferencesService() async {
+    instance.registerLazySingleton<SharedPreferencesService>(
+            () => AppSharedPreferencesImpl(instance: instance()));
   }
 
   static void _injectSecureStorage() {
     AndroidOptions androidOptions =
-        const AndroidOptions(encryptedSharedPreferences: true);
-    final FlutterSecureStorage secureStorage =
-        FlutterSecureStorage(aOptions: androidOptions);
-    instance.registerLazySingleton<AppSecureStorage>(
-        () => AppSecureStorageImpl(instance: secureStorage));
+    const AndroidOptions(encryptedSharedPreferences: true);
+    // IOSOptions iosOptions = const IOSOptions(accessibility: KeychainAccessibility.first_unlock);
+    final FlutterSecureStorage secureStorage = FlutterSecureStorage(
+      aOptions: androidOptions,
+      // iOptions: iosOptions,
+    );
+    instance.registerLazySingleton<FlutterSecureStorage>(() => secureStorage);
   }
+
+  static void _injectSecureStorageService() {
+    instance.registerLazySingleton<SecureStorageService>(
+            () => SecureStorageServiceImpl(instance: instance()));
+  }
+
 }
 
 DioConsumer get dioConsumer => ServiceLocator.instance<DioConsumer>();
@@ -79,8 +97,8 @@ AppInterceptors get appInterceptors =>
 
 LogInterceptor get logInterceptor => ServiceLocator.instance<LogInterceptor>();
 
-AppSharedPreferences get sharedPreferences =>
-    ServiceLocator.instance<AppSharedPreferences>();
+SharedPreferencesService get sharedPreferencesService =>
+      ServiceLocator.instance<SharedPreferencesService>();
 
-AppSecureStorage get secureStorage =>
-    ServiceLocator.instance<AppSecureStorage>();
+SecureStorageService get secureStorageService =>
+      ServiceLocator.instance<SecureStorageService>();

@@ -1,19 +1,17 @@
 // ignore_for_file: must_be_immutable
 
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import '../features/auth/presentation/screens/product_details_page.dart';
+
+import '../config/routes/app_routes.dart';
 import '../features/categories/domain/entities/get_dish_response.dart';
 import '../features/favorites/presentation/controller/toggle_favorite/toggle_favorite_cubit.dart';
 import 'text_widget.dart';
 import '../core/const/constant_var.dart';
-import '../core/utils/utils.dart';
 
 class ProductCard extends StatefulWidget {
   ProductCard({
@@ -36,15 +34,7 @@ class _ProductCardState extends State<ProductCard> {
     // bool addToCart;
     return GestureDetector(
       onTap: () {
-        final settings = RouteSettings(
-          name: '/ProductDetailsPage',
-          arguments: widget.item,
-        );
-        Utils.openScreen(
-          context,
-          const ProductDetailsPage(),
-          settings: settings,
-        );
+        Navigator.pushNamed(context, Routes.productDetailsRoute, arguments: widget.item);
       },
       child: Container(
         height: 150.h,

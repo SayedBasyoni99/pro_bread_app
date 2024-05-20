@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 
+import 'enums.dart';
+
 extension FormDataExtension on FormData {
   String get toPrint {
     Map<String, dynamic> result = {};
@@ -11,4 +13,10 @@ extension FormDataExtension on FormData {
     }
     return result.toString();
   }
+}
+
+extension UserTypeExtension on UserType {
+  static UserType fromString(String value) => UserType.values
+      .firstWhere((UserType element) => element.name == value,
+      orElse: () => UserType.firstOpen);
 }

@@ -2,12 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import 'config/routes/app_routes.dart';
+import 'config/routes/navigator_observer.dart';
 import 'features/categories/categories_injection.dart';
 import 'features/favorites/favorites_injection.dart';
 import 'features/home/presentation/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 import 'features/orders/orders_injection.dart';
-import 'splash/splash_screen.dart';
-
 import 'features/address/address_injection.dart';
 import 'features/auth/auth_injection.dart';
 import 'injection_container.dart';
@@ -100,12 +101,14 @@ class MyApp extends StatelessWidget {
             localizationsDelegates: context.localizationDelegates,
             supportedLocales: context.supportedLocales,
             locale: context.locale,
+
+            navigatorObservers: [AppNavigatorObserver()],
             /* ThemeMode.system to follow system theme, 
          ThemeMode.light for light theme, 
          ThemeMode.dark for dark theme
       */
             debugShowCheckedModeBanner: false,
-            home: const SplashScreen(),
+            onGenerateRoute: AppRoutes.onGenerateRoute,
           )
 
           // MaterialApp(

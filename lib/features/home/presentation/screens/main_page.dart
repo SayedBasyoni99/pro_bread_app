@@ -8,12 +8,24 @@ import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
 
 import '../../../auth/presentation/screens/cart_page.dart';
+import '../../../categories/presentation/controller/get_categories/get_categories_cubit.dart';
 import '../controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({
     super.key,
   });
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<GetCategoriesCubit>().fGetCategories();
+  }
 
   @override
   Widget build(BuildContext context) {

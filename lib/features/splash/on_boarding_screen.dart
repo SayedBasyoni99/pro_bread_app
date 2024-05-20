@@ -2,14 +2,22 @@ import 'package:cupertino_onboarding/cupertino_onboarding.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import '../core/const/constant_var.dart';
-import '../core/resources/assets.gen.dart';
-import '../features/auth/presentation/screens/welcome_page.dart';
+
+import '../../config/routes/app_routes.dart';
+import '../../core/const/constant_var.dart';
+import '../../core/resources/assets.gen.dart';
 
 // ignore: must_be_immutable
-class OnBoardingScreen extends StatelessWidget {
-  OnBoardingScreen({super.key});
+class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({super.key});
+
+  @override
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+}
+
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
   int index = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +30,8 @@ class OnBoardingScreen extends StatelessWidget {
             bottomButtonColor: AppConst.kButtonColor,
             // onPressed: () {},
             onPressedOnLastPage: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const WelcomePage()));
+              Navigator.pushNamed(context, Routes.welcomeRoute);
+              // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const WelcomePage()));
             },
             pages: [
               Column(
