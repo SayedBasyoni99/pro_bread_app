@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../features/auth/presentation/screens/cart_page.dart';
 import '../../features/auth/presentation/screens/forget_password.dart';
+import '../../features/auth/presentation/screens/lang_page.dart';
 import '../../features/auth/presentation/screens/log_in_page.dart';
 import '../../features/auth/presentation/screens/new_acc_page.dart';
 import '../../features/auth/presentation/screens/product_details_page.dart';
+import '../../features/auth/presentation/screens/products_page.dart';
 import '../../features/auth/presentation/screens/recipient_info_page.dart';
 import '../../features/auth/presentation/screens/welcome_page.dart';
 import '../../features/categories/domain/entities/get_dish_response.dart';
@@ -21,13 +24,13 @@ class Routes {
   static const String productDetailsRoute = '/ProductDetailsPage';
   static const String recipientInfoPageRoute = '/RecipientInfoPage';
   static const String forgotPasswordRoute = '/ForgetPasswordPage';
-
-
   static const String cartScreenRoute = '/CartScreen';
   static const String myAccountScreen = '/MyAccountScreen';
   static const String productsScreen = '/ProductsScreen';
   static const String favouritesScreen = '/FavouritesScreen';
+
   static const String categoryDetailsScreen = '/CategoryDetailsScreen';
+
   static const String settingsScreen = '/SettingsScreen';
 }
 
@@ -94,6 +97,39 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSettings,
           builder: (BuildContext context) => const ForgetPasswordPage(),
+        );
+
+      case Routes.cartScreenRoute:
+        return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (BuildContext context) => const CartPage(),
+        );
+
+      case Routes.myAccountScreen:
+        return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (BuildContext context) => const MainPage(),
+        );
+      case Routes.productsScreen:
+        return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (BuildContext context) => const MainPage(),
+        );
+      case Routes.favouritesScreen:
+        return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (BuildContext context) => const MainPage(),
+        );
+
+      case Routes.categoryDetailsScreen:
+        return MaterialPageRoute(
+            settings: routeSettings,
+            builder: (BuildContext context) => ProductsPage());
+
+      case Routes.settingsScreen:
+        return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (BuildContext context) => const LanguagePage(),
         );
 
       default:

@@ -34,14 +34,14 @@ class ChangePasswordPage extends StatelessWidget {
                     Gap(25.h),
                     const Text(
                       'تغيير كلمة المرور',
-                      style: const TextStyle(
+                      style: TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                     ),
                     const Gap(24),
                     const Text(
                       'كلمة المرور الجديدة ',
                       style:
-                          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
                     const Gap(16),
                     CustomInputField(
@@ -65,7 +65,7 @@ class ChangePasswordPage extends StatelessWidget {
                     const Text(
                       'تأكيد كلمة المرور الجديدة',
                       style:
-                          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                          TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
                     const Gap(16),
                     CustomInputField(

@@ -33,104 +33,109 @@ class _ProductsPageState extends State<ProductsPage> {
       //     titleText: 'المنتجات',
       //     backgroundColor: AppConst.kPrimaryColor,
       //     iconAppBar: SvgPicture.asset('assets/images/svg/cart_icon.svg')),
-      body: Column(
-        children: [
-          BlocConsumer<GetCategoriesCubit, GetCategoriesState>(
-            listener: (context, state) {
-              if (state is GetCategoriesErrorState) {
-                showAppSnackBar(context: context, message: state.message, type: ToastType.error);
-              }
-            },
-            builder: (context, state) {
-              if (state is GetCategoriesLoadingState) {
-                return const Center(child: CircularProgressIndicator());
-              }
-
-              if (state is GetCategoriesSuccessState) {
-                return SizedBox(
-                  height: 140.h,
-                  child: ListView.separated(
-                    separatorBuilder: (context, index) => Gap(16.h),
-                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: state.value.length,
-                    //  viewModel.homeModel?.data?.products?.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      //  Products? product =
-                      //      viewModel.homeModel?.data?.products?[index];
-
-                      return GestureDetector(
-                          onTap: () {
-                            context.read<GetCategoriesCubit>().changeIndex(index: index);
-                            context.read<GetDishesCubit>().fGetDishes(category: state.value[index].id);
-                          },
-                          child: CustomCard(
-                            item: state.value[index],
-                            color: AppConst.kBorderBoxColor,
-                            isSelected: context.read<GetCategoriesCubit>().currentIndex == index,
-                          ));
-                    },
-                  ),
-                );
-              }
-
-              return const SizedBox();
-            },
-          ),
-          Gap(16.h),
-          // Row(
-          //   mainAxisAlignment: MainAxisAlignment.start,
-          //   children: [
-          //     SizedBox(
-          //       height: .06.sh,
-          //       width: 16.w,
-          //       child: SvgPicture.asset('assets/images/svg/desert_icon.svg'),
-          //     ),
-          //     const Gap(8),
-          //     TextWidget(
-          //       title: 'products'.tr(),
-          //       color: AppConst.kPrimaryTextColor,
-          //       fontSize: 18.sp,
-          //       fontWeight: FontWeight.bold,
-          //     ),
-          //   ],
-          // ),
-          Gap(16.h),
-          Expanded(
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.all(16),
-              child: BlocConsumer<GetDishesCubit, GetDishesState>(
-                listener: (BuildContext context, GetDishesState state) {
-                  if (state is GetDishesErrorState) {
-                    showAppSnackBar(context: context, message: state.message, type: ToastType.error);
-                  }
-                },
-                builder: (BuildContext context, GetDishesState state) {
-                  if (state is GetDishesLoadingState) {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                  if (state is GetDishesSuccessState) {
-                    return ListView.separated(
-                      separatorBuilder: (context, index) => Gap(24.h),
-                      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            BlocConsumer<GetCategoriesCubit, GetCategoriesState>(
+              listener: (context, state) {
+                if (state is GetCategoriesErrorState) {
+                  showAppSnackBar(context: context, message: state.message, type: ToastType.error);
+                }
+              },
+              builder: (context, state) {
+                if (state is GetCategoriesLoadingState) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+        
+                if (state is GetCategoriesSuccessState) {
+                  return SizedBox(
+                    height: 140.h,
+                    child: ListView.separated(
+                      separatorBuilder: (context, index) => Gap(16.h),
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      physics: const BouncingScrollPhysics(),
                       itemCount: state.value.length,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
+                      //  viewModel.homeModel?.data?.products?.length,
+                      scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
-                        final dish = state.value[index];
-                        return ProductCard(
-                          item: dish,
-                        );
+                        //  Products? product =
+                        //      viewModel.homeModel?.data?.products?[index];
+        
+                        return GestureDetector(
+                            onTap: () {
+                              context.read<GetCategoriesCubit>().changeIndex(index: index);
+                              context.read<GetDishesCubit>().fGetDishes(category: state.value[index].id);
+                            },
+                            child: CustomCard(
+                              item: state.value[index],
+                              color: AppConst.kBorderBoxColor,
+                              isSelected: context.read<GetCategoriesCubit>().currentIndex == index,
+                            ));
                       },
-                    );
-                  }
-                  return const SizedBox();
-                },
+                    ),
+                  );
+                }
+        
+                return const SizedBox();
+              },
+            ),
+            Gap(16.h),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.start,
+            //   children: [
+            //     SizedBox(
+            //       height: .06.sh,
+            //       width: 16.w,
+            //       child: SvgPicture.asset('assets/images/svg/desert_icon.svg'),
+            //     ),
+            //     const Gap(8),
+            //     TextWidget(
+            //       title: 'products'.tr(),
+            //       color: AppConst.kPrimaryTextColor,
+            //       fontSize: 18.sp,
+            //       fontWeight: FontWeight.bold,
+            //     ),
+            //   ],
+            // ),
+            Gap(16.h),
+            Expanded(
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(16),
+                child: BlocConsumer<GetDishesCubit, GetDishesState>(
+                  listener: (BuildContext context, GetDishesState state) {
+                    if (state is GetDishesErrorState) {
+                      showAppSnackBar(context: context, message: state.message, type: ToastType.error);
+                    }
+                  },
+                  builder: (BuildContext context, GetDishesState state) {
+                    if (state is GetDishesLoadingState) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    if (state is GetDishesSuccessState) {
+                      return ListView.separated(
+                        separatorBuilder: (context, index) => Gap(24.h),
+                        padding: const EdgeInsets.symmetric(vertical: 16.0),
+                        itemCount: state.value.length,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          final dish = state.value[index];
+                          return ProductCard(
+                            item: dish,
+                          );
+                        },
+                      );
+                    }
+                    return const SizedBox();
+                  },
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

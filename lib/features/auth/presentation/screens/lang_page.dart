@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -17,7 +18,7 @@ class LanguagePage extends StatelessWidget {
       backgroundColor: AppConst.kPrimaryColor,
       appBar: CustomAppBar.build(
         context,
-        titleText: 'اللغة',
+        titleText: 'language'.tr(),
         iconAppBar: SvgPicture.asset(
           'assets/images/svg/cart_icon.svg',
           height: 20,
@@ -60,7 +61,7 @@ class LanguagePage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 32.0.h),
               child: CustomTextButton(
-                title: 'حفظ',
+                title: 'save'.tr(),
                 fontSize: 18.sp,
                 onTap: () {
                   Utils.openScreen(context, const AccountInfoPage());

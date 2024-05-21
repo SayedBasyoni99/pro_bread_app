@@ -30,7 +30,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             bottomButtonColor: AppConst.kButtonColor,
             // onPressed: () {},
             onPressedOnLastPage: () {
-              Navigator.pushNamed(context, Routes.welcomeRoute);
+              Navigator.pushReplacementNamed(context, Routes.welcomeRoute);
               // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const WelcomePage()));
             },
             pages: [

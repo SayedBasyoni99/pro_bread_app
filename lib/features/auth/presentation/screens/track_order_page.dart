@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
@@ -153,27 +154,29 @@ class TrackOrderPage extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                         Gap(16.w),
-                        const Spacer(),
+                        // const Spacer(),
                         TextWidget(
                           title: ' 240 ${'SAR'.tr()}',
                           color: AppConst.kPrimaryTextColor,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.bold,
                         ),
-                        Gap(16.h),
+                        // Gap(16.h),
                       ],
                     ),
                     Gap(16.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextWidget(
-                          title: 'delivery_fee'.tr(),
-                          color: AppConst.kThirdTextColor,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: TextWidget(
+                            title: 'delivery_fee'.tr(),
+                            color: AppConst.kThirdTextColor,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        Gap(16.h),
+                        Gap(16.w),
                         TextWidget(
                           title: ' 510 ${'SAR'.tr()}',
                           color: AppConst.kPrimaryTextColor,
@@ -184,15 +187,17 @@ class TrackOrderPage extends StatelessWidget {
                     ),
                     Gap(16.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextWidget(
-                          title: 'discount_code'.tr(),
-                          color: AppConst.kThirdTextColor,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: TextWidget(
+                            title: 'discount_code'.tr(),
+                            color: AppConst.kThirdTextColor,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        Gap(16.h),
+                        Gap(16.w),
                         TextWidget(
                           title: ' 411 ${'SAR'.tr()}',
                           color: AppConst.kPrimaryTextColor,
@@ -209,15 +214,17 @@ class TrackOrderPage extends StatelessWidget {
                     ),
                     Gap(16.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextWidget(
-                          title: 'total'.tr(),
-                          color: AppConst.kThirdTextColor,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: TextWidget(
+                            title: 'total'.tr(),
+                            color: AppConst.kThirdTextColor,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        Gap(16.h),
+                        Gap(16.w),
                         TextWidget(
                           title: ' 855 ${'SAR'.tr()}',
                           color: AppConst.kScondaryTextColor,

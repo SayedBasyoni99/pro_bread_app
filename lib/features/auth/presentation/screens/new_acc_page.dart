@@ -141,7 +141,7 @@ class _NewAccPageState extends State<NewAccPage> {
                         listener: (context, state) {
                           if (state is CompleteRegisterSuccessState) {
                             // Utils.openScreen(context, LogInPage(), replacment: true);
-                            Navigator.pushReplacementNamed(context, Routes.loginRoute);
+                            Navigator.pushNamed(context, Routes.loginRoute);
                           }
                           if (state is CompleteRegisterErrorState) {
                             showAppSnackBar(context: context, message: state.message, type: ToastType.error);

@@ -145,7 +145,8 @@ class _LogInPageState extends State<LogInPage> {
                             if (state is LoginSuccessState) {
                               // Utils.openScreen(context, const MainPage(), replacment: true);
                               context.read<AutoLoginCubit>()
-                                  .fLoggedUser(context: context, accessToken: context.read<LoginCubit>().data?.accessToken ?? '');
+                                  .fLoggedUser(context: context,
+                                   accessToken: context.read<LoginCubit>().data?.accessToken ?? '');
                             }
                             if (state is LoginErrorState) {
                               showAppSnackBar(context: context, message: state.message, type: ToastType.error);
