@@ -9,6 +9,7 @@ import '../../../../shared/custom_app_bar.dart';
 
 import '../../../auth/presentation/screens/cart_page.dart';
 import '../../../categories/presentation/controller/get_categories/get_categories_cubit.dart';
+import '../../../categories/presentation/controller/get_dishes/get_dishes_cubit.dart';
 import '../controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 
 class MainPage extends StatefulWidget {
@@ -25,6 +26,7 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
     context.read<GetCategoriesCubit>().fGetCategories();
+    context.read<GetDishesCubit>().fGetDishes();
   }
 
   @override

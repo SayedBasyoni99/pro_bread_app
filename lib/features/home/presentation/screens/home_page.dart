@@ -13,6 +13,8 @@ import '../../../../shared/custom_text_field.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../auth/presentation/screens/search_page.dart';
 import '../../../categories/presentation/controller/get_categories/get_categories_cubit.dart';
+import '../../../categories/presentation/controller/get_dishes/get_dishes_cubit.dart';
+import '../controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -174,12 +176,19 @@ class _HomePageState extends State<HomePage> {
                               crossAxisCount: 2, mainAxisSpacing: 16.0, crossAxisSpacing: 16.0),
                           itemBuilder: (context, index) {
                             final category = state.value[index];
-                            return Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(10.0),
-                                color: AppConst.kPrimaryTextColor,
+                            return GestureDetector(
+                              onTap: (){
+                                context.read<GetCategoriesCubit>().changeIndex(index: index);
+                                context.read<GetDishesCubit>().fGetDishes(category: category.id);
+                                context.read<BottomNavBarCubit>().changeCurrentScreen(index: 1);
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                  color: AppConst.kPrimaryTextColor,
+                                ),
+                                child: Image.network(category.avatar),
                               ),
-                              child: Image.network(category.avatar),
                             );
                           },
                         ),
