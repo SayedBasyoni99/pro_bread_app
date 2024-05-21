@@ -47,7 +47,7 @@ void main() async {
     EasyLocalization(
         supportedLocales: const [Locale('ar'), Locale('en')],
         path: 'assets/lang',
-        startLocale: const Locale('en'),
+        startLocale: const Locale('ar'),
         assetLoader: const RootBundleAssetLoader(),
         saveLocale: true,
         child: const MyApp()),
