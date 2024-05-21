@@ -102,7 +102,7 @@ class WelcomePage extends StatelessWidget {
                             onTap: () {
                               // Utils.openScreen(context, CreateAccPage());
                               Navigator.pushReplacementNamed(
-                                  context, Routes.registerRoute);
+                                  context, Routes.createAccountRoute);
                             }),
                         Gap(10.h),
                         Text(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../features/auth/presentation/screens/cart_page.dart';
+import '../../features/auth/presentation/screens/create_acc_page.dart';
 import '../../features/auth/presentation/screens/forget_password.dart';
 import '../../features/auth/presentation/screens/lang_page.dart';
 import '../../features/auth/presentation/screens/log_in_page.dart';
@@ -18,6 +19,7 @@ class Routes {
   static const String initialRoute = '/';
   static const String onBoardingRoute = '/OnBoardingScreen';
   static const String welcomeRoute = '/WelcomePage';
+  static const String createAccountRoute = '/CreateAccountPage';
   static const String registerRoute = '/NewAccPage';
   static const String loginRoute = '/LogInPage';
   static const String mainPageRoute = '/MainPage';
@@ -61,7 +63,13 @@ class AppRoutes {
           },
         );
 
-      case Routes.registerRoute:
+      case Routes.createAccountRoute:
+        return MaterialPageRoute(
+          settings: routeSettings,
+          builder: (BuildContext context) => const CreateAccPage(),
+        );
+
+        case Routes.registerRoute:
         return MaterialPageRoute(
           settings: routeSettings,
           builder: (BuildContext context) => const NewAccPage(),

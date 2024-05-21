@@ -15,10 +15,16 @@ import '../../../../shared/text_button.dart';
 import '../../../../shared/show_dialog.dart';
 
 // ignore: must_be_immutable
-class CreateAccPage extends StatelessWidget {
-  CreateAccPage({super.key});
+class CreateAccPage extends StatefulWidget {
+  const CreateAccPage({super.key});
 
+  @override
+  State<CreateAccPage> createState() => _CreateAccPageState();
+}
+
+class _CreateAccPageState extends State<CreateAccPage> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   final TextEditingController phoneController = TextEditingController();
 
   @override

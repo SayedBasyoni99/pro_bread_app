@@ -71,7 +71,7 @@ class _SplashScreenState extends State<SplashScreen> {
     if (userType == UserType.firstOpen) {
       Navigator.pushReplacementNamed(context, Routes.onBoardingRoute);
     } else if (userType == UserType.login) {
-      Navigator.pushReplacementNamed(context, Routes.loginRoute);
+      Navigator.pushReplacementNamed(context, Routes.welcomeRoute);
     } else if (userType == UserType.user || userType == UserType.guest) {
       Navigator.pushReplacementNamed(context, Routes.mainPageRoute);
     }

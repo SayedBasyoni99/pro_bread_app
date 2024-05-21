@@ -131,7 +131,6 @@
     "product_details": "Product Details",
     "available_products": "Available Products",
     "cart": "Cart",
-    "send_note": "Send Note"
-
-
-  }
+    "send_note": "Send Note",
+    "please_try_again_later": "Please try again later"
+}

@@ -37,7 +37,7 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
         getDishEndpoint,
       );
 
-      if(response['status'] == true){
+      if(response['status'] == 200){
         return GetDishModel.fromJson(response);
       }
       throw ServerException(message: response['message']?? '');
@@ -78,7 +78,7 @@ class CategoriesRemoteDataSourceImpl implements CategoriesRemoteDataSource {
         getCategoryEndpoint,
       );
 
-      if(response['status'] == true){
+      if(response['status'] == 200){
         return GetCategoryModel.fromJson(response);
       }
       throw ServerException(message: response['message']?? '');

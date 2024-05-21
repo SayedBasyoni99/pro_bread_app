@@ -8,6 +8,8 @@ import 'config/routes/navigator_observer.dart';
 import 'features/categories/categories_injection.dart';
 import 'features/favorites/favorites_injection.dart';
 import 'features/home/presentation/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
+import 'features/language/language_injection.dart';
+import 'features/language/presentation/cubit/locale_cubit/locale_cubit.dart';
 import 'features/orders/orders_injection.dart';
 import 'features/address/address_injection.dart';
 import 'features/auth/auth_injection.dart';
@@ -76,6 +78,7 @@ class MyApp extends StatelessWidget {
       splitScreenMode: true,
       child: MultiBlocProvider(
           providers: [
+            ...languageBlocs,
             ...addressBlocs,
             ...authBlocs,
             ...categoriesBlocs,
@@ -85,30 +88,34 @@ class MyApp extends StatelessWidget {
               create: (context) => ServiceLocator.instance<BottomNavBarCubit>(),
             ),
           ],
-          child: MaterialApp(
-            title: 'Pro Bread',
-            theme: ThemeData(
-              fontFamily: 'Teshrin',
-              useMaterial3: true,
-              brightness: Brightness.light,
-              /* light theme settings */
-            ),
-            darkTheme: ThemeData(
-              brightness: Brightness.dark,
-              /* dark theme settings */
-            ),
-            themeMode: ThemeMode.light,
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
+          child: BlocBuilder<LocaleCubit, LocaleState>(
+              builder: (context, state) {
+              return MaterialApp(
+                title: 'Pro Bread',
+                theme: ThemeData(
+                  fontFamily: 'Teshrin',
+                  useMaterial3: true,
+                  brightness: Brightness.light,
+                  /* light theme settings */
+                ),
+                darkTheme: ThemeData(
+                  brightness: Brightness.dark,
+                  /* dark theme settings */
+                ),
+                themeMode: ThemeMode.light,
+                localizationsDelegates: context.localizationDelegates,
+                supportedLocales: context.supportedLocales,
+                locale: state.locale,
 
-            navigatorObservers: [AppNavigatorObserver()],
-            /* ThemeMode.system to follow system theme, 
-         ThemeMode.light for light theme, 
-         ThemeMode.dark for dark theme
-      */
-            debugShowCheckedModeBanner: false,
-            onGenerateRoute: AppRoutes.onGenerateRoute,
+                navigatorObservers: [AppNavigatorObserver()],
+                /* ThemeMode.system to follow system theme,
+                       ThemeMode.light for light theme,
+                       ThemeMode.dark for dark theme
+                    */
+                debugShowCheckedModeBanner: false,
+                onGenerateRoute: AppRoutes.onGenerateRoute,
+              );
+            }
           )
 
           // MaterialApp(

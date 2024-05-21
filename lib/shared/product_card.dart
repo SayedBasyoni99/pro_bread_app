@@ -98,22 +98,16 @@ class _ProductCardState extends State<ProductCard> {
               children: [
                 // TODO: add BlocBuilder of ToggleFavoriteCubit
                 BlocBuilder<ToggleFavoriteCubit, ToggleFavoriteState>(
+                  buildWhen: (_, current) => current.dishId == widget.item.id,
                   builder: (context, state) {
-                    if (state is ToggleFavoriteInitialState) {
-                      return GestureDetector(
-                        onTap: () {
-                          context
-                              .read<ToggleFavoriteCubit>()
-                              .fToggleFavorite(dishId: widget.item.id);
-                        },
-                        child: SvgPicture.asset(
-                          'assets/images/svg/empty_heart_icon01.svg',
-                          width: 25.w,
-                          height: 25.h,
-                        ),
-                      );
-                    }
                     if (state is ToggleFavoriteSuccessState) {
+                      bool isFav = state.isFavorite;
+                      if(state.dishId != widget.item.id){
+                        if(context.read<ToggleFavoriteCubit>().favorites[widget.item.id] != null){
+                          isFav = context.read<ToggleFavoriteCubit>().favorites[widget.item.id]?? false;
+                        }
+                        isFav = widget.item.isFav;
+                      }
                       return GestureDetector(
                         onTap: () {
                           context
@@ -121,13 +115,42 @@ class _ProductCardState extends State<ProductCard> {
                               .fToggleFavorite(dishId: widget.item.id);
                         },
                         child: SvgPicture.asset(
-                          'assets/images/svg/full_heart_icon01.svg',
+                          isFav
+                              ? 'assets/images/svg/full_heart_icon01.svg'
+                              : 'assets/images/svg/empty_heart_icon01.svg',
                           width: 25.w,
                           height: 25.h,
                         ),
                       );
                     }
-                    return const SizedBox();
+                    if(state is ToggleFavoriteInitialState){
+                      return GestureDetector(
+                        onTap: () {
+                          context
+                              .read<ToggleFavoriteCubit>()
+                              .fToggleFavorite(dishId: widget.item.id);
+                        },
+                        child: SvgPicture.asset(
+                          widget.item.isFav
+                              ? 'assets/images/svg/full_heart_icon01.svg'
+                              : 'assets/images/svg/empty_heart_icon01.svg',
+                          width: 25.w,
+                          height: 25.h,
+                        ),
+                      );
+                    }
+                    return GestureDetector(
+                      onTap: () {
+                        context
+                            .read<ToggleFavoriteCubit>()
+                            .fToggleFavorite(dishId: widget.item.id);
+                      },
+                      child: SvgPicture.asset(
+                        'assets/images/svg/empty_heart_icon01.svg',
+                        width: 25.w,
+                        height: 25.h,
+                      ),
+                    );
                   },
                 ),
                 Gap(12.h),
