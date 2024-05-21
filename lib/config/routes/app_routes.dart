@@ -69,7 +69,7 @@ class AppRoutes {
           builder: (BuildContext context) => const CreateAccPage(),
         );
 
-        case Routes.registerRoute:
+      case Routes.registerRoute:
         return MaterialPageRoute(
           settings: routeSettings,
           builder: (BuildContext context) => const NewAccPage(),
@@ -91,7 +91,7 @@ class AppRoutes {
         return MaterialPageRoute(
           settings: routeSettings,
           builder: (BuildContext context) => ProductDetailsPage(
-            dish: routeSettings.arguments as Dish?,
+            dish: routeSettings.arguments as Dish,
           ),
         );
 
@@ -130,9 +130,7 @@ class AppRoutes {
         );
 
       case Routes.categoryDetailsScreen:
-        return MaterialPageRoute(
-            settings: routeSettings,
-            builder: (BuildContext context) => ProductsPage());
+        return MaterialPageRoute(settings: routeSettings, builder: (BuildContext context) => const ProductsPage());
 
       case Routes.settingsScreen:
         return MaterialPageRoute(

@@ -45,9 +45,9 @@ class _ProductsPageState extends State<ProductsPage> {
               },
               builder: (context, state) {
                 if (state is GetCategoriesLoadingState) {
-                  return const Center(child: CircularProgressIndicator());
+                  return const SizedBox();
                 }
-        
+
                 if (state is GetCategoriesSuccessState) {
                   return SizedBox(
                     height: 140.h,
@@ -61,7 +61,7 @@ class _ProductsPageState extends State<ProductsPage> {
                       itemBuilder: (context, index) {
                         //  Products? product =
                         //      viewModel.homeModel?.data?.products?[index];
-        
+
                         return GestureDetector(
                             onTap: () {
                               context.read<GetCategoriesCubit>().changeIndex(index: index);
@@ -76,7 +76,7 @@ class _ProductsPageState extends State<ProductsPage> {
                     ),
                   );
                 }
-        
+
                 return const SizedBox();
               },
             ),

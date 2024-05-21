@@ -11,9 +11,14 @@ import '../../../../shared/text_button.dart';
 import '../../../../shared/text_widget.dart';
 import 'delivered_details_page.dart';
 
-class CartPage extends StatelessWidget {
+class CartPage extends StatefulWidget {
   const CartPage({super.key});
 
+  @override
+  State<CartPage> createState() => _CartPageState();
+}
+
+class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,8 +44,7 @@ class CartPage extends StatelessWidget {
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(
-                                  context, Routes.productDetailsRoute);
+                              // Navigator.pushNamed(context, Routes.productDetailsRoute);
                             },
                             child: Container(
                               decoration: BoxDecoration(
@@ -54,48 +58,38 @@ class CartPage extends StatelessWidget {
                                     offset: Offset(0, .1),
                                     // changes position of shadow
                                   ),
-                                  BoxShadow(
-                                      color: AppConst.kPrimaryColor,
-                                      spreadRadius: 4.0)
+                                  BoxShadow(color: AppConst.kPrimaryColor, spreadRadius: 4.0)
                                 ],
                               ),
                               padding: EdgeInsets.all(16.h),
                               child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
+                                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 8.w, top: 16.h, bottom: 16.h),
+                                    padding: EdgeInsets.only(left: 8.w, top: 16.h, bottom: 16.h),
                                     child: SizedBox(
                                       height: 80.h,
                                       width: 80.w,
-                                      child: Image.asset(
-                                          'assets/images/png/cake00.png'),
+                                      child: Image.asset('assets/images/png/cake00.png'),
                                     ),
                                   ),
                                   Column(
                                     children: [
                                       Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.end,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
                                           Row(
-                                            // mainAxisAlignment:
-                                            //     MainAxisAlignment.spaceBetween,
                                             children: [
                                               TextWidget(
                                                 title: 'croissants'.tr(),
-                                                color:
-                                                    AppConst.kPrimaryTextColor,
+                                                color: AppConst.kPrimaryTextColor,
                                                 fontSize: 12.sp,
                                                 // fontWeight: FontWeight.bold,
                                               ),
                                               Gap(12.w),
                                               TextWidget(
                                                 title: ' 255 ${'SAR'.tr()}',
-                                                color:
-                                                    AppConst.kScondaryTextColor,
+                                                color: AppConst.kScondaryTextColor,
                                                 fontSize: 14.sp,
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -113,8 +107,7 @@ class CartPage extends StatelessWidget {
                                               Gap(12.w),
                                               TextWidget(
                                                 title: ' 210 ${'SAR'.tr()}',
-                                                color:
-                                                    AppConst.kScondaryTextColor,
+                                                color: AppConst.kScondaryTextColor,
                                                 fontSize: 14.sp,
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -132,8 +125,7 @@ class CartPage extends StatelessWidget {
                                               Gap(12.w),
                                               TextWidget(
                                                 title: ' 200 ${'SAR'.tr()}',
-                                                color:
-                                                    AppConst.kScondaryTextColor,
+                                                color: AppConst.kScondaryTextColor,
                                                 fontSize: 14.sp,
                                                 fontWeight: FontWeight.bold,
                                               ),
@@ -152,13 +144,11 @@ class CartPage extends StatelessWidget {
                                             fontWeight: FontWeight.bold,
                                           ),
                                           Gap(12.w),
-                                          SvgPicture.asset(
-                                              'assets/images/svg/plus_icon.svg'),
+                                          SvgPicture.asset('assets/images/svg/plus_icon.svg'),
                                           Gap(12.w),
                                           const Text('1'),
                                           Gap(12.w),
-                                          SvgPicture.asset(
-                                              'assets/images/svg/minus_icon.svg'),
+                                          SvgPicture.asset('assets/images/svg/minus_icon.svg'),
                                         ],
                                       ),
                                     ],
@@ -168,12 +158,9 @@ class CartPage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
-                          child: Ink(
-                            child: SvgPicture.asset(
-                                'assets/images/svg/delete_icon.svg'),
-                          ),
+                        Gap(16.h),
+                        Ink(
+                          child: SvgPicture.asset('assets/images/svg/delete_icon.svg'),
                         ),
                       ],
                     );
@@ -184,10 +171,7 @@ class CartPage extends StatelessWidget {
                 children: [
                   Text(
                     'discount_code'.tr(),
-                    style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: AppConst.kThirdTextColor),
+                    style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                   ),
                 ],
               ),
@@ -200,17 +184,13 @@ class CartPage extends StatelessWidget {
                   ),
                   prefixIcon: Padding(
                     padding: const EdgeInsets.all(14.0),
-                    child:
-                        SvgPicture.asset('assets/images/svg/discount_icon.svg'),
+                    child: SvgPicture.asset('assets/images/svg/discount_icon.svg'),
                   ),
                   suffixText: 'apply'.tr(),
-                  suffixStyle: const TextStyle(
-                      color: AppConst.kBorderButtonColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold),
+                  suffixStyle:
+                      const TextStyle(color: AppConst.kBorderButtonColor, fontSize: 16, fontWeight: FontWeight.bold),
                   hintText: 'enter_discount_code'.tr(),
-                  hintStyle: const TextStyle(
-                      color: AppConst.kThirdTextColor, fontSize: 14),
+                  hintStyle: const TextStyle(color: AppConst.kThirdTextColor, fontSize: 14),
                   contentPadding: const EdgeInsets.all(16.0),
                   fillColor: AppConst.kBorderBoxColor,
                   filled: true,

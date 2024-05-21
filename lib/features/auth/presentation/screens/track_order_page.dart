@@ -2,10 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
+import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../../shared/text_widget.dart';
+import '../../../home/presentation/screens/home_page.dart';
 
 class TrackOrderPage extends StatelessWidget {
   const TrackOrderPage({super.key});
@@ -15,7 +18,18 @@ class TrackOrderPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar.build(
         context,
-        titleText: 'تتبع الطلب',
+        titleText: 'track_order'.tr(),
+        iconAppBar: GestureDetector(
+          onTap: () {
+            Utils.openScreen(context, const HomePage(), replacment: true);
+          },
+          child: SvgPicture.asset(
+            'assets/images/svg/home_icon.svg',
+            color: AppConst.kBorderButtonColor,
+            height: 20,
+            width: 20,
+          ),
+        ),
       ),
       backgroundColor: AppConst.kPrimaryColor,
       body: SingleChildScrollView(
@@ -30,7 +44,7 @@ class TrackOrderPage extends StatelessWidget {
                   color: AppConst.kPrimaryColor,
                 ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     TextWidget(
                       title: ' ${'order_number'.tr()} 123456',
@@ -38,11 +52,11 @@ class TrackOrderPage extends StatelessWidget {
                     Stepper(
                       connectorColor: const MaterialStatePropertyAll(AppConst.kBorderButtonColor),
                       currentStep: 0,
-                      steps: const [
+                      steps: [
                         Step(
-                            subtitle: Text('   الطلب'),
-                            title: Text('12/12/2022'),
-                            content: Text(' '),
+                            subtitle: Text('order'.tr()),
+                            title: const Text('12/12/2022'),
+                            content: const Text(' '),
                             isActive: true,
                             state: StepState.complete),
                       ],
@@ -51,11 +65,11 @@ class TrackOrderPage extends StatelessWidget {
                       controlsBuilder: (context, details) => const SizedBox(),
                       connectorColor: const MaterialStatePropertyAll(AppConst.kBorderButtonColor),
                       currentStep: 0,
-                      steps: const [
+                      steps: [
                         Step(
-                            subtitle: Text(' الطلب'),
-                            title: Text('12/12/2022'),
-                            content: Text(' '),
+                            subtitle: Text('order'.tr()),
+                            title: const Text('12/12/2022'),
+                            content: const Text(' '),
                             isActive: true,
                             state: StepState.complete),
                       ],
@@ -68,11 +82,11 @@ class TrackOrderPage extends StatelessWidget {
                       controlsBuilder: (context, details) => const SizedBox(),
                       connectorColor: const MaterialStatePropertyAll(AppConst.kBorderButtonColor),
                       currentStep: 0,
-                      steps: const [
+                      steps: [
                         Step(
-                            subtitle: Text('   الطلب'),
-                            title: Text('12/12/2022'),
-                            content: Text(' '),
+                            subtitle: Text('order'.tr()),
+                            title: const Text('12/12/2022'),
+                            content: const Text(' '),
                             isActive: true,
                             state: StepState.complete),
                       ],

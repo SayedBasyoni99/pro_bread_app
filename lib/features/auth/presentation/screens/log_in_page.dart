@@ -34,7 +34,7 @@ class _LogInPageState extends State<LogInPage> {
   Widget build(BuildContext context) {
     return BlocListener<AutoLoginCubit, AutoLoginState>(
       listener: (context, state) {
-        if(state is AutoLoginSuccessState && state.userType == UserType.user) {
+        if (state is AutoLoginSuccessState && state.userType == UserType.user) {
           Navigator.pushNamed(context, Routes.mainPageRoute);
         }
       },
@@ -51,7 +51,7 @@ class _LogInPageState extends State<LogInPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Gap(16.h),
                         if (formKey.currentState?.validate() == true)
@@ -60,8 +60,8 @@ class _LogInPageState extends State<LogInPage> {
                             children: [
                               Text(
                                 'incorrect_email_or_password'.tr(),
-                                style:
-                                    TextStyle(fontSize: 12.sp, fontWeight: FontWeight.bold, color: AppConst.kErrorColor),
+                                style: TextStyle(
+                                    fontSize: 12.sp, fontWeight: FontWeight.bold, color: AppConst.kErrorColor),
                               ),
                               Gap(4.w),
                               SvgPicture.asset('assets/images/svg/wrong_icon.svg'),
@@ -69,15 +69,15 @@ class _LogInPageState extends State<LogInPage> {
                           ),
                         Gap(20.h),
                         Text(
-                          ' login'.tr(),
+                          'login'.tr(),
                           style: const TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                         ),
                         const Gap(24),
                         Text(
                           'mobile_number'.tr(),
-                          style:
-                              const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                          style: const TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                         ),
                         const Gap(16),
                         CustomInputField(
@@ -100,15 +100,15 @@ class _LogInPageState extends State<LogInPage> {
                         const Gap(24),
                         Text(
                           'password'.tr(),
-                          style:
-                              const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                          style: const TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                         ),
                         const Gap(16),
                         CustomInputField(
                           controller: passwordController,
                           validator: (value) {
                             if (value?.isEmpty == true) {
-                              return 'reqired'.tr();
+                              return 'required'.tr();
                             }
                             return null;
                           },
@@ -144,9 +144,8 @@ class _LogInPageState extends State<LogInPage> {
                           listener: (context, state) {
                             if (state is LoginSuccessState) {
                               // Utils.openScreen(context, const MainPage(), replacment: true);
-                              context.read<AutoLoginCubit>()
-                                  .fLoggedUser(context: context,
-                                   accessToken: context.read<LoginCubit>().data?.accessToken ?? '');
+                              context.read<AutoLoginCubit>().fLoggedUser(
+                                  context: context, accessToken: context.read<LoginCubit>().data?.accessToken ?? '');
                             }
                             if (state is LoginErrorState) {
                               showAppSnackBar(context: context, message: state.message, type: ToastType.error);
@@ -188,8 +187,8 @@ class _LogInPageState extends State<LogInPage> {
                           Navigator.pushReplacementNamed(context, Routes.registerRoute);
                         },
                         child: Text(' ${'create_new_account'.tr()} ',
-                            style:
-                                const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
+                            style: const TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                       ),
                     ],
                   ),

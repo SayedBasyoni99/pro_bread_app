@@ -37,19 +37,17 @@ class AccountInfoPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Gap(60.h),
                       Text(
                         'name'.tr(),
-                        style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kThirdTextColor),
+                        style:
+                            const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
                       const Gap(16),
                       CustomInputField(
-                        hint: user?.name??'',
+                        hint: user?.name ?? 'Sayed Gaber',
                         prefixIcon: Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: SvgPicture.asset(
@@ -60,14 +58,12 @@ class AccountInfoPage extends StatelessWidget {
                       const Gap(32),
                       Text(
                         'email'.tr(),
-                        style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kThirdTextColor),
+                        style:
+                            const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
                       const Gap(16),
                       CustomInputField(
-                        hint: user?.email??'',
+                        hint: user?.email ?? 'elsayd.gaber99@example.com',
                         prefixIcon: Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: SvgPicture.asset(
@@ -78,10 +74,8 @@ class AccountInfoPage extends StatelessWidget {
                       const Gap(32),
                       Text(
                         'mobile_number'.tr(),
-                        style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kThirdTextColor),
+                        style:
+                            const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
                       const Gap(16),
                       CustomInputField(
@@ -97,8 +91,7 @@ class AccountInfoPage extends StatelessWidget {
                       Gap(80.h),
                       CustomTextButton(
                         onTap: () {
-                          Utils.openScreen(context, const HomePage(),
-                              replacment: true);
+                          Utils.openScreen(context, const HomePage(), replacment: true);
                         },
                         title: 'save_changes'.tr(),
                         fontSize: 18.sp,

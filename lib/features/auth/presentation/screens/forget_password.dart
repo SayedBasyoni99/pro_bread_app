@@ -38,20 +38,20 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Gap(25.h),
-                    const Text(
-                      'هل نسيت كلمة المرور',
+                    Text(
+                      'forgot_password'.tr(),
                       style: const TextStyle(
                           fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                     ),
                     Gap(25.h),
-                    const Text(
-                      'يرجي إدخال رقم الجوال الخاص بك ليتم إرسال الكود',
+                    Text(
+                      'enter_your_mobile_number'.tr(),
                       style:
                           const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
                     const Gap(32),
-                    const Text(
-                      'رقم الجوال',
+                    Text(
+                      'mobile_number'.tr(),
                       style:
                           const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
@@ -65,7 +65,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                       },
                       controller: phoneController,
                       keyboardType: TextInputType.number,
-                      hint: 'ادخل رقم الجوال'.tr(),
+                      hint: 'enter_mobile_number'.tr(),
                       prefixIcon: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: SvgPicture.asset(
@@ -80,7 +80,7 @@ class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
                           showAppDialog(context: context, child: const CustomPopUp());
                         }
                       },
-                      title: 'ارسل ',
+                      title: 'send'.tr(),
                       fontSize: 18.sp,
                     ),
                   ],

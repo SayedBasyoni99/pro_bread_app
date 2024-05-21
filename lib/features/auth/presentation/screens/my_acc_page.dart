@@ -28,12 +28,12 @@ class _MyAccountPageState extends State<MyAccountPage> {
   Widget build(BuildContext context) {
     return BlocListener<AutoLoginCubit, AutoLoginState>(
       listener: (context, state) {
-        if(state is AutoLoginSuccessState && state.userType == UserType.login){
+        if (state is AutoLoginSuccessState && state.userType == UserType.login) {
           Navigator.pushNamedAndRemoveUntil(context, Routes.welcomeRoute, (route) => false);
         }
       },
       child: BlocBuilder<LoginCubit, LoginState>(
-        builder: (BuildContext context, LoginState state){
+        builder: (BuildContext context, LoginState state) {
           final user = context.read<LoginCubit>().data?.data;
           return Scaffold(
               backgroundColor: AppConst.kPrimaryColor,
@@ -56,7 +56,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
                             backgroundColor: AppConst.kPrimaryColor,
                             child: Builder(
                               builder: (context) {
-                                if(user?.image == null || user?.image == '') {
+                                if (user?.image == null || user?.image == '') {
                                   return Image.asset('assets/images/png/userPic.png');
                                 }
                                 return Image.network(user?.image ?? '');
@@ -74,7 +74,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
                       ),
                       Gap(12.h),
                       Text(
-                        user?.name ?? '',
+                        user?.name ?? 'Sayed',
                         style: TextStyle(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.bold,
@@ -82,7 +82,7 @@ class _MyAccountPageState extends State<MyAccountPage> {
                         ),
                       ),
                       Text(
-                        user?.email ?? '',
+                        user?.email ?? 'elsayed@me.com',
                         style: TextStyle(
                           fontSize: 12.sp,
                           color: AppConst.kThirdTextColor,
@@ -146,7 +146,8 @@ class _MyAccountPageState extends State<MyAccountPage> {
                           children: [
                             Text(
                               'logout'.tr(),
-                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xffC20000)),
+                              style:
+                                  const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Color(0xffC20000)),
                             ),
                             Gap(4.h),
                             SvgPicture.asset('assets/images/svg/logOut_icon.svg'),

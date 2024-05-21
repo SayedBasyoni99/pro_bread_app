@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,7 +16,7 @@ class MyOrdersPage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar.build(
         context,
-        titleText: 'طلباتي',
+        titleText: 'my_orders'.tr(),
         iconAppBar: SvgPicture.asset('assets/images/svg/cart_icon.svg'),
       ),
       backgroundColor: AppConst.kPrimaryColor,
@@ -36,9 +37,9 @@ class MyOrdersPage extends StatelessWidget {
                 //   ),
                 child: TabBarWidget(
                     length: 2,
-                    tabs: const [
-                      Tab(text: 'الطلبات المعلقة'),
-                      Tab(text: 'الطلبات المستلمة'),
+                    tabs:  [
+                      Tab(text:'received_orders'.tr()),
+                      Tab(text: 'pending_orders'.tr()),
                     ],
                     onTap: (index) {
                       return null;

@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/app_snack_bar.dart';
@@ -44,9 +45,12 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     ),
                   ],
                 ),
+                Gap(24.h),
                 SizedBox(
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 8.w,
+                    ),
                     child: BlocConsumer<GetFavoritesCubit, GetFavoritesState>(
                       listener: (BuildContext context, GetFavoritesState state) {
                         if (state is GetFavoritesErrorState) {
@@ -60,7 +64,8 @@ class _FavoritesPageState extends State<FavoritesPage> {
                           );
                         }
                         if (state is GetFavoritesSuccessState) {
-                          return ListView.builder(
+                          return ListView.separated(
+                              separatorBuilder: (context, index) => Gap(24.h),
                               itemBuilder: (context, index) {
                                 final dish = state.value[index];
                                 return ProductCard(

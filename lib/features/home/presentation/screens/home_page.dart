@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -27,7 +28,6 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-
   }
 
   @override
@@ -57,11 +57,13 @@ class _HomePageState extends State<HomePage> {
                           // crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             const Gap(32),
-                            Text(
-                              textAlign: TextAlign.center,
-                              'surprise_your_loved_one'.tr(),
-                              style: const TextStyle(
-                                  color: AppConst.kScondaryTextColor, fontSize: 20, fontWeight: FontWeight.bold),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Text(
+                                'surprise_your_loved_one'.tr(),
+                                style: const TextStyle(
+                                    color: AppConst.kScondaryTextColor, fontSize: 20, fontWeight: FontWeight.bold),
+                              ),
                             ),
                             const Gap(32),
                             CustomTxtField(
@@ -177,7 +179,7 @@ class _HomePageState extends State<HomePage> {
                           itemBuilder: (context, index) {
                             final category = state.value[index];
                             return GestureDetector(
-                              onTap: (){
+                              onTap: () {
                                 context.read<GetCategoriesCubit>().changeIndex(index: index);
                                 context.read<GetDishesCubit>().fGetDishes(category: category.id);
                                 context.read<BottomNavBarCubit>().changeCurrentScreen(index: 1);

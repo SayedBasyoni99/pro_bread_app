@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -20,7 +21,7 @@ class ChangePassword02Page extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar.build(
         context,
-        titleText: 'تغيير كلمة المرور',
+        titleText: 'change_password'.tr(),
         iconAppBar: SvgPicture.asset(
           'assets/images/svg/cart_icon.svg',
           height: 20,
@@ -34,17 +35,17 @@ class ChangePassword02Page extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Gap(80.h),
-                  const Text(
-                    'كلمة المرور الجديدة ',
+                  Text(
+                    'new_password'.tr(),
                     style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                   ),
                   const Gap(16),
                   CustomInputField(
                     isPassword: true,
-                    hint: 'أدخل كلمة المرور الجديدة',
+                    hint: 'enter_new_password'.tr(),
                     prefixIcon: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: SvgPicture.asset(
@@ -53,14 +54,14 @@ class ChangePassword02Page extends StatelessWidget {
                     ),
                   ),
                   const Gap(24),
-                  const Text(
-                    'تأكيد كلمة المرور الجديدة',
+                  Text(
+                    'confirm_new_password'.tr(),
                     style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                   ),
                   const Gap(16),
                   CustomInputField(
                     isPassword: true,
-                    hint: 'أدخل كلمة المرور الجديدة',
+                    hint: 'enter_new_password'.tr(),
                     prefixIcon: Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: SvgPicture.asset(
@@ -86,8 +87,9 @@ class ChangePassword02Page extends StatelessWidget {
                                   children: [
                                     SvgPicture.asset('assets/images/svg/lock_icon.svg'),
                                     Gap(16.h),
-                                    const Text(
-                                      'تم تغيير كلمة المرور بنجاح',
+                                    Text(
+                                      'password_changed_successfully'.tr(),
+                                      textAlign: TextAlign.center,
                                       style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.bold,
@@ -95,9 +97,9 @@ class ChangePassword02Page extends StatelessWidget {
                                     ),
                                     Gap(32.h),
                                     CustomButton(
-                                        btnTitle: 'تسجيل الدخول',
+                                        btnTitle: 'login'.tr(),
                                         onTap: () {
-                                          Utils.openScreen(context, LogInPage(), replacment: true);
+                                          Utils.openScreen(context, const LogInPage(), replacment: true);
                                         }),
                                   ],
                                 ),
@@ -107,7 +109,7 @@ class ChangePassword02Page extends StatelessWidget {
                         ),
                       );
                     },
-                    title: 'تغيير  ',
+                    title: 'change'.tr(),
                     fontSize: 18.sp,
                   ),
                 ],

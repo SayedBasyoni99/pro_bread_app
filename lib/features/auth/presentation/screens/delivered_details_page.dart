@@ -115,7 +115,7 @@ class DeliveredDetailsPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(left: 16.0),
+                          padding: const EdgeInsets.only(right: 16.0),
                           child: Text(
                             'send_as_gift'.tr(),
                             style:
@@ -126,9 +126,10 @@ class DeliveredDetailsPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Positioned(
+                  Positioned.directional(
                     bottom: 0,
-                    right: 20.w,
+                    end: 20.w,
+                    textDirection: Directionality.of(context),
                     child: SvgPicture.asset('assets/images/svg/sendGif_icon.svg'),
                   ),
                 ],
