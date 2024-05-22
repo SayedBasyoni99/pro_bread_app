@@ -7,7 +7,7 @@ import '../../../../config/routes/app_routes.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
-import '../../../../shared/custom_details_container.dart';
+import '../../../../shared/custom_details_an_other_container.dart';
 import '../../../../shared/text_button.dart';
 import 'payment_page.dart';
 
@@ -39,10 +39,9 @@ class ChooseLocationPage extends StatelessWidget {
                     children: [
                       GestureDetector(
                         onTap: () {
-                          Navigator.pushNamed(context, Routes.productDetailsRoute);
+                          // Navigator.pushNamed(context, Routes.productDetailsRoute);
                         },
-                        child: CustomDetailsContainer(
-                          picInfo: 'select_icon',
+                        child: CustomDetailsAnOtherContainer(
                           message02: 'mansoura'.tr(),
                           message03: 'gift_services_description'.tr(),
                           message04: '+966 565 9999 00',

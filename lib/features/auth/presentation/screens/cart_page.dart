@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
-import '../../../../config/routes/app_routes.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/utils.dart';
@@ -18,7 +17,23 @@ class CartPage extends StatefulWidget {
   State<CartPage> createState() => _CartPageState();
 }
 
+int _counter = 1;
+
 class _CartPageState extends State<CartPage> {
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  void _decrementCounter() {
+    setState(() {
+      if (_counter > 0) {
+        _counter--;
+      }
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,6 +56,10 @@ class _CartPageState extends State<CartPage> {
                   itemBuilder: (context, index) {
                     return Row(
                       children: [
+                        Ink(
+                          child: SvgPicture.asset('assets/images/svg/delete_icon.svg'),
+                        ),
+                        Gap(14.w),
                         Expanded(
                           child: GestureDetector(
                             onTap: () {
@@ -61,77 +80,79 @@ class _CartPageState extends State<CartPage> {
                                   BoxShadow(color: AppConst.kPrimaryColor, spreadRadius: 4.0)
                                 ],
                               ),
-                              padding: EdgeInsets.all(16.h),
+                              padding: EdgeInsets.only(left: 16.h, right: 4.h, top: 16.h, bottom: 16.h),
                               child: Row(
                                 // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsets.only(left: 8.w, top: 16.h, bottom: 16.h),
+                                    padding: EdgeInsets.only(left: 8.w, bottom: 32.h),
                                     child: SizedBox(
-                                      height: 80.h,
-                                      width: 80.w,
+                                      height: 60.h,
+                                      width: 60.w,
                                       child: Image.asset('assets/images/png/cake00.png'),
                                     ),
                                   ),
                                   Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Column(
-                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          Row(
+                                          Column(
+                                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment: CrossAxisAlignment.start,
                                             children: [
                                               TextWidget(
-                                                title: 'croissants'.tr(),
+                                                title: 'hot_drinks'.tr(),
                                                 color: AppConst.kPrimaryTextColor,
                                                 fontSize: 12.sp,
-                                                // fontWeight: FontWeight.bold,
-                                              ),
-                                              Gap(12.w),
-                                              TextWidget(
-                                                title: ' 255 ${'SAR'.tr()}',
-                                                color: AppConst.kScondaryTextColor,
-                                                fontSize: 14.sp,
                                                 fontWeight: FontWeight.bold,
                                               ),
-                                            ],
-                                          ),
-                                          Gap(12.h),
-                                          Row(
-                                            children: [
+                                              Gap(12.h),
                                               TextWidget(
                                                 title: 'cold_drinks'.tr(),
                                                 color: AppConst.kThirdTextColor,
                                                 fontSize: 12.sp,
                                                 // fontWeight: FontWeight.bold,
                                               ),
-                                              Gap(12.w),
+                                              Gap(12.h),
                                               TextWidget(
-                                                title: ' 210 ${'SAR'.tr()}',
-                                                color: AppConst.kScondaryTextColor,
-                                                fontSize: 14.sp,
-                                                fontWeight: FontWeight.bold,
-                                              ),
-                                            ],
-                                          ),
-                                          Gap(12.h),
-                                          Row(
-                                            children: [
-                                              TextWidget(
-                                                title: 'hot_drinks'.tr(),
+                                                title: 'croissants'.tr(),
                                                 color: AppConst.kThirdTextColor,
                                                 fontSize: 12.sp,
                                                 // fontWeight: FontWeight.bold,
                                               ),
-                                              Gap(12.w),
+                                              Gap(12.h),
+                                            ],
+                                          ),
+                                          Gap(60.w),
+                                          Column(
+                                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                            children: [
                                               TextWidget(
-                                                title: ' 200 ${'SAR'.tr()}',
+                                                title: ' 255 ${'SAR'.tr()}',
                                                 color: AppConst.kScondaryTextColor,
                                                 fontSize: 14.sp,
                                                 fontWeight: FontWeight.bold,
                                               ),
+                                              Gap(12.h),
+                                              TextWidget(
+                                                title: ' 210 ${'SAR'.tr()}',
+                                                color: AppConst.kThirdTextColor,
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              Gap(12.h),
+                                              TextWidget(
+                                                title: ' 200 ${'SAR'.tr()}',
+                                                color: AppConst.kThirdTextColor,
+                                                fontSize: 12.sp,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              Gap(12.h),
                                             ],
                                           ),
-                                          Gap(12.h),
                                         ],
                                       ),
                                       Row(
@@ -143,12 +164,48 @@ class _CartPageState extends State<CartPage> {
                                             fontSize: 14.sp,
                                             fontWeight: FontWeight.bold,
                                           ),
-                                          Gap(12.w),
-                                          SvgPicture.asset('assets/images/svg/plus_icon.svg'),
-                                          Gap(12.w),
-                                          const Text('1'),
-                                          Gap(12.w),
-                                          SvgPicture.asset('assets/images/svg/minus_icon.svg'),
+                                          Gap(16.w),
+                                          Container(
+                                            height: 30.h,
+                                            width: 125.w,
+                                            decoration: BoxDecoration(
+                                              borderRadius: BorderRadius.circular(8.0),
+                                              color: AppConst.kPrimaryColor,
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              children: [
+                                                InkWell(
+                                                    child: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
+                                                    onTap: () {
+                                                      setState(() {
+                                                        if (_counter < 10) {
+                                                          _counter++;
+                                                        }
+                                                      });
+                                                    }),
+                                                Gap(12.w),
+                                                Text('$_counter'),
+                                                Gap(12.w),
+                                                InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        if (_counter > 1) {
+                                                          _counter--;
+                                                        }
+                                                      });
+                                                    },
+                                                    child: SvgPicture.asset('assets/images/svg/minus_icon.svg')),
+                                                Gap(12.w),
+                                              ],
+                                            ),
+                                          ),
+                                          // Gap(12.w),
+                                          // SvgPicture.asset('assets/images/svg/plus_icon.svg'),
+                                          // Gap(12.w),
+                                          // const Text('1'),
+                                          // Gap(12.w),
+                                          // SvgPicture.asset('assets/images/svg/minus_icon.svg'),
                                         ],
                                       ),
                                     ],
@@ -157,10 +214,6 @@ class _CartPageState extends State<CartPage> {
                               ),
                             ),
                           ),
-                        ),
-                        Gap(16.h),
-                        Ink(
-                          child: SvgPicture.asset('assets/images/svg/delete_icon.svg'),
                         ),
                       ],
                     );

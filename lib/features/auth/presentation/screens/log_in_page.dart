@@ -51,7 +51,7 @@ class _LogInPageState extends State<LogInPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Gap(16.h),
                         if (formKey.currentState?.validate() == true)
@@ -93,7 +93,7 @@ class _LogInPageState extends State<LogInPage> {
                           prefixIcon: Padding(
                             padding: const EdgeInsets.all(12.0),
                             child: SvgPicture.asset(
-                              'assets/images/svg/email.svg',
+                              'assets/images/svg/phone_icon.svg',
                             ),
                           ),
                         ),

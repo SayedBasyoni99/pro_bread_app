@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 
 import '../core/const/constant_var.dart';
@@ -57,10 +56,13 @@ class CustomDetailsContainer extends StatelessWidget {
                   Gap(12.h),
                 ],
               ),
-              Padding(
-                  padding: const EdgeInsets.only(right: 8.0), child: SvgPicture.asset('assets/images/svg/$picInfo.svg')
-                  // ?? const Icon(Icons.arrow_forward_ios_sharp),
-                  ),
+              const Padding(
+                padding: EdgeInsets.only(right: 8.0),
+                child: Icon(
+                  Icons.arrow_forward_ios_sharp,
+                  color: AppConst.kBorderButtonColor,
+                ),
+              ),
             ],
           ),
           Gap(12.h),

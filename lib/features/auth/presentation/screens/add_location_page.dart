@@ -86,7 +86,7 @@ class AddLocationPage extends StatelessWidget {
               CustomTextButton(
                 onTap: () {
                   Utils.openScreen(
-                    context, const RecipientInfoPage(),
+                    context,  RecipientInfoPage(),
                     // replacment: true
                   );
                 },

@@ -7,7 +7,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/resources/assets.gen.dart';
 import '../../../../core/utils/utils.dart';
-import '../../../../shared/text_widget.dart';
 import '../../../categories/domain/entities/get_dish_response.dart';
 import '../../../favorites/presentation/controller/toggle_favorite/toggle_favorite_cubit.dart';
 import 'cart_page.dart';
@@ -33,19 +32,34 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 //     super.initState();
 //     context.read<GetDishCubit>().fGetDish(id: 1);
 //   }
-  int _counter = 1;
+  int _counterX = 1;
+  int _counterY = 0;
   bool isSelected = false;
 
-  void _incrementCounter() {
+  void _incrementCounterX() {
     setState(() {
-      _counter++;
+      _counterX++;
     });
   }
 
-  void _decrementCounter() {
+  void _decrementCounterX() {
     setState(() {
-      if (_counter > 0) {
-        _counter--;
+      if (_counterX > 0) {
+        _counterX--;
+      }
+    });
+  }
+
+  void _incrementCounterY() {
+    setState(() {
+      _counterY++;
+    });
+  }
+
+  void _decrementCounterY() {
+    setState(() {
+      if (_counterY > 0) {
+        _counterY--;
       }
     });
   }
@@ -79,8 +93,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             ),
             SliverToBoxAdapter(
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
                 child: Container(
                   height: 150,
                   width: double.infinity,
@@ -94,18 +107,13 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       Text(
                         widget.dish.name ?? 'براوني كيك ',
                         style: const TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kScondaryTextColor),
+                            fontSize: 24, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                       ),
                       const Gap(8),
                       Text(
-                        widget.dish.description ??
-                            'قطعة براونيز نوتيلا مغطاه بالنوتيلا ',
-                        style: const TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kThirdTextColor),
+                        widget.dish.description ?? 'قطعة براونيز نوتيلا مغطاه بالنوتيلا ',
+                        style:
+                            const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
                       const Gap(8),
                     ],
@@ -120,8 +128,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
           width: 120.w,
           child: SingleChildScrollView(
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16.0),
               child: Column(
                 children: [
                   Container(
@@ -136,25 +143,20 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         Text(
                           'price'.tr(),
                           style: const TextStyle(
-                              color: AppConst.kScondaryTextColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 12),
+                              color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 12),
                         ),
                         const Spacer(),
                         Text(
-                          widget.dish.price + ' SAR'.tr() ?? '225',
+                          '${widget.dish.price} ${'SAR'.tr()}',
                           style: const TextStyle(
-                              color: AppConst.kScondaryTextColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18),
+                              color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                       ],
                     ),
                   ),
                   const Gap(16),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
@@ -165,9 +167,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         Text(
                           'available_products'.tr(),
                           style: const TextStyle(
-                              color: AppConst.kScondaryTextColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
+                              color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 300.h,
@@ -176,38 +176,49 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
-                              return Container(
-                                height: 80.h,
-                                width: 85.w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: AppConst.kPrimaryColor,
-                                ),
-                                child: ListTile(
-                                  leading: GestureDetector(
-                                      onTap: () {
-                                        setState(() {
-                                          toggleSelected();
-                                        });
-                                      },
-                                      child: SvgPicture.asset(
-                                        isSelected
-                                            ? 'assets/images/svg/select_icon.svg'
-                                            : 'assets/images/svg/un select_icon.svg',
-                                      )),
-                                  title: Text(widget.dish.name ??
-                                      ' كيكة ليمون بلوبيري '),
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      // height: 80.h,
+                                      // width: 200.w,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        color: AppConst.kPrimaryColor,
+                                      ),
+                                      child: ListTile(
+                                        leading: GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              toggleSelected();
+                                            });
+                                          },
+                                          child: SvgPicture.asset(
+                                            isSelected
+                                                ? 'assets/images/svg/select_icon.svg'
+                                                : 'assets/images/svg/un select_icon.svg',
+                                          ),
+                                        ),
+                                        title: Text(widget.dish.name ?? ' كيكة ليمون بلوبيري '),
 
-                                  onTap: () {},
+                                        // onTap: () {},
 
-                                  // subtitle: Text('السعر'),
-                                ),
+                                        // subtitle: Text('السعر'),
+                                      ),
+                                    ),
+                                  ),
+                                  // const Spacer(),
+                                  Text(
+                                    '${widget.dish.price} ${'SAR'.tr()}',
+                                    style: const TextStyle(
+                                        color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 14),
+                                  ),
+                                ],
                               );
                             },
                             separatorBuilder: (context, index) {
-                              return const Divider(
-                                  thickness: .09,
-                                  color: AppConst.kScondaryTextColor);
+                              return const Divider(thickness: .09, color: AppConst.kScondaryTextColor);
                             },
                             itemCount: 3,
                           ),
@@ -217,8 +228,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   ),
                   const Gap(16),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
@@ -229,9 +239,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                         Text(
                           'addons'.tr(),
                           style: const TextStyle(
-                              color: AppConst.kScondaryTextColor,
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold),
+                              color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 300.h,
@@ -240,26 +248,56 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
-                              return Container(
-                                height: 80.h,
-                                width: 85.w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: AppConst.kPrimaryColor,
-                                ),
-                                child: ListTile(
-                                  leading: SvgPicture.asset(
-                                      'assets/images/svg/plus_icon.svg'),
-                                  title: Text(widget.dish.price ??
-                                      ' كيكة ليمون بلوبيري '),
-                                  // subtitle: Text('السعر'),
-                                ),
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 80.h,
+                                    width: 80.w,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      color: AppConst.kPrimaryColor,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        InkWell(
+                                            child: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
+                                            onTap: () {
+                                              setState(() {
+                                                if (_counterY < 10) {
+                                                  _counterY++;
+                                                }
+                                              });
+                                            }),
+                                        Gap(12.w),
+                                        Text('$_counterY'),
+                                        Gap(12.w),
+                                        InkWell(
+                                            onTap: () {
+                                              setState(() {
+                                                if (_counterY > 0) {
+                                                  _counterY--;
+                                                }
+                                              });
+                                            },
+                                            child: SvgPicture.asset('assets/images/svg/minus_icon.svg')),
+                                        Gap(12.w),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(widget.dish.name ?? ' كيكة ليمون بلوبيري '),
+                                  const Spacer(),
+                                  Text(
+                                    '${widget.dish.price} ${'SAR'.tr()}',
+                                    style: const TextStyle(
+                                        color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 14),
+                                  ),
+                                ],
                               );
                             },
                             separatorBuilder: (context, index) {
-                              return const Divider(
-                                  thickness: .09,
-                                  color: AppConst.kScondaryTextColor);
+                              return const Divider(thickness: .09, color: AppConst.kScondaryTextColor);
                             },
                             itemCount: 3,
                           ),
@@ -269,8 +307,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   ),
                   const Gap(16),
                   Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0, vertical: 16.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
@@ -284,9 +321,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             Text(
                               'quantity'.tr(),
                               style: const TextStyle(
-                                  color: AppConst.kScondaryTextColor,
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold),
+                                  color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
                             ),
                             const Spacer(),
                             Container(
@@ -300,28 +335,26 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   InkWell(
-                                      child: SvgPicture.asset(
-                                          'assets/images/svg/plus_icon.svg'),
+                                      child: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
                                       onTap: () {
                                         setState(() {
-                                          if (_counter < 10) {
-                                            _counter++;
+                                          if (_counterX < 10) {
+                                            _counterX++;
                                           }
                                         });
                                       }),
                                   Gap(12.w),
-                                  Text('$_counter'),
+                                  Text('$_counterX'),
                                   Gap(12.w),
                                   InkWell(
                                       onTap: () {
                                         setState(() {
-                                          if (_counter > 1) {
-                                            _counter--;
+                                          if (_counterX > 1) {
+                                            _counterX--;
                                           }
                                         });
                                       },
-                                      child: SvgPicture.asset(
-                                          'assets/images/svg/minus_icon.svg')),
+                                      child: SvgPicture.asset('assets/images/svg/minus_icon.svg')),
                                   Gap(12.w),
                                 ],
                               ),
@@ -334,31 +367,21 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                             Column(
                               children: [
                                 // TODO: add BlocBuilder of ToggleFavoriteCubit
-                                BlocBuilder<ToggleFavoriteCubit,
-                                    ToggleFavoriteState>(
-                                  buildWhen: (_, current) =>
-                                      current.dishId == widget.dish.id,
+                                BlocBuilder<ToggleFavoriteCubit, ToggleFavoriteState>(
+                                  buildWhen: (_, current) => current.dishId == widget.dish.id,
                                   builder: (context, state) {
                                     if (state is ToggleFavoriteSuccessState) {
                                       bool isFav = state.isFavorite;
                                       if (state.dishId != widget.dish.id) {
-                                        if (context
-                                                .read<ToggleFavoriteCubit>()
-                                                .favorites[widget.dish.id] !=
-                                            null) {
-                                          isFav = context
-                                                  .read<ToggleFavoriteCubit>()
-                                                  .favorites[widget.dish.id] ??
-                                              false;
+                                        if (context.read<ToggleFavoriteCubit>().favorites[widget.dish.id] != null) {
+                                          isFav =
+                                              context.read<ToggleFavoriteCubit>().favorites[widget.dish.id] ?? false;
                                         }
                                         isFav = widget.dish.isFav;
                                       }
                                       return GestureDetector(
                                         onTap: () {
-                                          context
-                                              .read<ToggleFavoriteCubit>()
-                                              .fToggleFavorite(
-                                                  dishId: widget.dish.id);
+                                          context.read<ToggleFavoriteCubit>().fToggleFavorite(dishId: widget.dish.id);
                                         },
                                         child: SvgPicture.asset(
                                           isFav
@@ -372,10 +395,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     if (state is ToggleFavoriteInitialState) {
                                       return GestureDetector(
                                         onTap: () {
-                                          context
-                                              .read<ToggleFavoriteCubit>()
-                                              .fToggleFavorite(
-                                                  dishId: widget.dish.id);
+                                          context.read<ToggleFavoriteCubit>().fToggleFavorite(dishId: widget.dish.id);
                                         },
                                         child: SvgPicture.asset(
                                           widget.dish.isFav
@@ -388,10 +408,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     }
                                     return GestureDetector(
                                       onTap: () {
-                                        context
-                                            .read<ToggleFavoriteCubit>()
-                                            .fToggleFavorite(
-                                                dishId: widget.dish.id);
+                                        context.read<ToggleFavoriteCubit>().fToggleFavorite(dishId: widget.dish.id);
                                       },
                                       child: SvgPicture.asset(
                                         'assets/images/svg/empty_heart_icon01.svg',
@@ -423,33 +440,26 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                     context: context,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(16.r),
+                                        borderRadius: BorderRadius.circular(16.r),
                                         color: AppConst.kPrimaryColor,
                                       ),
                                       child: Wrap(
                                         children: [
                                           Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                vertical: 40.h,
-                                                horizontal: 32.w),
+                                            padding: EdgeInsets.symmetric(vertical: 40.h, horizontal: 32.w),
                                             child: Column(
                                               children: [
-                                                Assets.images.png.food01
-                                                    .image(),
+                                                Assets.images.png.food01.image(),
 
                                                 Gap(16.h),
                                                 // SvgPicture.asset('assets/images/svg/heart_icon.svg'),
                                                 Text(
                                                   textAlign: TextAlign.center,
-                                                  'product_added_to_cart_successfully'
-                                                      .tr(),
+                                                  'product_added_to_cart_successfully'.tr(),
                                                   style: const TextStyle(
                                                       fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color: AppConst
-                                                          .kScondaryTextColor),
+                                                      fontWeight: FontWeight.bold,
+                                                      color: AppConst.kScondaryTextColor),
                                                 ),
                                                 Gap(24.h),
 
@@ -468,15 +478,11 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                     'continue_shopping'.tr(),
                                                     style: const TextStyle(
                                                         fontSize: 14,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        color: AppConst
-                                                            .kBorderButtonColor),
+                                                        fontWeight: FontWeight.bold,
+                                                        color: AppConst.kBorderButtonColor),
                                                   ),
                                                   onTap: () {
-                                                    Utils.openScreen(context,
-                                                        const ProductsPage(),
-                                                        replacment: true);
+                                                    Utils.openScreen(context, const ProductsPage(), replacment: true);
                                                   },
                                                 ),
                                               ],
@@ -505,19 +511,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // Row(
 //                         children = [

@@ -10,7 +10,7 @@ import '../../../../shared/tabbar_widget.dart';
 
 class MyOrdersPage extends StatelessWidget {
   const MyOrdersPage({super.key});
-
+  final bool isEpmty = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,78 +20,93 @@ class MyOrdersPage extends StatelessWidget {
         iconAppBar: SvgPicture.asset('assets/images/svg/cart_icon.svg'),
       ),
       backgroundColor: AppConst.kPrimaryColor,
-      body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 32.h),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Card(
-                color: AppConst.kPrimaryColor,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.r),
-                  side: const BorderSide(
-                    color: AppConst.kBorderBoxColor,
+      body: isEpmty
+          ? Column(
+              children: [
+                Gap(60.h),
+                SvgPicture.asset('assets/images/svg/myOrders_icon.svg'),
+                Gap(16.h),
+                Text(
+                  'no_search_results'.tr(),
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.bold,
+                    color: AppConst.kPrimaryTextColor,
                   ),
                 ),
-                elevation: 0.0,
-                //   ),
-                child: TabBarWidget(
-                    length: 2,
-                    tabs:  [
-                      Tab(text:'received_orders'.tr()),
-                      Tab(text: 'pending_orders'.tr()),
-                    ],
-                    onTap: (index) {
-                      return null;
-                    }),
-              ),
+              ],
+            )
+          : Padding(
+              padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 32.h),
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    Card(
+                      color: AppConst.kPrimaryColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.r),
+                        side: const BorderSide(
+                          color: AppConst.kBorderBoxColor,
+                        ),
+                      ),
+                      elevation: 0.0,
+                      //   ),
+                      child: TabBarWidget(
+                          length: 2,
+                          tabs: [
+                            Tab(text: 'received_orders'.tr()),
+                            Tab(text: 'pending_orders'.tr()),
+                          ],
+                          onTap: (index) {
+                            return null;
+                          }),
+                    ),
 
-              // Padding(
-              //   padding: const EdgeInsets.all(8.0),
-              //   child: Container(
-              //     height: 50.h,
-              //     padding:
-              //         EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-              //     decoration: BoxDecoration(
-              //       boxShadow: const [
-              //         BoxShadow(
-              //           color: AppConst.kBottomBarColor,
-              //           spreadRadius: .3,
-              //           // blurRadius: .5,
-              //           // offset: Offset(0, .1),
-              //         )
-              //       ],
-              //       borderRadius: BorderRadius.circular(8.0),
-              //       color: AppConst.kPrimaryColor,
-              //       border: Border.all(color: AppConst.kBorderBoxColor),
-              //     ),
-              //     child: TabBarWidget(
-              //         length: 2,
-              //         tabs: const [
-              //           Tab(text: 'الطلبات المعلقة'),
-              //           Tab(text: 'الطلبات المستلمة'),
-              //         ],
-              //         onTap: (index) {
-              //           return null;
-              //         }),
-              //   ),
-              // ),
-              Gap(16.h),
-              ListView.builder(
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: 16.h, horizontal: 16.w),
-                      child: const OrderCard(),
-                    );
-                  },
-                  itemCount: 6,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics()),
-            ],
-          ),
-        ),
-      ),
+                    // Padding(
+                    //   padding: const EdgeInsets.all(8.0),
+                    //   child: Container(
+                    //     height: 50.h,
+                    //     padding:
+                    //         EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+                    //     decoration: BoxDecoration(
+                    //       boxShadow: const [
+                    //         BoxShadow(
+                    //           color: AppConst.kBottomBarColor,
+                    //           spreadRadius: .3,
+                    //           // blurRadius: .5,
+                    //           // offset: Offset(0, .1),
+                    //         )
+                    //       ],
+                    //       borderRadius: BorderRadius.circular(8.0),
+                    //       color: AppConst.kPrimaryColor,
+                    //       border: Border.all(color: AppConst.kBorderBoxColor),
+                    //     ),
+                    //     child: TabBarWidget(
+                    //         length: 2,
+                    //         tabs: const [
+                    //           Tab(text: 'الطلبات المعلقة'),
+                    //           Tab(text: 'الطلبات المستلمة'),
+                    //         ],
+                    //         onTap: (index) {
+                    //           return null;
+                    //         }),
+                    //   ),
+                    // ),
+                    Gap(16.h),
+                    ListView.builder(
+                        itemBuilder: (context, index) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(vertical: 16.h, horizontal: 16.w),
+                            child: const OrderCard(),
+                          );
+                        },
+                        itemCount: 6,
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics()),
+                  ],
+                ),
+              ),
+            ),
     );
   }
 }

@@ -18,8 +18,7 @@ class WelcomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocListener<AutoLoginCubit, AutoLoginState>(
       listener: (context, state) {
-        if (state is AutoLoginSuccessState &&
-            state.userType == UserType.guest) {
+        if (state is AutoLoginSuccessState && state.userType == UserType.guest) {
           Navigator.pushNamed(context, Routes.mainPageRoute);
         }
       },
@@ -36,15 +35,13 @@ class WelcomePage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SizedBox(height: MediaQuery.sizeOf(context).height * 0.045),
+                  SizedBox(height: MediaQuery.sizeOf(context).height * 0.095),
                   Padding(
                     padding: EdgeInsets.only(bottom: 8.h),
                     child: Text(
                       'welcome_message'.tr(),
-                      style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: AppConst.kPrimaryTextColor),
+                      style:
+                          const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
                     ),
                   ),
                   Align(
@@ -63,9 +60,8 @@ class WelcomePage extends StatelessWidget {
                           width: 1.sw,
                           decoration: BoxDecoration(
                             color: AppConst.kPrimaryColor,
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(80.r),
-                                topRight: Radius.circular(80.r)),
+                            borderRadius:
+                                BorderRadius.only(topLeft: Radius.circular(80.r), topRight: Radius.circular(80.r)),
                           )),
                       // SvgPicture.asset(
                       //   'assets/images/svg/buttomSheet.svg',
@@ -77,14 +73,11 @@ class WelcomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 24.0, vertical: 24.0),
+                            padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 24.0),
                             child: Text(
                               'gift_services_description'.tr(),
                               textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                  color: AppConst.kScondaryTextColor,
-                                  fontWeight: FontWeight.bold),
+                              style: const TextStyle(color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold),
                             ),
                           ),
                           CustomButton(
@@ -93,8 +86,7 @@ class WelcomePage extends StatelessWidget {
                             btntxtColor: AppConst.kPrimaryColor,
                             onTap: () {
                               // Utils.openScreen(context, LogInPage());
-                              Navigator.pushReplacementNamed(
-                                  context, Routes.loginRoute);
+                              Navigator.pushReplacementNamed(context, Routes.loginRoute);
                             },
                           ),
                           Gap(10.h),
@@ -102,23 +94,18 @@ class WelcomePage extends StatelessWidget {
                               btnTitle: ' ${'create_new_account'.tr()} ',
                               onTap: () {
                                 // Utils.openScreen(context, CreateAccPage());
-                                Navigator.pushReplacementNamed(
-                                    context, Routes.createAccountRoute);
+                                Navigator.pushReplacementNamed(context, Routes.createAccountRoute);
                               }),
                           Gap(10.h),
                           Text(
                             'or'.tr(),
-                            style: const TextStyle(
-                                color: AppConst.kPrimaryTextColor,
-                                fontWeight: FontWeight.bold),
+                            style: const TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold),
                           ),
                           Gap(10.h),
                           CustomButton(
                             btnTitle: 'enter_as_a_guest'.tr(),
                             onTap: () {
-                              context
-                                  .read<AutoLoginCubit>()
-                                  .fLoggedGuest(context: context);
+                              context.read<AutoLoginCubit>().fLoggedGuest(context: context);
                             },
                             btnColor: AppConst.kPrimaryColor,
                             borderButtonColor: AppConst.kBorderButtonColor,

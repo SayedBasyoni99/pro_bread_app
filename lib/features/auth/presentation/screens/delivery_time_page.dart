@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart' as DatePickerTheme;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -10,8 +11,50 @@ import '../../../../shared/custom_stepper_widget.dart';
 import '../../../../shared/text_button.dart';
 import 'payment_page.dart';
 
-class DeliveryTimePage extends StatelessWidget {
-  const DeliveryTimePage({super.key});
+class DeliveryTimePage extends StatefulWidget {
+  const DeliveryTimePage({
+    super.key,
+  });
+
+  @override
+  State<DeliveryTimePage> createState() => _DeliveryTimePageState();
+}
+
+class _DeliveryTimePageState extends State<DeliveryTimePage> {
+  // final DateTime _selectedDateTime = DateTime.now();
+
+  // void _pickDateTime() {
+  //   DatePicker.showDateTimePicker(
+  //     context,
+  //     showTitleActions: true,
+  //     onChanged: (date) {
+  //       print('change $date');
+  //     },
+  //     onConfirm: (date) {
+  //       setState(() {
+  //         _selectedDateTime = date;
+  //       });
+  //     },
+  //     currentTime: DateTime.now(),
+  //     locale: LocaleType.ar,
+  //   );
+  // }
+
+  bool isSelected = false;
+  //  bool isSelectedBorder;
+  bool isSelect = false;
+
+  void toggleSelected() {
+    setState(() {
+      isSelected = !isSelected;
+    });
+  }
+
+  void toggleSelect() {
+    setState(() {
+      isSelect = !isSelect;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,8 +99,15 @@ class DeliveryTimePage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SvgPicture.asset(
-                    'assets/images/svg/un select_icon.svg',
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        toggleSelected();
+                      });
+                    },
+                    child: SvgPicture.asset(
+                      isSelected ? 'assets/images/svg/select_icon.svg' : 'assets/images/svg/un select_icon.svg',
+                    ),
                   ),
                   Gap(4.w),
                   Text(
@@ -71,8 +121,15 @@ class DeliveryTimePage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  SvgPicture.asset(
-                    'assets/images/svg/select_icon.svg',
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        toggleSelect();
+                      });
+                    },
+                    child: SvgPicture.asset(
+                      isSelect ? 'assets/images/svg/select_icon.svg' : 'assets/images/svg/un select_icon.svg',
+                    ),
                   ),
                   Gap(4.w),
                   Text(
@@ -102,10 +159,29 @@ class DeliveryTimePage extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: 5,
                   itemBuilder: (context, index) {
-                    return Container(
+                    return
+                        // Container(
+                        //   padding: const EdgeInsets.all(20.0),
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(color: Colors.blueAccent),
+                        //     borderRadius: BorderRadius.circular(10.0),
+                        //   ),
+                        //   child: Text(
+                        //     '${'${_selectedDateTime.toLocal()}'.split(' ')[0]} ${_selectedDateTime.month}:${_selectedDateTime.day}',
+                        //     style: const TextStyle(fontSize: 20.0),
+                        //   ),
+                        // );
+                        // // SizedBox(height: 20.0);
+                        // ElevatedButton(
+                        //   onPressed: _pickDateTime,
+                        //   child: const Text('Pick Date & Time'),
+                        // );
+
+                        Container(
                       width: 64.w,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.0),
+                        // border: isSelectedBorder ? Border.all(color: AppConst.kBorderButtonColor, width: 2.0) : null,
                         color: AppConst.kBorderBoxColor,
                       ),
                       child: Padding(

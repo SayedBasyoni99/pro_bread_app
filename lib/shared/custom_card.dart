@@ -10,7 +10,7 @@ class CustomCard extends StatelessWidget {
 
   const CustomCard({
     super.key,
-    required this.item,
+     required this.item,
     this.isSelected = false,
     this.color = AppConst.kPrimaryColor,
   });

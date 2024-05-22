@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
-import '../../../../config/routes/app_routes.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
@@ -11,8 +10,28 @@ import '../../../../shared/custom_details_container.dart';
 import '../../../../shared/text_button.dart';
 import 'choose_location_page.dart';
 
-class DeliveredDetailsPage extends StatelessWidget {
+class DeliveredDetailsPage extends StatefulWidget {
   const DeliveredDetailsPage({super.key});
+
+  @override
+  State<DeliveredDetailsPage> createState() => _DeliveredDetailsPageState();
+}
+
+class _DeliveredDetailsPageState extends State<DeliveredDetailsPage> {
+  bool isSelected = false;
+  bool isSelect = true;
+
+  void toggleSelected() {
+    setState(() {
+      isSelected = !isSelected;
+    });
+  }
+
+  void toggleSelect() {
+    setState(() {
+      isSelect = !isSelect;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,10 +55,10 @@ class DeliveredDetailsPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.pushNamed(context, Routes.productDetailsRoute);
+                    // Navigator.pushNamed(context, Routes.productDetailsRoute);
                   },
                   child: CustomDetailsContainer(
-                    picInfo: 'arrowBack_icon',
+                    // picInfo: 'arrowBack_icon',
                     message01: 'shipping_details'.tr(),
                     message02: 'mansoura'.tr(),
                     message03: 'gift_services_description'.tr(),
@@ -63,38 +82,64 @@ class DeliveredDetailsPage extends StatelessWidget {
                     BoxShadow(color: AppConst.kPrimaryColor, spreadRadius: 4.0)
                   ],
                 ),
-                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                // padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('pickup'.tr(),
-                        style: TextStyle(
-                            color: AppConst.kBorderButtonColor, fontSize: 14.sp, fontWeight: FontWeight.bold)),
-                    Gap(16.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/images/svg/select_icon.svg',
-                        ),
-                        Gap(4.w),
-                        Text(
-                          'home_delivery'.tr(),
-                          style: const TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold),
-                        ),
-                      ],
+                    Padding(
+                      padding: EdgeInsets.only(left: 16.w, top: 16.h),
+                      child: Text('pickup'.tr(),
+                          style: TextStyle(
+                              color: AppConst.kBorderButtonColor, fontSize: 14.sp, fontWeight: FontWeight.bold)),
                     ),
-                    Gap(24.h),
-                    Row(
+                    Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        SvgPicture.asset(
-                          'assets/images/svg/un select_icon.svg',
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            color: AppConst.kPrimaryColor,
+                          ),
+                          child: ListTile(
+                            leading: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  toggleSelected();
+                                });
+                              },
+                              child: SvgPicture.asset(
+                                isSelected
+                                    ? 'assets/images/svg/select_icon.svg'
+                                    : 'assets/images/svg/un select_icon.svg',
+                              ),
+                            ),
+                            title: Text(
+                              'store_pickup'.tr(),
+                              style: const TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ),
-                        Gap(4.w),
-                        Text(
-                          'store_pickup'.tr(),
-                          style: const TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            color: AppConst.kPrimaryColor,
+                          ),
+                          child: ListTile(
+                            leading: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  toggleSelect();
+                                });
+                              },
+                              child: SvgPicture.asset(
+                                isSelect ? 'assets/images/svg/select_icon.svg' : 'assets/images/svg/un select_icon.svg',
+                              ),
+                            ),
+                            title: Text(
+                              'home_delivery'.tr(),
+                              style: const TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ),
                       ],
                     ),
@@ -115,7 +160,7 @@ class DeliveredDetailsPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 16.0),
+                          padding: const EdgeInsets.only(right: 16.0, left: 16.0),
                           child: Text(
                             'send_as_gift'.tr(),
                             style:

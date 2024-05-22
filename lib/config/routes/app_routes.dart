@@ -98,7 +98,7 @@ class AppRoutes {
       case Routes.recipientInfoPageRoute:
         return MaterialPageRoute(
           settings: routeSettings,
-          builder: (BuildContext context) => const RecipientInfoPage(),
+          builder: (BuildContext context) =>  RecipientInfoPage(),
         );
 
       case Routes.forgotPasswordRoute:
