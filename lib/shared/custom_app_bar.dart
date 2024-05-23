@@ -49,9 +49,11 @@ class CustomAppBar {
                   padding: const EdgeInsets.all(16.0),
                   margin: const EdgeInsetsDirectional.only(start: 16.0),
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.0), color: AppConst.kBorderBoxColor),
-                  child: const Icon(
-                    Icons.arrow_back_ios,
-                    color: AppConst.kBorderButtonColor,
+                  child: const Center(
+                    child: Icon(
+                      Icons.arrow_back_ios,
+                      color: AppConst.kBorderButtonColor,
+                    ),
                   ),
                 ),
               ),

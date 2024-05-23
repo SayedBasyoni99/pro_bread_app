@@ -150,7 +150,9 @@ class _NewAccPageState extends State<NewAccPage> {
                         builder: (context, state) {
                           if (state is CompleteRegisterLoadingState) {
                             return const Center(
-                              child: CircularProgressIndicator(),
+                              child: CircularProgressIndicator(
+                                color: AppConst.kBorderButtonColor,
+                              ),
                             );
                           }
                           return CustomTextButton(

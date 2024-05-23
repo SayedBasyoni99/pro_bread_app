@@ -114,7 +114,7 @@ class PaymentPage extends StatelessWidget {
                               controller: expDateController,
                               validator: (value) {
                                 if (value?.trim().isEmpty == true) {
-                                  return 'required';
+                                  return 'required'.tr();
                                 }
                                 return null;
                               },

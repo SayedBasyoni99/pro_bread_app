@@ -30,6 +30,7 @@ class ProductCard extends StatefulWidget {
 }
 
 class _ProductCardState extends State<ProductCard> {
+  @override
   Widget build(BuildContext context) {
     // bool addToCart;
     return GestureDetector(
@@ -83,7 +84,7 @@ class _ProductCardState extends State<ProductCard> {
                     fontSize: 12.sp,
                     // fontWeight: FontWeight.bold,
                   ),
-                  Expanded(child: SizedBox()),
+                  const Expanded(child: SizedBox()),
                   TextWidget(
                     title: '${widget.item.price} ${'SAR'.tr()}',
                     color: AppConst.kScondaryTextColor,
@@ -102,17 +103,16 @@ class _ProductCardState extends State<ProductCard> {
                   builder: (context, state) {
                     if (state is ToggleFavoriteSuccessState) {
                       bool isFav = state.isFavorite;
-                      if(state.dishId != widget.item.id){
-                        if(context.read<ToggleFavoriteCubit>().favorites[widget.item.id] != null){
-                          isFav = context.read<ToggleFavoriteCubit>().favorites[widget.item.id]?? false;
-                        }
+                      if (state.dishId != widget.item.id) {
+                        if (context.read<ToggleFavoriteCubit>().favorites[widget.item.id] != null) {
+                          isFav = context.read<ToggleFavoriteCubit>().favorites[widget.item.id] ?? false;
+                        } 
+
                         isFav = widget.item.isFav;
                       }
                       return GestureDetector(
                         onTap: () {
-                          context
-                              .read<ToggleFavoriteCubit>()
-                              .fToggleFavorite(dishId: widget.item.id);
+                          context.read<ToggleFavoriteCubit>().fToggleFavorite(dishId: widget.item.id);
                         },
                         child: SvgPicture.asset(
                           isFav
@@ -123,12 +123,10 @@ class _ProductCardState extends State<ProductCard> {
                         ),
                       );
                     }
-                    if(state is ToggleFavoriteInitialState){
+                    if (state is ToggleFavoriteInitialState) {
                       return GestureDetector(
                         onTap: () {
-                          context
-                              .read<ToggleFavoriteCubit>()
-                              .fToggleFavorite(dishId: widget.item.id);
+                          context.read<ToggleFavoriteCubit>().fToggleFavorite(dishId: widget.item.id);
                         },
                         child: SvgPicture.asset(
                           widget.item.isFav
@@ -141,9 +139,7 @@ class _ProductCardState extends State<ProductCard> {
                     }
                     return GestureDetector(
                       onTap: () {
-                        context
-                            .read<ToggleFavoriteCubit>()
-                            .fToggleFavorite(dishId: widget.item.id);
+                        context.read<ToggleFavoriteCubit>().fToggleFavorite(dishId: widget.item.id);
                       },
                       child: SvgPicture.asset(
                         'assets/images/svg/empty_heart_icon01.svg',

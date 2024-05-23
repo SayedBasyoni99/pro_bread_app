@@ -70,7 +70,10 @@ class _RegisterPinCodeDialogState extends State<RegisterPinCodeDialog> {
                   },
                   builder: (context, state) {
                     if (state is CheckOtpLoadingState) {
-                      return const Center(child: CircularProgressIndicator());
+                      return const Center(
+                          child: CircularProgressIndicator(
+                        color: AppConst.kBorderButtonColor,
+                      ));
                     }
                     return CustomButton(
                         btnTitle: 'confirm'.tr(),

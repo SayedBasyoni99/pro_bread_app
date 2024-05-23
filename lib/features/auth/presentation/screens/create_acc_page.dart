@@ -100,7 +100,9 @@ class _CreateAccPageState extends State<CreateAccPage> {
                       builder: (context, state) {
                         if (state is RegisterLoadingState) {
                           return const Center(
-                            child: CircularProgressIndicator(),
+                            child: CircularProgressIndicator(
+                              color: AppConst.kBorderButtonColor,
+                            ),
                           );
                         }
                         return CustomTextButton(
@@ -132,7 +134,7 @@ class _CreateAccPageState extends State<CreateAccPage> {
                   const Gap(12),
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => LogInPage()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogInPage()));
                     },
                     child: Text('login'.tr(),
                         style:

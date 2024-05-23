@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -8,7 +7,7 @@ import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../../shared/text_widget.dart';
-import '../../../home/presentation/screens/home_page.dart';
+import '../../../home/presentation/screens/main_page.dart';
 
 class TrackOrderPage extends StatelessWidget {
   const TrackOrderPage({super.key});
@@ -17,14 +16,15 @@ class TrackOrderPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar.build(
+        removeBack: true,
         context,
         titleText: 'track_order'.tr(),
         iconAppBar: GestureDetector(
           onTap: () {
-            Utils.openScreen(context, const HomePage(), replacment: true);
+            Utils.openScreen(context, const MainPage(), remove: true);
           },
           child: SvgPicture.asset(
-            'assets/images/svg/home_icon.svg',
+            'assets/images/svg/product_icon.svg',
             color: AppConst.kBorderButtonColor,
             height: 20,
             width: 20,

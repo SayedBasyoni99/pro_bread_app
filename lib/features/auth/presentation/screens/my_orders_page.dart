@@ -4,23 +4,30 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
+import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../../shared/order_card.dart';
 import '../../../../shared/tabbar_widget.dart';
+import 'cart_page.dart';
+import 'products_page.dart';
 
 class MyOrdersPage extends StatelessWidget {
   const MyOrdersPage({super.key});
-  final bool isEpmty = false;
+  final bool isEmpty = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar.build(
         context,
         titleText: 'my_orders'.tr(),
-        iconAppBar: SvgPicture.asset('assets/images/svg/cart_icon.svg'),
+        iconAppBar: GestureDetector(
+            onTap: () {
+              Utils.openScreen(context, const CartPage(), remove: true);
+            },
+            child: SvgPicture.asset('assets/images/svg/cart_icon.svg')),
       ),
       backgroundColor: AppConst.kPrimaryColor,
-      body: isEpmty
+      body: isEmpty
           ? Column(
               children: [
                 Gap(60.h),

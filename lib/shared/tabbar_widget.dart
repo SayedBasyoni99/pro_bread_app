@@ -9,7 +9,7 @@ class TabBarWidget extends StatefulWidget {
   int length;
   List<Tab> tabs;
   Function(int)? onTap;
-  TabBarWidget({Key? key, required this.length, required this.tabs, this.onTap}) : super(key: key);
+  TabBarWidget({super.key, required this.length, required this.tabs, this.onTap});
 
   @override
   State<TabBarWidget> createState() => _TabBarWidgetState();
@@ -34,11 +34,11 @@ class _TabBarWidgetState extends State<TabBarWidget> with SingleTickerProviderSt
       tabs: widget.tabs,
       controller: tabController,
       indicatorSize: TabBarIndicatorSize.label,
-      labelStyle:  TextStyle(
+      labelStyle: TextStyle(
         fontSize: 16.sp,
         fontWeight: FontWeight.bold,
       ),
-      unselectedLabelStyle:  TextStyle(
+      unselectedLabelStyle: TextStyle(
         fontSize: 14.sp,
       ),
     );

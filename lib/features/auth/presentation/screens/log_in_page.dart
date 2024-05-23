@@ -154,7 +154,9 @@ class _LogInPageState extends State<LogInPage> {
                           builder: (context, state) {
                             if (state is LoginLoadingState) {
                               return const Center(
-                                child: CircularProgressIndicator(),
+                                child: CircularProgressIndicator(
+                                  color: AppConst.kBorderButtonColor,
+                                ),
                               );
                             }
                             return CustomTextButton(

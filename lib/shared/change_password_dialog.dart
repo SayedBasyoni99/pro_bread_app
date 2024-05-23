@@ -34,7 +34,7 @@ class ChangePasswordDialog extends StatelessWidget {
                 CustomButton(
                     btnTitle: 'تسجيل الدخول',
                     onTap: () {
-                      Utils.openScreen(context, LogInPage(), replacment: true);
+                      Utils.openScreen(context, const LogInPage(), replacment: true);
                     }),
               ],
             ),

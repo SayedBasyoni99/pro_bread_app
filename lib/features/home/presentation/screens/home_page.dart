@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -164,7 +163,10 @@ class _HomePageState extends State<HomePage> {
                   },
                   builder: (BuildContext context, GetCategoriesState state) {
                     if (state is GetCategoriesLoadingState) {
-                      return const Center(child: CircularProgressIndicator());
+                      return const Center(
+                          child: CircularProgressIndicator(
+                        color: AppConst.kBorderButtonColor,
+                      ));
                     }
                     if (state is GetCategoriesSuccessState) {
                       return SizedBox(

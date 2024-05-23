@@ -9,6 +9,7 @@ import '../../../../core/resources/assets.gen.dart';
 import '../../../../core/utils/utils.dart';
 import '../../../categories/domain/entities/get_dish_response.dart';
 import '../../../favorites/presentation/controller/toggle_favorite/toggle_favorite_cubit.dart';
+import '../../../home/presentation/screens/main_page.dart';
 import 'cart_page.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../shared/custom_txt_bottom.dart';
@@ -35,34 +36,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   int _counterX = 1;
   int _counterY = 0;
   bool isSelected = false;
-
-  void _incrementCounterX() {
-    setState(() {
-      _counterX++;
-    });
-  }
-
-  void _decrementCounterX() {
-    setState(() {
-      if (_counterX > 0) {
-        _counterX--;
-      }
-    });
-  }
-
-  void _incrementCounterY() {
-    setState(() {
-      _counterY++;
-    });
-  }
-
-  void _decrementCounterY() {
-    setState(() {
-      if (_counterY > 0) {
-        _counterY--;
-      }
-    });
-  }
 
   void toggleSelected() {
     setState(() {
@@ -469,7 +442,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                       Utils.openScreen(
                                                         context,
                                                         const CartPage(),
-                                                        // replacment: true
+                                                        replacment: true,
                                                       );
                                                     }),
                                                 Gap(24.h),
@@ -482,7 +455,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                                                         color: AppConst.kBorderButtonColor),
                                                   ),
                                                   onTap: () {
-                                                    Utils.openScreen(context, const ProductsPage(), replacment: true);
+                                                    Utils.openScreen(context, const MainPage(), remove: true);
                                                   },
                                                 ),
                                               ],

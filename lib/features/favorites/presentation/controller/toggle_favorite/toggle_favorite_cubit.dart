@@ -29,6 +29,8 @@ class ToggleFavoriteCubit extends Cubit<ToggleFavoriteState> {
       final bool isFav = response.message.contains('Add To Favorite');
       favorites[dishId] = isFav;
       emit(ToggleFavoriteSuccessState(dishId: dishId, isFavorite: isFav));
+      
+
     });
   }
 }

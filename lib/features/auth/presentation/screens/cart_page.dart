@@ -20,20 +20,6 @@ class CartPage extends StatefulWidget {
 int _counter = 1;
 
 class _CartPageState extends State<CartPage> {
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      if (_counter > 0) {
-        _counter--;
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +27,19 @@ class _CartPageState extends State<CartPage> {
       appBar: CustomAppBar.build(
         context,
         titleText: 'cart'.tr(),
-        actions: [],
+        removeBack: true,
+        actions: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            child: InkWell(
+              onTap: () {},
+              child: SvgPicture.asset(
+                'assets/images/svg/home_icon.svg',
+                color: AppConst.kBorderButtonColor,
+              ),
+            ),
+          )
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
