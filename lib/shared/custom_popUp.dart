@@ -27,12 +27,12 @@ class CustomPopUp extends StatelessWidget {
               children: [
                 const Text(
                   'الرجاء اخال الكود',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
+                  style:  TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                 ),
                 Gap(16.h),
                 const Text(
                   'يرجي إدخال الكود الذي تم إرساله لإنشاء الحساب',
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                  style:  TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                 ),
                 Gap(32.h),
                 PinCodeWidget(
@@ -49,7 +49,6 @@ class CustomPopUp extends StatelessWidget {
                 CustomButton(
                     btnTitle: 'تأكيد ',
                     onTap: () {
-                      
                       // Utils.openScreen(context, const ChangePasswordPage(), replacment: true);
                     }),
                 Gap(12.h),
@@ -64,11 +63,13 @@ class CustomPopUp extends StatelessWidget {
                         );
                       },
                       child: const Text('ارسال مرة أخرى ',
-                          style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
+                          style:
+                               TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                     ),
                     const Gap(8),
                     const Text('لم يتم ارسال الكود؟ ',
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor)),
+                        style:  TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor)),
                   ],
                 ),
                 Gap(16.h),

@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,14 +34,16 @@ class ChangePasswordPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Gap(25.h),
-                    const Text(
-                      'تغيير كلمة المرور',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
+                    Text(
+                      'change_password'.tr(),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                     ),
                     const Gap(24),
-                    const Text(
-                      'كلمة المرور الجديدة ',
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                    Text(
+                      'new_password'.tr(),
+                      style:
+                          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
                     const Gap(16),
                     CustomInputField(
@@ -51,7 +55,7 @@ class ChangePasswordPage extends StatelessWidget {
                       },
                       controller: passwordController,
                       isPassword: true,
-                      hint: 'أدخل كلمة المرور الجديدة',
+                      hint: 'enter_new_password'.tr(),
                       prefixIcon: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: SvgPicture.asset(
@@ -60,9 +64,10 @@ class ChangePasswordPage extends StatelessWidget {
                       ),
                     ),
                     const Gap(24),
-                    const Text(
-                      'تأكيد كلمة المرور الجديدة',
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                    Text(
+                      'confirm_new_password'.tr(),
+                      style:
+                          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
                     const Gap(16),
                     CustomInputField(
@@ -74,7 +79,7 @@ class ChangePasswordPage extends StatelessWidget {
                       },
                       controller: confirmPasswordController,
                       isPassword: true,
-                      hint: 'أدخل كلمة المرور الجديدة',
+                      hint: 'enter_new_password'.tr(),
                       prefixIcon: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: SvgPicture.asset(
@@ -90,7 +95,7 @@ class ChangePasswordPage extends StatelessWidget {
                           showAppDialog(context: context, child: const ChangePasswordDialog());
                         }
                       },
-                      title: 'تغيير ',
+                      title: 'change'.tr(),
                       fontSize: 18.sp,
                     ),
                   ],

@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter_datetime_picker/flutter_datetime_picker.dart' as DatePickerTheme;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
@@ -9,8 +11,50 @@ import '../../../../shared/custom_stepper_widget.dart';
 import '../../../../shared/text_button.dart';
 import 'payment_page.dart';
 
-class DeliveryTimePage extends StatelessWidget {
-  const DeliveryTimePage({super.key});
+class DeliveryTimePage extends StatefulWidget {
+  const DeliveryTimePage({
+    super.key,
+  });
+
+  @override
+  State<DeliveryTimePage> createState() => _DeliveryTimePageState();
+}
+
+class _DeliveryTimePageState extends State<DeliveryTimePage> {
+  // final DateTime _selectedDateTime = DateTime.now();
+
+  // void _pickDateTime() {
+  //   DatePicker.showDateTimePicker(
+  //     context,
+  //     showTitleActions: true,
+  //     onChanged: (date) {
+  //       print('change $date');
+  //     },
+  //     onConfirm: (date) {
+  //       setState(() {
+  //         _selectedDateTime = date;
+  //       });
+  //     },
+  //     currentTime: DateTime.now(),
+  //     locale: LocaleType.ar,
+  //   );
+  // }
+
+  bool isSelected = false;
+  //  bool isSelectedBorder;
+  bool isSelect = false;
+
+  void toggleSelected() {
+    setState(() {
+      isSelected = !isSelected;
+    });
+  }
+
+  void toggleSelect() {
+    setState(() {
+      isSelect = !isSelect;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +62,7 @@ class DeliveryTimePage extends StatelessWidget {
       backgroundColor: AppConst.kPrimaryColor,
       appBar: CustomAppBar.build(
         context,
-        titleText: 'تابع إتمام الطلب',
+        titleText: 'proceed_to_checkout'.tr(),
         iconAppBar: SvgPicture.asset(
           'assets/images/svg/cart_icon.svg',
           height: 20,
@@ -27,75 +71,81 @@ class DeliveryTimePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding:
-              EdgeInsets.only(right: 16.w, left: 16.w, top: 32.h, bottom: 32.h),
+          padding: EdgeInsets.only(right: 16.w, left: 16.w, top: 32.h, bottom: 32.h),
           child: Column(
             children: [
               const Row(
                 children: [
-                  CustomStepper(),
-                  CustomStepper(),
                   CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
                   CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
+                  CustomStepper(),
+                  CustomStepper(),
                 ],
               ),
               Gap(32.h),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    'وقت التوصيل',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                        color: AppConst.kPrimaryTextColor),
-                  ),
-                  Gap(8.w),
                   SvgPicture.asset('assets/images/svg/deliveryTime_icon.svg'),
+                  Gap(8.w),
+                  Text(
+                    'delivery_time'.tr(),
+                    style:
+                        const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+                  ),
                 ],
               ),
               Gap(24.h),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    'بعد 45 دق',
-                    style: TextStyle(
-                        color: AppConst.kPrimaryTextColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        toggleSelected();
+                      });
+                    },
+                    child: SvgPicture.asset(
+                      isSelected ? 'assets/images/svg/select_icon.svg' : 'assets/images/svg/un select_icon.svg',
+                    ),
                   ),
                   Gap(4.w),
-                  SvgPicture.asset(
-                    'assets/images/svg/un select_icon.svg',
-                  )
+                  Text(
+                    'in_45_minutes'.tr(),
+                    style:
+                        const TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold, fontSize: 14),
+                  ),
                 ],
               ),
               Gap(24.h),
               Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  const Text(
-                    'اختر وقت آخر',
-                    style: TextStyle(
-                        color: AppConst.kPrimaryTextColor,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 14),
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        toggleSelect();
+                      });
+                    },
+                    child: SvgPicture.asset(
+                      isSelect ? 'assets/images/svg/select_icon.svg' : 'assets/images/svg/un select_icon.svg',
+                    ),
                   ),
                   Gap(4.w),
-                  SvgPicture.asset(
-                    'assets/images/svg/select_icon.svg',
-                  )
+                  Text(
+                    'choose_another_time'.tr(),
+                    style:
+                        const TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold, fontSize: 14),
+                  ),
                 ],
               ),
               Gap(32.h),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'حدد اليوم',
-                    style: TextStyle(
-                        color: AppConst.kThirdTextColor, fontSize: 12),
+                    'select_day'.tr(),
+                    style: const TextStyle(color: AppConst.kThirdTextColor, fontSize: 12),
                   ),
                 ],
               ),
@@ -109,29 +159,44 @@ class DeliveryTimePage extends StatelessWidget {
                   shrinkWrap: true,
                   itemCount: 5,
                   itemBuilder: (context, index) {
-                    return Container(
+                    return
+                        // Container(
+                        //   padding: const EdgeInsets.all(20.0),
+                        //   decoration: BoxDecoration(
+                        //     border: Border.all(color: Colors.blueAccent),
+                        //     borderRadius: BorderRadius.circular(10.0),
+                        //   ),
+                        //   child: Text(
+                        //     '${'${_selectedDateTime.toLocal()}'.split(' ')[0]} ${_selectedDateTime.month}:${_selectedDateTime.day}',
+                        //     style: const TextStyle(fontSize: 20.0),
+                        //   ),
+                        // );
+                        // // SizedBox(height: 20.0);
+                        // ElevatedButton(
+                        //   onPressed: _pickDateTime,
+                        //   child: const Text('Pick Date & Time'),
+                        // );
+
+                        Container(
                       width: 64.w,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8.0),
+                        // border: isSelectedBorder ? Border.all(color: AppConst.kBorderButtonColor, width: 2.0) : null,
                         color: AppConst.kBorderBoxColor,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Column(
                           children: [
-                            const Text(
-                              'اليوم',
-                              style: TextStyle(
-                                  color: AppConst.kThirdTextColor,
-                                  fontSize: 12),
+                            Text(
+                              'today'.tr(),
+                              style: const TextStyle(color: AppConst.kThirdTextColor, fontSize: 12),
                             ),
                             Gap(16.h),
                             const Text(
-                              '25 يناير',
+                              '25 jan',
                               style: TextStyle(
-                                  color: AppConst.kPrimaryTextColor,
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold),
+                                  color: AppConst.kPrimaryTextColor, fontSize: 12, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
@@ -142,13 +207,12 @@ class DeliveryTimePage extends StatelessWidget {
                 ),
               ),
               Gap(32.h),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    'حدد الوقت ',
-                    style: TextStyle(
-                        color: AppConst.kThirdTextColor, fontSize: 12),
+                    'select_time'.tr(),
+                    style: const TextStyle(color: AppConst.kThirdTextColor, fontSize: 12),
                   ),
                 ],
               ),
@@ -173,10 +237,8 @@ class DeliveryTimePage extends StatelessWidget {
                       child: const Center(
                         child: Text(
                           ' 05:00 ',
-                          style: TextStyle(
-                              color: AppConst.kPrimaryTextColor,
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold),
+                          style:
+                              TextStyle(color: AppConst.kPrimaryTextColor, fontSize: 12, fontWeight: FontWeight.bold),
                         ),
                       ),
                     );
@@ -192,7 +254,7 @@ class DeliveryTimePage extends StatelessWidget {
                     PaymentPage(),
                   );
                 },
-                title: 'التالي',
+                title: 'next'.tr(),
                 fontSize: 18.sp,
               ),
             ],

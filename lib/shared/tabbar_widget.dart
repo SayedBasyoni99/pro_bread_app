@@ -9,15 +9,13 @@ class TabBarWidget extends StatefulWidget {
   int length;
   List<Tab> tabs;
   Function(int)? onTap;
-  TabBarWidget({Key? key, required this.length, required this.tabs, this.onTap})
-      : super(key: key);
+  TabBarWidget({super.key, required this.length, required this.tabs, this.onTap});
 
   @override
   State<TabBarWidget> createState() => _TabBarWidgetState();
 }
 
-class _TabBarWidgetState extends State<TabBarWidget>
-    with SingleTickerProviderStateMixin {
+class _TabBarWidgetState extends State<TabBarWidget> with SingleTickerProviderStateMixin {
   TabController? tabController;
   @override
   void initState() {

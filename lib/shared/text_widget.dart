@@ -23,13 +23,12 @@ class TextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      title??'',
+      title ?? '',
       maxLines: maxLines,
-      overflow:maxLines == null ? null : TextOverflow.ellipsis,
-      textDirection:
-          Utils.isArabic(title ?? '') ? TextDirection.rtl : TextDirection.ltr,
-      style: TextStyle(
-        fontSize: fontSize?? 14.sp,
+      overflow: maxLines == null ? null : TextOverflow.ellipsis,
+      textDirection: Utils.isArabic(title ?? '') ? TextDirection.rtl : TextDirection.ltr,
+      style:  TextStyle(
+        fontSize: fontSize ?? 14.sp,
         fontWeight: fontWeight,
         decoration: isOffer ? TextDecoration.lineThrough : null,
         height: 1.2,

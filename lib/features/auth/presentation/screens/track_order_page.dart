@@ -1,9 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/const/constant_var.dart';
+import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
 import '../../../../shared/text_widget.dart';
+import '../../../home/presentation/screens/main_page.dart';
 
 class TrackOrderPage extends StatelessWidget {
   const TrackOrderPage({super.key});
@@ -12,8 +16,20 @@ class TrackOrderPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar.build(
+        removeBack: true,
         context,
-        titleText: 'تتبع الطلب',
+        titleText: 'track_order'.tr(),
+        iconAppBar: GestureDetector(
+          onTap: () {
+            Utils.openScreen(context, const MainPage(), remove: true);
+          },
+          child: SvgPicture.asset(
+            'assets/images/svg/product_icon.svg',
+            color: AppConst.kBorderButtonColor,
+            height: 20,
+            width: 20,
+          ),
+        ),
       ),
       backgroundColor: AppConst.kPrimaryColor,
       body: SingleChildScrollView(
@@ -28,19 +44,19 @@ class TrackOrderPage extends StatelessWidget {
                   color: AppConst.kPrimaryColor,
                 ),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const TextWidget(
-                      title: 'طلب رقم #123456',
+                    TextWidget(
+                      title: ' ${'order_number'.tr()} 123456',
                     ),
                     Stepper(
                       connectorColor: const MaterialStatePropertyAll(AppConst.kBorderButtonColor),
                       currentStep: 0,
-                      steps: const [
+                      steps: [
                         Step(
-                            subtitle: Text('   الطلب'),
-                            title: Text('12/12/2022'),
-                            content: Text(' '),
+                            subtitle: Text('order'.tr()),
+                            title: const Text('12/12/2022'),
+                            content: const Text(' '),
                             isActive: true,
                             state: StepState.complete),
                       ],
@@ -49,11 +65,11 @@ class TrackOrderPage extends StatelessWidget {
                       controlsBuilder: (context, details) => const SizedBox(),
                       connectorColor: const MaterialStatePropertyAll(AppConst.kBorderButtonColor),
                       currentStep: 0,
-                      steps: const [
+                      steps: [
                         Step(
-                            subtitle: Text(' الطلب'),
-                            title: Text('12/12/2022'),
-                            content: Text(' '),
+                            subtitle: Text('order'.tr()),
+                            title: const Text('12/12/2022'),
+                            content: const Text(' '),
                             isActive: true,
                             state: StepState.complete),
                       ],
@@ -66,11 +82,11 @@ class TrackOrderPage extends StatelessWidget {
                       controlsBuilder: (context, details) => const SizedBox(),
                       connectorColor: const MaterialStatePropertyAll(AppConst.kBorderButtonColor),
                       currentStep: 0,
-                      steps: const [
+                      steps: [
                         Step(
-                            subtitle: Text('   الطلب'),
-                            title: Text('12/12/2022'),
-                            content: Text(' '),
+                            subtitle: Text('order'.tr()),
+                            title: const Text('12/12/2022'),
+                            content: const Text(' '),
                             isActive: true,
                             state: StepState.complete),
                       ],
@@ -96,10 +112,10 @@ class TrackOrderPage extends StatelessWidget {
                 // height: 200.h,
                 width: double.infinity,
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      ' سيتم التوصيل الى',
+                      'delivery_to'.tr(),
                       style: TextStyle(
                         color: AppConst.kThirdTextColor,
                         fontSize: 14.sp,
@@ -107,7 +123,7 @@ class TrackOrderPage extends StatelessWidget {
                     ),
                     Gap(4.h),
                     Text(
-                      'النهضة،، Buraydah 52389 ',
+                      'mansoura'.tr(),
                       style: TextStyle(color: AppConst.kPrimaryTextColor, fontSize: 14.sp, fontWeight: FontWeight.bold),
                     ),
                   ],
@@ -131,10 +147,10 @@ class TrackOrderPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         TextWidget(
-                          title: 'ملخص الدفع',
+                          title: 'payment_summary'.tr(),
                           color: AppConst.kScondaryTextColor,
                           fontSize: 16.sp,
                           fontWeight: FontWeight.bold,
@@ -146,34 +162,38 @@ class TrackOrderPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextWidget(
-                          title: '220 ر.س',
-                          color: AppConst.kPrimaryTextColor,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        Gap(16.h),
-                        TextWidget(
-                          title: 'مجموع الطلب',
+                          title: 'order_total'.tr(),
                           color: AppConst.kThirdTextColor,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.bold,
                         ),
+                        Gap(16.w),
+                        // const Spacer(),
+                        TextWidget(
+                          title: ' 240 ${'SAR'.tr()}',
+                          color: AppConst.kPrimaryTextColor,
+                          fontSize: 12.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        // Gap(16.h),
                       ],
                     ),
-                    Gap(16.w),
+                    Gap(16.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextWidget(
-                          title: ' 220 ر.س',
-                          color: AppConst.kPrimaryTextColor,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: TextWidget(
+                            title: 'delivery_fee'.tr(),
+                            color: AppConst.kThirdTextColor,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        Gap(16.h),
+                        Gap(16.w),
                         TextWidget(
-                          title: 'رسوم التوصيل ',
-                          color: AppConst.kThirdTextColor,
+                          title: ' 510 ${'SAR'.tr()}',
+                          color: AppConst.kPrimaryTextColor,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.bold,
                         ),
@@ -181,18 +201,20 @@ class TrackOrderPage extends StatelessWidget {
                     ),
                     Gap(16.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        TextWidget(
-                          title: '220 ر.س',
-                          color: AppConst.kPrimaryTextColor,
-                          fontSize: 12.sp,
-                          fontWeight: FontWeight.bold,
+                        Expanded(
+                          child: TextWidget(
+                            title: 'discount_code'.tr(),
+                            color: AppConst.kThirdTextColor,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
-                        Gap(16.h),
+                        Gap(16.w),
                         TextWidget(
-                          title: ' كود الخصم',
-                          color: AppConst.kThirdTextColor,
+                          title: ' 411 ${'SAR'.tr()}',
+                          color: AppConst.kPrimaryTextColor,
                           fontSize: 12.sp,
                           fontWeight: FontWeight.bold,
                         ),
@@ -206,19 +228,21 @@ class TrackOrderPage extends StatelessWidget {
                     ),
                     Gap(16.h),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
+                        Expanded(
+                          child: TextWidget(
+                            title: 'total'.tr(),
+                            color: AppConst.kThirdTextColor,
+                            fontSize: 12.sp,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Gap(16.w),
                         TextWidget(
-                          title: '220 ر.س',
+                          title: ' 855 ${'SAR'.tr()}',
                           color: AppConst.kScondaryTextColor,
                           fontSize: 16.sp,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        Gap(16.h),
-                        TextWidget(
-                          title: 'المجموع',
-                          color: AppConst.kThirdTextColor,
-                          fontSize: 12.sp,
                           fontWeight: FontWeight.bold,
                         ),
                       ],

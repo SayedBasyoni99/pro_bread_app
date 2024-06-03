@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -14,10 +15,16 @@ import '../../../../shared/text_button.dart';
 import '../../../../shared/show_dialog.dart';
 
 // ignore: must_be_immutable
-class CreateAccPage extends StatelessWidget {
-  CreateAccPage({super.key});
+class CreateAccPage extends StatefulWidget {
+  const CreateAccPage({super.key});
 
+  @override
+  State<CreateAccPage> createState() => _CreateAccPageState();
+}
+
+class _CreateAccPageState extends State<CreateAccPage> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   final TextEditingController phoneController = TextEditingController();
 
   @override
@@ -33,23 +40,19 @@ class CreateAccPage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Gap(25.h),
-                    const Text(
-                      'إنشاء حساب جديد',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: AppConst.kScondaryTextColor),
+                    Text(
+                      'create_new_account'.tr(),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                     ),
                     const Gap(32),
-                    const Text(
-                      'رقم الجوال',
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: AppConst.kThirdTextColor),
+                    Text(
+                      'mobile_number'.tr(),
+                      style:
+                          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
                     const Gap(16),
                     // CustomTxtField(
@@ -66,7 +69,7 @@ class CreateAccPage extends StatelessWidget {
                     Gap(40.h),
                     CustomInputField(
                       controller: phoneController,
-                      hint: 'ادخل رقم الجوال',
+                      hint: 'enter_mobile_number'.tr(),
                       prefixIcon: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: SvgPicture.asset(
@@ -76,7 +79,7 @@ class CreateAccPage extends StatelessWidget {
                       keyboardType: TextInputType.phone,
                       validator: (value) {
                         if (value?.trim().isEmpty == true) {
-                          return 'Required';
+                          return 'Required'.tr();
                         }
                         return null;
                       },
@@ -91,32 +94,31 @@ class CreateAccPage extends StatelessWidget {
                           );
                         }
                         if (state is RegisterErrorState) {
-                          showAppSnackBar(
-                              context: context,
-                              message: state.message,
-                              type: ToastType.error);
+                          showAppSnackBar(context: context, message: state.message, type: ToastType.error);
                         }
                       },
                       builder: (context, state) {
                         if (state is RegisterLoadingState) {
                           return const Center(
-                            child: CircularProgressIndicator(),
+                            child: CircularProgressIndicator(
+                              color: AppConst.kBorderButtonColor,
+                            ),
                           );
                         }
                         return CustomTextButton(
-                              onTap: () {
-                                if (formKey.currentState?.validate() == true) {
-                                  context.read<RegisterCubit>().fRegister(
-                                        phone: phoneController.text.trim(),
-                                      );
-                                }
-                                // showAppDialog(
-                                //   context: context,
-                                //   child: const RegisterPinCodeDialog(),
-                                // );
-                              },
-                              title: 'إنشاء حساب جديد',
-                              fontSize: 18.sp);
+                            onTap: () {
+                              if (formKey.currentState?.validate() == true) {
+                                context.read<RegisterCubit>().fRegister(
+                                      phone: phoneController.text.trim(),
+                                    );
+                              }
+                              // showAppDialog(
+                              //   context: context,
+                              //   child: const RegisterPinCodeDialog(),
+                              // );
+                            },
+                            title: 'create_new_account'.tr(),
+                            fontSize: 18.sp);
                       },
                     ),
                   ],
@@ -126,23 +128,18 @@ class CreateAccPage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Text('already_have_an_account'.tr(),
+                      style:
+                          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor)),
+                  const Gap(12),
                   GestureDetector(
                     onTap: () {
-                      Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => LogInPage()));
+                      Navigator.of(context).push(MaterialPageRoute(builder: (context) => const LogInPage()));
                     },
-                    child: const Text('تسجيل الدخول',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kButtonColor)),
+                    child: Text('login'.tr(),
+                        style:
+                            const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                   ),
-                  const Gap(12),
-                  const Text('هل لديك حساب بالفعل ؟ ',
-                      style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
-                          color: AppConst.kThirdTextColor)),
                 ],
               )
             ],

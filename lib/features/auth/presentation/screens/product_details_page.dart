@@ -1,18 +1,47 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
 import '../../../../core/resources/assets.gen.dart';
 import '../../../../core/utils/utils.dart';
+import '../../../categories/domain/entities/get_dish_response.dart';
+import '../../../favorites/presentation/controller/toggle_favorite/toggle_favorite_cubit.dart';
+import '../../../home/presentation/screens/main_page.dart';
 import 'cart_page.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../shared/custom_txt_bottom.dart';
 import '../../../../shared/show_dialog.dart';
 import 'products_page.dart';
 
-class ProductDetailsPage extends StatelessWidget {
-  const ProductDetailsPage({super.key});
+class ProductDetailsPage extends StatefulWidget {
+  final Dish dish;
+
+  const ProductDetailsPage({
+    required this.dish,
+    super.key,
+  });
+
+  @override
+  State<ProductDetailsPage> createState() => _ProductDetailsPageState();
+}
+
+class _ProductDetailsPageState extends State<ProductDetailsPage> {
+//  void initState() {
+//     super.initState();
+//     context.read<GetDishCubit>().fGetDish(id: 1);
+//   }
+  int _counterX = 1;
+  int _counterY = 0;
+  bool isSelected = false;
+
+  void toggleSelected() {
+    setState(() {
+      isSelected = !isSelected;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +51,8 @@ class ProductDetailsPage extends StatelessWidget {
         floatHeaderSlivers: true,
         headerSliverBuilder: (context, innerBoxIsScrolled) {
           return [
-            const SliverAppBar(
-              title: Text('تفاصيل المنتج'),
+            SliverAppBar(
+              title: Text('product_details'.tr()),
               backgroundColor: AppConst.kPrimaryColor,
               pinned: true,
               floating: false,
@@ -31,8 +60,7 @@ class ProductDetailsPage extends StatelessWidget {
               expandedHeight: 240,
               flexibleSpace: FlexibleSpaceBar(
                 background: Image(
-                  image: AssetImage('assets/images/png/cake 01.png'),
-                  fit: BoxFit.fill,
+                  image: Image.network(widget.dish.avatar ?? '').image,
                 ),
               ),
             ),
@@ -44,21 +72,23 @@ class ProductDetailsPage extends StatelessWidget {
                   width: double.infinity,
                   color: AppConst.kPrimaryColor,
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  alignment: Alignment.centerRight,
-                  child: const Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                  alignment: Alignment.centerLeft,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Gap(16),
+                      const Gap(16),
                       Text(
-                        'براوني كيك ',
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
+                        widget.dish.name ?? 'براوني كيك ',
+                        style: const TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                       ),
-                      Gap(8),
+                      const Gap(8),
                       Text(
-                        'قطعة براونيز نوتيلا مغطاه بالنوتيلا ',
-                        style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                        widget.dish.description ?? 'قطعة براونيز نوتيلا مغطاه بالنوتيلا ',
+                        style:
+                            const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
-                      Gap(8),
+                      const Gap(8),
                     ],
                   ),
                 ),
@@ -81,18 +111,18 @@ class ProductDetailsPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(8.0),
                       color: AppConst.kPrimaryColor,
                     ),
-                    child: const Row(
+                    child: Row(
                       children: [
                         Text(
-                          '225',
-                          style:
-                              TextStyle(color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 18),
+                          'price'.tr(),
+                          style: const TextStyle(
+                              color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 12),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         Text(
-                          'السعر',
-                          style:
-                              TextStyle(color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 12),
+                          '${widget.dish.price} ${'SAR'.tr()}',
+                          style: const TextStyle(
+                              color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                       ],
                     ),
@@ -105,12 +135,12 @@ class ProductDetailsPage extends StatelessWidget {
                       color: AppConst.kPrimaryColor,
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'المنتجات المتوفرة',
-                          style:
-                              TextStyle(color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
+                        Text(
+                          'available_products'.tr(),
+                          style: const TextStyle(
+                              color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 300.h,
@@ -119,21 +149,45 @@ class ProductDetailsPage extends StatelessWidget {
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
-                              return Container(
-                                height: 80.h,
-                                width: 85.w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: AppConst.kPrimaryColor,
-                                ),
-                                child: ListTile(
-                                  leading: SvgPicture.asset('assets/images/svg/select_icon.svg'),
-                                  title: const Text(' كيكة ليمون بلوبيري '),
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Expanded(
+                                    child: Container(
+                                      // height: 80.h,
+                                      // width: 200.w,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8.0),
+                                        color: AppConst.kPrimaryColor,
+                                      ),
+                                      child: ListTile(
+                                        leading: GestureDetector(
+                                          onTap: () {
+                                            setState(() {
+                                              toggleSelected();
+                                            });
+                                          },
+                                          child: SvgPicture.asset(
+                                            isSelected
+                                                ? 'assets/images/svg/select_icon.svg'
+                                                : 'assets/images/svg/un select_icon.svg',
+                                          ),
+                                        ),
+                                        title: Text(widget.dish.name ?? ' كيكة ليمون بلوبيري '),
 
-                                  onTap: () {},
+                                        // onTap: () {},
 
-                                  // subtitle: Text('السعر'),
-                                ),
+                                        // subtitle: Text('السعر'),
+                                      ),
+                                    ),
+                                  ),
+                                  // const Spacer(),
+                                  Text(
+                                    '${widget.dish.price} ${'SAR'.tr()}',
+                                    style: const TextStyle(
+                                        color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 14),
+                                  ),
+                                ],
                               );
                             },
                             separatorBuilder: (context, index) {
@@ -153,12 +207,12 @@ class ProductDetailsPage extends StatelessWidget {
                       color: AppConst.kPrimaryColor,
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Text(
-                          'الاضافات',
-                          style:
-                              TextStyle(color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
+                        Text(
+                          'addons'.tr(),
+                          style: const TextStyle(
+                              color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
                         ),
                         SizedBox(
                           height: 300.h,
@@ -167,18 +221,52 @@ class ProductDetailsPage extends StatelessWidget {
                             shrinkWrap: true,
                             physics: const NeverScrollableScrollPhysics(),
                             itemBuilder: (context, index) {
-                              return Container(
-                                height: 80.h,
-                                width: 85.w,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8.0),
-                                  color: AppConst.kPrimaryColor,
-                                ),
-                                child: ListTile(
-                                  leading: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
-                                  title: const Text('عدد المنتجات '),
-                                  // subtitle: Text('السعر'),
-                                ),
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Container(
+                                    height: 80.h,
+                                    width: 80.w,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      color: AppConst.kPrimaryColor,
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        InkWell(
+                                            child: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
+                                            onTap: () {
+                                              setState(() {
+                                                if (_counterY < 10) {
+                                                  _counterY++;
+                                                }
+                                              });
+                                            }),
+                                        Gap(12.w),
+                                        Text('$_counterY'),
+                                        Gap(12.w),
+                                        InkWell(
+                                            onTap: () {
+                                              setState(() {
+                                                if (_counterY > 0) {
+                                                  _counterY--;
+                                                }
+                                              });
+                                            },
+                                            child: SvgPicture.asset('assets/images/svg/minus_icon.svg')),
+                                        Gap(12.w),
+                                      ],
+                                    ),
+                                  ),
+                                  Text(widget.dish.name ?? ' كيكة ليمون بلوبيري '),
+                                  const Spacer(),
+                                  Text(
+                                    '${widget.dish.price} ${'SAR'.tr()}',
+                                    style: const TextStyle(
+                                        color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 14),
+                                  ),
+                                ],
                               );
                             },
                             separatorBuilder: (context, index) {
@@ -198,10 +286,17 @@ class ProductDetailsPage extends StatelessWidget {
                       color: AppConst.kPrimaryColor,
                     ),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
+                      // crossAxisAlignment: CrossAxisAlignment.end,
                       children: [
                         Row(
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
+                            Text(
+                              'quantity'.tr(),
+                              style: const TextStyle(
+                                  color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
+                            ),
+                            const Spacer(),
                             Container(
                               height: 80.h,
                               width: 150.w,
@@ -209,27 +304,96 @@ class ProductDetailsPage extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(8.0),
                                 color: AppConst.kPrimaryColor,
                               ),
-                              child: ListTile(
-                                leading: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
-                                title: const Text('عدد المنتجات '),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  InkWell(
+                                      child: SvgPicture.asset('assets/images/svg/plus_icon.svg'),
+                                      onTap: () {
+                                        setState(() {
+                                          if (_counterX < 10) {
+                                            _counterX++;
+                                          }
+                                        });
+                                      }),
+                                  Gap(12.w),
+                                  Text('$_counterX'),
+                                  Gap(12.w),
+                                  InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          if (_counterX > 1) {
+                                            _counterX--;
+                                          }
+                                        });
+                                      },
+                                      child: SvgPicture.asset('assets/images/svg/minus_icon.svg')),
+                                  Gap(12.w),
+                                ],
                               ),
-                            ),
-                            const Spacer(),
-                            const Text(
-                              'الكمية',
-                              style: TextStyle(
-                                  color: AppConst.kScondaryTextColor, fontSize: 14, fontWeight: FontWeight.bold),
                             ),
                           ],
                         ),
                         const Gap(16),
                         Row(
                           children: [
-                            Padding(
-                              padding: const EdgeInsets.only(right: 8.0),
-                              child: SvgPicture.asset('assets/images/svg/empty_heart_icon01.svg'),
+                            Column(
+                              children: [
+                                // TODO: add BlocBuilder of ToggleFavoriteCubit
+                                BlocBuilder<ToggleFavoriteCubit, ToggleFavoriteState>(
+                                  buildWhen: (_, current) => current.dishId == widget.dish.id,
+                                  builder: (context, state) {
+                                    if (state is ToggleFavoriteSuccessState) {
+                                      bool isFav = state.isFavorite;
+                                      if (state.dishId != widget.dish.id) {
+                                        if (context.read<ToggleFavoriteCubit>().favorites[widget.dish.id] != null) {
+                                          isFav =
+                                              context.read<ToggleFavoriteCubit>().favorites[widget.dish.id] ?? false;
+                                        }
+                                        isFav = widget.dish.isFav;
+                                      }
+                                      return GestureDetector(
+                                        onTap: () {
+                                          context.read<ToggleFavoriteCubit>().fToggleFavorite(dishId: widget.dish.id);
+                                        },
+                                        child: SvgPicture.asset(
+                                          isFav
+                                              ? 'assets/images/svg/full_heart_icon01.svg'
+                                              : 'assets/images/svg/empty_heart_icon01.svg',
+                                          width: 56.w,
+                                          height: 56.h,
+                                        ),
+                                      );
+                                    }
+                                    if (state is ToggleFavoriteInitialState) {
+                                      return GestureDetector(
+                                        onTap: () {
+                                          context.read<ToggleFavoriteCubit>().fToggleFavorite(dishId: widget.dish.id);
+                                        },
+                                        child: SvgPicture.asset(
+                                          widget.dish.isFav
+                                              ? 'assets/images/svg/full_heart_icon01.svg'
+                                              : 'assets/images/svg/empty_heart_icon01.svg',
+                                          width: 56.w,
+                                          height: 56.h,
+                                        ),
+                                      );
+                                    }
+                                    return GestureDetector(
+                                      onTap: () {
+                                        context.read<ToggleFavoriteCubit>().fToggleFavorite(dishId: widget.dish.id);
+                                      },
+                                      child: SvgPicture.asset(
+                                        'assets/images/svg/empty_heart_icon01.svg',
+                                        width: 56.w,
+                                        height: 56.h,
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ],
                             ),
-                            const Gap(8),
+                            Gap(8.w),
                             Expanded(
                               child: CustomButton(
                                 onTap: () {
@@ -262,9 +426,10 @@ class ProductDetailsPage extends StatelessWidget {
 
                                                 Gap(16.h),
                                                 // SvgPicture.asset('assets/images/svg/heart_icon.svg'),
-                                                const Text(
-                                                  'تم إضافة المنتج الى السلة بنجاح',
-                                                  style: TextStyle(
+                                                Text(
+                                                  textAlign: TextAlign.center,
+                                                  'product_added_to_cart_successfully'.tr(),
+                                                  style: const TextStyle(
                                                       fontSize: 18,
                                                       fontWeight: FontWeight.bold,
                                                       color: AppConst.kScondaryTextColor),
@@ -272,25 +437,25 @@ class ProductDetailsPage extends StatelessWidget {
                                                 Gap(24.h),
 
                                                 CustomButton(
-                                                    btnTitle: 'اذهب للسلة ',
+                                                    btnTitle: 'go_to_cart'.tr(),
                                                     onTap: () {
                                                       Utils.openScreen(
                                                         context,
                                                         const CartPage(),
-                                                        // replacment: true
+                                                        replacment: true,
                                                       );
                                                     }),
                                                 Gap(24.h),
                                                 GestureDetector(
-                                                  child: const Text(
-                                                    'تابع التسوق',
-                                                    style: TextStyle(
+                                                  child: Text(
+                                                    'continue_shopping'.tr(),
+                                                    style: const TextStyle(
                                                         fontSize: 14,
                                                         fontWeight: FontWeight.bold,
                                                         color: AppConst.kBorderButtonColor),
                                                   ),
                                                   onTap: () {
-                                                    Utils.openScreen(context, const ProductsPage(), replacment: true);
+                                                    Utils.openScreen(context, const MainPage(), remove: true);
                                                   },
                                                 ),
                                               ],
@@ -301,7 +466,7 @@ class ProductDetailsPage extends StatelessWidget {
                                     ),
                                   );
                                 },
-                                btnTitle: 'تأكيد',
+                                btnTitle: 'add_to_cart'.tr(),
                                 btnColor: AppConst.kBorderButtonColor,
                               ),
                             ),
@@ -320,29 +485,17 @@ class ProductDetailsPage extends StatelessWidget {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 // Row(
 //                         children = [
 //                           const Text(
 //                             '500',
-//                             style: TextStyle(
+//                             style: const TextStyle(
 //                                 color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 18),
 //                           ),
 //                           const Spacer(),
 //                           const Text(
 //                             ' 01 السعر',
-//                             style: TextStyle(
+//                             style: const TextStyle(
 //                                 color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 12),
 //                           ),
 //                         ],
@@ -352,13 +505,13 @@ class ProductDetailsPage extends StatelessWidget {
 //                         children = [
 //                           const Text(
 //                             '501',
-//                             style: TextStyle(
+//                             style: const TextStyle(
 //                                 color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 18),
 //                           ),
 //                           const Spacer(),
 //                           const Text(
 //                             '02السعر',
-//                             style: TextStyle(
+//                             style: const TextStyle(
 //                                 color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 12),
 //                           ),
 //                         ],
@@ -368,13 +521,13 @@ class ProductDetailsPage extends StatelessWidget {
 //                         children = [
 //                           const Text(
 //                             '502',
-//                             style: TextStyle(
+//                             style: const TextStyle(
 //                                 color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 18),
 //                           ),
 //                           const Spacer(),
 //                           const Text(
 //                             '03السعر',
-//                             style: TextStyle(
+//                             style: const TextStyle(
 //                                 color: AppConst.kScondaryTextColor, fontWeight: FontWeight.bold, fontSize: 12),
 //                           ),
 //                         ],

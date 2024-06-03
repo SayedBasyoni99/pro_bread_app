@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -8,10 +9,29 @@ import '../../../../shared/custom_app_bar.dart';
 import '../../../../shared/custom_details_container.dart';
 import '../../../../shared/text_button.dart';
 import 'choose_location_page.dart';
-import 'product_details_page.dart';
 
-class DeliveredDetailsPage extends StatelessWidget {
+class DeliveredDetailsPage extends StatefulWidget {
   const DeliveredDetailsPage({super.key});
+
+  @override
+  State<DeliveredDetailsPage> createState() => _DeliveredDetailsPageState();
+}
+
+class _DeliveredDetailsPageState extends State<DeliveredDetailsPage> {
+  bool isSelected = false;
+  bool isSelect = true;
+
+  void toggleSelected() {
+    setState(() {
+      isSelected = !isSelected;
+    });
+  }
+
+  void toggleSelect() {
+    setState(() {
+      isSelect = !isSelect;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +39,7 @@ class DeliveredDetailsPage extends StatelessWidget {
       backgroundColor: AppConst.kPrimaryColor,
       appBar: CustomAppBar.build(
         context,
-        titleText: ' تابع إتمام الطلب',
+        titleText: 'proceed_to_checkout'.tr(),
         iconAppBar: SvgPicture.asset(
           'assets/images/svg/cart_icon.svg',
           height: 20,
@@ -35,17 +55,13 @@ class DeliveredDetailsPage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 child: GestureDetector(
                   onTap: () {
-                    Utils.openScreen(
-                      context,
-                      const ProductDetailsPage(),
-                    );
+                    // Navigator.pushNamed(context, Routes.productDetailsRoute);
                   },
-                  child: const CustomDetailsContainer(
-                    picInfo: 'arrowBack_icon',
-                    message01: 'تفاصيل الشحن',
-                    message02: 'Ar Rawdah',
-                    message03:
-                        'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة لقد تم توليد هذا النص من مولد',
+                  child: CustomDetailsContainer(
+                    // picInfo: 'arrowBack_icon',
+                    message01: 'shipping_details'.tr(),
+                    message02: 'mansoura'.tr(),
+                    message03: 'gift_services_description'.tr(),
                     message04: '+966 565 9999 00',
                   ),
                 ),
@@ -66,46 +82,65 @@ class DeliveredDetailsPage extends StatelessWidget {
                     BoxShadow(color: AppConst.kPrimaryColor, spreadRadius: 4.0)
                   ],
                 ),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                // padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text('استلام الطلب',
-                        style: TextStyle(
-                            color: AppConst.kBorderButtonColor,
-                            fontSize: 14.sp,
-                            fontWeight: FontWeight.bold)),
-                    Gap(16.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        const Text(
-                          'توصيل للمنزل ',
+                    Padding(
+                      padding: EdgeInsets.only(left: 16.w, top: 16.h),
+                      child: Text('pickup'.tr(),
                           style: TextStyle(
-                              color: AppConst.kPrimaryTextColor,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        Gap(4.w),
-                        SvgPicture.asset(
-                          'assets/images/svg/select_icon.svg',
-                        )
-                      ],
+                              color: AppConst.kBorderButtonColor, fontSize: 14.sp, fontWeight: FontWeight.bold)),
                     ),
-                    Gap(24.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        const Text(
-                          'استلام من المحل ',
-                          style: TextStyle(
-                              color: AppConst.kPrimaryTextColor,
-                              fontWeight: FontWeight.bold),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            color: AppConst.kPrimaryColor,
+                          ),
+                          child: ListTile(
+                            leading: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  toggleSelected();
+                                });
+                              },
+                              child: SvgPicture.asset(
+                                isSelected
+                                    ? 'assets/images/svg/select_icon.svg'
+                                    : 'assets/images/svg/un select_icon.svg',
+                              ),
+                            ),
+                            title: Text(
+                              'store_pickup'.tr(),
+                              style: const TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold),
+                            ),
+                          ),
                         ),
-                        Gap(4.w),
-                        SvgPicture.asset(
-                          'assets/images/svg/un select_icon.svg',
-                        )
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8.0),
+                            color: AppConst.kPrimaryColor,
+                          ),
+                          child: ListTile(
+                            leading: GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  toggleSelect();
+                                });
+                              },
+                              child: SvgPicture.asset(
+                                isSelect ? 'assets/images/svg/select_icon.svg' : 'assets/images/svg/un select_icon.svg',
+                              ),
+                            ),
+                            title: Text(
+                              'home_delivery'.tr(),
+                              style: const TextStyle(color: AppConst.kPrimaryTextColor, fontWeight: FontWeight.bold),
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -122,28 +157,26 @@ class DeliveredDetailsPage extends StatelessWidget {
                       color: AppConst.kScondaryTextColor,
                     ),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 16.0),
+                          padding: const EdgeInsets.only(right: 16.0, left: 16.0),
                           child: Text(
-                            'أو ارسل الطلب كهدية',
-                            style: TextStyle(
-                                color: AppConst.kPrimaryColor,
-                                fontSize: 14.sp,
-                                fontWeight: FontWeight.bold),
+                            'send_as_gift'.tr(),
+                            style:
+                                TextStyle(color: AppConst.kPrimaryColor, fontSize: 14.sp, fontWeight: FontWeight.bold),
                           ),
                         ),
                         Gap(8.w),
                       ],
                     ),
                   ),
-                  Positioned(
+                  Positioned.directional(
                     bottom: 0,
-                    left: 20.w,
-                    child:
-                        SvgPicture.asset('assets/images/svg/sendGif_icon.svg'),
-                  )
+                    end: 20.w,
+                    textDirection: Directionality.of(context),
+                    child: SvgPicture.asset('assets/images/svg/sendGif_icon.svg'),
+                  ),
                 ],
               ),
               Gap(50.h),
@@ -155,7 +188,7 @@ class DeliveredDetailsPage extends StatelessWidget {
                     const ChooseLocationPage(),
                   );
                 },
-                title: 'التالي',
+                title: 'next'.tr(),
                 fontSize: 18.sp,
               ),
             ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 void showAppSnackBar({
   required BuildContext context,
   required String message,
@@ -63,11 +62,9 @@ Widget _buildContent(BuildContext context, String message, ToastType type) {
   );
 }
 
-EdgeInsetsGeometry get _padding =>
-    EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h);
+EdgeInsetsGeometry get _padding => EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h);
 
-EdgeInsetsGeometry? _getMargin(
-    BuildContext context, SnackBarBehavior? behavior) {
+EdgeInsetsGeometry? _getMargin(BuildContext context, SnackBarBehavior? behavior) {
   if (behavior != SnackBarBehavior.floating) {
     return null;
   }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,87 +12,128 @@ import '../../../../shared/text_button.dart';
 import 'delivery_time_page.dart';
 
 class ConRecipientInfoPage extends StatelessWidget {
-  const ConRecipientInfoPage({super.key});
+  ConRecipientInfoPage({super.key});
+
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final areaController = TextEditingController();
+  final streetController = TextEditingController();
+  final buildController = TextEditingController();
+  final landNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar.build(
         context,
-        titleText: 'تابع إتمام الطلب',
+        titleText: 'proceed_to_checkout'.tr(),
         // removeBack: false,
+        actions: [],
       ),
       backgroundColor: AppConst.kPrimaryColor,
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              const Row(children: [
-                CustomStepper(),
-                CustomStepper(),
-                CustomStepper(),
-                CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
-              ]),
-              Gap(32.h),
-              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                const Text(
-                  'عنوان المرسل اليه',
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+        child: Form(
+          key: formKey,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 32.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Row(children: [
+                  CustomStepper(stepperColor: AppConst.kSecondaryStepperColor),
+                  CustomStepper(),
+                  CustomStepper(),
+                  CustomStepper(),
+                ]),
+                Gap(32.h),
+                Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+                  SvgPicture.asset('assets/images/svg/map_icon.svg'),
+                  Gap(8.w),
+                  Text(
+                    'recipient_address'.tr(),
+                    style:
+                        const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+                  ),
+                ]),
+                Gap(32.h),
+                Text(
+                  'area'.tr(),
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
                 ),
-                Gap(8.w),
-                SvgPicture.asset('assets/images/svg/map_icon.svg'),
-              ]),
-              Gap(32.h),
-              const Text(
-                'المنطقة ',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
-              ),
-              Gap(4.h),
-              const CustomInputField(
-                hint: 'المنصورة',
-              ),
-              Gap(32.h),
-              const Text(
-                'الشارع',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
-              ),
-              Gap(4.h),
-              const CustomInputField(
-                hint: 'الجمهورية',
-              ),
-              Gap(32.h),
-              const Text(
-                'اسم أو رقم البناية',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
-              ),
-              Gap(4.h),
-              const CustomInputField(
-                hint: '20',
-              ),
-              Gap(32.h),
-              const Text(
-                'علامة مميزة',
-                style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
-              ),
-              Gap(4.h),
-              const CustomInputField(
-                hint: 'امام مستشفي الجامعة ',
-              ),
-              Gap(60.h),
-              CustomTextButton(
-                icon: Icons.arrow_forward,
-                onTap: () {
-                  Utils.openScreen(
-                    context,
-                    const DeliveryTimePage(),
-                  );
-                },
-                title: 'التالي',
-                fontSize: 18.sp,
-              ),
-            ],
+                Gap(4.h),
+                CustomInputField(
+                  controller: areaController,
+                  validator: (p0) {
+                    if (p0 == null || p0.isEmpty) {
+                      return 'required'.tr();
+                    }
+                    return null;
+                  },
+                  hint: 'mansoura'.tr(),
+                ),
+                Gap(32.h),
+                Text(
+                  'street'.tr(),
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+                ),
+                Gap(4.h),
+                CustomInputField(
+                  controller: streetController,
+                  validator: (p0) {
+                    if (p0 == null || p0.isEmpty) {
+                      return 'required'.tr();
+                    }
+                    return null;
+                  },
+                  hint: 'jahan_street'.tr(),
+                ),
+                Gap(32.h),
+                Text(
+                  'building_name_or_number'.tr(),
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+                ),
+                Gap(4.h),
+                CustomInputField(
+                  controller: buildController,
+                  validator: (p0) {
+                    if (p0 == null || p0.isEmpty) {
+                      return 'required'.tr();
+                    }
+                    return null;
+                  },
+                  hint: '50',
+                ),
+                Gap(32.h),
+                Text(
+                  'landmark'.tr(),
+                  style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kPrimaryTextColor),
+                ),
+                Gap(4.h),
+                CustomInputField(
+                  controller: landNameController,
+                  validator: (p0) {
+                    if (p0 == null || p0.isEmpty) {
+                      return 'required'.tr();
+                    }
+                    return null;
+                  },
+                  hint: 'mansoura'.tr(),
+                ),
+                Gap(60.h),
+                CustomTextButton(
+                  icon: Icons.arrow_forward,
+                  onTap: () {
+                    if (formKey.currentState!.validate() == true) {
+                      Utils.openScreen(
+                        context,
+                        const DeliveryTimePage(),
+                      );
+                    }
+                  },
+                  title: 'next'.tr(),
+                  fontSize: 18.sp,
+                ),
+              ],
+            ),
           ),
         ),
       ),

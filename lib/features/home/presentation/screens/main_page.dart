@@ -1,16 +1,33 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../core/const/constant_var.dart';
+import '../../../../core/utils/utils.dart';
 import '../../../../shared/custom_app_bar.dart';
 
+import '../../../auth/presentation/screens/cart_page.dart';
+import '../../../categories/presentation/controller/get_categories/get_categories_cubit.dart';
+import '../../../categories/presentation/controller/get_dishes/get_dishes_cubit.dart';
 import '../controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
 
-class MainPage extends StatelessWidget {
+class MainPage extends StatefulWidget {
   const MainPage({
     super.key,
   });
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<GetCategoriesCubit>().fGetCategories();
+    context.read<GetDishesCubit>().fGetDishes();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,10 +36,15 @@ class MainPage extends StatelessWidget {
         return Scaffold(
           appBar: CustomAppBar.build(
             removeBack: true,
-            iconAppBar: SvgPicture.asset(
-              'assets/images/svg/cart_icon.svg',
-              height: 20,
-              width: 20,
+            iconAppBar: GestureDetector(
+              onTap: () {
+                Utils.openScreen(context, const CartPage());
+              },
+              child: SvgPicture.asset(
+                'assets/images/svg/cart_icon.svg',
+                height: 20,
+                width: 20,
+              ),
             ),
 
             context,
@@ -30,22 +52,19 @@ class MainPage extends StatelessWidget {
             // titleText : state.index == 1? 'Add' : state.index == 2? 'Star': 'Home',
             title: Builder(
               builder: (context) {
-                String title = 'الرئيسية';
+                String title = 'home'.tr();
                 if (state.index == 1) {
-                  title = 'المنتجات';
+                  title = 'products'.tr();
                 }
                 if (state.index == 2) {
-                  title = 'المفضلات';
+                  title = 'favourites'.tr();
                 }
                 if (state.index == 3) {
-                  title = 'حسابي';
+                  title = 'profile'.tr();
                 }
                 return Text(
                   title,
-                  style: const TextStyle(
-                      color: AppConst.kScondaryTextColor,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold),
+                  style: const TextStyle(color: AppConst.kScondaryTextColor, fontSize: 20, fontWeight: FontWeight.bold),
                 );
               },
             ),
@@ -71,9 +90,7 @@ class MainPage extends StatelessWidget {
             type: BottomNavigationBarType.fixed,
             backgroundColor: AppConst.kPrimaryColor,
             currentIndex: state.index,
-            onTap: (int index) => context
-                .read<BottomNavBarCubit>()
-                .changeCurrentScreen(index: index),
+            onTap: (int index) => context.read<BottomNavBarCubit>().changeCurrentScreen(index: index),
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: Padding(
@@ -91,13 +108,12 @@ class MainPage extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: SvgPicture.asset(
                         'assets/images/svg/home_icon.svg',
-                        colorFilter: const ColorFilter.mode(
-                            AppConst.kBorderButtonColor, BlendMode.srcIn),
+                        colorFilter: const ColorFilter.mode(AppConst.kBorderButtonColor, BlendMode.srcIn),
                       ),
                     ),
                   ],
                 ),
-                label: 'الرئسية',
+                label: 'home'.tr(),
               ),
               BottomNavigationBarItem(
                 icon: Padding(
@@ -115,19 +131,17 @@ class MainPage extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: SvgPicture.asset(
                         'assets/images/svg/product_icon.svg',
-                        colorFilter: const ColorFilter.mode(
-                            AppConst.kBorderButtonColor, BlendMode.srcIn),
+                        colorFilter: const ColorFilter.mode(AppConst.kBorderButtonColor, BlendMode.srcIn),
                       ),
                     ),
                   ],
                 ),
-                label: 'المنتجات',
+                label: 'products'.tr(),
               ),
               BottomNavigationBarItem(
                 icon: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child:
-                      SvgPicture.asset('assets/images/svg/favorite_icon.svg'),
+                  child: SvgPicture.asset('assets/images/svg/favorite_icon.svg'),
                 ),
                 activeIcon: Column(
                   children: [
@@ -140,13 +154,12 @@ class MainPage extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: SvgPicture.asset(
                         'assets/images/svg/favorite_icon.svg',
-                        colorFilter: const ColorFilter.mode(
-                            AppConst.kBorderButtonColor, BlendMode.srcIn),
+                        colorFilter: const ColorFilter.mode(AppConst.kBorderButtonColor, BlendMode.srcIn),
                       ),
                     ),
                   ],
                 ),
-                label: 'المفضلات',
+                label: 'favourites'.tr(),
               ),
               BottomNavigationBarItem(
                 icon: Padding(
@@ -164,13 +177,12 @@ class MainPage extends StatelessWidget {
                       padding: const EdgeInsets.all(8.0),
                       child: SvgPicture.asset(
                         'assets/images/svg/account_icon.svg',
-                        colorFilter: const ColorFilter.mode(
-                            AppConst.kBorderButtonColor, BlendMode.srcIn),
+                        colorFilter: const ColorFilter.mode(AppConst.kBorderButtonColor, BlendMode.srcIn),
                       ),
                     ),
                   ],
                 ),
-                label: 'حسابي',
+                label: 'profile'.tr(),
               ),
             ],
           ),

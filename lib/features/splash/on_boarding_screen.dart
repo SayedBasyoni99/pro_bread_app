@@ -1,27 +1,37 @@
 import 'package:cupertino_onboarding/cupertino_onboarding.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import '../core/const/constant_var.dart';
-import '../core/resources/assets.gen.dart';
-import '../features/auth/presentation/screens/welcome_page.dart';
+
+import '../../config/routes/app_routes.dart';
+import '../../core/const/constant_var.dart';
+import '../../core/resources/assets.gen.dart';
 
 // ignore: must_be_immutable
-class OnBoardingScreen extends StatelessWidget {
-  OnBoardingScreen({super.key});
+class OnBoardingScreen extends StatefulWidget {
+  const OnBoardingScreen({super.key});
+
+  @override
+  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+}
+
+class _OnBoardingScreenState extends State<OnBoardingScreen> {
   int index = 0;
-  @override 
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: CupertinoOnboarding(
-            bottomButtonChild: index == 0 ? const Text(' تخطي') : const Text('تسجبل الدخول'),
+            bottomButtonChild: index == 0 ? Text('skip'.tr()) : Text('login'.tr()),
 
             bottomButtonColor: AppConst.kButtonColor,
             // onPressed: () {},
             onPressedOnLastPage: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => const WelcomePage()));
+              Navigator.pushReplacementNamed(context, Routes.welcomeRoute);
+              // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const WelcomePage()));
             },
             pages: [
               Column(
@@ -32,17 +42,16 @@ class OnBoardingScreen extends StatelessWidget {
                     height: 304.96,
                   ),
                   const Gap(20),
-                  const Text('هذا النص هو مثال لنص يمكن أن يستبدل',
-                      style: TextStyle(
+                  Text('welcome_message'.tr(),
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
                         color: AppConst.kScondaryTextColor,
                       )),
                   const Gap(20),
-                  const Text(
-                      'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص',
+                  Text('gift_services_description'.tr(),
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         // fontFamily: 'SF Pro Text',
                         fontWeight: FontWeight.bold,
                         fontSize: 14.0,
@@ -60,17 +69,16 @@ class OnBoardingScreen extends StatelessWidget {
                     height: 298,
                   ),
                   const Gap(20),
-                  const Text('هذا النص هو مثال لنص يمكن أن يستبدل',
-                      style: TextStyle(
+                  Text('welcome_message'.tr(),
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 18.0,
                         color: AppConst.kScondaryTextColor,
                       )),
                   const Gap(20),
-                  const Text(
-                      'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص',
+                  Text('gift_services_description'.tr(),
                       textAlign: TextAlign.center,
-                      style: TextStyle(
+                      style: const TextStyle(
                         // fontFamily: 'SF Pro Text',
                         fontWeight: FontWeight.bold,
                         fontSize: 14.0,
@@ -97,7 +105,7 @@ class OnBoardingScreen extends StatelessWidget {
           //           ),
           //           const Gap(20),
           //           const Text('هذا النص هو مثال لنص يمكن أن يستبدل',
-          //               style: TextStyle(
+          //               style: const TextStyle(
           //                 fontWeight: FontWeight.bold,
           //                 fontSize: 18.0,
           //                 color: scondaryTextColor,
@@ -106,7 +114,7 @@ class OnBoardingScreen extends StatelessWidget {
           //           const Text(
           //               'هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى، حيث يمكنك أن تولد مثل هذا النص',
           //               textAlign: TextAlign.center,
-          //               style: TextStyle(
+          //               style: const TextStyle(
           //                 // fontFamily: 'SF Pro Text',
           //                 fontWeight: FontWeight.bold,
           //                 fontSize: 14.0,

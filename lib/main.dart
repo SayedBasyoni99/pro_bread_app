@@ -2,9 +2,15 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'features/home/presentation/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
-import 'splash/splash_screen.dart';
 
+import 'config/routes/app_routes.dart';
+import 'config/routes/navigator_observer.dart';
+import 'features/categories/categories_injection.dart';
+import 'features/favorites/favorites_injection.dart';
+import 'features/home/presentation/controllers/bottom_nav_bar/bottom_nav_bar_cubit.dart';
+import 'features/language/language_injection.dart';
+import 'features/language/presentation/cubit/locale_cubit/locale_cubit.dart';
+import 'features/orders/orders_injection.dart';
 import 'features/address/address_injection.dart';
 import 'features/auth/auth_injection.dart';
 import 'injection_container.dart';
@@ -41,9 +47,10 @@ void main() async {
 
   runApp(
     EasyLocalization(
-        supportedLocales: const [Locale('ar', 'EG'), Locale('en', 'US')],
-        path: 'assets/translations',
-        startLocale: const Locale('ar', 'EG'),
+        supportedLocales: const [Locale('ar'), Locale('en')],
+        path: 'assets/lang',
+        startLocale: const Locale('ar'),
+        assetLoader: const RootBundleAssetLoader(),
         saveLocale: true,
         child: const MyApp()),
   );
@@ -64,38 +71,51 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    context.locale == const Locale('en', 'US') ? 'en' : 'ar';
+    //context.locale == const Locale('en', 'US') ? 'en' : 'ar';
     return ScreenUtilInit(
       designSize: const Size(375, 812),
       minTextAdapt: true,
       splitScreenMode: true,
       child: MultiBlocProvider(
           providers: [
+            ...languageBlocs,
             ...addressBlocs,
             ...authBlocs,
+            ...categoriesBlocs,
+            ...favoritesBlocs,
+            ...ordersBlocs,
             BlocProvider<BottomNavBarCubit>(
-              create: (context) => BottomNavBarCubit(),
+              create: (context) => ServiceLocator.instance<BottomNavBarCubit>(),
             ),
           ],
-          child: MaterialApp(
-            title: 'Pro Bread',
-            theme: ThemeData(
-              fontFamily: 'Teshrin',
-              useMaterial3: true,
-              brightness: Brightness.light,
-              /* light theme settings */
-            ),
-            darkTheme: ThemeData(
-              brightness: Brightness.dark,
-              /* dark theme settings */
-            ),
-            themeMode: ThemeMode.light,
-            /* ThemeMode.system to follow system theme, 
-         ThemeMode.light for light theme, 
-         ThemeMode.dark for dark theme
-      */
-            debugShowCheckedModeBanner: false,
-            home: const SplashScreen(),
+          child: BlocBuilder<LocaleCubit, LocaleState>(
+              builder: (context, state) {
+              return MaterialApp(
+                title: 'Pro Bread',
+                theme: ThemeData(
+                  fontFamily: 'Teshrin',
+                  useMaterial3: true,
+                  brightness: Brightness.light,
+                  /* light theme settings */
+                ),
+                darkTheme: ThemeData(
+                  brightness: Brightness.dark,
+                  /* dark theme settings */
+                ),
+                themeMode: ThemeMode.light,
+                localizationsDelegates: context.localizationDelegates,
+                supportedLocales: context.supportedLocales,
+                locale: state.locale,
+
+                navigatorObservers: [AppNavigatorObserver()],
+                /* ThemeMode.system to follow system theme,
+                       ThemeMode.light for light theme,
+                       ThemeMode.dark for dark theme
+                    */
+                debugShowCheckedModeBanner: false,
+                onGenerateRoute: AppRoutes.onGenerateRoute,
+              );
+            }
           )
 
           // MaterialApp(

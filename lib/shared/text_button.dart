@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../core/const/constant_var.dart';
+
 // ignore: must_be_immutable
 class CustomTextButton extends StatelessWidget {
   CustomTextButton({
@@ -17,11 +19,12 @@ class CustomTextButton extends StatelessWidget {
     this.isBold = true,
     this.fontSize = 16.0,
     this.icon,
+    this.iconColor = AppConst.kPrimaryTextColor,
   });
   void Function()? onTap;
   String title;
   double height, width, radius, fontSize;
-  Color textColor, buttonColor, borderColor, inkColor;
+  Color textColor, buttonColor, borderColor, inkColor, iconColor;
   bool withBorder, isBold;
   IconData? icon;
 
@@ -32,12 +35,9 @@ class CustomTextButton extends StatelessWidget {
         style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(buttonColor),
             shadowColor: MaterialStateProperty.all<Color>(Colors.transparent),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
+            shape: MaterialStateProperty.all<RoundedRectangleBorder>(RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(radius),
-              side: withBorder
-                  ? BorderSide(color: borderColor)
-                  : const BorderSide(color: Colors.transparent),
+              side: withBorder ? BorderSide(color: borderColor) : const BorderSide(color: Colors.transparent),
             ))),
         child: Ink(
           decoration: BoxDecoration(
@@ -56,12 +56,11 @@ class CustomTextButton extends StatelessWidget {
                       style: TextStyle(
                           color: textColor,
                           fontSize: fontSize,
-                          fontWeight:
-                              isBold ? FontWeight.bold : FontWeight.normal),
+                          fontWeight: isBold ? FontWeight.bold : FontWeight.normal),
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  if (icon != null) Icon(icon, color: textColor),
+                  if (icon != null) Icon(icon, color: iconColor),
                 ],
               )),
         ));
@@ -114,7 +113,7 @@ class CustomTextButton extends StatelessWidget {
     //     child: const Center(
     //         child: Text(
     //       'Next to',
-    //       style: TextStyle(color: Colors.white),
+    //       style: const TextStyle(color: Colors.white),
     //     )),
     //   ),
     // );

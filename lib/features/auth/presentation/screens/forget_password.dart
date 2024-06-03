@@ -10,11 +10,18 @@ import '../../../../shared/text_button.dart';
 import '../../../../shared/custom_input_field.dart';
 import '../../../../shared/show_dialog.dart';
 
-class ForgetPasswordPage extends StatelessWidget {
-  ForgetPasswordPage({super.key});
+class ForgetPasswordPage extends StatefulWidget {
+  const ForgetPasswordPage({super.key});
 
+  @override
+  State<ForgetPasswordPage> createState() => _ForgetPasswordPageState();
+}
+
+class _ForgetPasswordPageState extends State<ForgetPasswordPage> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   final TextEditingController phoneController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,19 +38,22 @@ class ForgetPasswordPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Gap(25.h),
-                    const Text(
-                      'هل نسيت كلمة المرور',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
+                    Text(
+                      'forgot_password'.tr(),
+                      style: const TextStyle(
+                          fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                     ),
                     Gap(25.h),
-                    const Text(
-                      'يرجي إدخال رقم الجوال الخاص بك ليتم إرسال الكود',
-                      style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                    Text(
+                      'enter_your_mobile_number'.tr(),
+                      style:
+                          const TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
                     const Gap(32),
-                    const Text(
-                      'رقم الجوال',
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
+                    Text(
+                      'mobile_number'.tr(),
+                      style:
+                          const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                     ),
                     const Gap(16),
                     CustomInputField(
@@ -55,7 +65,7 @@ class ForgetPasswordPage extends StatelessWidget {
                       },
                       controller: phoneController,
                       keyboardType: TextInputType.number,
-                      hint: 'ادخل رقم الجوال'.tr(),
+                      hint: 'enter_mobile_number'.tr(),
                       prefixIcon: Padding(
                         padding: const EdgeInsets.all(12.0),
                         child: SvgPicture.asset(
@@ -70,7 +80,7 @@ class ForgetPasswordPage extends StatelessWidget {
                           showAppDialog(context: context, child: const CustomPopUp());
                         }
                       },
-                      title: 'ارسل ',
+                      title: 'send'.tr(),
                       fontSize: 18.sp,
                     ),
                   ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/const/constant_var.dart';
 import '../../../../core/utils/app_snack_bar.dart';
 import '../controller/get_address/get_address_cubit.dart';
 
@@ -45,7 +46,9 @@ class _AddressScreenState extends State<AddressScreen> {
           builder: (context, state) {
             if (state is GetAddressLoadingState) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: CircularProgressIndicator(
+                  color: AppConst.kBorderButtonColor,
+                ),
               );
             }
             if (state is GetAddressSuccessState) {

@@ -137,7 +137,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         body: params.toJson(),
       );
 
-      if(response['status'] == true){
+      if(response['status'] == 200){
         return ForgetPasswordModel.fromJson(response);
       }
       throw ServerException(message: response['message']?? '');
@@ -158,7 +158,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         body: params.toJson(),
       );
 
-      if(response['status'] == true){
+      if(response['status'] == 200){
         return SendOtpModel.fromJson(response);
       }
       throw ServerException(message: response['message']?? '');
@@ -178,7 +178,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         body: params.toJson(),
       );
 
-      if(response['status'] == true){
+      if(response['status'] == 200){
         return UpdatePasswordModel.fromJson(response);
       }
       throw ServerException(message: response['message']?? '');

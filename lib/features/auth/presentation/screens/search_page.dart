@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,38 +16,40 @@ class SearchPage extends StatelessWidget {
         backgroundColor: AppConst.kPrimaryColor,
         appBar: CustomAppBar.build(
           context,
-          titleText: 'ابحث',
+          titleText: 'search'.tr(),
           iconAppBar: SvgPicture.asset('assets/images/svg/cart_icon.svg'),
         ),
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 32.h),
-            child: Column(
-              children: [
-                CustomTxtField(
-                  borderColor: AppConst.kBorderBoxColor,
-                  // filled: true,
-                  // fillColor: AppConst.kPrimaryColor,
-                  hintTxt: 'عن ماذا تبحث؟',
-                  iconButton02: Padding(
-                    padding: EdgeInsets.all(18.h),
-                    child: SvgPicture.asset(
-                      'assets/images/svg/search_icon.svg',
+        body: SingleChildScrollView(
+          child: Center(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 32.h),
+              child: Column(
+                children: [
+                  CustomTxtField(
+                    borderColor: AppConst.kBorderBoxColor,
+                    // filled: true,
+                    // fillColor: AppConst.kPrimaryColor,
+                    hintTxt: 'what_are_you_looking_for'.tr(),
+                    iconButton02: Padding(
+                      padding: EdgeInsets.all(18.h),
+                      child: SvgPicture.asset(
+                        'assets/images/svg/search_icon.svg',
+                      ),
                     ),
                   ),
-                ),
-                Gap(60.h),
-                SvgPicture.asset('assets/images/svg/notFoundProducts_icon.svg'),
-                Gap(16.h),
-                Text(
-                  'لم يتم العثور على نتائج للبحث',
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.bold,
-                    color: AppConst.kPrimaryTextColor,
+                  Gap(60.h),
+                  SvgPicture.asset('assets/images/svg/notFoundProducts_icon.svg'),
+                  Gap(16.h),
+                  Text(
+                    'no_search_results'.tr(),
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.bold,
+                      color: AppConst.kPrimaryTextColor,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ));

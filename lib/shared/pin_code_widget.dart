@@ -46,7 +46,6 @@ class PinCodeWidget extends StatelessWidget {
         defaultBorderColor: Colors.transparent,
         hasTextBorderColor: Colors.transparent,
         highlightColor: AppConst.kBorderButtonColor,
-        
         pinBoxDecoration: ProvidedPinBoxDecoration.defaultPinBoxDecoration,
         onDone: (text) => textSubmit(text),
       ),

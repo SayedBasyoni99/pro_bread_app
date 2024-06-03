@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/error/failures.dart';
+import '../../../../core/usecases/usecase.dart';
+import '../../../../core/utils/enums.dart';
 import '../../domain/entities/login_response.dart';
 import '../../domain/usecases/login_usecase.dart';
 import '../../domain/entities/forget_password_response.dart';
@@ -15,6 +17,8 @@ import '../../domain/entities/update_password_response.dart';
 import '../../domain/usecases/update_password_usecase.dart';
 import '../../domain/entities/complete_register_response.dart';
 import '../../domain/usecases/complete_register_usecase.dart';
+import '../usecases/save_access_token_usecase.dart';
+import '../usecases/save_user_type_usecase.dart';
 
 abstract class AuthRepository {
   Future<Either<Failure, LoginResponse>> login({
@@ -49,6 +53,22 @@ abstract class AuthRepository {
 
   Future<Either<Failure, CompleteRegisterResponse>> completeRegister({
     required CompleteRegisterParams params,
+  });
+
+  Future<Either<Failure, UserType>> getUserType({
+    required NoParams params,
+  });
+
+  Future<Either<Failure, void>> saveUserType({
+    required SaveUserTypeParams params,
+  });
+
+  Future<Either<Failure, bool>> saveAccessToken({
+    required SaveAccessTokenParams params,
+  });
+
+  Future<Either<Failure, bool>> removeAccessToken({
+    required NoParams params,
   });
 
 

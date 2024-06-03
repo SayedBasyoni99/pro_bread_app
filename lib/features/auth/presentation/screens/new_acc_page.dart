@@ -1,15 +1,16 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
+
+import '../../../../config/routes/app_routes.dart';
 import '../../../../core/const/constant_var.dart';
 import '../../../../core/resources/assets.gen.dart';
-import 'log_in_page.dart';
 import '../../../../shared/custom_input_field.dart';
 import '../../../../shared/text_button.dart';
 import '../../../../core/utils/app_snack_bar.dart';
-import '../../../../core/utils/utils.dart';
 import '../controller/complete_register/complete_register_cubit.dart';
 import '../controller/register/register_cubit.dart';
 
@@ -44,31 +45,27 @@ class _NewAccPageState extends State<NewAccPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Gap(25.h),
-                      const Text(
-                        'إنشاء حساب جديد',
-                        style: TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kScondaryTextColor),
+                      Text(
+                        'create_new_account'.tr(),
+                        style: const TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold, color: AppConst.kScondaryTextColor),
                       ),
                       const Gap(32),
-                      const Text(
-                        'الاسم ',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kThirdTextColor),
+                      Text(
+                        'name'.tr(),
+                        style:
+                            const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
                       const Gap(16),
                       CustomInputField(
                         controller: nameController,
-                        hint: 'ادخل اسم الحساب',
+                        hint: 'enter_account_name'.tr(),
                         validator: (value) {
                           if (value?.trim().isEmpty == true) {
-                            return 'required';
+                            return 'required'.tr();
                           }
 
                           return null;
@@ -83,7 +80,7 @@ class _NewAccPageState extends State<NewAccPage> {
                       // const Gap(32),
                       // const Text(
                       //   ' البريد الالكتروني',
-                      //   style: TextStyle(
+                      //   style: const TextStyle(
                       //       fontSize: 14,
                       //       fontWeight: FontWeight.bold,
                       //       color: AppConst.kThirdTextColor),
@@ -107,12 +104,10 @@ class _NewAccPageState extends State<NewAccPage> {
                       //   ),
                       // ),
                       const Gap(32),
-                      const Text(
-                        'كلمة المرور ',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kThirdTextColor),
+                      Text(
+                        'password'.tr(),
+                        style:
+                            const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor),
                       ),
                       const Gap(16),
                       CustomInputField(
@@ -124,13 +119,13 @@ class _NewAccPageState extends State<NewAccPage> {
                         // ),
                         controller: passwordController,
                         isPassword: true,
-                        hint: 'ادخل كلمة المرور',
+                        hint: 'enter_password'.tr(),
                         validator: (p0) {
                           if (p0?.isEmpty == true) {
-                            return 'required';
+                            return 'required'.tr();
                           }
                           if ((p0?.length ?? 0) < 8) {
-                            return 'كلمة المرور قصيرة جدا';
+                            return 'password_too_short'.tr();
                           }
                           return null;
                         },
@@ -142,41 +137,35 @@ class _NewAccPageState extends State<NewAccPage> {
                         ),
                       ),
                       Gap(40.h),
-                      BlocConsumer<CompleteRegisterCubit,
-                          CompleteRegisterState>(
+                      BlocConsumer<CompleteRegisterCubit, CompleteRegisterState>(
                         listener: (context, state) {
                           if (state is CompleteRegisterSuccessState) {
-                            Utils.openScreen(context, LogInPage(),
-                                replacment: true);
+                            // Utils.openScreen(context, LogInPage(), replacment: true);
+                            Navigator.pushNamed(context, Routes.loginRoute);
                           }
                           if (state is CompleteRegisterErrorState) {
-                            showAppSnackBar(
-                                context: context,
-                                message: state.message,
-                                type: ToastType.error);
+                            showAppSnackBar(context: context, message: state.message, type: ToastType.error);
                           }
                         },
                         builder: (context, state) {
                           if (state is CompleteRegisterLoadingState) {
                             return const Center(
-                              child: CircularProgressIndicator(),
+                              child: CircularProgressIndicator(
+                                color: AppConst.kBorderButtonColor,
+                              ),
                             );
                           }
                           return CustomTextButton(
                             onTap: () {
                               if (formKey.currentState!.validate()) {
-                                context
-                                    .read<CompleteRegisterCubit>()
-                                    .fCompleteRegister(
+                                context.read<CompleteRegisterCubit>().fCompleteRegister(
                                       name: nameController.text.trim(),
-                                      phone:
-                                          context.read<RegisterCubit>().phone ??
-                                              '',
+                                      phone: context.read<RegisterCubit>().phone ?? '',
                                       password: passwordController.text.trim(),
                                     );
                               }
                             },
-                            title: '  انشاء حساب جديد',
+                            title: 'create_new_account'.tr(),
                             fontSize: 18.sp,
                           );
                         },
@@ -188,23 +177,19 @@ class _NewAccPageState extends State<NewAccPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    Text('already_have_an_account'.tr(),
+                        style: const TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kThirdTextColor)),
+                    const Gap(12),
                     GestureDetector(
                       onTap: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => LogInPage()));
+                        // Navigator.of(context).push(MaterialPageRoute(builder: (context) => LogInPage()));
+                        Navigator.pushReplacementNamed(context, Routes.loginRoute);
                       },
-                      child: const Text('تسجيل الدخول',
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontWeight: FontWeight.bold,
-                              color: AppConst.kButtonColor)),
+                      child: Text('login'.tr(),
+                          style:
+                              const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: AppConst.kButtonColor)),
                     ),
-                    const Gap(12),
-                    const Text('هل لديك حساب بالفعل ؟ ',
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.bold,
-                            color: AppConst.kThirdTextColor)),
                   ],
                 ),
                 Gap(20.h),

@@ -17,10 +17,10 @@ class GetDishesCubit extends Cubit<GetDishesState> {
   List<Dish> data = <Dish>[];
 
   Future<void> fGetDishes({
-   required String keyword,
-   required int category,
-   required int sales,
-   required int rating,
+   String? keyword,
+   int? category,
+   int? sales,
+   int? rating,
   }) async {
     emit(const GetDishesLoadingState());
     final Either<Failure, GetDishesResponse> eitherResult = await getDishesUseCase(GetDishesParams(

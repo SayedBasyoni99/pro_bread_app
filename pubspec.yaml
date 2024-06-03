@@ -32,8 +32,10 @@ dependencies:
   easy_localization: ^3.0.6
   carousel_slider: ^4.2.1
   pin_code_text_field: ^1.8.0
-  shared_preferences: ^2.2.0
-  flutter_secure_storage: ^9.0.0
+  shared_preferences: ^2.2.3
+  flutter_secure_storage: ^9.2.1
+  lottie: ^3.1.2
+  # flutter_datetime_picker: ^1.5.1
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +54,7 @@ flutter:
     - assets/images/svg/
     - assets/images/png/ 
     - assets/fonts/ 
+    - assets/lang/ 
 
     
   

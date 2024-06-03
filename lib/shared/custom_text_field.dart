@@ -32,7 +32,6 @@ class CustomTxtField extends StatelessWidget {
   final TextDirection textDirection;
   final bool readOnly;
   final void Function()? onTap;
-  
 
   @override
   Widget build(BuildContext context) {
@@ -55,8 +54,8 @@ class CustomTxtField extends StatelessWidget {
       controller: controller,
       keyboardType: textInputType,
       decoration: InputDecoration(
-        fillColor: fillColor,
-        filled:filled,
+          fillColor: fillColor,
+          filled: filled,
           suffixIcon: iconButton,
           prefixIcon: iconButton02,
           hintText: ' $hintTxt',

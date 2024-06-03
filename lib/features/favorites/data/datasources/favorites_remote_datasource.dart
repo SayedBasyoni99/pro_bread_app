@@ -23,7 +23,7 @@ class FavoritesRemoteDataSourceImpl implements FavoritesRemoteDataSource {
         getFavoritesEndpoint,
       );
 
-      if(response['status'] == true){
+      if(response['status'] == 200){
         return GetFavoritesModel.fromJson(response);
       }
       throw ServerException(message: response['message']?? '');
@@ -44,7 +44,7 @@ class FavoritesRemoteDataSourceImpl implements FavoritesRemoteDataSource {
         body: params.toJson(),
       );
 
-      if(response['status'] == true){
+      if(response['status'] == 200){
         return ToggleFavoriteModel.fromJson(response);
       }
       throw ServerException(message: response['message']?? '');
